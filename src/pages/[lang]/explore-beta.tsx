@@ -170,20 +170,7 @@ const Card = handleViewport(({inViewport, forwardedRef, index, width, data}) => 
 
 
 
-export const App = ({deviceType, height,routingStore, props}) => {
-  const targetRef = React.useRef();
-  const [dimensions, setDimensions] = React.useState({ width:0, height: 0 });
-
-  React.useLayoutEffect(() => {
-    if (targetRef.current) {
-      setDimensions({
-        width: targetRef.current.offsetWidth,
-        height: targetRef.current.offsetHeight
-      });
-    }
-  }, []);
-
-  const width = dimensions.width
+export const App = ({deviceType, width, height,routingStore, props}) => {
   const {
     uiStore,
     tag
