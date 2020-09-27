@@ -1,8 +1,8 @@
-# Example Storefront
+# Craflo Storefront
 
 [Reaction Commerce](http://reactioncommerce.com) is an API-first, headless commerce platform built using Node.js, React, and GraphQL. It plays nicely with npm, Docker and Kubernetes.
 
-This Example Storefront is to serve as a reference on how to implement a web based storefront using the Reaction Commerce GraphQL API. You can fork this project as a jumping off point or create your own custom experience using your prefered client-side technology. While we believe our example storefront is full featured enough to use in production, it may be missing features your shop requires at this time.
+This Craflo Storefront is to serve as a reference on how to implement a web based storefront using the Reaction Commerce GraphQL API. You can fork this project as a jumping off point or create your own custom experience using your prefered client-side technology. While we believe our example storefront is full featured enough to use in production, it may be missing features your shop requires at this time.
 
 ## Features
 Reaction comes with a robust set of core commerce capabilities right out of the box. And since anything in our codebase can be extended, overwritten, or installed as a package, you may also customize anything on our platform.
