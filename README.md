@@ -20,7 +20,7 @@ This example storefront is built with [Next.js](https://nextjs.org/), [React](ht
 - Written in ES6, configured with ES6
 - Containerized with Docker
 
-## Getting Started
+## Getting Started 
 
 Follow the [Reaction Platform docs](https://docs.reactioncommerce.com/docs/installation-reaction-platform) to install and run all the services necessary to run the storefront:
 
