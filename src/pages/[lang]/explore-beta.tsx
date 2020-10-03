@@ -83,6 +83,7 @@ import {useWindowSize} from "../../utils/useWindowSize";
 // import {useLocale} from "../../contexts/language/language.provider";
 // import Popover from "../../components/popover/popover";
 // import {LangSwitcher} from "../../layouts/header/header.style";
+import { Row, Col } from 'react-styled-flexboxgrid';
 
 
 let slug_language;
@@ -94,6 +95,8 @@ import { useQuery } from '@apollo/react-hooks';
 import hoistNonReactStatic from "hoist-non-react-statics";
 import { pagination, paginationVariablesFromUrlParams } from "lib/utils/pagination";
 import catalogItemsQuery from "containers/catalog/catalogItems.gql";
+import PriceSlider from "../../components/price-slider/price-slider";
+import ColorFilter from "../../components/color-filter/color-filter";
 
 
 const Card = handleViewport(({inViewport, forwardedRef, index, width, data}) => {
@@ -240,7 +243,10 @@ export const App = ({deviceType, width, height,routingStore, props}) => {
     tagIds,
     sortBy: sortBy,
     sortByPriceCurrencyCode: uiStore.sortByCurrencyCode,
-    sortOrder
+    sortOrder,
+    searchConfig: {
+      content: ["mein chutiya naaui hu mdc" , "dekh hota dikha"]
+    }
   };
 
   const { data, error, fetchMore, loading } = useQuery(catalogItemsQuery, {
@@ -418,37 +424,46 @@ const ProductListingPage: NextPage = ({ deviceType, ...props }) => {
 
       {/*<MobileCarouselDropdown>*/}
       {/*  <StoreNav items={storeType} />*/}
-      {/*</MobileCarouselDropdown>*/}
+      {/*</MobileCarouselDropdo1`wn>*/}
 
             <ProductPreview>
               <img src={"https://media.gettyimages.com/photos/making-paper-flowersart-and-craft-concept-picture-id1149218784"} />
             </ProductPreview>
 
+
             <Sticky
               top={deviceType.mobile || deviceType.tablet ? 68 : 78}
-              innerZ={0}
+              innerZ={99}
             >
+              <Row style={{ alignItems: 'flex-end', margin:'auto', height:72, backgroundColor: "#fff" }}>
+                <Col xs={4} sm={3} md={3} lg={3} style={{position:"relative", top: -80}}>
+                  <ColorFilter/>
+                </Col>
+                <Col xs={4} sm={3} md={3} lg={3} style={{position:"relative", top: -80}}>
+                  <PriceSlider/>
+                </Col>
+              </Row>
 
               {/*<PriceSlider />*/}
               {/*<LangSwitcher/>*/}
-              <CategoriesWrapper>
-                <CategoriesInner>
-                  {Object.keys(productGroups).map((item, index) => (
-                    <Link
-                      activeClass="active"
-                      className="category"
-                      to={Object.keys(productGroups)[index]}
-                      offset={headerOffset}
-                      spy={true}
-                      smooth={true}
-                      duration={500}
-                      key={item}
-                    >
-                      {item}
-                    </Link>
-                  ))}
-                </CategoriesInner>
-              </CategoriesWrapper>
+              {/*<CategoriesWrapper>*/}
+              {/*  <CategoriesInner>*/}
+              {/*    {Object.keys(productGroups).map((item, index) => (*/}
+              {/*      <Link*/}
+              {/*        activeClass="active"*/}
+              {/*        className="category"*/}
+              {/*        to={Object.keys(productGroups)[index]}*/}
+              {/*        offset={headerOffset}*/}
+              {/*        spy={true}*/}
+              {/*        smooth={true}*/}
+              {/*        duration={500}*/}
+              {/*        key={item}*/}
+              {/*      >*/}
+              {/*        {item}*/}
+              {/*      </Link>*/}
+              {/*    ))}*/}
+              {/*  </CategoriesInner>*/}
+              {/*</CategoriesWrapper>*/}
             </Sticky>
             <div style={{height: "90px"}} />
               <App props={props} routingStore={props.routingStore} width={appWidth} height={appHeight} deviceType={deviceType}/>

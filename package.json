@@ -193,7 +193,11 @@
     "jest-transform-graphql": "~2.1.0",
     "rimraf": "~2.6.3",
     "snyk": "~1.126.0",
-    "typescript": "^3.9.5"
+    "@appbaseio/reactivesearch": "~3.12.5",
+    "typescript": "^3.9.5",
+    "react-color": "~2.18.1",
+    "react-slick": "~0.27.11",
+    "slick-carousel": "~1.8.1"
   },
   "jest": {
     "collectCoverage": true,

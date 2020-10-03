@@ -20,7 +20,7 @@ import {AppProvider} from "src/contexts/app/app.provider";
 import {AuthProvider} from "src/contexts/auth/auth.provider";
 import AppLayout from "src/layouts/app-layout";
 import { ThemeProvider } from 'styled-components';
-
+import 'rheostat/initialize';
 
 
 
@@ -32,11 +32,13 @@ import 'rc-table/assets/index.css';
 import 'rc-collapse/assets/index.css';
 import 'react-multi-carousel/lib/styles.css';
 import 'components/multi-carousel/multi-carousel.style.css';
+import '../components/rheostat/rheostat.styles.css'
 import '@redq/reuse-modal/lib/index.css';
-import 'react-tagsinput/react-tagsinput.css'
+import 'react-tagsinput/react-tagsinput.css';
 import { GlobalStyle } from 'assets/styles/global.style';
 import { Normalize } from 'styled-normalize'
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 // paper kit react
 // import "assets/css/bootstrap.min.css";

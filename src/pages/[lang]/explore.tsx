@@ -78,7 +78,8 @@ import { Modal } from '@redq/reuse-modal';
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
 import fetchTranslations from "staticUtils/translations/fetchTranslations";
 import {useWindowSize} from "../../utils/useWindowSize";
-// import PriceSlider from "../../components/price-slider/price-slider";
+import PriceSlider from "../../components/price-slider/price-slider";
+import ColorFilter from "../../components/color-filter/color-filter";
 // import {Box, Flag, MenuItem, SelectedItem} from "../../layouts/header/menu/language-switcher/language-switcher.style";
 // import {useLocale} from "../../contexts/language/language.provider";
 // import Popover from "../../components/popover/popover";
@@ -90,6 +91,7 @@ import { useSize, useScroller } from "mini-virtual-list";
 import { usePositioner, useResizeObserver, useMasonry } from "masonic";
 import {Parallax, ParallaxLayer} from 'react-spring/renderprops-addons'
 import handleViewport from 'react-in-viewport';
+import { Row, Col } from 'react-styled-flexboxgrid';
 
 
 
@@ -352,27 +354,37 @@ const ProductListingPage: NextPage = ({ deviceType, ...props }) => {
               top={deviceType.mobile || deviceType.tablet ? 68 : 78}
               innerZ={0}
             >
+              <Row style={{ alignItems: 'flex-end', marginBottom: '50px' }}>
+                <Col xs={4} sm={3} md={3} lg={3}>
+                  <PriceSlider/>
+                </Col>
+                <Col xs={4} sm={3} md={3} lg={3}>
+                  <ColorFilter/>
+                </Col>
+              </Row>
 
-              {/*<PriceSlider />*/}
+
+
+
               {/*<LangSwitcher/>*/}
-              <CategoriesWrapper>
-                <CategoriesInner>
-                  {Object.keys(productGroups).map((item, index) => (
-                    <Link
-                      activeClass="active"
-                      className="category"
-                      to={Object.keys(productGroups)[index]}
-                      offset={headerOffset}
-                      spy={true}
-                      smooth={true}
-                      duration={500}
-                      key={index}
-                    >
-                      {item}
-                    </Link>
-                  ))}
-                </CategoriesInner>
-              </CategoriesWrapper>
+              {/*<CategoriesWrapper>*/}
+              {/*  <CategoriesInner>*/}
+              {/*    {Object.keys(productGroups).map((item, index) => (*/}
+              {/*      <Link*/}
+              {/*        activeClass="active"*/}
+              {/*        className="category"*/}
+              {/*        to={Object.keys(productGroups)[index]}*/}
+              {/*        offset={headerOffset}*/}
+              {/*        spy={true}*/}
+              {/*        smooth={true}*/}
+              {/*        duration={500}*/}
+              {/*        key={index}*/}
+              {/*      >*/}
+              {/*        {item}*/}
+              {/*      </Link>*/}
+              {/*    ))}*/}
+              {/*  </CategoriesInner>*/}
+              {/*</CategoriesWrapper>*/}
             </Sticky>
             <div style={{height: "90px"}} />
             <div style={{margin: "0 30px 0 30px" }}>

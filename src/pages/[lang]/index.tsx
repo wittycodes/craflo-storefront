@@ -34,6 +34,8 @@ import Menu from "src/layouts/header/menu";
 import Footer from "src/layouts/footer";
 import Grid from '@material-ui/core/Grid';
 import useStores from "hooks/useStores";
+import Carousel1 from "src/sections/carousels/featured"
+import { Row, Col } from 'react-styled-flexboxgrid';
 
 const Sidebar = dynamic(() => import('src/layouts/sidebar/sidebar'));
 const SidebarMenu = dynamic(() => import('src/layouts/sidebar/sidebarMenu'));
@@ -88,11 +90,31 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
             <MainContentArea>
                 <ContentSection>
                   <div ref={targetRef}>
-                    <OfferSection>
-                      <div style={{ margin: '0 -10px' }}>
-                        <Carousel deviceType={deviceType} data={OFFERS} />
-                      </div>
-                    </OfferSection>
+                    {/*<OfferSection>*/}
+                    {/*  <div style={{ margin: '0 -10px' }}>*/}
+                    {/*    <Carousel deviceType={deviceType} data={OFFERS} />*/}
+                    {/*  </div>*/}
+                    {/*</OfferSection>*/}
+                    <Carousel1/>
+                    <Carousel1/>
+                    <Carousel1/>
+                      {/*<Row>*/}
+                      {/*  <Col xs={12} sm={5} md={5} lg={5}>*/}
+                      {/*    */}
+                      {/*  </Col>*/}
+                      {/*</Row>*/}
+                      {/*<Row>*/}
+                      {/*  <Col xs={12} sm={5} md={5} lg={5}>*/}
+                      {/*    <Carousel1/>*/}
+                      {/*  </Col>*/}
+                      {/*</Row>*/}
+                      {/*<Row>*/}
+                      {/*  <Col xs={12} sm={5} md={5} lg={5}>*/}
+                      {/*    <Carousel1/>*/}
+                      {/*  </Col>*/}
+                      {/*</Row>*/}
+
+
                     <Footer />
                   </div>
                 </ContentSection>

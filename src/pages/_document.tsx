@@ -25,7 +25,7 @@ class HTMLDocument extends Document {
       // Use minimum-scale=1 to enable GPU rasterization
       {
         name: "viewport",
-        content: "user-scalable=0, initial-scale=1 minimum-scale=1, width=device-width, height=device-height, user-scalable=no"
+        content: "initial-scale=1 minimum-scale=1, width=device-width, height=device-height, user-scalable=no"
       }
       // PWA primary color
       // {
@@ -44,13 +44,15 @@ class HTMLDocument extends Document {
 
     return (
 
-      <Html lang="in">
+      <Html lang="in" style={{
+
+      }}>
         <Head>
           {meta.map((tag, index) => <meta key={index} {...tag} />)}
           {links.map((link, index) => <link key={index} {...link} />)}
           <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
         </Head>
-        <body style={{overflowX: "hidden", background: '#F7F7F7'}}>
+        <body style={{overflow: "hidden", background: '#F7F7F7'}}>
           <Main />
           <NextScript />
           {scripts.map((script, index) => (script.innerHTML ? /* eslint-disable-next-line */
