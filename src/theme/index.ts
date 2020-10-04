@@ -156,4 +156,15 @@ export const theme = {
       fontSize: '14px',
     },
   },
+  rui_components:{
+    Input:{
+      backgroundColor_default:"#F7F7F7",
+      borderRadius:"6px",
+      borderColor_default:"#f1f1f1",
+      verticalPadding: "14px",
+      horizontalPadding: "19px",
+      fontSize:"15px",
+      borderColor_focus:"#009e7f"
+    }
+  }
 };

@@ -85,9 +85,45 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
             <OfferSection>
               <div style={{ margin: '0 -10px' }}>
                 <Carousel deviceType={deviceType} data={OFFERS} />
+                <div style={{ margin: '40px' }}>
+                <Row>
+                  <Col xs={12}>
+
+                      <h3 style={{float: 'left'}}>Recently Viewed</h3>
+                      <h5 style={{float: 'right'}}>See More..</h5>
+
+                    <Carousel1/>
+                  </Col>
+                  <Col xs={12}>
+
+                    <h3 style={{float: 'left'}}>Trending Today</h3>
+                    <h5 style={{float: 'right'}}>See More..</h5>
+
+                    <Carousel1/>
+                  </Col>
+                  <Col xs={12}>
+
+                    <h3 style={{float: 'left'}}>Top picks personalised for you</h3>
+                    <h5 style={{float: 'right'}}>See More..</h5>
+
+                    <Carousel1/>
+                  </Col>
+                  <Col xs={12}>
+
+                    <h3 style={{float: 'left'}}>Trending Today</h3>
+                    <h5 style={{float: 'right'}}>See More..</h5>
+
+                    <Carousel1/>
+                  </Col>
+                </Row>
               </div>
+            </div>
             </OfferSection>
+        <div style={{backgroundColor: '#fff'}}>
+
+        </div>
             <MainContentArea>
+
                 <ContentSection>
                   <div ref={targetRef}>
                     {/*<OfferSection>*/}
@@ -95,15 +131,11 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
                     {/*    <Carousel deviceType={deviceType} data={OFFERS} />*/}
                     {/*  </div>*/}
                     {/*</OfferSection>*/}
-                    <Carousel1/>
-                    <Carousel1/>
-                    <Carousel1/>
-                      {/*<Row>*/}
-                      {/*  <Col xs={12} sm={5} md={5} lg={5}>*/}
-                      {/*    */}
-                      {/*  </Col>*/}
-                      {/*</Row>*/}
-                      {/*<Row>*/}
+
+
+
+
+                    {/*<Row>*/}
                       {/*  <Col xs={12} sm={5} md={5} lg={5}>*/}
                       {/*    <Carousel1/>*/}
                       {/*  </Col>*/}

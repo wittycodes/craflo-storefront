@@ -160,6 +160,16 @@ const theme = createMuiTheme({
       fontWeight: 600,
       color: "#3c3c3c"
     }
+  },
+  components: {
+    Input: {
+      backgroundColor: '#1d8983'
+    }
+  },
+  rui_components:{
+    Input:{
+      backgroundColor:"#000"
+    }
   }
 });
 

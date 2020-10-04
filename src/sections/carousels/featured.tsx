@@ -4,25 +4,47 @@ import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 import { Row as Rows, Col as Cols } from 'react-styled-flexboxgrid';
 
-const Wrapper = styled.div`
+//
+function getRandomColor() {
+  var letters = 'ACEF'.split('');
+  var color = '#';
+  for (var i = 0; i < 6; i++ ) {
+    color += letters[Math.floor(Math.random() * letters.length)];
+  }
+  return color + '57';
+}
+
+
+const CategoryCard  = styled.div`
       margin: 10px;
-      background: #b6defd;
-      padding: 50px
-`;
+      border-radius: 16px;
+      background: ${props => props.bg};
+      height: 12rem;
+      width: 14 rem;
+      `;
+
+// #f4fce9
+// #f0f0f0
+// #e9f8ff
+// #e5f8fb#ffeced#ebeefc#f1effa
+
+
+const Wrapper = ()=>{
+  const bg = getRandomColor()
+  return <CategoryCard bg={bg}/>
+}
 
 export default class Carousel extends Component {
   render() {
     const settings = {
-      centerMode: true,
+      dots: true,
       infinite: true,
-      centerPadding: "60px",
-      slidesToShow: 3,
       speed: 500,
-      rows: 2,
-      slidesPerRow: 2,
-      dots: true
+      slidesToShow: 5.5,
+      slidesToScroll: 1.5
     };
-    return (
+    return (<>
+
       <div style={{
         padding: '40px',
         color:"#fff"
@@ -78,6 +100,7 @@ export default class Carousel extends Component {
           </div>
         </Slider>
       </div>
+      </>
     );
   }
 }

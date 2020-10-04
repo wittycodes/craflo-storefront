@@ -108,22 +108,22 @@ class App extends NextApp {
       <ContextProviders pageProps={pageProps}>
         <ComponentsProvider value={components}>
           <ApolloProvider client={apolloClient}>
-            <ThemeProvider theme={theme}>
               <LanguageProvider messages={messages}>
                 <CartProvider>
                   <AppProvider>
                     <AuthProvider>
+                      <ThemeProvider theme={theme}>
                       <AppLayout {...pageProps} {...rest}>
                         <MuiThemeProvider theme={muiTheme}>
                           <Component {...rest} {...pageProps} />
                         </MuiThemeProvider>
                       </AppLayout>
                       <GlobalStyle />
+                      </ThemeProvider>
                     </AuthProvider>
                   </AppProvider>
                 </CartProvider>
               </LanguageProvider>
-            </ThemeProvider>
           </ApolloProvider>
         </ComponentsProvider>
       </ContextProviders>
