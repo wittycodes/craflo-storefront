@@ -26,7 +26,7 @@ const ImageWrapper = styled.div`
   overflow: hidden;
   padding-top: 100%;
   position: relative;
-  border-radius: 6px 6px 0px 0px;
+  border-radius: 1rem 1rem 0 0;
   width: 100%;
   padding: 6px;
 `;

@@ -7,7 +7,7 @@ export const ProductCardWrapper = styled.div`
   background-color: #fff;
   position: relative;
   font-family: 'Lato', sans-serif;
-  border-radius: 6px;
+  border-radius: 1rem;
   cursor: pointer;
 
   transition: transform .3s cubic-bezier(.34,2,.6,1),box-shadow .2s ease;
