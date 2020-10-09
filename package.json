@@ -14,6 +14,7 @@
     "dev": "echo 'Note: dev script has been renamed to start:dev' && yarn run start:dev",
     "build": "yarn run build-clean && NODE_ENV=production IS_BUILDING_NEXTJS=1 NODE_OPTIONS=\"--max_old_space_size=9096\" next build ",
     "build-clean": "rimraf .next",
+    "build:vercel": "node createHydraClientIfNecessary.js && next build",
     "lint": "eslint .",
     "start": "yarn run create-hydra-client && NODE_ENV=production  next start -p 4000 ",
     "start:dev": "yarn run create-hydra-client && NODE_ENV=development next dev -p 4000",
