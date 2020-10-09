@@ -16,6 +16,8 @@ type Props = {
   className?: string;
 };
 
+const CANONICAL_URL = process.env.CANONICAL_URL
+
 const Header: React.FC<Props> = ({ className }) => {
   const {
     authDispatch,
@@ -34,7 +36,7 @@ const Header: React.FC<Props> = ({ className }) => {
     //   Router.push('/');
     // }
     // Router.push('/logout');
-    fetch("https://demo.craflo.com/logout").then((res)=>res.json()).then((res)=>{
+    fetch(CANONICAL_URL + "/logout").then((res)=>res.json()).then((res)=>{
       console.log(res)
     },
       (err)=>{

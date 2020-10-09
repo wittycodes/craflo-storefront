@@ -205,9 +205,10 @@ export const StyledTagsInput = styled(TagsInput)(
     flexGrow: 1,
     fontSize: 15,
     px: 20,
-    height: 48,
+    height: 50,
     color: '#77798C',
     backgroundColor: 'inherit',
+    maxWidth: 300
   }),
   {
     border: 0,
@@ -275,4 +276,7 @@ export const StyledSearchButton = styled.button({
   paddingRight: 30,
   cursor: 'pointer',
   flexShrink: 0,
+  borderRadius: 6,
+  right: 0,
+  position: 'absolute'
 });

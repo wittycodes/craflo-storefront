@@ -83,7 +83,7 @@ deviceType
             contentId={"rrr-content"}
           >
             <div id={"rrr-content"}>
-                {children}
+                {React.cloneElement(children, { scrollContainer: "React.useRef(null)" })}
             </div>
           </Sidebar>
 

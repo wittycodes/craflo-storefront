@@ -50,7 +50,6 @@ const HeaderWrapper = styled.header`
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #fafafa;
   box-shadow: none;
   transition: all 0.3s ease;
   &.home {
@@ -90,11 +89,11 @@ const HeaderWrapper = styled.header`
       display: none;
     }
     position:fixed;
-     background-color: #fafafa;
+     background-color: #fafafa00;
   }
 
   &.sticky {
-    background-color: #fafafa;
+    background-color: #ffffff;
     position: fixed;
     box-shadow: none;
     padding-top: 15px;
@@ -107,8 +106,9 @@ const HeaderWrapper = styled.header`
 
     .headerSearch {
       display: flex;
-      background-color: #FFFFFF;
-      box-shadow: 0 21px 36px rgba(0,0,0,0.05);
+      background-color: #F0F0F0;
+      box-shadow: none;
+      border-radius: 6px;
 
       form {
         input {

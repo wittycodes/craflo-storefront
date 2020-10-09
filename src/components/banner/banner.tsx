@@ -36,6 +36,11 @@ export const Banner: React.FC<Props> = ({
       setSticky();
     }
   };
+  let ele;
+  React.useEffect(() => {
+     ele = document.getElementById("rrr-content")
+    console.log(ele, "jijiji")
+  })
   return (
     <Box>
       <Image backgroundImage={`url(${imageUrl})`} />

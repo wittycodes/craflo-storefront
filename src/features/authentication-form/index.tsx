@@ -8,6 +8,8 @@ import Iframe from 'react-iframe'
 import { openModal, closeModal } from '@redq/reuse-modal';
 import PageLoading from "components/PageLoading/PageLoading";
 
+let CANONICAL_URL = process.env.CANONICAL_URL
+
 export default function AuthenticationForm() {
   const { authState, authDispatch } = useContext<any>(AuthContext);
   const [state, setState] = React.useState({
@@ -51,13 +53,15 @@ export default function AuthenticationForm() {
     RenderForm = ForgotPassForm;
   }
 
+    console.log(CANONICAL_URL, "sdfadafasdasdfasdfasdf.asd.f.asdf.")
+
 
 
   return  (<>
       {!state.pageLoaded? <PageLoading /> : <></>}
         <iframe id="myIframe"
                  style={{ display: !state.pageLoaded? 'none': 'initial', maxWidth:'410px', width:'100%', minHeight: '642px', height: '100%', overflow:'visible'}}
-                 src="https://demo.craflo.com/signin"
+                 src={ CANONICAL_URL + "/signin"}
                  width="100%"
                  height="100%"
                  scrolling="no"

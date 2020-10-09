@@ -8,7 +8,7 @@ export const InjectRTL = styled.div`
     `
     font-family: 'Cairo', sans-serif;
     `}
-`;
+`; 
 
 export const GlobalStyle = createGlobalStyle`
   html {
@@ -48,7 +48,6 @@ export const GlobalStyle = createGlobalStyle`
 
   .quick-view-overlay{
     background-color: rgba(30,41,51,.45);
-    backdrop-filter: blur(4px);
     transition: opacity 1s;
     opacity: 1
   }

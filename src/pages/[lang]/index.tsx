@@ -46,22 +46,23 @@ const CartPopUp = dynamic(() => import('src/features/carts/cart-popup'), {
   ssr: false,
 });
 
-const CategoryPage: React.FC<any> = ({ deviceType }) => {
+const CategoryPage: React.FC<any> = ({ deviceType, scrollContainer }) => {
   const { query } = useRouter();
 
   const {uiStore} = useStores();
   uiStore.closeMenuDrawer()
-
-  const { elRef: targetRef, scroll } = useRefScroll({
-    percentOfElement: 0,
-    percentOfContainer: 0,
-    offsetPX: -110,
-  });
-  React.useEffect(() => {
-    if (query.text || query.category) {
-      scroll();
-    }
-  }, [query.text, query.category]);
+  // console.log(scrollContainer, "eefe")
+  // const { elRef: targetRef, scroll } = useRefScroll({
+  //   container: scrollContainer,
+  //   percentOfElement: 0,
+  //   percentOfContainer: 0,
+  //   offsetPX: -110,
+  // });
+  // React.useEffect(() => {
+  //   if (query.text || query.category) {
+  //     scroll();
+  //   }
+  // }, [query.text, query.category]);
   query.type = 'grocery'
   const PAGE_TYPE: any = query.type;
   const page = PAGES_DATA[PAGE_TYPE];
@@ -73,7 +74,7 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
     <>
       <SEO title={page?.page_title} description={page?.page_description} />
 
-      <Modal>
+      <Modal >
         <Banner
               intlTitleId={page?.banner_title_id}
               intlDescriptionId={page?.banner_description_id}
@@ -125,7 +126,7 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
             <MainContentArea>
 
                 <ContentSection>
-                  <div ref={targetRef}>
+                  <div >
                     {/*<OfferSection>*/}
                     {/*  <div style={{ margin: '0 -10px' }}>*/}
                     {/*    <Carousel deviceType={deviceType} data={OFFERS} />*/}
