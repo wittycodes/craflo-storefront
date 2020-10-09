@@ -68,12 +68,13 @@ const SidebarCategory: React.FC<SidebarCategoryProps> = ({
   ...props
 }) => {
   const router = useRouter();
-  let { data, loading } = useQuery(GET_CATEGORIES, {
-    variables: { type },
-  });
+  // let { data, loading } = useQuery(GET_CATEGORIES, {
+  //   variables: { type },
+  // });
 
-  loading = false
-  data = {
+
+  let loading = false
+  let data = {
       categories: [
       {
     id: 1, title: 'Fruits & Vegetables',
