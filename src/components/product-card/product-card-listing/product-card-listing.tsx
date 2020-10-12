@@ -67,71 +67,71 @@ const ProductCard: React.FC<ProductCardProps> = ({
                                                    ...props
                                                  }) => {
 
-  const product = product_data;
-  const { addItemsToCart, onRemoveCartItems, cart } = useCart(product?.shop?._id);
+  // const product = product_data;
+  // const { addItemsToCart, onRemoveCartItems, cart } = useCart(product?.shop?._id);
   // console.log(product)
-  const currencyCode = "USD";
-  let selectedVariant, selectedOption;
-
-  const selectVariant = (variant, optionId) => {// Select the variant, and if it has options, the first option
-    const variantId = variant._id;
-    let selectOptionId = optionId;
-    if (!selectOptionId && variant.options && variant.options.length) {
-      selectOptionId = variant.options[0]._id;
-    }
-    selectedVariant = variantById(product.variants, variantId);
-    selectedOption = variantById(selectedVariant.options, selectOptionId);
-    //setPDPSelectedVariantId(variantId, selectOptionId);
-  }
-
-  const determineProductPrice = ()=>{
-    let productPrice;
-    if (selectedOption && selectedVariant) {
-      productPrice = priceByCurrencyCode(currencyCode, selectedOption.pricing);
-    } else if (!selectedOption && selectedVariant) {
-      productPrice = priceByCurrencyCode(currencyCode, selectedVariant.pricing);
-    }
-    return productPrice;
-  }
-
-  selectVariant(product.variants[0], null);
-
-  const productPrice = determineProductPrice();
+  // const currencyCode = "USD";
+  // let selectedVariant, selectedOption;
+  //
+  // const selectVariant = (variant, optionId) => {// Select the variant, and if it has options, the first option
+  //   const variantId = variant._id;
+  //   let selectOptionId = optionId;
+  //   if (!selectOptionId && variant.options && variant.options.length) {
+  //     selectOptionId = variant.options[0]._id;
+  //   }
+  //   selectedVariant = variantById(product.variants, variantId);
+  //   selectedOption = variantById(selectedVariant.options, selectOptionId);
+  //   //setPDPSelectedVariantId(variantId, selectOptionId);
+  // }
+  //
+  // const determineProductPrice = ()=>{
+  //   let productPrice;
+  //   if (selectedOption && selectedVariant) {
+  //     productPrice = priceByCurrencyCode(currencyCode, selectedOption.pricing);
+  //   } else if (!selectedOption && selectedVariant) {
+  //     productPrice = priceByCurrencyCode(currencyCode, selectedVariant.pricing);
+  //   }
+  //   return productPrice;
+  // }
+  //
+  // selectVariant(product.variants[0], null);
+  //
+  // const productPrice = determineProductPrice();
   //const compareAtDisplayPrice = (productPrice.compareAtPrice && productPrice.compareAtPrice.displayAmount) || null;
 
-  const handleAddClick = (e) => {
-    e.stopPropagation();
-    cartAnimation(e);
-    //--console.log(price)
-    const selectedVariantOrOption = selectedOption || selectedVariant;
-
-    // Call addItemsToCart with an object matching the GraphQL `CartItemInput` schema
-    let quantity = 1.0
-    addItemsToCart([
-        {
-          price: {
-            amount: productPrice.price,
-            currencyCode
-          },
-          productConfiguration: {
-            productId: product.productId, // Pass the productId, not to be confused with _id
-            productVariantId: selectedVariantOrOption.variantId // Pass the variantId, not to be confused with
-          },
-          quantity
-        }
-      ]
-    );
-    if (!isInCart(89)) {
-       cartAnimation(e);
-    }
-  };
-  const handleRemoveClick = (e) => {
-    e.stopPropagation();
-    //onRemoveCartItems(data);
-  };
-  const isInCart = (_id: number)=>{
-    return false
-  }
+  // const handleAddClick = (e) => {
+  //   e.stopPropagation();
+  //   cartAnimation(e);
+  //   //--console.log(price)
+  //   const selectedVariantOrOption = selectedOption || selectedVariant;
+  //
+  //   // Call addItemsToCart with an object matching the GraphQL `CartItemInput` schema
+  //   let quantity = 1.0
+  //   addItemsToCart([
+  //       {
+  //         price: {
+  //           amount: productPrice.price,
+  //           currencyCode
+  //         },
+  //         productConfiguration: {
+  //           productId: product.productId, // Pass the productId, not to be confused with _id
+  //           productVariantId: selectedVariantOrOption.variantId // Pass the variantId, not to be confused with
+  //         },
+  //         quantity
+  //       }
+  //     ]
+  //   );
+  //   if (!isInCart(89)) {
+  //      cartAnimation(e);
+  //   }
+  // };
+  // const handleRemoveClick = (e) => {
+  //   e.stopPropagation();
+  //   //onRemoveCartItems(data);
+  // };
+  // const isInCart = (_id: number)=>{
+  //   return false
+  // }
 
   return (
     <ProductCardWrapper style={style} move={props.inView? 30: 0} onClick={onClick} className="product-card">
@@ -150,35 +150,35 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <div className="productPriceWrapper">
             {discountInPercent ? (
               <span className="discountedPrice">
-                {currency}
+                {salePrice} {currency}
               </span>
             ) : (
               ''
             )}
             <span className="product-price">
-              {currency}
+              {price} {currency}
             </span>
           </div>
 
-          {!isInCart(78) ? (
-            <Button
-              className="cart-button"
-              variant="secondary"
-              borderRadius={100}
-              onClick={handleAddClick}
-            >
-              <CartIcon mr={2} />
-              <ButtonText>
-                <FormattedMessage id="addCartButton" defaultMessage="Cart" />
-              </ButtonText>
-            </Button>
-          ) : (
-            <Counter
-              onDecrement= {(e) => {}}
-              onIncrement= {(e) => {}}
-              value={1}
-            />
-          )}
+          {/*{!isInCart(78) ? (*/}
+          {/*  <Button*/}
+          {/*    className="cart-button"*/}
+          {/*    variant="secondary"*/}
+          {/*    borderRadius={100}*/}
+          {/*    onClick={handleAddClick}*/}
+          {/*  >*/}
+          {/*    <CartIcon mr={2} />*/}
+          {/*    <ButtonText>*/}
+          {/*      <FormattedMessage id="addCartButton" defaultMessage="Cart" />*/}
+          {/*    </ButtonText>*/}
+          {/*  </Button>*/}
+          {/*) : (*/}
+          {/*  <Counter*/}
+          {/*    onDecrement= {(e) => {}}*/}
+          {/*    onIncrement= {(e) => {}}*/}
+          {/*    value={1}*/}
+          {/*  />*/}
+          {/*)}*/}
         </div>
       </ProductInfo>
     </ProductCardWrapper>

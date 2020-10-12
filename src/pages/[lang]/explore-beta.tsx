@@ -160,7 +160,7 @@ const Card = handleViewport(({inViewport, forwardedRef, index, width, data}) => 
         price={p.pricing[0].maxPrice + ""}
         salePrice={(p.pricing[0].maxPrice) * 0.8 + ""}
         discountInPercent={2}
-        product_data={p}
+        product_data={{}}
         onClick={() => {
           const as = `../product/${p.slug}`;
           window.open(as, '_blank');
