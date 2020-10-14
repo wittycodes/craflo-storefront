@@ -42,16 +42,16 @@ const SidebarMenu = dynamic(() => import('src/layouts/sidebar/sidebarMenu'));
 const Products = dynamic(() =>
   import('src/components/product-grid/product-list/product-list')
 );
+import { ReactiveBase, CategorySearch, SingleRange, ReactiveList } from '@appbaseio/reactivesearch';
 const CartPopUp = dynamic(() => import('src/features/carts/cart-popup'), {
   ssr: false,
 });
 
-const CategoryPage: React.FC<any> = ({ deviceType, scrollContainer }) => {
+const CategoryPage: React.FC<any> = ({ deviceType }) => {
   const { query } = useRouter();
 
   const {uiStore} = useStores();
   uiStore.closeMenuDrawer()
-  // console.log(scrollContainer, "eefe")
   // const { elRef: targetRef, scroll } = useRefScroll({
   //   container: scrollContainer,
   //   percentOfElement: 0,
@@ -127,6 +127,8 @@ const CategoryPage: React.FC<any> = ({ deviceType, scrollContainer }) => {
 
                 <ContentSection>
                   <div >
+
+
                     {/*<OfferSection>*/}
                     {/*  <div style={{ margin: '0 -10px' }}>*/}
                     {/*    <Carousel deviceType={deviceType} data={OFFERS} />*/}

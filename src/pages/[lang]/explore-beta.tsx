@@ -77,7 +77,6 @@ import CartPopUp from "src/features/carts/cart-popup";
 import { Modal } from '@redq/reuse-modal';
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
 import fetchTranslations from "staticUtils/translations/fetchTranslations";
-import {useWindowSize} from "../../utils/useWindowSize";
 // import PriceSlider from "../../components/price-slider/price-slider";
 // import {Box, Flag, MenuItem, SelectedItem} from "../../layouts/header/menu/language-switcher/language-switcher.style";
 // import {useLocale} from "../../contexts/language/language.provider";
@@ -88,18 +87,21 @@ import { Row, Col } from 'react-styled-flexboxgrid';
 
 let slug_language;
 import { useSize, useScroller } from "mini-virtual-list";
-import { usePositioner, useResizeObserver, useMasonry, useInfiniteLoader } from "masonic";
+import { usePositioner, useResizeObserver, MasonryScroller, useMasonry, useContainerPosition } from "masonic";
+
+import {useWindowSize} from "../../utils/useWindowSize";
+// import {useWindowSize} from '@react-hook/window-size'
 import {Parallax, ParallaxLayer} from 'react-spring/renderprops-addons'
 import handleViewport from 'react-in-viewport';
 import { useQuery } from '@apollo/react-hooks';
 import hoistNonReactStatic from "hoist-non-react-statics";
 import { pagination, paginationVariablesFromUrlParams } from "lib/utils/pagination";
 import catalogItemsQuery from "containers/catalog/catalogItems.gql";
-import PriceSlider from "../../components/price-slider/price-slider";
+// import PriceSlider from "../../components/price-slider/price-slider";
 import ColorFilter from "../../components/color-filter/color-filter";
+import {DynamicRangeSlider, ReactiveList} from '@appbaseio/reactivesearch'
 
-
-const Card = handleViewport(({inViewport, forwardedRef, index, width, data}) => {
+const Card = ({index, width, data}) => {
   // console.log("heyy", {index, width, data})
   // const cardRef = React.useRef()
   // const [inView, setInView]= setState()
@@ -109,8 +111,10 @@ const Card = handleViewport(({inViewport, forwardedRef, index, width, data}) => 
   // }, [])
 
   // console.log(inView, 'index:', index)
+  const inViewport = true
 
-  const p = data;
+  const p = data.product;
+  console.log(p,data, "asdfaoisdjfoij09--0")
   // this.props.products[index % this.props.products.length];
   const media = JSON.parse(p.metafields[0].value)
   // let elem = (document.compatMode === "CSS1Compat") ?
@@ -133,7 +137,6 @@ const Card = handleViewport(({inViewport, forwardedRef, index, width, data}) => 
       transitionDelay: '0.05s',
       opacity: inViewport? 1:0
     }}
-    ref={forwardedRef}
   >
     <div
       style={{
@@ -157,8 +160,8 @@ const Card = handleViewport(({inViewport, forwardedRef, index, width, data}) => 
         imgH={imgH / 16 + "rem"}
         imgW={imgW / 16 + "rem"}
         currency="USD"
-        price={p.pricing[0].maxPrice + ""}
-        salePrice={(p.pricing[0].maxPrice) * 0.8 + ""}
+        price={p.pricing.USD.maxPrice + ""}
+        salePrice={(p.pricing.USD.maxPrice) * 0.8 + ""}
         discountInPercent={2}
         product_data={{}}
         onClick={() => {
@@ -169,11 +172,11 @@ const Card = handleViewport(({inViewport, forwardedRef, index, width, data}) => 
       />
     </div>
   </div>)
-})
+}
 
 
 
-export const App = ({deviceType, width, height,routingStore, props}) => {
+export const App = ({ deviceType, data, loading, routingStore, props}) => {
   const {
     uiStore,
     tag
@@ -181,8 +184,18 @@ export const App = ({deviceType, width, height,routingStore, props}) => {
 
   const {query}= routingStore
 
-  const containerRef = React.useRef(null);
-  const { scrollTop, isScrolling } = useScroller(containerRef);
+  // const containerRef = React.useRef(null);
+  // const { scrollTop, isScrolling } = useScroller(containerRef);
+  const [items, setItems]=React.useState([])
+  // const [width, height} = useWindowSize()
+  // const [width, height] = [500, 400]
+  // const width, height
+  const {height} = useWindowSize();
+  const width=1200
+  // const { offset, width } = useContainerPosition([
+  //   windowWidth,
+  //   windowHeight
+  // ]);
 
 
 
@@ -194,122 +207,146 @@ export const App = ({deviceType, width, height,routingStore, props}) => {
   })
 
   const [gridCol, setGridCol] = React.useState({
-    columnWidth: calcCardWidth(width, grid.columnGutter, 5)
+    columnWidth: calcCardWidth(width, grid.columnGutter, 4)
   })
+
+  React.useEffect(()=>{
+    setItems(data)
+  }, [data])
 
 
   React.useEffect(()=>{
-    setGrid({columnGutter: deviceType.mobile ? 15 : 35})
+    setGrid({columnGutter: deviceType.mobile ? 15 : 30})
   }, [deviceType])
 
   React.useEffect(()=>{
     setGridCol({
-      columnWidth: deviceType.mobile? calcCardWidth(width, grid.columnGutter, 2): calcCardWidth(width, grid.columnGutter, 5)
+      columnWidth: deviceType.mobile? calcCardWidth(width, grid.columnGutter, 2): calcCardWidth(width, grid.columnGutter, 4)
     })
   }, [grid])
 
   console.log(grid, gridCol, width)
+  console.log(data)
 
   const positioner = usePositioner({
     width: width - 2*grid.columnGutter,
     columnWidth: gridCol.columnWidth,
     columnGutter: grid.columnGutter
-  });
+    },
+    [items]
+  );
 
   const resizeObserver = useResizeObserver(positioner);
 
-  const setPageSize = (pageSize) => {
-    props.routingStore.setSearch({ limit: pageSize });
-    props.uiStore.setPageSize(pageSize);
-  };
-
-  const setSortBy = (sortBy) => {
-    props.routingStore.setSearch({ sortby: sortBy });
-    props.uiStore.setSortBy(sortBy);
-  };
-
-
-
-
-  const pageSize = query && inPageSizes(query.limit) ? parseInt(query.limit, 10) : uiStore.pageSize;
-  let [sortBy, sortOrder] = uiStore.sortBy.split("-");
-  // sortBy = query && query.sortby ? query.sortby : uiStore.sortBy;
-  let tagIds = tag && [tag._id];
-
-
-  const variables = {
-    shopId: "oEsrnc9mqBDvt52TW",
-    ...paginationVariablesFromUrlParams(routingStore.query, { defaultPageLimit: 50 }),
-    tagIds,
-    sortBy: sortBy,
-    sortByPriceCurrencyCode: uiStore.sortByCurrencyCode,
-    sortOrder,
-    searchConfig: {
-      content: ["mein chutiya naaui hu mdc" , "dekh hota dikha"]
-    }
-  };
-
-  const { data, error, fetchMore, loading } = useQuery(catalogItemsQuery, {
-    variables
-  })
-
-
-
-
-  // const nextItems = await fetch(
-  //   `/api/get-more?after=${startIndex}&limit=${startIndex + stopIndex}`
-  // )
-
-  const [items, setItems] = React.useState([])
-  const [pageTools, setPageTools] = React.useState()
-
-  React.useEffect(()=>{
-    const { catalogItems } = data || {};
-    console.log(catalogItems, ":::asdfasdfasdf")
-    setItems((curr)=>[...curr, ...((catalogItems && catalogItems.edges) || []).map((item) => item.node.product)])
-    setPageTools(pagination({
-      fetchMore,
-      routingStore,
-      data,
-      queryName: "catalogItems",
-      limit: uiStore.pageSize
-    }))
-  }, [data])
-
-
-
-
-
-
-  const fetchMoreItems = async (startIndex, stopIndex, currentItems) => {
-    console.log(startIndex, stopIndex)
-    console.log(currentItems.length)
-      pageTools.loadNextPage()
-      // const nextItems = []
-      // setItems((current) => [...current, ...nextItems])
-    // }
-  }
-
-  const maybeLoadMore = useInfiniteLoader(fetchMoreItems, {
-    isItemLoaded: (index, items) => loading? true: (!!items[index])
-  })
+  // const setPageSize = (pageSize) => {
+  //   props.routingStore.setSearch({ limit: pageSize });
+  //   props.uiStore.setPageSize(pageSize);
+  // };
+  //
+  // const setSortBy = (sortBy) => {
+  //   props.routingStore.setSearch({ sortby: sortBy });
+  //   props.uiStore.setSortBy(sortBy);
+  // };
+  //
+  //
+  //
+  //
+  // const pageSize = query && inPageSizes(query.limit) ? parseInt(query.limit, 10) : uiStore.pageSize;
+  // let [sortBy, sortOrder] = uiStore.sortBy.split("-");
+  // // sortBy = query && query.sortby ? query.sortby : uiStore.sortBy;
+  // let tagIds = tag && [tag._id];
+  //
+  //
+  // const variables = {
+  //   shopId: "oEsrnc9mqBDvt52TW",
+  //   ...paginationVariablesFromUrlParams(routingStore.query, { defaultPageLimit: 50 }),
+  //   tagIds,
+  //   sortBy: sortBy,
+  //   sortByPriceCurrencyCode: uiStore.sortByCurrencyCode,
+  //   sortOrder,
+  //   searchConfig: {
+  //     content: ["mein chutiya naaui hu mdc" , "dekh hota dikha"]
+  //   }
+  // };
+  //
+  // const { data, error, fetchMore, loading } = useQuery(catalogItemsQuery, {
+  //   variables
+  // })
+  //
+  // const [items, setItems] = React.useState([])
+  // const [pageTools, setPageTools] = React.useState()
+  //
+  // React.useEffect(()=>{
+  //   const { catalogItems } = data || {};
+  //   console.log(catalogItems, ":::asdfasdfasdf")
+  //   setItems((curr)=>[...curr, ...((catalogItems && catalogItems.edges) || []).map((item) => item.node.product)])
+  //   setPageTools(pagination({
+  //     fetchMore,
+  //     routingStore,
+  //     data,
+  //     queryName: "catalogItems",
+  //     limit: uiStore.pageSize
+  //   }))
+  // }, [data])
+  //
+  //
+  //
+  //
+  //
+  //
+  // const fetchMoreItems = async (startIndex, stopIndex, currentItems) => {
+  //   console.log(startIndex, stopIndex)
+  //   console.log(currentItems.length)
+  //     pageTools.loadNextPage()
+  //     // const nextItems = []
+  //     // setItems((current) => [...current, ...nextItems])
+  //   // }
+  // }
+  //
+  // const maybeLoadMore = useInfiniteLoader(fetchMoreItems, {
+  //   isItemLoaded: (index, items) => loading? true: (!!items[index])
+  // })
 
   return (
-    <main  >
-      <div style={{paddingLeft: grid.columnGutter}} ref={containerRef}>
-        {useMasonry({
-          positioner,
-          resizeObserver,
-          items: items,
-          height,
-          scrollTop,
-          isScrolling,
-          overscanBy: 12,
-          render: Card,
-          onRender: maybeLoadMore
-        })}
-      </div>
-      {/*<Header />*/}
+    <main style={{paddingLeft: grid.columnGutter, margin: 'auto'}}>
+            {/*<div style={{paddingLeft: grid.columnGutter}} ref={containerRef}>*/}
+            {/*  <Masonry*/}
+            {/*    items={items}*/}
+            {/*    render={Card}*/}
+            {/*    height={height}*/}
+            {/*    overscanBy={12}*/}
+            {/*    width={width - 2*grid.columnGutter}*/}
+            {/*    columnWidth= {gridCol.columnWidth}*/}
+            {/*    columnGutter= {grid.columnGutter}*/}
+            {/*  />*/}
+      <MasonryScroller
+        positioner={positioner}
+        resizeObserver={resizeObserver}
+        items={items}
+        height={height}
+        width={width}
+        overscanBy={12}
+        render={Card}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          width: width,
+          margin: 'auto'
+        }}
+      />
+
+              {/*{useMasonry({*/}
+              {/*  positioner,*/}
+              {/*  resizeObserver,*/}
+              {/*  items: data,*/}
+              {/*  height: '100vh',*/}
+              {/*  scrollTop,*/}
+              {/*  isScrolling,*/}
+              {/*  overscanBy: 12,*/}
+              {/*  render: Card,*/}
+
+              {/*})}*/}
+            {/*</div>*/}
     </main>
   );
 };
@@ -379,11 +416,11 @@ const ProductListingPage: NextPage = ({ deviceType, ...props }) => {
   //--console.log(props, "sdsdd---pulkit")
   slug_language = props.lang
 
-  const { elRef: targetRef, scroll } = useRefScroll({
-    percentOfElement: 0,
-    percentOfContainer: 0,
-    offsetPX: -110,
-  });
+  // const { elRef: targetRef, scroll } = useRefScroll({
+  //   percentOfElement: 0,
+  //   percentOfContainer: 0,
+  //   offsetPX: -110,
+  // });
   const dispatch = useAppDispatch();
   const setSticky = useCallback(() => dispatch({ type: 'SET_STICKY' }), [
     dispatch,
@@ -409,13 +446,13 @@ const ProductListingPage: NextPage = ({ deviceType, ...props }) => {
     pageTitle = "Storefront";
   }
   const headerOffset = deviceType.mobile || deviceType.tablet ? -137 : -177;
-  let appWidth = 0, appHeight=0
-  if (typeof window !== "undefined") {
-    // browser code
-    const dim = useWindowSize()
-    appWidth = dim.width - 20
-    appHeight = dim.height
-  }
+  // let appWidth = 0, appHeight=0
+  // if (typeof window !== "undefined") {
+  //   // browser code
+  //   const dim = useWindowSize()
+  //   appWidth = dim.width - 20
+  //   appHeight = dim.height
+  // }
 
   return (
     <>
@@ -434,13 +471,18 @@ const ProductListingPage: NextPage = ({ deviceType, ...props }) => {
             <Sticky
               top={deviceType.mobile || deviceType.tablet ? 68 : 78}
               innerZ={99}
+              bottomBoundary={300}
             >
               <Row style={{ alignItems: 'flex-end', margin:'auto', height:72, backgroundColor: "#fff" }}>
                 <Col xs={4} sm={3} md={3} lg={3} style={{position:"relative", top: -80}}>
                   <ColorFilter/>
                 </Col>
                 <Col xs={4} sm={3} md={3} lg={3} style={{position:"relative", top: -80}}>
-                  <PriceSlider/>
+                  <DynamicRangeSlider
+                    componentId="PriceRangeSensor"
+                    dataField="product.pricing.USD.minPrice"
+                    showHistogram={true}
+                  />
                 </Col>
               </Row>
 
@@ -465,15 +507,33 @@ const ProductListingPage: NextPage = ({ deviceType, ...props }) => {
               {/*  </CategoriesInner>*/}
               {/*</CategoriesWrapper>*/}
             </Sticky>
-            <div style={{height: "90px"}} />
-              <App props={props} routingStore={props.routingStore} width={appWidth} height={appHeight} deviceType={deviceType}/>
 
+
+            <div style={{height: "90px"}} />
+            <ReactiveList
+              react={{
+                "and": ["CrafloSearch", "PriceRangeSensor"]
+              }}
+              componentId="SearchResult"
+              stream={true}
+              infiniteScroll={true}
+              size={45}
+              // scrollTarget={"rrr-content"}
+              dataField={"reaction.catalog"}
+            >
+              {
+                ({ data, error, loading, ...rest }) => (
+                  // <div>{"pulkit"}</div>
+                  <App props={props} loading={loading} data={data} routingStore={props.routingStore} deviceType={deviceType}/>
+                )
+              }
+            </ReactiveList>
         <Footer />
       <CartPopUp deviceType={deviceType}/>
     </Modal>
     </>
   )
-}
+};
 
 export const getStaticProps: GetStaticProps = async ({ params: { lang } }) => {
   lang = "en"

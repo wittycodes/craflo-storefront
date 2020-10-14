@@ -8,7 +8,7 @@ export const InjectRTL = styled.div`
     `
     font-family: 'Cairo', sans-serif;
     `}
-`; 
+`;
 
 export const GlobalStyle = createGlobalStyle`
   html {
@@ -149,4 +149,55 @@ export const GlobalStyle = createGlobalStyle`
     border: 0;
   }
 
-`;
+  .elastic-search-title{
+    display: none
+  }
+
+  .search-icon {
+    height: 100%;
+    font-size: 16px;
+    color: #77798C !important;
+    fill: #77798C !important;
+    width: 16px;
+    margin: 5px;
+
+    &.right {
+      right: 0;
+      left: auto;
+    }
+  }
+
+  .elastic-search-input{
+    flex-grow: 1;
+    font-size: 16px;
+    height: 48px;
+    background-color: #FFFFFF !important;
+    border: 0px !important;
+    display: flex;
+    border-radius: 6px;
+    overflow: visible;
+    padding-left: 48px !important;
+    width: 700px !important;
+    color: #77798C;
+    height: 50px !important;
+    box-shadow: 0 21px 36px rgba(0,0,0,0.05);
+  }
+
+
+   .elastic-search-input-minimal{
+    flex-grow: 1;
+    font-size: 16px;
+    height: 48px;
+    background-color: #F0F0F0 !important;
+    border: 0px !important;
+    display: flex;
+    border-radius: 6px;
+    overflow: visible;
+    padding-left: 48px !important;
+    width: 100% !important;
+    color: #77798C;
+    height: 50px !important
+  }
+
+
+ `;

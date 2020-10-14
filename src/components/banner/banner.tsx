@@ -20,10 +20,10 @@ interface Props {
 }
 
 export const Banner: React.FC<Props> = ({
-  imageUrl,
-  intlTitleId,
-  intlDescriptionId,
-}) => {
+                                          imageUrl,
+                                          intlTitleId,
+                                          intlDescriptionId,
+                                        }) => {
   const dispatch = useAppDispatch();
   const setSticky = useCallback(() => dispatch({ type: 'SET_STICKY' }), [
     dispatch,
@@ -36,11 +36,7 @@ export const Banner: React.FC<Props> = ({
       setSticky();
     }
   };
-  let ele;
-  React.useEffect(() => {
-     ele = document.getElementById("rrr-content")
-    console.log(ele, "jijiji")
-  })
+
   return (
     <Box>
       <Image backgroundImage={`url(${imageUrl})`} />

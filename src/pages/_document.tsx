@@ -52,7 +52,7 @@ class HTMLDocument extends Document {
           {links.map((link, index) => <link key={index} {...link} />)}
           <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
         </Head>
-        <body style={{overflow: "hidden", background: '#F7F7F7'}}>
+        <body style={{background: '#F7F7F7'}}>
           <Main />
           <NextScript />
           {scripts.map((script, index) => (script.innerHTML ? /* eslint-disable-next-line */

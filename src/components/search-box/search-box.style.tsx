@@ -278,5 +278,6 @@ export const StyledSearchButton = styled.button({
   flexShrink: 0,
   borderRadius: 6,
   right: 0,
-  position: 'absolute'
+  position: 'absolute',
+  bottom: 0
 });

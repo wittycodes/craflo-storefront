@@ -22,6 +22,8 @@ import AppLayout from "src/layouts/app-layout";
 import { ThemeProvider } from 'styled-components';
 import 'rheostat/initialize';
 
+import {ReactiveBase,ReactiveList, DataSearch} from '@appbaseio/reactivesearch'
+
 
 
 
@@ -68,11 +70,6 @@ const messages = {
 };
 
 
-
-
-
-
-
 function withDevice(Component) {
   function withDevice(props) { // eslint-disable-line require-jsdoc
 
@@ -89,48 +86,54 @@ function withDevice(Component) {
 }
 
 
-class App extends NextApp {
-  componentDidMount() {
-    // Remove the server-side injected CSS.
+export function ExtendedApp({Component, pageProps, ...rest}) {
+
+  const apolloClient= useApollo(pageProps.initialApolloState);
+
+  React.useEffect(()=>{
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles && jssStyles.parentNode) {
       jssStyles.parentNode.removeChild(jssStyles);
     }
-  }
+  }, [])
 
-  render() {
-    const { apolloClient, Component, pageProps, ...rest } = this.props;
-    //--console.log(this.props)
+  return (
+    <>
+    <Normalize />
+    <ContextProviders pageProps={pageProps}>
+      <ComponentsProvider value={components}>
+        <ApolloProvider client={apolloClient}>
+            <LanguageProvider messages={messages}>
+              <CartProvider>
+                <AppProvider>
+                  <AuthProvider>
 
-    return (
-      <>
-      <Normalize />
-      <ContextProviders pageProps={pageProps}>
-        <ComponentsProvider value={components}>
-          <ApolloProvider client={apolloClient}>
-              <LanguageProvider messages={messages}>
-                <CartProvider>
-                  <AppProvider>
-                    <AuthProvider>
-                      <ThemeProvider theme={theme}>
-                      <AppLayout {...pageProps} {...rest}>
+                    <ThemeProvider theme={theme}>
+                      <ReactiveBase
+                      app="reaction.catalog"
+                      url="https://elastic.craflo.com/"
+                      credentials="elastic:RvZi60f38Y6jVKZGS6908yo9">
+
                         <MuiThemeProvider theme={muiTheme}>
-                          <Component {...rest} {...pageProps} />
+                          <AppLayout {...pageProps} {...rest} >
+                              <Component {...rest} {...pageProps} />
+                          </AppLayout>
                         </MuiThemeProvider>
-                      </AppLayout>
+
+                      </ReactiveBase>
                       <GlobalStyle />
-                      </ThemeProvider>
-                    </AuthProvider>
-                  </AppProvider>
-                </CartProvider>
-              </LanguageProvider>
-          </ApolloProvider>
-        </ComponentsProvider>
-      </ContextProviders>
-      </>
-    );
-  }
+                    </ThemeProvider>
+
+                  </AuthProvider>
+                </AppProvider>
+              </CartProvider>
+            </LanguageProvider>
+        </ApolloProvider>
+      </ComponentsProvider>
+    </ContextProviders>
+    </>
+  )
 }
 
 
-export default withDevice(App)
+export default withDevice(ExtendedApp)
