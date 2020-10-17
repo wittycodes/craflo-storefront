@@ -21,6 +21,7 @@ import LanguageSwitcher from './menu/language-switcher/language-switcher';
 import { isCategoryPage } from '../is-home-page';
 import useDimensions from 'utils/useComponentSize';
 import {LeftMenu} from "./menu/left-menu/left-menu";
+import GeoSwitcher from "./menu/geo-switcher/geo-switcher";
 
 type MobileHeaderProps = {
   className?: string;
@@ -40,6 +41,7 @@ const SearchModal: React.FC<{}> = () => {
         className="header-modal-search"
         showButtonText={false}
         onSubmit={onSubmit}
+        mobile={true}
       />
     </SearchModalWrapper>
   );
@@ -60,7 +62,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = ({ className }) => {
         width: '100%',
         height: '100%',
       },
-      closeOnClickOutside: false,
+      closeOnClickOutside: true,
       component: SearchModal,
       closeComponent: () => <div />,
     });
@@ -77,7 +79,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = ({ className }) => {
         {/*  <Logo imageUrl={LogoImage} alt="shop logo" />*/}
         {/*</LogoWrapper>*/}
 
-        <LanguageSwitcher />
+        <GeoSwitcher />
 
         {isHomePage ? (
           <SearchWrapper

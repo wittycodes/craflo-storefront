@@ -176,15 +176,15 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     border-radius: 6px;
     overflow: visible;
-    padding-left: 48px !important;
     width: 700px !important;
     color: #77798C;
     height: 50px !important;
     box-shadow: 0 21px 36px rgba(0,0,0,0.05);
+    padding-left: 1rem !important;
   }
 
 
-   .elastic-search-input-minimal{
+  .elastic-search-input-minimal{
     flex-grow: 1;
     font-size: 16px;
     height: 48px;
@@ -193,11 +193,20 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     border-radius: 6px;
     overflow: visible;
-    padding-left: 48px !important;
+    padding-left: 1rem !important;
     width: 100% !important;
     color: #77798C;
     height: 50px !important
   }
 
 
+  .elastic-search-input-mobile{
+    flex-grow: 1;
+    font-size: 16px;
+    display: flex;
+    overflow: visible;
+    width: 100% !important;
+    border: 0px !important;
+    background: none !important;
+  }
  `;

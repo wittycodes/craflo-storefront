@@ -43,10 +43,10 @@ const Popover: React.FC<PopoverProps> = ({
 
   // Handle document click
   const handleDocumentClick = (e) => {
-    e.stopPropagation();
-    if (state) {
-      handleToggle(e);
-    }
+    // e.stopPropagation();
+    // if (state) {
+    //   handleToggle(e);
+    // }
   };
 
   // Handle window event listener
@@ -58,7 +58,7 @@ const Popover: React.FC<PopoverProps> = ({
   });
 
   // Close popover on click outside
-  useOnClickOutside(ref, () => setState((state) => false));
+  // useOnClickOutside(ref, () => setState((state) => false));
 
   return (
     <PopoverWrapper className={addAllClasses.join(' ')} ref={ref}>
@@ -68,7 +68,7 @@ const Popover: React.FC<PopoverProps> = ({
       {state && (
         <div className="popover-content">
           {content && (
-            <div className="inner-wrap" onClick={handleToggle}>
+            <div className="inner-wrap" onClick={()=>{}}>
               {content}
             </div>
           )}

@@ -11,6 +11,9 @@ import UserImage from 'assets/images/user.jpg';
 import { isCategoryPage } from '../is-home-page';
 import Search from 'features/search/search';
 import useAuthStore from "hooks/globalStores/useAuthStore";
+import LanguageSwitcher from "./menu/language-switcher/language-switcher";
+import GeoSwitcher from "./menu/geo-switcher/geo-switcher";
+import { useAppState, useAppDispatch } from 'contexts/app/app.provider';
 
 type Props = {
   className?: string;
@@ -64,12 +67,14 @@ const Header: React.FC<Props> = ({ className }) => {
       },
     });
   };
+
   const type = pathname === '/restaurant' ? 'restaurant' : query.type;
-  const showSearch = isCategoryPage(type);
+  const isSticky = useAppState('isSticky');
+  const showSearch = isCategoryPage(type) && isSticky
   return (
     <HeaderWrapper className={className} id="layout-header">
       <LeftMenu logo={LogoImage} />
-      {showSearch && <Search minimal={true} className="headerSearch" />}
+      {showSearch && <><GeoSwitcher /><Search minimal={true} className="headerSearch" /></>}
       <RightMenu
         isAuthenticated={isAuthenticated}
         onJoin={handleJoin}
@@ -81,3 +86,4 @@ const Header: React.FC<Props> = ({ className }) => {
 };
 
 export default Header;
+

@@ -84,7 +84,7 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
             {/*  <StoreNav items={storeType} />*/}
             {/*</MobileCarouselDropdown>*/}
             <OfferSection>
-              <div style={{ margin: '0 -10px' }}>"pulkit"
+              <div style={{ margin: '0 -10px' }}>
                 <Carousel deviceType={deviceType} data={OFFERS} />
                 <div style={{ margin: '40px' }}>
                 <Row>

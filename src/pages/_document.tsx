@@ -19,6 +19,7 @@ class HTMLDocument extends Document {
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Lato:400,700%7CPoppins:700&display=swap" },
       { rel: "stylesheet", href: "https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" },
+      { rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.css" },
       ...favicons
     ];
     const meta = [
@@ -50,13 +51,14 @@ class HTMLDocument extends Document {
         <Head>
           {meta.map((tag, index) => <meta key={index} {...tag} />)}
           {links.map((link, index) => <link key={index} {...link} />)}
-          <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
         </Head>
         <body style={{background: '#F7F7F7'}}>
           <Main />
           <NextScript />
           {scripts.map((script, index) => (script.innerHTML ? /* eslint-disable-next-line */
             <script async key={index} type={script.type} dangerouslySetInnerHTML={{ __html: script.innerHTML }} /> : <script async key={index} {...script} />))}
+          <script async type="text/javascript" src="https://maps.google.com/maps/api/js?v=3.31&key=AIzaSyBCZ7Lk_9ZC-EfEkgNB5XdPUebFxRqGh3o" />
+          <script async type="text/javascript" src="https://checkout.razorpay.com/v1/checkout.js" />
         </body>
       </Html>
     );

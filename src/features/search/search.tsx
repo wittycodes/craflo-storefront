@@ -48,7 +48,8 @@ const Search: React.FC<Props> = ({ onSubmit, ...props }) => {
       <DataSearch
         style={{
           width: '80%',
-          marginLeft: 124
+          marginLeft: '0%',
+          marginRight: '8%'
         }}
         name="search"
         componentId="CrafloSearch"
@@ -67,11 +68,14 @@ const Search: React.FC<Props> = ({ onSubmit, ...props }) => {
         URLParams={false}
         innerClass={{
           title: 'elastic-search-title',
-          input: props?.minimal ? 'elastic-search-input-minimal': 'elastic-search-input'
+          input: props?.mobile? 'elastic-search-input-mobile' : props?.minimal ? 'elastic-search-input-minimal': 'elastic-search-input'
         }}
+        showClear={true}
+        iconPosition={'right'}
+        showIcon={props?.mobile? false: !!props?.minimal}
       />
       {
-        props?.minimal? null :
+        props?.mobile? null: props?.minimal? null :
         (<StyledSearchButton>
           <SearchIcon style={{marginRight: 10, marginLeft: 10}}/>
           {intl.formatMessage({

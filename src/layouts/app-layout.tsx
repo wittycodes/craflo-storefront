@@ -67,8 +67,7 @@ const useStyles = makeStyles((theme: Theme) =>
       zIndex: 600
     },
     drawerPaper: {
-      width: drawerWidth,
-      zIndex: 600
+      zIndex: 100
     },
     drawerHeader: {
       display: 'flex',
@@ -127,7 +126,7 @@ const Layout = ({
         <Sticky enabled={isSticky} innerZ={999}>
           <MobileHeader
             className={`${isSticky ? 'sticky' : 'unSticky'} ${
-              isHomePage ? 'home' : ''
+              isHomePage ? 'home' : 'home'
             } desktop`}
           />
           <Header
@@ -161,7 +160,7 @@ const Layout = ({
           {/*>*/}
 
           <SwipeableDrawer
-            variant="persistent"
+            variant={deviceType.mobile? "temporary": "persistent"}
             anchor={'left'}
             open={uiStore.isMenuDrawerOpen}
             onOpen={uiStore.toggleMenuDrawerOpen}
@@ -170,9 +169,10 @@ const Layout = ({
               keepMounted: true, // Better open performance on mobile.
             }}
             classes={{
-              paper: classes.drawerPaper,
+              paperAnchorDockedLeft: classes.drawerPaper,
             }}
             className={classes.drawer}
+            sty
           >
             <SidebarMenu type={'grocery'} deviceType={deviceType} />
           </SwipeableDrawer>

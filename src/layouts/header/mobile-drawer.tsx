@@ -166,7 +166,7 @@ const MobileDrawer: React.FunctionComponent = () => {
       }
     >
       <Scrollbars autoHide>
-        <DrawerContentWrapper >
+        <DrawerContentWrapper>
           <DrawerProfile>
             {isAuthenticated ? (
               <LoginView>
