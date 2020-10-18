@@ -33,7 +33,12 @@ import { FormattedMessage } from 'react-intl';
 import { useLocale } from 'contexts/language/language.provider';
 import { useCart } from 'contexts/cart/use-cart';
 import { Counter } from 'components/counter/counter';
-
+import Carousel from "../../carousel/carousel";
+import OFFERS from "../../../data/offers";
+import Carousel1 from "../../../sections/carousels/featured";
+import {OfferSection} from "../../../assets/styles/pages.style";
+import { Row, Col } from 'react-styled-flexboxgrid';
+import GeoSwitcher from "../../../layouts/header/menu/geo-switcher/geo-switcher";
 
 type ProductDetailsProps = {
   product: any;
@@ -154,7 +159,9 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
                   onIncrement={handleAddClick}
                 />
               )}
+              <GeoSwitcher />
             </ProductCartBtn>
+
           </ProductCartWrapper>
 
           <ProductMeta>
@@ -200,22 +207,33 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
           </ProductPreview>
         )}
       </ProductDetailsWrapper>
+      <div style={{background: '#fff'}}>
 
-      <RelatedItems>
-        <h2>
-          <FormattedMessage
-            id="intlReletedItems"
-            defaultMessage="Related Items"
-          />
-        </h2>
-        {/*product.type.toLowerCase()*/}
-        <Products
-          type={'grocery'}
-          deviceType={deviceType}
-          loadMore={false}
-          fetchLimit={10}
-        />
-      </RelatedItems>
+        <RelatedItems>
+          <h2 style={{paddingTop: "30px"}}>Select Variants</h2>
+        </RelatedItems>
+
+        <OfferSection>
+          <div style={{ margin: '0 -10px' }}>
+            <div style={{ margin: ' 0 40px 0 40px' }}>
+              <Row>
+                <Col xs={12}>
+                  <h5 style={{float: 'left'}}>By Styles</h5>
+                  <Carousel1/>
+                </Col>
+                <Col xs={12}>
+                  <h5 style={{float: 'left'}}>By Colours</h5>
+                  <Carousel1/>
+                </Col>
+                <Col xs={12}>
+                  <h5 style={{float: 'left'}}>By Sizes</h5>
+                  <Carousel1/>
+                </Col>
+              </Row>
+            </div>
+          </div>
+        </OfferSection>
+      </div>
     </>
   );
 };

@@ -89,11 +89,11 @@ const HeaderWrapper = styled.header`
       display: none;
     }
     position:fixed;
-     background-color: #fafafa00;
+     background-color: #fff;
   }
 
   &.sticky {
-    background-color: #ffffff;
+    background-color: #ffffff !important;
     position: fixed;
     box-shadow: none;
     padding-top: 15px;

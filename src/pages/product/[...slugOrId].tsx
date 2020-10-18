@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useCallback } from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { useRouter } from "next/router";
@@ -14,7 +14,8 @@ import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
 import fetchCatalogProduct from "staticUtils/catalog/fetchCatalogProduct";
 import fetchAllTags from "staticUtils/tags/fetchAllTags";
 import fetchTranslations from "staticUtils/translations/fetchTranslations";
-
+import {DynamicRangeSlider, ReactiveList} from '@appbaseio/reactivesearch'
+import { Waypoint } from 'react-waypoint';
 
 /**
  *
@@ -146,6 +147,12 @@ import ProductSingleWrapper, {
 } from 'src/assets/styles/product-single.style';
 import { GET_PRODUCT_DETAILS } from 'src/graphql/query/product.query';
 import { initializeApollo } from 'src/utils/apollo';
+import {RelatedItems} from "../../components/product-details/product-details-one/product-details-one.style";
+import Products from "../../components/product-grid/product-list/product-list";
+import Footer from "../../layouts/footer";
+import {App} from "../[lang]/explore-beta";
+import GeoSwitcher from "../../layouts/header/menu/geo-switcher/geo-switcher";
+import {useAppDispatch} from "../../contexts/app/app.provider";
 
 const ProductDetails = dynamic(() =>
   import('src/components/product-details/product-details-one/product-details-one')
@@ -170,8 +177,26 @@ const ProductPage: NextPage = ({ data, deviceType, ...props }) => {
     );
   }*/
 
+  const dispatch = useAppDispatch();
+  const setSticky = useCallback(() => dispatch({ type: 'SET_STICKY' }), [
+    dispatch,
+  ]);
+  const removeSticky = useCallback(() => dispatch({ type: 'REMOVE_STICKY' }), [
+    dispatch,
+  ]);
+  const onWaypointPositionChange = ({ currentPosition }) => {
+    if (!currentPosition || currentPosition === 'below' ) {
+      removeSticky();
+    }
+    // if (!currentPosition || currentPosition === 'invisible' ) {
+    //   removeSticky();
+    // }
+  };
+
+
   return (
     <>
+
       <SEO
         title={`${props.product.title} - Craflo`}
         description={`${props.product.title} Details`}
@@ -181,9 +206,41 @@ const ProductPage: NextPage = ({ data, deviceType, ...props }) => {
         <ProductSingleWrapper>
           <ProductSingleContainer>
             {content}
+
             <CartPopUp deviceType={deviceType} />
           </ProductSingleContainer>
         </ProductSingleWrapper>
+
+        <RelatedItems>
+
+          <h2>Related Items</h2>
+          {/*product.type.toLowerCase()*/}
+          <Waypoint
+            onEnter={setSticky}
+            // onLeave={}
+            onPositionChange={onWaypointPositionChange}
+            debug={true}
+          />
+          <ReactiveList
+            react={{
+              "and": ["CrafloSearch", "PriceRangeSensor"]
+            }}
+            componentId="SearchResult"
+            stream={true}
+            infiniteScroll={true}
+            size={45}
+            // scrollTarget={"rrr-content"}
+            dataField={"reaction.catalog"}
+          >
+            {
+              ({ data, error, loading, ...rest }) => (
+                // <div>{"pulkit"}</div>
+                <App props={props} loading={loading} data={data} routingStore={props.routingStore} deviceType={deviceType}/>
+              )
+            }
+          </ReactiveList>
+        </RelatedItems>
+        <Footer />
       </Modal>
     </>
   );

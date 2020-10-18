@@ -19,8 +19,15 @@ const arr = [
   BOOK_PAGE,
   MEDICINE_PAGE,
   RESTAURANT_PAGE,
+  "/help",
+  // "/product/[...slugOrId]"
 ];
 export function isCategoryPage(pathname) {
-  // return arr.includes(`/${pathname}`);
-  return true
+  console.log(pathname, "kokkoko")
+  if (pathname)
+    // if (pathname.includes('homepage'))
+    //   return true
+    // else return false
+    return arr.includes(`/${pathname}`)
+  return false
 }

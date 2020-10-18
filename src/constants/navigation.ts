@@ -1,4 +1,4 @@
-export const HOME_PAGE = '/';
+export const HOME_PAGE = '/[lang]';
 export const GROCERY_PAGE = '/grocery';
 export const MAKEUP_PAGE = '/makeup';
 export const CLOTHING = '/clothing';

@@ -182,7 +182,7 @@ export const App = ({ deviceType, data, loading, routingStore, props}) => {
     tag
   } = props;
 
-  const {query}= routingStore
+  // const {query}= routingStore
 
   // const containerRef = React.useRef(null);
   // const { scrollTop, isScrolling } = useScroller(containerRef);

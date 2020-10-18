@@ -68,13 +68,18 @@ const Header: React.FC<Props> = ({ className }) => {
     });
   };
 
-  const type = pathname === '/restaurant' ? 'restaurant' : query.type;
   const isSticky = useAppState('isSticky');
-  const showSearch = isCategoryPage(type) && isSticky
+  const showSearch =  isSticky
+  // useAppState('isSticky')
   return (
-    <HeaderWrapper className={className} id="layout-header">
+    <HeaderWrapper className={className} id="layout-header" style={{background: pathname == '/[lang]'? 'none' :  "#fff !important"}}>
       <LeftMenu logo={LogoImage} />
-      {showSearch && <><GeoSwitcher /><Search minimal={true} className="headerSearch" /></>}
+      {showSearch && (
+        <>
+          <GeoSwitcher />
+          <Search minimal={true} className="headerSearch" />
+        </>
+      )}
       <RightMenu
         isAuthenticated={isAuthenticated}
         onJoin={handleJoin}
