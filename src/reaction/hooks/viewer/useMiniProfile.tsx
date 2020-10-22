@@ -25,7 +25,7 @@ export default function useMiniProfile() {
   }, [accessToken, viewer]);
 
   return {
-    data,
+    miniProfile: data.viewer,
     loading,
     refetch
   };

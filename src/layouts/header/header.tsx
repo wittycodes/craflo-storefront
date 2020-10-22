@@ -29,7 +29,7 @@ const Header: React.FC<Props> = ({ className }) => {
   } = React.useContext<any>(AuthContext);
 
   const {isAuthenticated, account} = useAuthStore()
-  const {data} = useMiniProfile()
+  const {miniProfile} = useMiniProfile()
   const { pathname, query } = useRouter();
 
   const handleLogout = () => {
@@ -70,7 +70,7 @@ const Header: React.FC<Props> = ({ className }) => {
 
   const isSticky = useAppState('isSticky');
   const showSearch =  isSticky
-  console.log(data, "randi")
+  console.log(miniProfile, "randi")
   return (
     <HeaderWrapper className={className} id="layout-header" style={{background: pathname == '/[lang]'? 'none' :  "#fff !important"}}>
       <LeftMenu logo={LogoImage} />
@@ -84,7 +84,7 @@ const Header: React.FC<Props> = ({ className }) => {
         isAuthenticated={isAuthenticated}
         onJoin={handleJoin}
         onLogout={handleLogout}
-        avatar={ data?.picture || UserImage}
+        avatar={ miniProfile?.picture || UserImage}
       />
     </HeaderWrapper>
   );
