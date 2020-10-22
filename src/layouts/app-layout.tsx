@@ -172,7 +172,6 @@ const Layout = ({
               paperAnchorDockedLeft: classes.drawerPaper,
             }}
             className={classes.drawer}
-            sty
           >
             <SidebarMenu type={'grocery'} deviceType={deviceType} />
           </SwipeableDrawer>

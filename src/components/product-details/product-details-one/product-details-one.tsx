@@ -132,7 +132,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
 
           <ProductWeight>{product.unit}</ProductWeight>
           <ProductDescription>
-            <ReadMore character={600}>{product.description}</ReadMore>
+            <ReadMore character={200}>{product.description}</ReadMore>
           </ProductDescription>
 
           <ProductCartWrapper>

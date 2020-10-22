@@ -48,7 +48,6 @@ import "slick-carousel/slick/slick-theme.css";
 import "../paper-kit-react/all.scss";
 
 
-
 // Language translation files
 import localEn from 'data/translation/en.json';
 import localAr from 'data/translation/ar.json';
@@ -115,7 +114,7 @@ export function ExtendedApp({Component, pageProps, ...rest}) {
                       credentials="elastic:RvZi60f38Y6jVKZGS6908yo9">
 
                         <MuiThemeProvider theme={muiTheme}>
-                          <AppLayout {...pageProps} {...rest} >
+                          <AppLayout client={apolloClient} {...pageProps} {...rest} >
                               <Component {...rest} {...pageProps} />
                           </AppLayout>
                         </MuiThemeProvider>

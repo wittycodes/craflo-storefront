@@ -209,7 +209,7 @@ const Menu: React.FunctionComponent = () => {
                   label={item.label}
                   intlId={item.intlLabelId}
                   className="drawer_menu_item"
-                />
+                />p
               </DrawerMenuItem>
             ))}
           </DrawerMenu>

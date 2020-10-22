@@ -14,6 +14,8 @@ import useAuthStore from "hooks/globalStores/useAuthStore";
 import LanguageSwitcher from "./menu/language-switcher/language-switcher";
 import GeoSwitcher from "./menu/geo-switcher/geo-switcher";
 import { useAppState, useAppDispatch } from 'contexts/app/app.provider';
+import useMiniProfile from "hooks/viewer/useMiniProfile";
+import {withApollo} from "lib/apollo/withApollo";
 
 type Props = {
   className?: string;
@@ -26,25 +28,23 @@ const Header: React.FC<Props> = ({ className }) => {
     authDispatch,
   } = React.useContext<any>(AuthContext);
 
-  const {isAuthenticated} = useAuthStore()
-
-
-
-
+  // const {isAuthenticated} = useAuthStore()
+  const {isAuthenticated, account} = useMiniProfile()
   const { pathname, query } = useRouter();
+
   const handleLogout = () => {
     // if (typeof window !== 'undefined') {
     //   localStorage.removeItem('access_token');
     //   authDispatch({ type: 'SIGN_OUT' });
     //   Router.push('/');
     // }
-    // Router.push('/logout');
-    fetch(CANONICAL_URL + "/logout").then((res)=>res.json()).then((res)=>{
-      console.log(res)
-    },
-      (err)=>{
-        console.log(err)
-      })
+    Router.push('/logout');
+    // fetch(CANONICAL_URL + "/logout").then((res)=>res.json()).then((res)=>{
+    //   console.log(res)
+    // },
+    //   (err)=>{
+    //     console.log(err)
+    //   })
   };
 
   const handleJoin = () => {
@@ -84,11 +84,11 @@ const Header: React.FC<Props> = ({ className }) => {
         isAuthenticated={isAuthenticated}
         onJoin={handleJoin}
         onLogout={handleLogout}
-        avatar={UserImage}
+        avatar={ account?.picture || UserImage}
       />
     </HeaderWrapper>
   );
 };
 
-export default Header;
+export default withApollo()(Header);
 
