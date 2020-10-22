@@ -28,8 +28,8 @@ const Header: React.FC<Props> = ({ className }) => {
     authDispatch,
   } = React.useContext<any>(AuthContext);
 
-  // const {isAuthenticated} = useAuthStore()
-  const {isAuthenticated, account} = useMiniProfile()
+  const {isAuthenticated, account} = useAuthStore()
+  const {data} = useMiniProfile()
   const { pathname, query } = useRouter();
 
   const handleLogout = () => {
@@ -70,7 +70,7 @@ const Header: React.FC<Props> = ({ className }) => {
 
   const isSticky = useAppState('isSticky');
   const showSearch =  isSticky
-  // useAppState('isSticky')
+  console.log(data, "randi")
   return (
     <HeaderWrapper className={className} id="layout-header" style={{background: pathname == '/[lang]'? 'none' :  "#fff !important"}}>
       <LeftMenu logo={LogoImage} />
@@ -84,11 +84,12 @@ const Header: React.FC<Props> = ({ className }) => {
         isAuthenticated={isAuthenticated}
         onJoin={handleJoin}
         onLogout={handleLogout}
-        avatar={ account?.picture || UserImage}
+        avatar={ data?.picture || UserImage}
       />
     </HeaderWrapper>
   );
 };
 
 export default withApollo()(Header);
+
 

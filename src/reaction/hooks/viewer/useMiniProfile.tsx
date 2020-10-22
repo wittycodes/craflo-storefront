@@ -10,7 +10,7 @@ import miniProfileQuery from "./miniProfile.gql";
  */
 export default function useMiniProfile() {
   const { authStore } = useStores();
-  const {isAuthenticated, account, setAccount, accessToken } = authStore;
+  const {accessToken } = authStore;
 
   const { loading, data, refetch } = useQuery(miniProfileQuery, {
     skip: !accessToken
@@ -24,14 +24,9 @@ export default function useMiniProfile() {
     }
   }, [accessToken, viewer]);
 
-  useEffect(() => {
-    if (viewer) setAccount(viewer);
-  }, [viewer]);
-
-  return [
-    account,
+  return {
+    data,
     loading,
-    refetch,
-    isAuthenticated
-  ];
+    refetch
+  };
 }
