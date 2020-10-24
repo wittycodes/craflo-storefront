@@ -75,17 +75,17 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
   const [PQuantity, setPQuantity] = React.useState(0)
 
 
-  useEffect(()=>{
-    let c= false
-    cart.items.forEach((a)=>{
-      if (a.productConfiguration.productId == product.productId) {
-        c=true
-        setPQuantity(a.quantity)
-      }
-    })
-    if(!c){
-      setPQuantity(0)    }
-  }, [cart])
+  // useEffect(()=>{
+  //   let c= false
+  //   cart.items.forEach((a)=>{
+  //     if (a.productConfiguration.productId == product.productId) {
+  //       c=true
+  //       setPQuantity(a.quantity)
+  //     }
+  //   })
+  //   if(!c){
+  //     setPQuantity(a.quantity)    }
+  // }, [cart])
 
   const currencyCode = "USD";
   let selectedVariant, selectedOption;

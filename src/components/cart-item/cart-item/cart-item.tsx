@@ -26,7 +26,7 @@ export const CartItem: React.FC<Props> = ({
   onIncrement,
   onRemove,
 }) => {
-  const { title, imageURLs, price, optionTitle, quantity, metafields } = data;
+  const { title, imageURLs, price, optionTitle, quantity, metafields, productSlug } = data;
   const displayPrice = price.displayAmount;
   //const media = JSON.parse(metafields[0].value)
   return (
@@ -39,7 +39,9 @@ export const CartItem: React.FC<Props> = ({
       />*/}
       <Image src={""} />
       <Information>
-        <Name>{title}</Name>
+        <a target='_blank' href={'/product/'+productSlug}>
+          <Name>{title}</Name>
+        </a>
         <Weight>
           Customisable {optionTitle}
         </Weight>
