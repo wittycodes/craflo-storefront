@@ -69,10 +69,24 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
   //   removeItem(data);
   // };
 
-
+  let productQuantity = 0
 
   const { addItemsToCart, onRemoveCartItems, cart } = useCart(product?.shop?._id);
-  console.log(product)
+  const [PQuantity, setPQuantity] = React.useState(0)
+
+
+  useEffect(()=>{
+    let c= false
+    cart.items.forEach((a)=>{
+      if (a.productConfiguration.productId == product.productId) {
+        c=true
+        setPQuantity(a.quantity)
+      }
+    })
+    if(!c){
+      setPQuantity(0)    }
+  }, [cart])
+
   const currencyCode = "USD";
   let selectedVariant, selectedOption;
 
@@ -128,6 +142,9 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
        // cartAnimation(e);
     }
   };
+
+
+
   const handleRemoveClick = (e) => {
     e.stopPropagation();
     //onRemoveCartItems(data);
@@ -205,13 +222,14 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
             id="product-info-786"></ZoomImageWrapper>
 
           <ProductWeight>{product.unit}</ProductWeight>
+          {console.log(product, cart, "oooooooooooo")}
           <ProductDescription>
             <ReadMore character={200}>{product.description}</ReadMore>
           </ProductDescription>
 
           <ProductCartWrapper>
             <ProductCartBtn>
-              {!isInCart(data.id) ? (
+              {PQuantity ==0 ? (
                 <Button
                   className="cart-button"
                   variant="secondary"
@@ -228,7 +246,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
                 </Button>
               ) : (
                 <Counter
-                  value={getItem(data.id).quantity}
+                  value={PQuantity}
                   onDecrement={handleRemoveClick}
                   onIncrement={handleAddClick}
                 />

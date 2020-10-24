@@ -18,10 +18,10 @@ export const Counter: React.FC<Props> = ({
 }) => {
   return (
     <CounterBox variant={variant} className={className}>
-      <CounterButton onClick={onDecrement} variant={variant}>
-        <Minus />
+      <CounterButton onClick={()=>{}} variant={variant}>
+        {/*<Minus />*/}
       </CounterButton>
-      <CounterValue>{value}</CounterValue>
+      <CounterValue>{value }</CounterValue>
       <CounterButton onClick={onIncrement} variant={variant}>
         <Plus />
       </CounterButton>

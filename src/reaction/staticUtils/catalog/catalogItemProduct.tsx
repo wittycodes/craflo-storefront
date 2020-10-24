@@ -28,9 +28,14 @@ query catalogItemProductQuery($slugOrId: String!) {
           maxPrice
         }
         shop {
+          _id
+          description
+          slug
+          name
           currency {
             code
           }
+
         }
         primaryImage {
           URLs {
