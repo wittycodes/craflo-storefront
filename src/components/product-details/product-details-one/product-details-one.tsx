@@ -31,7 +31,7 @@ import Products from 'components/product-grid/product-list/product-list';
 import { CURRENCY } from 'utils/constant';
 import { FormattedMessage } from 'react-intl';
 import { useLocale } from 'contexts/language/language.provider';
-import { useCart } from 'contexts/cart/use-cart';
+// import { useCart } from 'contexts/cart/use-cart';
 import { Counter } from 'components/counter/counter';
 import Carousel from "../../carousel/carousel";
 import OFFERS from "../../../data/offers";
@@ -39,6 +39,9 @@ import Carousel1 from "../../../sections/carousels/featured";
 import {OfferSection} from "../../../assets/styles/pages.style";
 import { Row, Col } from 'react-styled-flexboxgrid';
 import GeoSwitcher from "../../../layouts/header/menu/geo-switcher/geo-switcher";
+import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
+import variantById from "lib/utils/variantById";
+import useCart from 'hooks/cart/useCart';
 
 type ProductDetailsProps = {
   product: any;
@@ -54,18 +57,89 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
   deviceType,
 }) => {
   const { isRtl } = useLocale();
-  const { addItem, removeItem, isInCart, getItem } = useCart();
   const data = product;
+
+  // const handleAddClick = (e) => {
+  //   e.stopPropagation();
+  //   addItem(data);
+  // };
+  //
+  // const handleRemoveClick = (e) => {
+  //   e.stopPropagation();
+  //   removeItem(data);
+  // };
+
+
+
+  const { addItemsToCart, onRemoveCartItems, cart } = useCart(product?.shop?._id);
+  console.log(product)
+  const currencyCode = "USD";
+  let selectedVariant, selectedOption;
+
+  const selectVariant = (variant, optionId) => {// Select the variant, and if it has options, the first option
+    const variantId = variant._id;
+    let selectOptionId = optionId;
+    if (!selectOptionId && variant.options && variant.options.length) {
+      selectOptionId = variant.options[0]._id;
+    }
+    selectedVariant = variantById(product.variants, variantId);
+    selectedOption = variantById(selectedVariant.options, selectOptionId);
+    //setPDPSelectedVariantId(variantId, selectOptionId);
+  }
+
+  const determineProductPrice = ()=>{
+    let productPrice;
+    if (selectedOption && selectedVariant) {
+      productPrice = priceByCurrencyCode(currencyCode, selectedOption.pricing);
+    } else if (!selectedOption && selectedVariant) {
+      productPrice = priceByCurrencyCode(currencyCode, selectedVariant.pricing);
+    }
+    return productPrice;
+  }
+
+  selectVariant(product.variants[0], null);
+
+  const productPrice = determineProductPrice();
+  const compareAtDisplayPrice = (productPrice.compareAtPrice && productPrice.compareAtPrice.displayAmount) || null;
 
   const handleAddClick = (e) => {
     e.stopPropagation();
-    addItem(data);
-  };
+    // cartAnimation(e);
+    //--console.log(price)
+    const selectedVariantOrOption = selectedOption || selectedVariant;
 
+    // Call addItemsToCart with an object matching the GraphQL `CartItemInput` schema
+    let quantity = 1.0
+    addItemsToCart([
+        {
+          price: {
+            amount: productPrice.price,
+            currencyCode
+          },
+          productConfiguration: {
+            productId: product.productId, // Pass the productId, not to be confused with _id
+            productVariantId: selectedVariantOrOption.variantId // Pass the variantId, not to be confused with
+          },
+          quantity
+        }
+      ]
+    );
+    if (!isInCart(89)) {
+       // cartAnimation(e);
+    }
+  };
   const handleRemoveClick = (e) => {
     e.stopPropagation();
-    removeItem(data);
+    //onRemoveCartItems(data);
   };
+  const isInCart = (_id: number)=>{
+    return false
+  }
+
+
+
+
+
 
   useEffect(() => {
     setTimeout(() => {
