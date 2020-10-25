@@ -1,18 +1,18 @@
 // @ts-nocheck
-import Immutable from 'immutable';
-import PropTypes from 'prop-types';
+// import Immutable from 'immutable';
+// import PropTypes from 'prop-types';
 import * as React from 'react';
 import dynamic from 'next/dynamic';
 //import {LabeledInput, InputRow} from './demo/LabeledInput';
-import createCellPositioner from './Masonry/createCellPositioner';
+// import createCellPositioner from './Masonry/createCellPositioner';
 const GeneralCard = dynamic(
   import('src/components/product-card/product-card-listing/product-card-listing')
 );
 const Sidebar = dynamic(() => import('src/layouts/sidebar/sidebar'));
-import Fade from 'react-reveal/Fade';
-
-import { Link, Element } from 'react-scroll';
-import { Button } from 'src/components/button/button';
+// import Fade from 'react-reveal/Fade';
+//
+// import { Link, Element } from 'react-scroll';
+// import { Button } from 'src/components/button/button';
 import {
   ProductDetailsWrapper,
   ProductPreview,
@@ -40,28 +40,28 @@ import {
   ItemPrice,
   CartWrapper,
 } from 'src/components/product-details/product-details-three/product-details-three.style';
-import { CURRENCY } from 'src/utils/constant';
-import FixedCart from 'src/features/carts/fixed-cart';
-import FixedCartPopup from 'src/features/carts/fixed-cart-popup';
+// import { CURRENCY } from 'src/utils/constant';
+// import FixedCart from 'src/features/carts/fixed-cart';
+// import FixedCartPopup from 'src/features/carts/fixed-cart-popup';
 import { FormattedMessage } from 'react-intl';
 import Sticky from 'react-stickynode';
-import { groupBy } from 'src/utils/groupBy';
-import { useCart } from 'src/contexts/cart/use-cart';
-import { PlusOutline } from 'src/components/AllSvgIcon';
+// import { groupBy } from 'src/utils/groupBy';
+// import { useCart } from 'src/contexts/cart/use-cart';
+// import { PlusOutline } from 'src/components/AllSvgIcon';
 import { NextPage, GetStaticProps } from 'next';
-import StoreNav from "src/components/store-nav/store-nav";
-import storeType from "src/constants/storeType";
-import {useRefScroll} from "src/utils/use-ref-scroll";
-import {Banner} from "src/components/banner/banner";
+// import StoreNav from "src/components/store-nav/store-nav";
+// import storeType from "src/constants/storeType";
+// import {useRefScroll} from "src/utils/use-ref-scroll";
+// import {Banner} from "src/components/banner/banner";
 import {useAppDispatch} from "src/contexts/app/app.provider";
 import { useCallback } from 'react';
 import {withApollo} from "lib/apollo/withApollo";
-import withCatalogItems from "containers/catalog/withCatalogItems";
+// import withCatalogItems from "containers/catalog/withCatalogItems";
 import inject from "hocs/inject";
-import { inPageSizes } from "lib/utils/pageSizes";
-import PageLoading from "components/PageLoading/PageLoading";
-import ProductGridEmptyMessage from "components/ProductGrid/ProductGridEmptyMessage";
-import {Masonry, WindowScroller, AutoSizer, CellMeasurer, CellMeasurerCache} from 'react-virtualized';
+// import { inPageSizes } from "lib/utils/pageSizes";
+// import PageLoading from "components/PageLoading/PageLoading";
+// import ProductGridEmptyMessage from "components/ProductGrid/ProductGridEmptyMessage";
+// import {Masonry, WindowScroller, AutoSizer, CellMeasurer, CellMeasurerCache} from 'react-virtualized';
 import {SEO} from "src/components/seo";
 import {
   ContentSection,
@@ -71,12 +71,12 @@ import {
   ProductsRow,
   SidebarSection
 } from "src/assets/styles/pages.style";
-import GiftCard from "src/components/gift-card/gift-card";
+// import GiftCard from "src/components/gift-card/gift-card";
 import Footer from "src/layouts/footer";
 import CartPopUp from "src/features/carts/cart-popup";
 import { Modal } from '@redq/reuse-modal';
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
-import fetchTranslations from "staticUtils/translations/fetchTranslations";
+// import fetchTranslations from "staticUtils/translations/fetchTranslations";
 // import PriceSlider from "../../components/price-slider/price-slider";
 // import {Box, Flag, MenuItem, SelectedItem} from "../../layouts/header/menu/language-switcher/language-switcher.style";
 // import {useLocale} from "../../contexts/language/language.provider";
@@ -86,17 +86,17 @@ import { Row, Col } from 'react-styled-flexboxgrid';
 
 
 let slug_language;
-import { useSize, useScroller } from "mini-virtual-list";
+// import { useSize, useScroller } from "mini-virtual-list";
 import { usePositioner, useResizeObserver, MasonryScroller, useMasonry, useContainerPosition } from "masonic";
 
 import {useWindowSize} from "../../utils/useWindowSize";
 // import {useWindowSize} from '@react-hook/window-size'
-import {Parallax, ParallaxLayer} from 'react-spring/renderprops-addons'
-import handleViewport from 'react-in-viewport';
-import { useQuery } from '@apollo/react-hooks';
-import hoistNonReactStatic from "hoist-non-react-statics";
-import { pagination, paginationVariablesFromUrlParams } from "lib/utils/pagination";
-import catalogItemsQuery from "containers/catalog/catalogItems.gql";
+// import {Parallax, ParallaxLayer} from 'react-spring/renderprops-addons'
+// import handleViewport from 'react-in-viewport';
+// import { useQuery } from '@apollo/react-hooks';
+// import hoistNonReactStatic from "hoist-non-react-statics";
+// import { pagination, paginationVariablesFromUrlParams } from "lib/utils/pagination";
+// import catalogItemsQuery from "containers/catalog/catalogItems.gql";
 // import PriceSlider from "../../components/price-slider/price-slider";
 import ColorFilter from "../../components/color-filter/color-filter";
 import {DynamicRangeSlider, ReactiveList} from '@appbaseio/reactivesearch'

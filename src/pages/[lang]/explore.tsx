@@ -60,23 +60,23 @@ import withCatalogItems from "containers/catalog/withCatalogItems";
 import inject from "hocs/inject";
 import { inPageSizes } from "lib/utils/pageSizes";
 import PageLoading from "components/PageLoading/PageLoading";
-import ProductGridEmptyMessage from "components/ProductGrid/ProductGridEmptyMessage";
-import {Masonry, WindowScroller, AutoSizer, CellMeasurer, CellMeasurerCache} from 'react-virtualized';
+// import ProductGridEmptyMessage from "components/ProductGrid/ProductGridEmptyMessage";
+// import {Masonry, WindowScroller, AutoSizer, CellMeasurer, CellMeasurerCache} from 'react-virtualized';
 import {SEO} from "src/components/seo";
-import {
-  ContentSection,
-  MainContentArea, MobileCarouselDropdown,
-  OfferPageWrapper,
-  ProductsCol,
-  ProductsRow,
-  SidebarSection
-} from "src/assets/styles/pages.style";
-import GiftCard from "src/components/gift-card/gift-card";
+// import {
+//   ContentSection,
+//   MainContentArea, MobileCarouselDropdown,
+//   OfferPageWrapper,
+//   ProductsCol,
+//   ProductsRow,
+//   SidebarSection
+// } from "src/assets/styles/pages.style";
+// import GiftCard from "src/components/gift-card/gift-card";
 import Footer from "src/layouts/footer";
 import CartPopUp from "src/features/carts/cart-popup";
 import { Modal } from '@redq/reuse-modal';
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
-import fetchTranslations from "staticUtils/translations/fetchTranslations";
+// import fetchTranslations from "staticUtils/translations/fetchTranslations";
 import {useWindowSize} from "../../utils/useWindowSize";
 import PriceSlider from "../../components/price-slider/price-slider";
 import ColorFilter from "../../components/color-filter/color-filter";
@@ -89,8 +89,8 @@ import ColorFilter from "../../components/color-filter/color-filter";
 let slug_language;
 import { useSize, useScroller } from "mini-virtual-list";
 import { usePositioner, useResizeObserver, useMasonry } from "masonic";
-import {Parallax, ParallaxLayer} from 'react-spring/renderprops-addons'
-import handleViewport from 'react-in-viewport';
+// import {Parallax, ParallaxLayer} from 'react-spring/renderprops-addons'
+// import handleViewport from 'react-in-viewport';
 import { Row, Col } from 'react-styled-flexboxgrid';
 
 
