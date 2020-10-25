@@ -2,6 +2,8 @@ const path = require("path");
 const appConfig = require("./config");
 const withPlugins = require('next-compose-plugins');
 const withOptimizedImages = require('next-optimized-images');
+const withCss = require('@zeit/next-css')
+const withPurgeCss = require('next-purgecss')
 
 // next.js configuration
 const nextConfig = {
@@ -125,5 +127,4 @@ const nextConfig = {
   }
 };
 
-
-module.exports = withPlugins([withOptimizedImages], nextConfig);
+module.exports = withPlugins([withOptimizedImages, withCss, withPurgeCss], nextConfig);

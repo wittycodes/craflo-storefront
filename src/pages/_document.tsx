@@ -26,7 +26,7 @@ class HTMLDocument extends Document {
       // Use minimum-scale=1 to enable GPU rasterization
       {
         name: "viewport",
-        content: "initial-scale=1 minimum-scale=1, width=device-width, height=device-height, user-scalable=no"
+        content: "initial-scale=1 minimum-scale=1, width=device-width, height=device-height"
       }
       // PWA primary color
       // {
