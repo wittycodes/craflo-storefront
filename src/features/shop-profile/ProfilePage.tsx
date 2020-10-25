@@ -157,7 +157,7 @@ function ProfilePage({deviceType, ...props}) {
                 <img
                   alt="..."
                   className="img-circle img-no-padding img-responsive"
-                  src={require("assets/img/faces/joe-gardner-2.jpg")}
+                  src={require("assets/images/user.jpg")}
                   style={{border: "#fff solid 12px"}}
                 />
               </div>
