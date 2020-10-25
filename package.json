@@ -70,6 +70,7 @@
     "formik": "^2.1.4",
     "graphql": "~14.1.1",
     "preact": "~10.5.5",
+    "preact-render-to-string": "~5.1.11",
     "graphql-request": "^1.8.2",
     "graphql-tag": "~2.10.1",
     "immutable": "^4.0.0-rc.12",
