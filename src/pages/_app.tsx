@@ -45,7 +45,7 @@ import "slick-carousel/slick/slick-theme.css";
 // paper kit react
 // import "assets/css/bootstrap.min.css";
 // import "assets/scss/paper-kit.scss";
-import "../paper-kit-react/all.scss";
+import "src/theme/all.scss";
 
 
 // Language translation files
