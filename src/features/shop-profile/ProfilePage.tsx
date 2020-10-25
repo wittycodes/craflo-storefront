@@ -19,17 +19,20 @@
 import React from "react";
 
 // reactstrap components
-import {
-  Label,
-  FormGroup,
-  Input,
-  Nav,
-  TabContent,
-  TabPane,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
+// import {
+//   Label,
+//   FormGroup,
+//   Input,
+//   Nav,
+//   TabContent,
+//   TabPane,
+//   Container,
+//   Row,
+//   Col,
+// } from "reactstrap";
+import { Row, Col } from 'react-styled-flexboxgrid';
+
+
 import { Button } from 'components/button/button';
 // core components
 import ExamplesNavbar from "src/paper-kit-react/src/components/Navbars/ExamplesNavbar.js";
@@ -219,7 +222,7 @@ function ProfilePage({deviceType, ...props}) {
         {/*</div>*/}
       </ProductDetailsWrapper>
       <div className="section profile-content">
-        <Container>
+        {/*<Container>*/}
           <div className="owner">
             {/*<div className="avatar">*/}
             {/*  <img*/}
@@ -350,7 +353,7 @@ function ProfilePage({deviceType, ...props}) {
           {/*    </Button>*/}
           {/*  </TabPane>*/}
           {/*</TabContent>*/}
-        </Container>
+        {/*</Container>*/}
       </div>
     </>
   );
