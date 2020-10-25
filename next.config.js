@@ -5,6 +5,30 @@ const withOptimizedImages = require('next-optimized-images');
 const withCss = require('@zeit/next-css')
 const withPurgeCss = require('next-purgecss')
 
+
+const {
+  PHASE_PRODUCTION_BUILD,
+} = require('next/constants');
+
+// withCSS config
+const cssConfig = {
+  cssModules: false,
+  importLoaders: 1,
+  cssLoaderOptions: {
+    localIdentName: '[path]___[local]___[hash:base64:5]',
+  },
+  [PHASE_PRODUCTION_BUILD]: {
+    cssLoaderOptions: {
+      localIdentName: '[hash:base64:8]',
+    },
+  },
+};
+
+// purgecss config, only used in production.
+const purgeCssConfig = {
+  purgeCssEnabled: ({dev}) => !dev,
+};
+
 // next.js configuration
 const nextConfig = {
   env: {
@@ -127,4 +151,8 @@ const nextConfig = {
   }
 };
 
-module.exports = withPlugins([withOptimizedImages, withCss, withPurgeCss], nextConfig);
+module.exports = withPlugins([
+  withOptimizedImages,
+  [withCss, cssConfig],
+  [withPurgeCss, purgeCssConfig]
+], nextConfig);
