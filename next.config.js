@@ -58,8 +58,8 @@ const nextConfig = {
     // This is a workaround until the root issue is resolved: https://github.com/webpack/webpack/issues/9329
 
 
-    webpackConfig.resolve.alias.react = "preact-compat"
-    webpackConfig.resolve.alias["react-dom"] = "preact-compat"
+    webpackConfig.resolve.alias.react = "preact/compat"
+    webpackConfig.resolve.alias["react-dom"] = "preact/compat"
     webpackConfig.resolve.alias.components = path.join(__dirname, "components");
     webpackConfig.resolve.alias.containers = path.join(__dirname, "containers");
     webpackConfig.resolve.alias.context = path.join(__dirname, "context");
