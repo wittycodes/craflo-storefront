@@ -176,7 +176,7 @@ export const getStaticProps: GetStaticProps = async ({ params: { lang } }) => {
         initialApolloState: null  //apolloClient.cache.extract(),
       },
       // eslint-disable-next-line camelcase
-      unstable_revalidate: 1 // Revalidate immediately
+      revalidate: 1 // Revalidate immediately
     };
   }
 
@@ -189,7 +189,7 @@ export const getStaticProps: GetStaticProps = async ({ params: { lang } }) => {
       initialApolloState: null  //apolloClient.cache.extract(),
     },
     // eslint-disable-next-line camelcase
-    unstable_revalidate: 120 // Revalidate each two minutes
+    revalidate: 120 // Revalidate each two minutes
   };
 
   // const apolloClient = initializeApollo();

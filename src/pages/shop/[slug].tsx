@@ -148,7 +148,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
         initialApolloState: null  //apolloClient.cache.extract(),
       },
       // eslint-disable-next-line camelcase
-      unstable_revalidate: 1 // Revalidate immediately
+      revalidate: 1 // Revalidate immediately
     };
   }
   //--console.log(primaryShop, "pulkit0009")
@@ -164,7 +164,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
       initialApolloState: null  //apolloClient.cache.extract(),
     },
     // eslint-disable-next-line camelcase
-    unstable_revalidate: 120 // Revalidate each two minutes
+    revalidate: 120 // Revalidate each two minutes
   };
 };
 

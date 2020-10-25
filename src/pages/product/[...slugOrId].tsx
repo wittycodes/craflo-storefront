@@ -258,7 +258,7 @@ export async function getServerSideProps({ params: { lang, slugOrId} }) {
         tags: null
       },
       // eslint-disable-next-line camelcase
-      //unstable_revalidate: 1 // Revalidate immediately
+      //revalidate: 1 // Revalidate immediately
     };
   }
 
@@ -270,7 +270,7 @@ export async function getServerSideProps({ params: { lang, slugOrId} }) {
       ...await fetchAllTags(lang)
     },
     // eslint-disable-next-line camelcase
-    //unstable_revalidate: 120 // Revalidate each two minutes
+    //revalidate: 120 // Revalidate each two minutes
   };
 
   /*
@@ -313,7 +313,7 @@ export async function getStaticProps({ params: { slugOrId, lang } }) {
         tags: null
       },
       // eslint-disable-next-line camelcase
-      unstable_revalidate: 1 // Revalidate immediately
+      revalidate: 1 // Revalidate immediately
     };
   }
 
@@ -325,7 +325,7 @@ export async function getStaticProps({ params: { slugOrId, lang } }) {
       ...await fetchAllTags(lang)
     },
     // eslint-disable-next-line camelcase
-    unstable_revalidate: 120 // Revalidate each two minutes
+    revalidate: 120 // Revalidate each two minutes
   };
 }
 
