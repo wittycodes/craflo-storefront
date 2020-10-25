@@ -58,7 +58,6 @@ class HTMLDocument extends Document {
           {scripts.map((script, index) => (script.innerHTML ? /* eslint-disable-next-line */
             <script async key={index} type={script.type} dangerouslySetInnerHTML={{ __html: script.innerHTML }} /> : <script async key={index} {...script} />))}
           {/*<script async type="text/javascript" src="https://maps.google.com/maps/api/js?v=3.31&key=AIzaSyBCZ7Lk_9ZC-EfEkgNB5XdPUebFxRqGh3o" />*/}
-          <script async type="text/javascript" src="https://checkout.razorpay.com/v1/checkout.js" />
         </body>
       </Html>
     );
