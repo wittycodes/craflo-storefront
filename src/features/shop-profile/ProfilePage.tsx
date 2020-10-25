@@ -33,7 +33,7 @@ import {
 import { Button } from 'components/button/button';
 // core components
 import ExamplesNavbar from "src/paper-kit-react/src/components/Navbars/ExamplesNavbar.js";
-import ProfilePageHeader from "src/paper-kit-react/src/components/Headers/ProfilePageHeader.js";
+import ProfilePageHeader from "./ProfilePageHeader";
 import DemoFooter from "src/paper-kit-react/src/components/Footers/DemoFooter.js";
 import Footer from "../../layouts/footer";
 import CartPopUp from "../../features/carts/cart-popup";
