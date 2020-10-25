@@ -155,6 +155,6 @@ const nextConfig = {
 
 module.exports = withPlugins([
   withOptimizedImages,
-  [withCss, cssConfig],
-  [withPurgeCss, purgeCssConfig]
+  // [withCss, cssConfig],
+  // [withPurgeCss, purgeCssConfig]
 ], nextConfig);
