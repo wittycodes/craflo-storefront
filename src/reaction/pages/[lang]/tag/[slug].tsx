@@ -170,7 +170,7 @@ export async function getStaticProps({ params: { lang, slug } }) {
         tag: null
       },
       // eslint-disable-next-line camelcase
-      revalidate: 1 // Revalidate immediately
+      // revalidate: 1 // // revalidate immediately
     };
   }
 
@@ -182,7 +182,7 @@ export async function getStaticProps({ params: { lang, slug } }) {
       ...await fetchTag(slug, lang)
     },
     // eslint-disable-next-line camelcase
-    revalidate: 120 // Revalidate each two minutes
+    // revalidate: 120 // // revalidate each two minutes
   };
 }
 

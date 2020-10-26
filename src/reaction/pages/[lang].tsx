@@ -105,7 +105,7 @@ export async function getStaticProps({ params: { lang } }) {
         ...translations
       },
       // eslint-disable-next-line camelcase
-      revalidate: 1 // Revalidate immediately
+      // revalidate: 1 // // revalidate immediately
     };
   }
 
@@ -115,7 +115,7 @@ export async function getStaticProps({ params: { lang } }) {
       //...translations
     },
     // eslint-disable-next-line camelcase
-    revalidate: 120 // Revalidate each two minutes
+    // revalidate: 120 // // revalidate each two minutes
   };
 }
 
