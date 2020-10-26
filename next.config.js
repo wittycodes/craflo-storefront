@@ -195,5 +195,4 @@ const nextConfig = {
 module.exports = withPlugins([
   withOptimizedImages,
     // withPrefresh
-  [withPurgeCss, purgeCssConfig]
 ], nextConfig);
