@@ -7,7 +7,7 @@ import { ContextProviders } from "context/ContextProviders";
 import { ComponentsProvider } from "@reactioncommerce/components-context";
 import components from "custom/componentsContext";
 import muiTheme from "custom/reactionTheme";
-
+import Head from 'next/head'
 
 
 import { ApolloProvider } from '@apollo/react-hooks';
@@ -96,8 +96,25 @@ export function ExtendedApp({Component, pageProps, ...rest}) {
     }
   }, [])
 
+  const meta = [
+    // Use minimum-scale=1 to enable GPU rasterization
+    {
+      name: "viewport",
+      content: "initial-scale=1 minimum-scale=1, width=device-width, height=device-height"
+    }
+    // PWA primary color
+    // {
+    //   name: "theme-color",
+    //   content: theme.palette.primary.main
+    // }
+  ];
+
+
   return (
     <>
+      <Head>
+        {meta.map((tag, index) => <meta key={index} {...tag} />)}
+      </Head>
     <Normalize />
     <ContextProviders pageProps={pageProps}>
       <ComponentsProvider value={components}>

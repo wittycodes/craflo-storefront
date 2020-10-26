@@ -4,6 +4,7 @@ const withPlugins = require('next-compose-plugins');
 const withOptimizedImages = require('next-optimized-images');
 const withCss = require('@zeit/next-css')
 const withPurgeCss = require('next-purgecss')
+// const withPrefresh = require('@prefresh/next')
 
 
 const {
@@ -12,7 +13,7 @@ const {
 
 // withCSS config
 const cssConfig = {
-  cssModules: false,
+  cssModules: true,
   importLoaders: 1,
   cssLoaderOptions: {
     localIdentName: '[path]___[local]___[hash:base64:5]',
@@ -31,6 +32,7 @@ const purgeCssConfig = {
 
 // next.js configuration
 const nextConfig = {
+
   env: {
     CANONICAL_URL: appConfig.CANONICAL_URL,
     INTERNAL_GRAPHQL_URL: appConfig.INTERNAL_GRAPHQL_URL,
@@ -40,7 +42,42 @@ const nextConfig = {
     STRIPE_PUBLIC_API_KEY: appConfig.STRIPE_PUBLIC_API_KEY,
     ENABLE_SPA_ROUTING: appConfig.ENABLE_SPA_ROUTING
   },
-  webpack: (webpackConfig) => {
+  webpack(webpackConfig, { dev, isServer }) {
+
+    // Move Preact into the framework chunk instead of duplicating in routes:
+    // const splitChunks = webpackConfig.optimization && webpackConfig.optimization.splitChunks
+    // if (splitChunks) {
+    //   const cacheGroups = splitChunks.cacheGroups
+    //   const test = /[\\/]node_modules[\\/](preact|preact-render-to-string|preact-context-provider)[\\/]/
+    //   if (cacheGroups.framework) {
+    //     cacheGroups.preact = Object.assign({}, cacheGroups.framework, { test })
+    //     // if you want to merge the 2 small commons+framework chunks:
+    //     // cacheGroups.commons.name = 'framework';
+    //   }
+    // }
+    //
+    // if (isServer) {
+    //   // mark `preact` stuffs as external for server bundle to prevent duplicate copies of preact
+    //   webpackConfig.externals.push(
+    //     /^(preact|preact-render-to-string|preact-context-provider)([\\/]|$)/
+    //   )
+    // }
+    //
+    // // Install webpack aliases:
+    // const aliases = webpackConfig.resolve.alias || (webpackConfig.resolve.alias = {})
+    // aliases.react = aliases['react-dom'] = 'preact/compat'
+    //
+    // // Automatically inject Preact DevTools:
+    // if (dev && !isServer) {
+    //   const entry = webpackConfig.entry
+    //   webpackConfig.entry = () =>
+    //     entry().then((entries) => {
+    //       entries['main.js'] = ['preact/debug'].concat(entries['main.js'] || [])
+    //       return entries
+    //     })
+    // }
+
+
     webpackConfig.module.rules.push({
       test: /\.(gql|graphql)$/,
       loader: "graphql-tag/loader",
@@ -57,9 +94,11 @@ const nextConfig = {
     // It creates an alias to import the es modules version of the styled-components package.
     // This is a workaround until the root issue is resolved: https://github.com/webpack/webpack/issues/9329
 
+    webpackConfig.resolve.alias["styled-components"] = "styled-components/dist/styled-components.browser.esm.js";
 
-    webpackConfig.resolve.alias.react = "preact/compat"
-    webpackConfig.resolve.alias["react-dom"] = "preact/compat"
+    // webpackConfig.resolve.alias.react = "preact/compat"
+    // webpackConfig.resolve.alias["react-dom"] = "preact/compat"
+    // webpackConfig.resolve.alias["react-ssr-prepass"] = "preact-ssr-prepass"
     webpackConfig.resolve.alias.components = path.join(__dirname, "components");
     webpackConfig.resolve.alias.containers = path.join(__dirname, "containers");
     webpackConfig.resolve.alias.context = path.join(__dirname, "context");
@@ -155,6 +194,6 @@ const nextConfig = {
 
 module.exports = withPlugins([
   withOptimizedImages,
-  // [withCss, cssConfig],
-  // [withPurgeCss, purgeCssConfig]
+    // withPrefresh
+  [withPurgeCss, purgeCssConfig]
 ], nextConfig);

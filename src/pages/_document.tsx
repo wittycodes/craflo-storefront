@@ -22,18 +22,7 @@ class HTMLDocument extends Document {
       { rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.css" },
       ...favicons
     ];
-    const meta = [
-      // Use minimum-scale=1 to enable GPU rasterization
-      {
-        name: "viewport",
-        content: "initial-scale=1 minimum-scale=1, width=device-width, height=device-height"
-      }
-      // PWA primary color
-      // {
-      //   name: "theme-color",
-      //   content: theme.palette.primary.main
-      // }
-    ];
+
 
     // Analytics & Stripe Elements scripts
     const scripts = [
@@ -49,7 +38,6 @@ class HTMLDocument extends Document {
 
       }}>
         <Head>
-          {meta.map((tag, index) => <meta key={index} {...tag} />)}
           {links.map((link, index) => <link key={index} {...link} />)}
         </Head>
         <body style={{background: '#F7F7F7'}}>

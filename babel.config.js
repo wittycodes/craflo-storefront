@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = function (api) {
   api.cache(true);
 
@@ -9,6 +11,7 @@ module.exports = function (api) {
         ssr: true,
       }
     ],
+
     ['flow-react-proptypes', {deadCode: true, useESModules: true}],
     '@babel/plugin-proposal-optional-chaining'
   ];
