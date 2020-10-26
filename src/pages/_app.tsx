@@ -40,7 +40,7 @@ import 'react-tagsinput/react-tagsinput.css';
 import { GlobalStyle } from 'assets/styles/global.style';
 import { Normalize } from 'styled-normalize'
 import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick-theme.css";  ``
 
 // paper kit react
 // import "assets/css/bootstrap.min.css";
