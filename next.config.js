@@ -5,7 +5,7 @@ const withOptimizedImages = require('next-optimized-images');
 const withCss = require('@zeit/next-css')
 const withPurgeCss = require('next-purgecss')
 // const withPrefresh = require('@prefresh/next')
-
+// const withBundleAnalyzer = require("@next/bundle-analyzer");
 
 const {
   PHASE_PRODUCTION_BUILD,
@@ -194,5 +194,5 @@ const nextConfig = {
 
 module.exports = withPlugins([
   withOptimizedImages,
-    // withPrefresh
+// withPrefresh
 ], nextConfig);

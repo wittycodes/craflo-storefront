@@ -1,9 +1,9 @@
 import React from 'react';
-import { SearchBox } from 'components/search-box/search-box';
+// import { SearchBox } from 'components/search-box/search-box';
 import { useAppState, useAppDispatch } from 'contexts/app/app.provider';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
-import {ReactiveBase,ReactiveList, DataSearch} from '@appbaseio/reactivesearch'
+import {DataSearch} from '@appbaseio/reactivesearch'
 import {StyledSearchButton} from "../../components/search-box/search-box.style";
 import {SearchIcon} from "../../assets/icons/SearchIcon";
 interface Props {

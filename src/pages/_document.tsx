@@ -16,9 +16,6 @@ class HTMLDocument extends Document {
     const links = [
       { rel: "canonical", href: process.env.CANONICAL_URL },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Montserrat&display=swap" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css?family=Lato:400,700%7CPoppins:700&display=swap" },
-      { rel: "stylesheet", href: "https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" },
       { rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.css" },
       ...favicons
     ];

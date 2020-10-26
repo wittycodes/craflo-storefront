@@ -9,7 +9,7 @@ import { ILFlag } from 'assets/icons/ILFlag';
 import { ESFlag } from 'assets/icons/ESFlag';
 import { SAFlag } from 'assets/icons/SAFlag';
 import { useLocale } from 'contexts/language/language.provider';
-import { FaMapMarkerAlt } from 'react-icons/fa';
+// import { FaMapMarkerAlt } from 'react-icons/fa';
 
 import { ReactiveBase  } from '@appbaseio/reactivesearch';
 import { ReactiveOpenStreetMap } from '@appbaseio/reactivemaps';
@@ -51,7 +51,7 @@ const GeoSwitcher: React.FC<{}> = () => {
         className="left"
         handler={
           <SelectedItem>
-            <Flag><FaMapMarkerAlt style={{color: "#888"}} /></Flag>
+            <Flag><DEFlag style={{color: "#888"}} /></Flag>
             <span>
               {"Karnal"}
               {/*<FormattedMessage*/}
