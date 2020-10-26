@@ -7,23 +7,23 @@ const withPurgeCss = require('next-purgecss')
 // const withPrefresh = require('@prefresh/next')
 // const withBundleAnalyzer = require("@next/bundle-analyzer");
 
-const {
-  PHASE_PRODUCTION_BUILD,
-} = require('next/constants');
+// const {
+//   PHASE_PRODUCTION_BUILD,
+// } = require('next/constants');
 
 // withCSS config
-const cssConfig = {
-  cssModules: true,
-  importLoaders: 1,
-  cssLoaderOptions: {
-    localIdentName: '[path]___[local]___[hash:base64:5]',
-  },
-  [PHASE_PRODUCTION_BUILD]: {
-    cssLoaderOptions: {
-      localIdentName: '[hash:base64:8]',
-    },
-  },
-};
+// const cssConfig = {
+//   cssModules: true,
+//   importLoaders: 1,
+//   cssLoaderOptions: {
+//     localIdentName: '[path]___[local]___[hash:base64:5]',
+//   },
+//   [PHASE_PRODUCTION_BUILD]: {
+//     cssLoaderOptions: {
+//       localIdentName: '[hash:base64:8]',
+//     },
+//   },
+// };
 
 // purgecss config, only used in production.
 const purgeCssConfig = {
@@ -192,7 +192,4 @@ const nextConfig = {
   }
 };
 
-module.exports = withPlugins([
-  withOptimizedImages,
-// withPrefresh
-], nextConfig);
+module.exports = withPlugins([withOptimizedImages], nextConfig);
