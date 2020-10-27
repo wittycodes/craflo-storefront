@@ -187,7 +187,7 @@
     "jest-transform-graphql": "~2.1.0",
     "next-purgecss": "^4.0.0",
     "next-images": "~1.6.0",
-
+    "next-transpile-modules": "~4.1.0",
     "rimraf": "~2.6.3",
     "snyk": "~1.126.0",
     "typescript": "^3.9.5",
