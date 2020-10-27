@@ -8,37 +8,37 @@ import dynamic from 'next/dynamic';
 const GeneralCard = dynamic(
   import('src/components/product-card/product-card-listing/product-card-listing')
 );
-const Sidebar = dynamic(() => import('src/layouts/sidebar/sidebar'));
+// const Sidebar = dynamic(() => import('src/layouts/sidebar/sidebar'));
 // import Fade from 'react-reveal/Fade';
 //
 // import { Link, Element } from 'react-scroll';
 // import { Button } from 'src/components/button/button';
 import {
-  ProductDetailsWrapper,
+  // ProductDetailsWrapper,
   ProductPreview,
-  RestaurantMeta,
-  RestaurantNameAddress,
-  RestaurantName,
-  RestaurantAddress,
-  RestaurantOtherInfos,
-  InfoBlock,
-  Label,
-  Infos,
-  DeliveryOpt,
-  CategoriesWrapper,
-  CategoriesInner,
-  MainContent,
-  MenuContainer,
-  ItemCategoryWrapper,
-  ItemCategoryName,
-  ItemWrapper,
-  ItemNameDetails,
-  ItemName,
-  ItemDetails,
-  ItemNamePricing,
-  HelpText,
-  ItemPrice,
-  CartWrapper,
+  // RestaurantMeta,
+  // RestaurantNameAddress,
+  // RestaurantName,
+  // RestaurantAddress,
+  // RestaurantOtherInfos,
+  // InfoBlock,
+  // Label,
+  // Infos,
+  // DeliveryOpt,
+  // CategoriesWrapper,
+  // CategoriesInner,
+  // MainContent,
+  // MenuContainer,
+  // ItemCategoryWrapper,
+  // ItemCategoryName,
+  // ItemWrapper,
+  // ItemNameDetails,
+  // ItemName,
+  // ItemDetails,
+  // ItemNamePricing,
+  // HelpText,
+  // ItemPrice,
+  // CartWrapper,
 } from 'src/components/product-details/product-details-three/product-details-three.style';
 // import { CURRENCY } from 'src/utils/constant';
 // import FixedCart from 'src/features/carts/fixed-cart';
@@ -63,14 +63,14 @@ import inject from "hocs/inject";
 // import ProductGridEmptyMessage from "components/ProductGrid/ProductGridEmptyMessage";
 // import {Masonry, WindowScroller, AutoSizer, CellMeasurer, CellMeasurerCache} from 'react-virtualized';
 import {SEO} from "src/components/seo";
-import {
-  ContentSection,
-  MainContentArea, MobileCarouselDropdown,
-  OfferPageWrapper,
-  ProductsCol,
-  ProductsRow,
-  SidebarSection
-} from "src/assets/styles/pages.style";
+// import {
+//   ContentSection,
+//   MainContentArea, MobileCarouselDropdown,
+//   OfferPageWrapper,
+//   ProductsCol,
+//   ProductsRow,
+//   SidebarSection
+// } from "src/assets/styles/pages.style";
 // import GiftCard from "src/components/gift-card/gift-card";
 import Footer from "src/layouts/footer";
 import CartPopUp from "src/features/carts/cart-popup";

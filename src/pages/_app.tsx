@@ -1,5 +1,5 @@
 //@ts-nocheck
-import NextApp from "next/app";
+// import NextApp from "next/app";
 import React from "react";
 import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -22,7 +22,7 @@ import AppLayout from "src/layouts/app-layout";
 import { ThemeProvider } from 'styled-components';
 // import 'rheostat/initialize';
 
-import {ReactiveBase,ReactiveList, DataSearch} from '@appbaseio/reactivesearch'
+import {ReactiveBase} from '@appbaseio/reactivesearch'
 
 
 
@@ -116,6 +116,7 @@ export function ExtendedApp({Component, pageProps, ...rest}) {
         {meta.map((tag, index) => <meta key={index} {...tag} />)}
       </Head>
     <Normalize />
+    <CssBaseline/>
     <ContextProviders pageProps={pageProps}>
       <ComponentsProvider value={components}>
         <ApolloProvider client={apolloClient}>

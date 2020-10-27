@@ -1,58 +1,58 @@
 // @ts-nocheck
-import Immutable from 'immutable';
-import PropTypes from 'prop-types';
+// import Immutable from 'immutable';
+// import PropTypes from 'prop-types';
 import * as React from 'react';
 import dynamic from 'next/dynamic';
 //import {LabeledInput, InputRow} from './demo/LabeledInput';
-import createCellPositioner from './Masonry/createCellPositioner';
+// import createCellPositioner from './Masonry/createCellPositioner';
 const GeneralCard = dynamic(
   import('src/components/product-card/product-card-listing/product-card-listing')
 );
-const Sidebar = dynamic(() => import('src/layouts/sidebar/sidebar'));
-import Fade from 'react-reveal/Fade';
-
-import { Link, Element } from 'react-scroll';
-import { Button } from 'src/components/button/button';
+// const Sidebar = dynamic(() => import('src/layouts/sidebar/sidebar'));
+// import Fade from 'react-reveal/Fade';
+//
+// import { Link, Element } from 'react-scroll';
+// import { Button } from 'src/components/button/button';
 import {
-  ProductDetailsWrapper,
+  // ProductDetailsWrapper,
   ProductPreview,
-  RestaurantMeta,
-  RestaurantNameAddress,
-  RestaurantName,
-  RestaurantAddress,
-  RestaurantOtherInfos,
-  InfoBlock,
-  Label,
-  Infos,
-  DeliveryOpt,
-  CategoriesWrapper,
-  CategoriesInner,
-  MainContent,
-  MenuContainer,
-  ItemCategoryWrapper,
-  ItemCategoryName,
-  ItemWrapper,
-  ItemNameDetails,
-  ItemName,
-  ItemDetails,
-  ItemNamePricing,
-  HelpText,
-  ItemPrice,
-  CartWrapper,
+  // RestaurantMeta,
+  // RestaurantNameAddress,
+  // RestaurantName,
+  // RestaurantAddress,
+  // RestaurantOtherInfos,
+  // InfoBlock,
+  // Label,
+  // Infos,
+  // DeliveryOpt,
+  // CategoriesWrapper,
+  // CategoriesInner,
+  // MainContent,
+  // MenuContainer,
+  // ItemCategoryWrapper,
+  // ItemCategoryName,
+  // ItemWrapper,
+  // ItemNameDetails,
+  // ItemName,
+  // ItemDetails,
+  // ItemNamePricing,
+  // HelpText,
+  // ItemPrice,
+  // CartWrapper,
 } from 'src/components/product-details/product-details-three/product-details-three.style';
-import { CURRENCY } from 'src/utils/constant';
-import FixedCart from 'src/features/carts/fixed-cart';
-import FixedCartPopup from 'src/features/carts/fixed-cart-popup';
+// import { CURRENCY } from 'src/utils/constant';
+// import FixedCart from 'src/features/carts/fixed-cart';
+// import FixedCartPopup from 'src/features/carts/fixed-cart-popup';
 import { FormattedMessage } from 'react-intl';
 import Sticky from 'react-stickynode';
-import { groupBy } from 'src/utils/groupBy';
-import { useCart } from 'src/contexts/cart/use-cart';
-import { PlusOutline } from 'src/components/AllSvgIcon';
+// import { groupBy } from 'src/utils/groupBy';
+// import { useCart } from 'src/contexts/cart/use-cart';
+// import { PlusOutline } from 'src/components/AllSvgIcon';
 import { NextPage, GetStaticProps } from 'next';
-import StoreNav from "src/components/store-nav/store-nav";
-import storeType from "src/constants/storeType";
+// import StoreNav from "src/components/store-nav/store-nav";
+// import storeType from "src/constants/storeType";
 import {useRefScroll} from "src/utils/use-ref-scroll";
-import {Banner} from "src/components/banner/banner";
+// import {Banner} from "src/components/banner/banner";
 import {useAppDispatch} from "src/contexts/app/app.provider";
 import { useCallback } from 'react';
 import {withApollo} from "lib/apollo/withApollo";

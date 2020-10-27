@@ -6,15 +6,15 @@ import { SEO } from 'components/seo';
 import Checkout from 'features/checkouts/checkout-two/checkout-two';
 import { GET_LOGGED_IN_CUSTOMER } from 'graphql/query/customer.query';
 import { ProfileProvider } from 'contexts/profile/profile.provider';
-import ErrorMessage from 'components/error-message/error-message';
+// import ErrorMessage from 'components/error-message/error-message';
 import { useApolloClient } from "@apollo/client";
 import { withApollo } from "lib/apollo/withApollo";
 //import CheckoutActions from "components/CheckoutActions";
 import useCart from "hooks/cart/useCart";
 import useCartStore from "hooks/globalStores/useCartStore";
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
-import fetchTranslations from "staticUtils/translations/fetchTranslations";
-import inject from "../reaction/hocs/inject";
+// import fetchTranslations from "staticUtils/translations/fetchTranslations";
+// import inject from "../reaction/hocs/inject";
 
 const CheckoutPage: NextPage = ({ deviceType, ...rest }) => {
 
