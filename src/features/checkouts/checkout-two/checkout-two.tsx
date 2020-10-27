@@ -7,7 +7,7 @@ import RadioGroup from 'components/radio-group/radio-group';
 import PaymentGroup from 'components/payment-group/payment-group';
 import UpdateAddress from 'components/address-card/address-card';
 import UpdateContact from 'components/contact-card/contact-card';
-import StripePaymentForm from 'features/payment/stripe-form';
+// import StripePaymentForm from 'features/payment/stripe-form';
 import {DELETE_ADDRESS} from 'graphql/mutation/address';
 import {DELETE_CARD} from 'graphql/mutation/card';
 import {DELETE_CONTACT} from 'graphql/mutation/contact';

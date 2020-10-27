@@ -7,7 +7,7 @@ import { ProfileContext } from 'contexts/profile/profile.context';
 import { DELETE_ADDRESS } from 'graphql/mutation/address';
 import { DELETE_CARD } from 'graphql/mutation/card';
 import { DELETE_CONTACT } from 'graphql/mutation/contact';
-import StripePaymentForm from 'features/payment/stripe-form';
+// import StripePaymentForm from 'features/payment/stripe-form';
 import {
   SettingsForm,
   SettingsFormContent,
