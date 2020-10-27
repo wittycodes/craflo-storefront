@@ -90,7 +90,7 @@ const nextConfig = {
 
     webpackConfig.module.rules.push({
       test: /\.mjs$/,
-      include: ["/node_modules/"],
+      include: /node_modules/,
       type: "javascript/auto"
     });
 
