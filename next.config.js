@@ -2,7 +2,7 @@ const path = require("path");
 const appConfig = require("./config");
 const withPlugins = require('next-compose-plugins');
 const withImages = require('next-images')
-const withTM = require('next-transpile-modules')(['@reactioncommerce/components']); // pass the modules you would like to see transpiled
+// const withTM = require('next-transpile-modules')(['@reactioncommerce/components']); // pass the modules you would like to see transpiled
 
 // const withOptimizedImages = require('next-optimized-images');
 // const withCss = require('@zeit/next-css')
@@ -90,6 +90,7 @@ const nextConfig = {
 
     webpackConfig.module.rules.push({
       test: /\.mjs$/,
+      include: ["/node_modules/"],
       type: "javascript/auto"
     });
 
@@ -195,4 +196,4 @@ const nextConfig = {
   }
 };
 
-module.exports = withPlugins([withImages({}), withTM], nextConfig);
+module.exports = withPlugins([withImages({})], nextConfig);
