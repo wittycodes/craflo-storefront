@@ -118,6 +118,7 @@ export function ExtendedApp({Component, pageProps, ...rest}) {
     <Normalize />
     <CssBaseline/>
     <ContextProviders pageProps={pageProps}>
+      <ComponentsProvider value={components}>
         <ApolloProvider client={apolloClient}>
             <LanguageProvider messages={messages}>
               <CartProvider>
@@ -145,6 +146,7 @@ export function ExtendedApp({Component, pageProps, ...rest}) {
               </CartProvider>
             </LanguageProvider>
         </ApolloProvider>
+      </ComponentsProvider>
     </ContextProviders>
     </>
   )
