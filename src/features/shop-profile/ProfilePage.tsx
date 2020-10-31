@@ -144,7 +144,7 @@ function ProfilePage({deviceType, ...props}) {
       <ProfilePageHeader />
       <ProductDetailsWrapper>
         <ProductPreview>
-          <Image src={data?.previewUrl} alt={data?.name} />
+          <Image src={data?.previewUrl} unsized={true} alt={data?.name} />
         </ProductPreview>
         <Sticky
           top={deviceType.mobile || deviceType.tablet ? 68 : 78}

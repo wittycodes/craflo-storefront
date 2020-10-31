@@ -53,7 +53,8 @@ const nextConfig = {
       'img3.etsystatic.com',
       'img4.etsystatic.com',
       'img5.etsystatic.com',
-      'img6.etsystatic.com'
+      'img6.etsystatic.com',
+      'www.artwaley.com'
     ]
   },
   webpack(webpackConfig, { dev, isServer }) {
