@@ -17,7 +17,7 @@
 
 */
 import React from "react";
-
+import Image from 'next/image'
 // reactstrap components
 // import {
 //   Label,
@@ -144,7 +144,7 @@ function ProfilePage({deviceType, ...props}) {
       <ProfilePageHeader />
       <ProductDetailsWrapper>
         <ProductPreview>
-          <img src={data?.previewUrl} alt={data?.name} />
+          <Image src={data?.previewUrl} alt={data?.name} />
         </ProductPreview>
         <Sticky
           top={deviceType.mobile || deviceType.tablet ? 68 : 78}

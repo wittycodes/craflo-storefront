@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
 import { Button } from 'components/button/button';
+import Image from 'next/image'
 import {
   ProductDetailsWrapper,
   ProductPreview,
@@ -257,7 +258,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
         <AuthorName>
           {product.author.avatar && product.author.avatar.length !== 0 ? (
             <Avatar>
-              <img src={product.author.avatar} alt={product.author.name} />
+              <Image src={product.author.avatar} alt={product.author.name} />
             </Avatar>
           ) : (
             <InkPen />

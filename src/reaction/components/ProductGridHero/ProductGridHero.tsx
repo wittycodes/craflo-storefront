@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import Image from 'next/image'
 
 const styles = (theme) => ({
   heroImg: {
@@ -33,7 +34,7 @@ class ProductGridHero extends Component {
       <section className={classes.heroGridContainer}>
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <img src={heroMediaUrl} alt="Product category" className={classes.heroImg} />
+            <Image src={heroMediaUrl} alt="Product category" className={classes.heroImg} />
           </Grid>
         </Grid>
       </section>

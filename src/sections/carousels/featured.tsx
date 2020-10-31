@@ -18,7 +18,6 @@ function getRandomColor() {
 const CategoryCard  = styled.div`
       margin: 10px;
       border-radius: 16px;
-      background: ${props => props.bg};
       height: 12rem;
       width: 14 rem;
       `;
@@ -31,7 +30,7 @@ const CategoryCard  = styled.div`
 
 const Wrapper = ()=>{
   const bg = getRandomColor()
-  return <CategoryCard bg={bg}/>
+  return <CategoryCard style={{background: bg}}/>
 }
 
 export default class Carousel extends Component {

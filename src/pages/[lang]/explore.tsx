@@ -8,6 +8,7 @@ import dynamic from 'next/dynamic';
 const GeneralCard = dynamic(
   import('src/components/product-card/product-card-listing/product-card-listing')
 );
+import Image from 'next/image'
 // const Sidebar = dynamic(() => import('src/layouts/sidebar/sidebar'));
 // import Fade from 'react-reveal/Fade';
 //
@@ -220,7 +221,7 @@ export const App = ({products, deviceType}) => {
 
 // const FakeCard = ({ data: { id, name, src } }) => (
 //   <div>
-//     <img alt="kitty" src={src} />
+//     <Image alt="kitty" src={src} />
 //     <span children={name} />
 //   </div>
 // );
@@ -347,7 +348,7 @@ const ProductListingPage: NextPage = ({ deviceType, ...props }) => {
       {/*</MobileCarouselDropdown>*/}
 
             <ProductPreview>
-              <img src={"https://media.gettyimages.com/photos/making-paper-flowersart-and-craft-concept-picture-id1149218784"} />
+              <Image src={"https://media.gettyimages.com/photos/making-paper-flowersart-and-craft-concept-picture-id1149218784"} />
             </ProductPreview>
 
             <Sticky

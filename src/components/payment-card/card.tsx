@@ -2,6 +2,7 @@ import React from 'react';
 import MasterCard from './image/master-card.png';
 import Paypal from './image/paypal.png';
 import Visa from './image/visa.png';
+import Image from 'next/image'
 import {
   PaymentCardWrapper,
   CardLogo,
@@ -33,7 +34,7 @@ const Card: React.FC<Props> = ({
   return (
     <PaymentCardWrapper className="payment-card" color={color}>
       <CardLogo>
-        <img src={logo} alt={`card-${id}`} />
+        <Image src={logo} alt={`card-${id}`} />
       </CardLogo>
       <CardNumTitle>Card Number</CardNumTitle>
       <CardNumber>

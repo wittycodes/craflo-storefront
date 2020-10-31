@@ -1,12 +1,11 @@
 const path = require("path");
 const appConfig = require("./config");
 const withPlugins = require('next-compose-plugins');
-const withImages = require('next-images')
-// const withTM = require('next-transpile-modules')(['@reactioncommerce/components']); // pass the modules you would like to see transpiled
+const withImages = require('next-images');
+const withCss = require('@zeit/next-css')
+const withPurgeCss = require('next-purgecss')
+const withMDX = require('@next/mdx')({pageExtensions: ['js','jsx','ts','tsx','mdx']})
 
-// const withOptimizedImages = require('next-optimized-images');
-// const withCss = require('@zeit/next-css')
-// const withPurgeCss = require('next-purgecss')
 // const withPrefresh = require('@prefresh/next')
 // const withBundleAnalyzer = require("@next/bundle-analyzer");
 
@@ -44,6 +43,18 @@ const nextConfig = {
     SEGMENT_ANALYTICS_WRITE_KEY: appConfig.SEGMENT_ANALYTICS_WRITE_KEY,
     STRIPE_PUBLIC_API_KEY: appConfig.STRIPE_PUBLIC_API_KEY,
     ENABLE_SPA_ROUTING: appConfig.ENABLE_SPA_ROUTING
+  },
+  images: {
+    domains: [
+      'media.gettyimages.com',
+      'img0.etsystatic.com',
+      'img1.etsystatic.com',
+      'img2.etsystatic.com',
+      'img3.etsystatic.com',
+      'img4.etsystatic.com',
+      'img5.etsystatic.com',
+      'img6.etsystatic.com'
+    ]
   },
   webpack(webpackConfig, { dev, isServer }) {
 
@@ -90,7 +101,6 @@ const nextConfig = {
 
     webpackConfig.module.rules.push({
       test: /\.mjs$/,
-      include: /node_modules/,
       type: "javascript/auto"
     });
 
@@ -196,4 +206,7 @@ const nextConfig = {
   }
 };
 
-module.exports = withPlugins([withImages({})], nextConfig);
+module.exports = withPlugins([
+  withImages,
+  withMDX
+], nextConfig);

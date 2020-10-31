@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { ContainerQuery } from "react-container-query";
 import styled from "styled-components";
 import { applyTheme } from "@reactioncommerce/components/utils";
+import NextImage from 'next/image'
 
 const imageContainerQueries = {
   isLargeWidth: {
@@ -22,23 +23,23 @@ const imageContainerQueries = {
 const ImageWrapper = styled.div`
   background-color: ${applyTheme("ProgressiveImage.backgroundColor")};
   display: block;
-  height: ${props => props.imgH};
+  height: ${props => props.imgH}px;
   overflow: hidden;
   padding-top: 100%;
   position: relative;
   border-radius: 1rem 1rem 0 0;
   width: 100%;
-  padding: 6px;
+  padding: 0px;
 `;
 
-const Img = styled.img`
+const Img = styled(NextImage)`
   width: ${({ fit }) => (fit === "contain" && "100%") || "auto"};
   height: ${({ fit, fixWidth }) => (fit === "cover" && "100%") || "auto"};
-  left: 50%;
+  left: 50% !important;
   opacity: 1;
   position: absolute;
   transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  top: 50%;
+  top: 50% !important;
   transform: translate(-50%, -50%);
 
   ${({ isLoading, isLoaded, isHidden }) => {
@@ -194,6 +195,7 @@ class ProgressiveImage extends Component {
   renderResponsiveImage() {
     const { altText, fit, srcs } = this.props;
     const { medium, large } = srcs;
+    const {imgW, imgH } = this.props;
 
     return (
       <ContainerQuery query={imageContainerQueries}>
@@ -210,6 +212,8 @@ class ProgressiveImage extends Component {
               isLoaded={true}
               alt={altText}
               fit={fit}
+              width={imgW}
+              height={imgH}
             />
           );
         }}
@@ -225,7 +229,8 @@ class ProgressiveImage extends Component {
    */
   renderImg() {
     const { altText, fit, src } = this.props;
-    return <Img src={src} isLoaded={true} alt={altText} fit={fit} />;
+    const {imgW, imgH } = this.props;
+    return <Img src={src} isLoaded={true} alt={altText} fit={fit} width={imgW} height={imgH}/>;
   }
 
   /**
@@ -248,6 +253,7 @@ class ProgressiveImage extends Component {
    */
   renderLoadingImage() {
     const { fit, presrc } = this.props;
+    const {imgW, imgH } = this.props;
     const { ready } = this.state;
     return (
       <Img
@@ -256,6 +262,8 @@ class ProgressiveImage extends Component {
         isHidden={ready}
         alt=""
         fit={fit}
+        width={imgW}
+        height={imgH}
       />
     );
   }

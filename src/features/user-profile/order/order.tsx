@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { useQuery } from '@apollo/react-hooks';
 import { withStyles } from "@material-ui/core/styles";
+import Image from 'next/image'
 import {
   DesktopView,
   MobileView,
@@ -81,7 +82,7 @@ const orderTableColumns = [
       return (
         <ItemWrapper>
           <ImageWrapper>
-            <img src={record.image} alt={record.title} />
+            <Image src={record.image} alt={record.title} />
           </ImageWrapper>
 
           <ItemDetails>

@@ -9,6 +9,7 @@ import { ArrowDropDown } from 'assets/icons/ArrowDropDown';
 import { CategoryIcon } from 'assets/icons/CategoryIcon';
 import Grid from "@material-ui/core/Grid";
 import { useLocale } from 'contexts/language/language.provider';
+import Image from 'next/image'
 import {
   SidebarMobileLoader,
   SidebarLoader,
@@ -1488,7 +1489,7 @@ const SidebarCategory: React.FC<SidebarCategoryProps> = ({
 
                       <Grid container spacing={1}>
                         <UserAvatar>
-                          <img src={UserImage} alt="user_avatar"/>
+                          <Image src={UserImage} alt="user_avatar"/>
                         </UserAvatar>
                         <UserDetails>
                           <h3>{name}</h3>

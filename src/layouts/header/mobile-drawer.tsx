@@ -9,6 +9,7 @@ import { CloseIcon } from 'assets/icons/CloseIcon';
 import { AuthContext } from 'contexts/auth/auth.context';
 import AuthenticationForm from 'features/authentication-form';
 import { FormattedMessage } from 'react-intl';
+import Image from 'next/image'
 import {
   HamburgerIcon,
   DrawerContentWrapper,
@@ -171,7 +172,7 @@ const MobileDrawer: React.FunctionComponent = () => {
             {isAuthenticated ? (
               <LoginView>
                 <UserAvatar>
-                  <img src={UserImage} alt="user_avatar" />
+                  <Image src={UserImage} alt="user_avatar" />
                 </UserAvatar>
                 <UserDetails>
                   <h3>David Kinderson</h3>

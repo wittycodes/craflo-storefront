@@ -3,6 +3,7 @@ import { Button } from 'components/button/button';
 import { FormattedMessage } from 'react-intl';
 import Popover from 'components/popover/popover';
 import { AuthorizedMenu } from './authorized-menu';
+import Image from 'next/image'
 
 interface Props {
   isAuthenticated: boolean;
@@ -20,7 +21,7 @@ const AuthMenu = ({ isAuthenticated, onJoin, onLogout, avatar }: Props) => {
     <Popover
       direction="right"
       className="user-pages-dropdown"
-      handler={<img src={avatar} alt="user" />}
+      handler={<Image src={avatar} alt="user" />}
       content={<AuthorizedMenu onLogout={onLogout} />}
     />
   );

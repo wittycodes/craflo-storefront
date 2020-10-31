@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Element } from 'react-scroll';
 import { Button } from 'components/button/button';
+import Image from 'next/image'
 import {
   ProductDetailsWrapper,
   ProductPreview,
@@ -73,7 +74,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
     <>
       <ProductDetailsWrapper>
         <ProductPreview>
-          <img src={data.previewUrl} alt={data.name} />
+          <Image src={data.previewUrl} alt={data.name} />
         </ProductPreview>
         <div id="cart-sticky">
           <RestaurantMeta id="restaurantMeta">

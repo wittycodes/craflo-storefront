@@ -37,7 +37,7 @@ const Uploader = ({ onChange, imageURL, intlUploadText }: any) => {
   const thumbs = files.map((file) => (
     <Thumb key={file.name}>
       <ThumbInner>
-        <Img src={file.preview} alt={file.name} />
+        <Image src={file.preview} alt={file.name} />
       </ThumbInner>
     </Thumb>
   ));

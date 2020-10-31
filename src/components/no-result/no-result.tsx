@@ -6,6 +6,7 @@ import {
   ImageWrapper,
   ButtonWrapper,
 } from './no-result.style';
+import Image from 'next/image'
 import { ArrowPrev } from 'assets/icons/ArrowPrev';
 import { Button } from 'components/button/button';
 // import { SearchContext } from 'contexts/search/search.context';
@@ -37,7 +38,7 @@ const NoResultFound: React.FC<NoResultFoundProps> = ({ id }) => {
       </h3>
 
       <ImageWrapper>
-        <img src={NoResultSvg} alt="No Result" />
+        <Image src={NoResultSvg} alt="No Result" />
       </ImageWrapper>
 
       <ButtonWrapper>

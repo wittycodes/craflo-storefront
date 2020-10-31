@@ -135,7 +135,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <ProductCardWrapper style={style} move={props.inView? 30: 0} onClick={onClick} className="product-card">
-      <ProgressiveImage className="product-image" presrc={image} src={image} imgH={props.imgH} imgW={props.imgW} fit={"fit-content"}/>
+      <ProgressiveImage className="product-image" presrc={image} src={image} imgH={props.imgH } imgW={props.imgW } fit={"fit-content"}/>
         {discountInPercent ? (
           <div>
             <DiscountPercent>{discountInPercent}%</DiscountPercent>

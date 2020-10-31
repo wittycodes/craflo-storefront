@@ -8,6 +8,7 @@ import NavLink from 'src/components/nav-link/nav-link';
 import { CloseIcon } from 'src/assets/icons/CloseIcon';
 import { AuthContext } from 'src/contexts/auth/auth.context';
 import AuthenticationForm from 'src/features/authentication-form';
+import Image from 'next/image'
 import { FormattedMessage } from 'react-intl';
 import {
   HamburgerIcon,
@@ -181,7 +182,7 @@ const Menu: React.FunctionComponent = () => {
             {isAuthenticated ? (
               <LoginView>
                 <UserAvatar>
-                  <img src={UserImage} alt="user_avatar" />
+                  <Image src={UserImage} alt="user_avatar" />
                 </UserAvatar>
                 <UserDetails>
                   <h3>David Kinderson</h3>

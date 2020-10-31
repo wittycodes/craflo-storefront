@@ -5,6 +5,7 @@ import * as React from 'react';
 import dynamic from 'next/dynamic';
 //import {LabeledInput, InputRow} from './demo/LabeledInput';
 // import createCellPositioner from './Masonry/createCellPositioner';
+import Image from 'next/image'
 const GeneralCard = dynamic(
   import('src/components/product-card/product-card-listing/product-card-listing')
 );
@@ -157,8 +158,8 @@ const Card = ({index, width, data}) => {
         title={p.title}
         description={p.description}
         image={media[0].url_570xN}
-        imgH={imgH / 16 + "rem"}
-        imgW={imgW / 16 + "rem"}
+        imgH={imgH}
+        imgW={imgW}
         currency="USD"
         price={p.pricing.USD.maxPrice + ""}
         salePrice={(p.pricing.USD.maxPrice) * 0.8 + ""}
@@ -353,7 +354,7 @@ export const App = ({ deviceType, data, loading, routingStore, props}) => {
 
 // const FakeCard = ({ data: { id, name, src } }) => (
 //   <div>
-//     <img alt="kitty" src={src} />
+//     <Image alt="kitty" src={src} />
 //     <span children={name} />
 //   </div>
 // );
@@ -464,7 +465,7 @@ const ProductListingPage: NextPage = ({ deviceType, ...props }) => {
       {/*</MobileCarouselDropdo1`wn>*/}
 
             <ProductPreview>
-              <img src={"https://media.gettyimages.com/photos/making-paper-flowersart-and-craft-concept-picture-id1149218784"} />
+              <Image unsized={true} src={"https://media.gettyimages.com/photos/making-paper-flowersart-and-craft-concept-picture-id1149218784"} />
             </ProductPreview>
 
 
