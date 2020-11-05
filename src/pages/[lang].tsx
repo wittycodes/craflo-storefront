@@ -131,4 +131,4 @@ export async function getStaticPaths() {
   };
 }
 
-export default withApollo()(withCatalogItems(inject("routingStore", "uiStore")(ProductGridPage)));
+export default withApollo()(inject("routingStore", "uiStore")(ProductGridPage));

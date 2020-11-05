@@ -96,15 +96,15 @@ const nextConfig = {
     //     })
     // }
 
-    webpackConfig.entry["styles/theme"] = `src/paperbits/themes/website/styles/styles.design.scss`;
+    // webpackConfig.entry["styles/theme"] = `src/paperbits/themes/website/styles/styles.design.scss`;
     // webpackConfig.output["filename"] = "./[name].js"
-    webpackConfig.entry["editors/scripts/paperbits"] = ["src/paperbits/startup.design.ts"]
-    webpackConfig.entry["editors/styles/paperbits"] = [`src/paperbits/themes/designer/styles/styles.scss`]
+    // webpackConfig.entry["editors/scripts/paperbits"] = ["src/paperbits/startup.design.ts"]
+    // webpackConfig.entry["editors/styles/paperbits"] = [`src/paperbits/themes/designer/styles/styles.scss`]
     webpackConfig.plugins.push(new CopyPlugin({
       patterns: [
-        { from: path.join(__dirname,'paperbit-dist'), to: path.join(__dirname,'paperbits') },
+        { from: path.join(__dirname,'paperbit-dist'), to: path.join(__dirname,'static/paperbits') },
       ],
-    }),)
+    }))
     webpackConfig.module.rules.push({
         test: /\.(gql|graphql)$/,
       loader: "graphql-tag/loader",
@@ -217,8 +217,7 @@ const nextConfig = {
 
     return webpackConfig;
   },
-  experimental: {
-    redirects() {
+  async redirects() {
       return [
         {
           source: "/graphiql",
@@ -242,7 +241,7 @@ const nextConfig = {
         }
       ];
     },
-    rewrites() {
+    async rewrites() {
       return [
         // Sitemap
         {
@@ -288,7 +287,6 @@ const nextConfig = {
         }
       ];
     }
-  }
 };
 
 module.exports = withPlugins([

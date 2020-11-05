@@ -162,8 +162,7 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
 
 
 export const getStaticProps: GetStaticProps = async ({ params: { lang } }) => {
-  lang = "en"
-  const primaryShop = await fetchPrimaryShop(lang);
+  const primaryShop = await fetchPrimaryShop("en");
   //const translations = await fetchTranslations(lang, ["common"]);
 
   if (!primaryShop) {
