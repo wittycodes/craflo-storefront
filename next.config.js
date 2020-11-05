@@ -5,6 +5,9 @@ const withImages = require('next-images');
 const withCss = require('@zeit/next-css')
 const withPurgeCss = require('next-purgecss')
 const withMDX = require('@next/mdx')({pageExtensions: ['js','jsx','ts','tsx','mdx']})
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 // const withPrefresh = require('@prefresh/next')
 // const withBundleAnalyzer = require("@next/bundle-analyzer");
@@ -31,6 +34,7 @@ const withMDX = require('@next/mdx')({pageExtensions: ['js','jsx','ts','tsx','md
 const purgeCssConfig = {
   purgeCssEnabled: ({dev}) => !dev,
 };
+const CopyPlugin = require('copy-webpack-plugin');
 
 // next.js configuration
 const nextConfig = {
@@ -57,7 +61,7 @@ const nextConfig = {
       'www.artwaley.com'
     ]
   },
-  webpack(webpackConfig, { dev, isServer }) {
+  webpack(webpackConfig) {
 
     // Move Preact into the framework chunk instead of duplicating in routes:
     // const splitChunks = webpackConfig.optimization && webpackConfig.optimization.splitChunks
@@ -92,9 +96,17 @@ const nextConfig = {
     //     })
     // }
 
-
+    webpackConfig.entry["styles/theme"] = `src/paperbits/themes/website/styles/styles.design.scss`;
+    // webpackConfig.output["filename"] = "./[name].js"
+    webpackConfig.entry["editors/scripts/paperbits"] = ["src/paperbits/startup.design.ts"]
+    webpackConfig.entry["editors/styles/paperbits"] = [`src/paperbits/themes/designer/styles/styles.scss`]
+    webpackConfig.plugins.push(new CopyPlugin({
+      patterns: [
+        { from: path.join(__dirname,'paperbit-dist'), to: path.join(__dirname,'paperbits') },
+      ],
+    }),)
     webpackConfig.module.rules.push({
-      test: /\.(gql|graphql)$/,
+        test: /\.(gql|graphql)$/,
       loader: "graphql-tag/loader",
       exclude: ["/node_modules/", "/.next/"],
       enforce: "pre"
@@ -104,6 +116,78 @@ const nextConfig = {
       test: /\.mjs$/,
       type: "javascript/auto"
     });
+
+
+    webpackConfig.module.rules.push(
+      {
+        test: /\.(raw|liquid)$/,
+        loader: "raw-loader",
+        include: [
+          path.resolve(__dirname, "paperbits")
+        ]
+      })
+
+    webpackConfig.module.rules.push({
+      test: /\.tsx?$/,
+      include: [
+        path.resolve(__dirname, "paperbits"),
+        path.resolve(__dirname, 'node_modules/@paperbits/')
+      ],
+      loader: 'babel-loader',
+      options: {
+        presets: ['@babel/preset-env']
+      }
+      // loader: "ts-loader",
+      // options:{
+      //   allowTsInNodeModules: true
+      // }
+
+    })
+    // webpackConfig.module.rules.push(
+    //   {
+    //     test: /\.scss$/,
+    //     use: [
+    //       MiniCssExtractPlugin.loader,
+    //       { loader: "css-loader", options: { url: false } },
+    //       { loader: "postcss-loader" },
+    //       { loader: "sass-loader" }
+    //     ],
+    //     include: [
+    //       path.resolve(__dirname, "paperbits")
+    //     ]
+    //   })
+
+
+    webpackConfig.module.rules.push(
+      {
+        test: /\.html$/,
+        loader: "html-loader",
+        options: {
+          esModule: true,
+          minimize: {
+            removeComments: false,
+            collapseWhitespace: false
+          }
+        },
+        include: [
+          path.resolve(__dirname, "src/paperbits"),
+          path.resolve(__dirname, 'node_modules/@paperbits/')
+        ]
+      })
+    webpackConfig.module.rules.push(
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loader: "url-loader",
+        options: {
+          limit: 10000
+        },
+        include: [
+          path.resolve(__dirname, "paperbits"),
+          path.resolve(__dirname, 'node_modules/@paperbits/')
+        ]
+      })
+
+
 
     // Duplicate versions of the styled-components package were being loaded, this config removes the duplication.
     // It creates an alias to import the es modules version of the styled-components package.

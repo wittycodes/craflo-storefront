@@ -26,7 +26,7 @@ import dynamic from 'next/dynamic'
 //   ssr: false
 // })
 import ProfilePage from 'src/features/shop-profile/ProfilePage';
-import {App} from '../[lang]/explore-beta';
+// import {App} from '../[lang]/explore-beta';
 
 
 type Props = {
@@ -36,24 +36,75 @@ type Props = {
     desktop: boolean;
   };
 };
-import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+// import ReactDOM from "react-dom";
+// import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
 // styles
 // pages
-import Index from "src/paper-kit-react/src/views/Index.js";
-import NucleoIcons from "src/paper-kit-react/src/views/NucleoIcons.js";
-import PageLoading from "../../reaction/components/PageLoading/PageLoading";
+// import Index from "src/paper-kit-react/src/views/Index.js";
+// import NucleoIcons from "src/paper-kit-react/src/views/NucleoIcons.js";
+// import PageLoading from "../../reaction/components/PageLoading/PageLoading";
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
 import withCatalogItems from "containers/catalog/withCatalogItems";
-import CartPopUp from "../../features/carts/cart-popup";
+// import CartPopUp from "../../features/carts/cart-popup";
 import fetchMerchantShop from "staticUtils/shop/fetchMerchantShop";
 // import LandingPage from "views/examples/LandingPage.js";
 // import ProfilePage from "views/examples/ProfilePage.js";
 // import RegisterPage from "views/examples/RegisterPage.js";
 // others
 // import Sticky from 'react-stickynode';
+/////////////////////////////////////////////////
 
+
+// import "src/paperbits/polyfills";
+// import * as ReactDOM from "react-dom";
+// import { createElement } from "react";
+// import "src/paperbits/starti"
+// import { Designer } from "src/paperbits/components/designer";
+// const Designer = dynamic(() => import("src/paperbits/components/designer"), { ssr: false } )
+
+// import { InversifyInjector } from "@paperbits/common/injection";
+// import { CoreDesignModule } from "@paperbits/core/core.design.module";
+// import { FormsDesignModule } from "@paperbits/forms/forms.design.module";
+// import { EmailsDesignModule } from "@paperbits/emails/emails.design.module";
+// import { StylesDesignModule } from "@paperbits/styles/styles.design.module";
+// import { ProseMirrorModule } from "@paperbits/prosemirror/prosemirror.module";
+// import { OfflineModule } from "@paperbits/common/persistence/offline.module";
+// import { DemoDesignModule } from "src/paperbits/modules/demo.design.module";
+// import { DemoRuntimeModule } from "src/paperbits/modules/demo.runtime.module";
+// import { App } from "src/paperbits/components/app/app";
+
+
+// document.addEventListener("DOMContentLoaded", () => {
+
+//     // const reactElement = createElement(Designer);
+//     // ReactDOM.render(reactElement, document.body);
+//     if (process.browser && window !== undefined) {
+// //       /* Initializing dependency injection  */
+//
+//       setTimeout(() => {
+//         const injector = new InversifyInjector();
+//         // injector.bindModule(new App())
+//         injector.bindModule(new CoreDesignModule());
+//         // injector.bindModule(new StylesDesignModule());
+// // //       injector.bindModule(new ProseMirrorModule());
+// //         injector.bindModule(new DemoDesignModule());
+// //       injector.bindModule(new OfflineModule({ autosave: false }));
+//         injector.resolve("autostart");
+//
+//       })
+// // // injector.bindModule(new FormsDesignModule());
+// // // injector.bindModule(new EmailsDesignModule());
+// //       injector.bindModule(new StylesDesignModule());
+// //       injector.bindModule(new ProseMirrorModule());
+// //       injector.bindModule(new DemoDesignModule());
+// //       injector.bindModule(new OfflineModule({ autosave: false }));
+// //       injector.resolve("autostart");
+//     }
+  // });
+// });
+
+//////////////////////////////////////////////////
 
 const Profile: NextPage = ({ deviceType, ...props}) => {
   const [
@@ -62,6 +113,12 @@ const Profile: NextPage = ({ deviceType, ...props}) => {
     refetch
   ] = useViewer();
   // console.log(props, "wsxonkwsoxn")
+
+  // React.useEffect(()=>{
+
+
+
+  // }, [])
 
 
 
@@ -97,6 +154,8 @@ const Profile: NextPage = ({ deviceType, ...props}) => {
       <Modal>
       <SEO title="Artists Shop - Craflo" description="Profile Details" />
       <ProfilePage deviceType {...props}/>
+        <app></app>
+      {/*<Designer />*/}
       {products?.length === 0 ? "Catalog is Loading..":
         <div style={{padding: 30}}>
           {/*<App products={products} deviceType={deviceType} />*/}
@@ -169,6 +228,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
 };
 
 export async function getStaticPaths() {
+
   return {
     paths: [
       { params: { slug: "jakecrafties" } }

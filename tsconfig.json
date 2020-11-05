@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "lib": ["dom", "dom.iterable", "esnext", "esnext.asynciterable"],
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext", "esnext.asynciterable", "es2018"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
+    "noEmit": false,
     "noImplicitAny": false,
     "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "module": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "jsx": "preserve",
@@ -20,6 +20,7 @@
     "noUnusedParameters": false,
     "removeComments": true,
     "preserveConstEnums": true,
+    "noStrictGenericChecks": true,
     "sourceMap": true,
     "isolatedModules": true,
     "baseUrl": "src",
@@ -33,5 +34,6 @@
   },
   "exclude": ["node_modules", "src"],
   "include": [
-    "next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"],
+    "next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js", "node_modules/@paperbits/**/*.ts"
+  ]
 }

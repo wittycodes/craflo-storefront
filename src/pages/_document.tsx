@@ -1,5 +1,6 @@
 import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
+
 import { ServerStyleSheet as StyledComponentSheets } from "styled-components";
 // import { ServerStyleSheets as MaterialUiServerStyleSheets } from "@material-ui/styles";
 import favicons from "custom/favicons";
@@ -35,6 +36,11 @@ class HTMLDocument extends Document {
 
       }}>
         <Head>
+          <script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+          <script src="https://unpkg.com/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
+          {/*<link href="/paperbits/dist/designer/editors/styles/paperbits.css" rel="stylesheet" type="text/css" />*/}
+          {/*  <script src="/paperbits/dist/designer/editors/scripts/paperbits.js" type="text/javascript"></script>*/}
+
           {links.map((link, index) => <link key={index} {...link} />)}
         </Head>
         <body style={{background: '#F7F7F7'}}>

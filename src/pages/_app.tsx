@@ -26,6 +26,8 @@ import {ReactiveBase} from '@appbaseio/reactivesearch'
 
 
 
+// import "src/paperbits/themes/designer/styles/styles.scss"
+// import dynamic from 'next/dynamic';
 
 
 // External CSS import here
@@ -34,7 +36,7 @@ import 'rc-table/assets/index.css';
 import 'rc-collapse/assets/index.css';
 import 'react-multi-carousel/lib/styles.css';
 import 'components/multi-carousel/multi-carousel.style.css';
-// import '../components/rheostat/rheostat.styles.css'
+
 import '@redq/reuse-modal/lib/index.css';
 import 'react-tagsinput/react-tagsinput.css';
 import { GlobalStyle } from 'assets/styles/global.style';
@@ -67,6 +69,8 @@ const messages = {
   zh: localCn,
   he: localIl,
 };
+// const DesignScripts = dynamic(() => import("src/paperbits/startup.runtime"), { ssr: false } )
+
 
 
 function withDevice(Component) {
