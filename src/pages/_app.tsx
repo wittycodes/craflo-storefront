@@ -26,8 +26,8 @@ import {ReactiveBase} from '@appbaseio/reactivesearch'
 
 
 
-// import "src/paperbits/themes/designer/styles/styles.scss"
-// import dynamic from 'next/dynamic';
+// import "paperbits-demo/src/themes/designer/styles/styles.scss"
+import dynamic from 'next/dynamic';
 
 
 // External CSS import here
@@ -36,7 +36,7 @@ import 'rc-table/assets/index.css';
 import 'rc-collapse/assets/index.css';
 import 'react-multi-carousel/lib/styles.css';
 import 'components/multi-carousel/multi-carousel.style.css';
-
+// import '../components/rheostat/rheostat.styles.css'
 import '@redq/reuse-modal/lib/index.css';
 import 'react-tagsinput/react-tagsinput.css';
 import { GlobalStyle } from 'assets/styles/global.style';
@@ -121,6 +121,7 @@ export function ExtendedApp({Component, pageProps, ...rest}) {
       </Head>
     <Normalize />
     <CssBaseline/>
+      {/*<DesignScripts/>*/}
     <ContextProviders pageProps={pageProps}>
       <ComponentsProvider value={components}>
         <ApolloProvider client={apolloClient}>

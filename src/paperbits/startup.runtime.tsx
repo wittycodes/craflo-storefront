@@ -95,5 +95,4 @@ export default function DesignScripts() {
       ReactDOM.render(reactElement, document.getElementsByTagName('app'));
     });
   })
-  return (<></>)
 }

@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { NextPage } from 'next';
+import React from 'react'
 import { useQuery } from '@apollo/react-hooks';
 import { Modal } from '@redq/reuse-modal';
 import { GET_LOGGED_IN_CUSTOMER } from 'src/graphql/query/customer.query';
@@ -36,7 +37,7 @@ type Props = {
     desktop: boolean;
   };
 };
-// import ReactDOM from "react-dom";
+import ReactDOM from "react-dom";
 // import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
 // styles
@@ -55,13 +56,13 @@ import fetchMerchantShop from "staticUtils/shop/fetchMerchantShop";
 // import Sticky from 'react-stickynode';
 /////////////////////////////////////////////////
 
-
+// import dynamic from 'next/dynamic'
+import * as ko from "knockout";
 // import "src/paperbits/polyfills";
 // import * as ReactDOM from "react-dom";
 // import { createElement } from "react";
 // import "src/paperbits/starti"
 // import { Designer } from "src/paperbits/components/designer";
-// const Designer = dynamic(() => import("src/paperbits/components/designer"), { ssr: false } )
 
 // import { InversifyInjector } from "@paperbits/common/injection";
 // import { CoreDesignModule } from "@paperbits/core/core.design.module";
@@ -104,7 +105,8 @@ import fetchMerchantShop from "staticUtils/shop/fetchMerchantShop";
   // });
 // });
 
-//////////////////////////////////////////////////
+const PaperbitsInReact = dynamic(() => import("src/paperbits/startup.design"), { ssr: false } )
+
 
 const Profile: NextPage = ({ deviceType, ...props}) => {
   const [
@@ -112,13 +114,6 @@ const Profile: NextPage = ({ deviceType, ...props}) => {
     loading,
     refetch
   ] = useViewer();
-  // console.log(props, "wsxonkwsoxn")
-
-  // React.useEffect(()=>{
-
-
-
-  // }, [])
 
 
 
@@ -139,27 +134,31 @@ const Profile: NextPage = ({ deviceType, ...props}) => {
     pageTitle = "Shop";
   }
 
-  // if (isLoadingCatalogItems) return <PageLoading />;
   const products = (catalogItems || []).map((item) => item.node.product);
+  // DesignScripts
 
-  // console.log(products)
-  //--console.log('pulkittt')
-
-  // if (!account || loading) {
-  //   return <div>loading...</div>;
+  // const ref= React.useRef(null);
+  // if (typeof window !== 'undefined') {
+  //
+  //   document.addEventListener("DOMContentLoaded", () => {
+  //
+  //     import("src/paperbits/startup.design").then((a) => {
+  //       a(ref.current)
+  //
+  //     })
+  //   })
   // }
-  // if (!account) return <ErrorMessage message={"User Not logged in"} />;
   return (
     <>
       <Modal>
       <SEO title="Artists Shop - Craflo" description="Profile Details" />
       <ProfilePage deviceType {...props}/>
-        <app></app>
-      {/*<Designer />*/}
+        <PaperbitsInReact />
       {products?.length === 0 ? "Catalog is Loading..":
         <div style={{padding: 30}}>
           {/*<App products={products} deviceType={deviceType} />*/}
         </div>}
+
 
       {/*<ProfileProvider initData={account}>*/}
       {/*  <Modal>*/}
@@ -200,7 +199,8 @@ export const getStaticProps = async ({ params: { slug } }) => {
     return {
       props: {
         merchantShop: merchantShop,
-        //...translations,
+        //...translations
+        // ,
         type: 'grocery',
         lang,
         slug,

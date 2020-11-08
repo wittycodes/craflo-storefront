@@ -123,14 +123,14 @@ const nextConfig = {
         test: /\.(raw|liquid)$/,
         loader: "raw-loader",
         include: [
-          path.resolve(__dirname, "paperbits")
+          path.resolve(__dirname, "src/paperbits")
         ]
       })
 
     webpackConfig.module.rules.push({
       test: /\.tsx?$/,
       include: [
-        path.resolve(__dirname, "paperbits"),
+        path.resolve(__dirname, "src/paperbits"),
         path.resolve(__dirname, 'node_modules/@paperbits/')
       ],
       loader: 'babel-loader',
@@ -182,7 +182,7 @@ const nextConfig = {
           limit: 10000
         },
         include: [
-          path.resolve(__dirname, "paperbits"),
+          path.resolve(__dirname, "src/paperbits"),
           path.resolve(__dirname, 'node_modules/@paperbits/')
         ]
       })

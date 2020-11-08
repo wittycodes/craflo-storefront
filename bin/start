@@ -11,8 +11,8 @@ yarn install
 printf "Waiting for Hydra service...  "
 ./bin/wait-for.sh "${OAUTH2_HOST}:${OAUTH2_ADMIN_PORT}"
 printf "Hydra service found!\n"
-yarn build
-yarn start
-export NODE_OPTIONS="--max-old-space-size=4096"
-#yarn start:dev
+#yarn build
+#yarn start
+ export NODE_OPTIONS="--max-old-space-size=4096"
+yarn start:dev
 

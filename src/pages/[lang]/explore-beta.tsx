@@ -177,7 +177,7 @@ const Card = ({index, width, data}) => {
 
 
 
-export const App = ({ deviceType, data, loading, routingStore, props}) => {
+export const App = ({ deviceType, grid, gridCol, data, loading, routingStore, props, width, height}) => {
   const {
     uiStore,
     tag
@@ -191,8 +191,9 @@ export const App = ({ deviceType, data, loading, routingStore, props}) => {
   // const [width, height} = useWindowSize()
   // const [width, height] = [500, 400]
   // const width, height
-  const {height} = useWindowSize();
-  const width=1200
+
+
+  // }
   // const { offset, width } = useContainerPosition([
   //   windowWidth,
   //   windowHeight
@@ -203,28 +204,16 @@ export const App = ({ deviceType, data, loading, routingStore, props}) => {
 
   const calcCardWidth = (width, gutter, X) => (width-(X+1)*gutter)/(X) - 2*gutter
 
-  const [grid, setGrid] = React.useState({
-    columnGutter: 10
-  })
 
-  const [gridCol, setGridCol] = React.useState({
-    columnWidth: calcCardWidth(width, grid.columnGutter, 4)
-  })
 
   React.useEffect(()=>{
     setItems(data)
   }, [data])
 
+  //
+  // React.useEffect(()=>{
+  // }, [deviceType])
 
-  React.useEffect(()=>{
-    setGrid({columnGutter: deviceType.mobile ? 15 : 30})
-  }, [deviceType])
-
-  React.useEffect(()=>{
-    setGridCol({
-      columnWidth: deviceType.mobile? calcCardWidth(width, grid.columnGutter, 2): calcCardWidth(width, grid.columnGutter, 4)
-    })
-  }, [grid])
 
   console.log(grid, gridCol, width)
   console.log(data)
@@ -455,6 +444,27 @@ const ProductListingPage: NextPage = ({ deviceType, ...props }) => {
   //   appHeight = dim.height
   // }
 
+  const calcCardWidth = (width, gutter, X) => (width-(X+1)*gutter)/(X) - 2*gutter
+
+  let {width, height} = useWindowSize()
+  const [grid, setGrid] = React.useState({
+    columnGutter: 10
+  })
+
+  const [gridCol, setGridCol] = React.useState({
+    columnWidth: calcCardWidth(width, grid.columnGutter, 4)
+  })
+  React.useEffect(()=>{
+    setGrid({columnGutter: deviceType.mobile ? 15 : 30})
+    setGridCol({
+      columnWidth: deviceType.mobile? calcCardWidth(width, grid.columnGutter, 2): calcCardWidth(width, grid.columnGutter, 4)
+    })
+  }, [])
+
+  // React.useEffect(()=>{
+  //   width=window.innerWidth
+  // },[])
+  // // let width = useWindowSize().width
   return (
     <>
     <SEO title="Browse Listings - Craflo" description="find your own craft" />
@@ -525,7 +535,7 @@ const ProductListingPage: NextPage = ({ deviceType, ...props }) => {
               {
                 ({ data, error, loading, ...rest }) => (
                   // <div>{"pulkit"}</div>
-                  <App props={props} loading={loading} data={data} routingStore={props.routingStore} deviceType={deviceType}/>
+                  <App props={props} grid={grid} gridCol={gridCol} width={width} height={height} loading={loading} data={data} routingStore={props.routingStore} deviceType={deviceType}/>
                 )
               }
             </ReactiveList>

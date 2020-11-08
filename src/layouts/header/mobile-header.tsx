@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { openModal, closeModal } from '@redq/reuse-modal';
-import MobileDrawer from './mobile-drawer';
+// import MobileDrawer from './mobile-drawer';
 import {
   MobileHeaderWrapper,
   MobileHeaderInnerWrapper,

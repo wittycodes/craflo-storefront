@@ -6,6 +6,8 @@ import { ServerStyleSheet as StyledComponentSheets } from "styled-components";
 import favicons from "custom/favicons";
 import theme from "custom/reactionTheme";
 import analyticsProviders from "custom/analytics";
+import dynamic from 'next/dynamic'
+
 
 /**
  * For details about the styled-components SSR code in this file, see https://www.styled-components.com/docs/advanced#nextjs
@@ -36,14 +38,18 @@ class HTMLDocument extends Document {
 
       }}>
         <Head>
-          <script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-          <script src="https://unpkg.com/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
-          {/*<link href="/paperbits/dist/designer/editors/styles/paperbits.css" rel="stylesheet" type="text/css" />*/}
-          {/*  <script src="/paperbits/dist/designer/editors/scripts/paperbits.js" type="text/javascript"></script>*/}
+          <script src="https://unpkg.com/@webcomponents/custom-elements"></script>
 
+          {/*<script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>*/}
+          {/*<script src="https://unpkg.com/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>*/}
+          {/*<link href="https://raw.githubusercontent.com/wittycodes/craflo-storefront/master/paperbit-dist/dist/designer/editors/styles/paperbits.css" rel="stylesheet" type="text/css" />*/}
+          {/*<script src="https://raw.githubusercontent.com/wittycodes/craflo-storefront/master/paperbit-dist/dist/designer/editors/scripts/paperbits.js" type="text/javascript"></script>*/}
+          {/*<link href="https://raw.githubusercontent.com/wittycodes/craflo-storefront/master/paperbit-dist/dist/designer/styles/theme.css" rel="stylesheet" type="text/css" />*/}
+          {/*  <script src="https://raw.githubusercontent.com/wittycodes/craflo-storefront/master/paperbit-dist/dist/designer/scripts/theme.js"></script>*/}
           {links.map((link, index) => <link key={index} {...link} />)}
         </Head>
         <body style={{background: '#F7F7F7'}}>
+        {/*<PaperbitsInReact/>*/}
           <Main />
           <NextScript />
           {scripts.map((script, index) => (script.innerHTML ? /* eslint-disable-next-line */

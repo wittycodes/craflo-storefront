@@ -50,8 +50,8 @@ const CartPopUp = dynamic(() => import('src/features/carts/cart-popup'), {
 const CategoryPage: React.FC<any> = ({ deviceType }) => {
   const { query } = useRouter();
 
-  const {uiStore} = useStores();
-  uiStore.closeMenuDrawer()
+  // const {uiStore} = useStores();
+  // uiStore.closeMenuDrawer()
   // const { elRef: targetRef, scroll } = useRefScroll({
   //   container: scrollContainer,
   //   percentOfElement: 0,
@@ -67,8 +67,8 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
   const PAGE_TYPE: any = query.type;
   const page = PAGES_DATA[PAGE_TYPE];
 
-  useEffect(() => {
-  }, [uiStore.isMenuDrawerOpen]);
+  // useEffect(() => {
+  // }, [uiStore.isMenuDrawerOpen]);
 
   return (
     <>

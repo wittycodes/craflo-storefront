@@ -33,7 +33,7 @@ import { FormattedMessage } from 'react-intl';
 
 import Logo from 'layouts/logo/logo';
 import {DrawerWrapper, HamburgerIcon, MobileHeaderInnerWrapper} from "src/layouts/header/header.style";
-import MobileDrawer from "src/layouts/header/mobile-drawer";
+// import MobileDrawer from "src/layouts/header/mobile-drawer";
 import useStores from "hooks/useStores";
 
 const MENU_ITEMS = [
@@ -133,14 +133,18 @@ export const LeftMenu: React.FC<Props> = ({ logo }) => {
   );
 
 
-  const [isMenu, setMenu] = React.useState(true)
-  React.useEffect(() => {
-    setMenu(uiStore.isMenuDrawerOpen)
-  }, [uiStore.isMenuDrawerOpen]);
+  // const [isMenu, setMenu] = React.useState(true)
+  // React.useEffect(() => {
+  //   setMenu(uiStore.isMenuDrawerOpen)
+  // }, [uiStore.isMenuDrawerOpen]);
 
   return (
     <LeftMenuBox>
-      <div onClick={()=> uiStore.toggleMenuDrawerOpen()}>
+      <div onClick={()=> {
+        uiStore.toggleMenuDrawerOpen()
+        //
+        // console.log(uiStore.isMenuDrawerOpen, "BOOSDIKE")
+      }}>
         <HamburgerIcon>
           <span />
           <span />

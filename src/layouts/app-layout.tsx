@@ -130,9 +130,7 @@ const Layout = ({
             } desktop`}
           />
           <Header
-            className={`${isSticky && isHomePage ? 'sticky' : 'unSticky'} ${
-              isHomePage ? 'home' : ''
-            }`}
+            className={`${isSticky && isHomePage ? 'sticky' : 'unSticky'} `}
           />
         </Sticky>
         {/*<div id="rrr-outer-container">*/}
@@ -169,9 +167,8 @@ const Layout = ({
               keepMounted: true, // Better open performance on mobile.
             }}
             classes={{
-              paperAnchorDockedLeft: classes.drawerPaper,
+              paperAnchorDockedLeft: classes.drawerPaper
             }}
-            className={classes.drawer}
           >
             <SidebarMenu type={'grocery'} deviceType={deviceType} />
           </SwipeableDrawer>
