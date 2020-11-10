@@ -105,7 +105,7 @@ import * as ko from "knockout";
   // });
 // });
 
-const PaperbitsInReact = dynamic(() => import("src/paperbits/startup.design"), { ssr: false } )
+// const PaperbitsInReact = dynamic(() => import("src/paperbits/startup.design"), { ssr: false } )
 
 
 const Profile: NextPage = ({ deviceType, ...props}) => {
@@ -153,7 +153,7 @@ const Profile: NextPage = ({ deviceType, ...props}) => {
       <Modal>
       <SEO title="Artists Shop - Craflo" description="Profile Details" />
       <ProfilePage deviceType {...props}/>
-        <PaperbitsInReact />
+        {/*<PaperbitsInReact />*/}
       {products?.length === 0 ? "Catalog is Loading..":
         <div style={{padding: 30}}>
           {/*<App products={products} deviceType={deviceType} />*/}
