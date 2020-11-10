@@ -58,7 +58,8 @@ const nextConfig = {
       'img4.etsystatic.com',
       'img5.etsystatic.com',
       'img6.etsystatic.com',
-      'www.artwaley.com'
+      'www.artwaley.com',
+      'lh3.googleusercontent.com'
     ]
   },
   webpack(webpackConfig) {
@@ -100,11 +101,11 @@ const nextConfig = {
     // webpackConfig.output["filename"] = "./[name].js"
     // webpackConfig.entry["editors/scripts/paperbits"] = ["src/paperbits/startup.design.ts"]
     // webpackConfig.entry["editors/styles/paperbits"] = [`src/paperbits/themes/designer/styles/styles.scss`]
-    webpackConfig.plugins.push(new CopyPlugin({
-      patterns: [
-        { from: path.join(__dirname,'paperbit-dist'), to: path.join(__dirname,'static/paperbits') },
-      ],
-    }))
+    // webpackConfig.plugins.push(new CopyPlugin({
+    //   patterns: [
+    //     { from: path.join(__dirname,'paperbit-dist'), to: path.join(__dirname,'static/paperbits') },
+    //   ],
+    // }))
     webpackConfig.module.rules.push({
         test: /\.(gql|graphql)$/,
       loader: "graphql-tag/loader",
@@ -117,32 +118,32 @@ const nextConfig = {
       type: "javascript/auto"
     });
 
-
-    webpackConfig.module.rules.push(
-      {
-        test: /\.(raw|liquid)$/,
-        loader: "raw-loader",
-        include: [
-          path.resolve(__dirname, "src/paperbits")
-        ]
-      })
-
-    webpackConfig.module.rules.push({
-      test: /\.tsx?$/,
-      include: [
-        path.resolve(__dirname, "src/paperbits"),
-        path.resolve(__dirname, 'node_modules/@paperbits/')
-      ],
-      loader: 'babel-loader',
-      options: {
-        presets: ['@babel/preset-env']
-      }
+    //
+    // webpackConfig.module.rules.push(
+    //   {
+    //     test: /\.(raw|liquid)$/,
+    //     loader: "raw-loader",
+    //     include: [
+    //       path.resolve(__dirname, "src/paperbits")
+    //     ]
+    //   })
+    //
+    // webpackConfig.module.rules.push({
+    //   test: /\.tsx?$/,
+    //   include: [
+    //     path.resolve(__dirname, "src/paperbits"),
+    //     path.resolve(__dirname, 'node_modules/@paperbits/')
+    //   ],
+    //   loader: 'babel-loader',
+    //   options: {
+    //     presets: ['@babel/preset-env']
+    //   }
       // loader: "ts-loader",
       // options:{
       //   allowTsInNodeModules: true
       // }
-
-    })
+    //
+    // })
     // webpackConfig.module.rules.push(
     //   {
     //     test: /\.scss$/,
@@ -157,35 +158,35 @@ const nextConfig = {
     //     ]
     //   })
 
-
-    webpackConfig.module.rules.push(
-      {
-        test: /\.html$/,
-        loader: "html-loader",
-        options: {
-          esModule: true,
-          minimize: {
-            removeComments: false,
-            collapseWhitespace: false
-          }
-        },
-        include: [
-          path.resolve(__dirname, "src/paperbits"),
-          path.resolve(__dirname, 'node_modules/@paperbits/')
-        ]
-      })
-    webpackConfig.module.rules.push(
-      {
-        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-        loader: "url-loader",
-        options: {
-          limit: 10000
-        },
-        include: [
-          path.resolve(__dirname, "src/paperbits"),
-          path.resolve(__dirname, 'node_modules/@paperbits/')
-        ]
-      })
+    //
+    // webpackConfig.module.rules.push(
+    //   {
+    //     test: /\.html$/,
+    //     loader: "html-loader",
+    //     options: {
+    //       esModule: true,
+    //       minimize: {
+    //         removeComments: false,
+    //         collapseWhitespace: false
+    //       }
+    //     },
+    //     include: [
+    //       path.resolve(__dirname, "src/paperbits"),
+    //       path.resolve(__dirname, 'node_modules/@paperbits/')
+    //     ]
+    //   })
+    // webpackConfig.module.rules.push(
+    //   {
+    //     test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+    //     loader: "url-loader",
+    //     options: {
+    //       limit: 10000
+    //     },
+    //     include: [
+    //       path.resolve(__dirname, "src/paperbits"),
+    //       path.resolve(__dirname, 'node_modules/@paperbits/')
+    //     ]
+    //   })
 
 
 

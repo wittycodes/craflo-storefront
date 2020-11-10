@@ -10,13 +10,6 @@
 
 version: '3.4'
 
-networks:
-  reaction:
-    external:
-      name: reaction.localhost
-  web:
-    external:
-      name: web
 
 services:
   web:
@@ -36,10 +29,6 @@ services:
       - 4000:4000
       - 8888:8888
 
-    networks:
-      default:
-      reaction:
-      web:
 
     labels:
       - "traefik.enable=true"

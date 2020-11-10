@@ -177,7 +177,7 @@ const Card = ({index, width, data}) => {
 
 
 
-export const App = ({ deviceType, grid, gridCol, data, loading, routingStore, props, width, height}) => {
+export const App = ({ deviceType, data, loading, routingStore, props}) => {
   const {
     uiStore,
     tag
@@ -202,31 +202,56 @@ export const App = ({ deviceType, grid, gridCol, data, loading, routingStore, pr
 
 
 
-  const calcCardWidth = (width, gutter, X) => (width-(X+1)*gutter)/(X) - 2*gutter
+  // let { height} = useWindowSize()
+  // let width = 800
+  const [dim, setDim] = React.useState({
+    width: null, height:null, columnGutter: null
+  })
+  const windowSize = useWindowSize()
+  React.useEffect(()=>{
+    setDim({
+      width: windowSize.width, height: windowSize.height, columnGutter: 15
+    })
+  }, [windowSize])
+
+  // React.useEffect(()=>{
+  //   setDim({
+  //     columnGutter: deviceType.mobile ? 15 : 30
+  //   })
+  // }, [deviceType])
 
 
+  // const [grid, setGrid] = React.useState({
+  //   columnGutter: 10
+  // })
+  //
+  // const [gridCol, setGridCol] = React.useState({
+  //   columnWidth: calcCardWidth(width, grid.columnGutter, 4)
+  // })
+  // React.useEffect(()=>{
+  //   setGrid({columnGutter: deviceType.mobile ? 15 : 30})
+  //   setGridCol({
+  //     columnWidth: deviceType.mobile? calcCardWidth(width, grid.columnGutter, 2): calcCardWidth(width, grid.columnGutter, 4)
+  //   })
+  // }, [])
+
+
+  const positioner = usePositioner({
+      width: (dim.width- 2*dim.columnGutter) *0.80,
+      // columnWidth: calcCardWidth(dim.width, dim.columnGutter, 2),
+      columnGutter: dim.columnGutter,
+      columnCount: deviceType.mobile? 2:5
+    },
+    [items]
+  )
+  const resizeObserver = useResizeObserver(positioner)
 
   React.useEffect(()=>{
     setItems(data)
   }, [data])
 
-  //
-  // React.useEffect(()=>{
-  // }, [deviceType])
 
 
-  console.log(grid, gridCol, width)
-  console.log(data)
-
-  const positioner = usePositioner({
-    width: width - 2*grid.columnGutter,
-    columnWidth: gridCol.columnWidth,
-    columnGutter: grid.columnGutter
-    },
-    [items]
-  );
-
-  const resizeObserver = useResizeObserver(positioner);
 
   // const setPageSize = (pageSize) => {
   //   props.routingStore.setSearch({ limit: pageSize });
@@ -298,45 +323,22 @@ export const App = ({ deviceType, grid, gridCol, data, loading, routingStore, pr
   // })
 
   return (
-    <main style={{paddingLeft: grid.columnGutter, margin: 'auto'}}>
-            {/*<div style={{paddingLeft: grid.columnGutter}} ref={containerRef}>*/}
-            {/*  <Masonry*/}
-            {/*    items={items}*/}
-            {/*    render={Card}*/}
-            {/*    height={height}*/}
-            {/*    overscanBy={12}*/}
-            {/*    width={width - 2*grid.columnGutter}*/}
-            {/*    columnWidth= {gridCol.columnWidth}*/}
-            {/*    columnGutter= {grid.columnGutter}*/}
-            {/*  />*/}
+    <main style={{paddingLeft: (dim.width- 2*dim.columnGutter) *0.10}}>
       <MasonryScroller
         positioner={positioner}
         resizeObserver={resizeObserver}
         items={items}
-        height={height}
-        width={width}
+        height={dim.height}
+        width={dim.width}
         overscanBy={12}
         render={Card}
         style={{
           display: 'flex',
           alignItems: 'center',
-          width: width,
+          width: dim.width,
           margin: 'auto'
         }}
       />
-
-              {/*{useMasonry({*/}
-              {/*  positioner,*/}
-              {/*  resizeObserver,*/}
-              {/*  items: data,*/}
-              {/*  height: '100vh',*/}
-              {/*  scrollTop,*/}
-              {/*  isScrolling,*/}
-              {/*  overscanBy: 12,*/}
-              {/*  render: Card,*/}
-
-              {/*})}*/}
-            {/*</div>*/}
     </main>
   );
 };
@@ -444,22 +446,20 @@ const ProductListingPage: NextPage = ({ deviceType, ...props }) => {
   //   appHeight = dim.height
   // }
 
-  const calcCardWidth = (width, gutter, X) => (width-(X+1)*gutter)/(X) - 2*gutter
 
-  let {width, height} = useWindowSize()
-  const [grid, setGrid] = React.useState({
-    columnGutter: 10
-  })
-
-  const [gridCol, setGridCol] = React.useState({
-    columnWidth: calcCardWidth(width, grid.columnGutter, 4)
-  })
-  React.useEffect(()=>{
-    setGrid({columnGutter: deviceType.mobile ? 15 : 30})
-    setGridCol({
-      columnWidth: deviceType.mobile? calcCardWidth(width, grid.columnGutter, 2): calcCardWidth(width, grid.columnGutter, 4)
-    })
-  }, [])
+  // const [grid, setGrid] = React.useState({
+  //   columnGutter: 10
+  // })
+  //
+  // const [gridCol, setGridCol] = React.useState({
+  //   columnWidth: calcCardWidth(width, grid.columnGutter, 4)
+  // })
+  // React.useEffect(()=>{
+  //   setGrid({columnGutter: deviceType.mobile ? 15 : 30})
+  //   setGridCol({
+  //     columnWidth: deviceType.mobile? calcCardWidth(width, grid.columnGutter, 2): calcCardWidth(width, grid.columnGutter, 4)
+  //   })
+  // }, [])
 
   // React.useEffect(()=>{
   //   width=window.innerWidth
@@ -535,7 +535,7 @@ const ProductListingPage: NextPage = ({ deviceType, ...props }) => {
               {
                 ({ data, error, loading, ...rest }) => (
                   // <div>{"pulkit"}</div>
-                  <App props={props} grid={grid} gridCol={gridCol} width={width} height={height} loading={loading} data={data} routingStore={props.routingStore} deviceType={deviceType}/>
+                  <App props={props}  loading={loading} data={data} routingStore={props.routingStore} deviceType={deviceType}/>
                 )
               }
             </ReactiveList>
