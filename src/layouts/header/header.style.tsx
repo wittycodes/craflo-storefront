@@ -98,6 +98,7 @@ const HeaderWrapper = styled.header`
     box-shadow: none;
     padding-top: 15px;
     padding-bottom: 15px;
+    z-index: 99999;
 
     @media (max-width: 1400px) {
       padding-top: 15px;
@@ -127,6 +128,8 @@ const HeaderWrapper = styled.header`
   .popover-wrapper {
     .popover-content {
       padding: 20px 0;
+        z-index: 99999;
+
 
       .menu-item {
         a {
@@ -154,7 +157,7 @@ const HeaderWrapper = styled.header`
     }
   }
 
-  .headerSearch {
+  .headerSearch {f
     input {
       @media (max-width: 1400px) {
         padding: 0 15px;
@@ -296,7 +299,7 @@ export const MobileHeaderInnerWrapper = styled.div`
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: 9999;
   transition: 0.25s ease-in-out;
 
   &.home {

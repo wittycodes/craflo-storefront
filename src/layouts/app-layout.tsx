@@ -123,7 +123,7 @@ const Layout = ({
   return (
       <LayoutWrapper >
 
-        <Sticky enabled={isSticky} innerZ={999}>
+        <Sticky enabled={isSticky} innerZ={9999}>
           <MobileHeader
             className={`${isSticky ? 'sticky' : 'unSticky'} ${
               isHomePage ? 'home' : 'home'
