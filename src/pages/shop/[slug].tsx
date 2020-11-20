@@ -231,7 +231,7 @@ export async function getStaticPaths() {
 
   return {
     paths: [
-      { params: { slug: "jakecrafties" } }
+      { params: { slug: "craflo-primary" } }
     ],
     fallback: false,
   };
