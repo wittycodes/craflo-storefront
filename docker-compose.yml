@@ -22,7 +22,7 @@ services:
       # Do not link in node_modules from the host
       # This allows IDEs to run lint etc with native add-ons for host OS
       # Without interfering with native add-ons in container
-      - empty_node_modules:/usr/local/src/app/node_modules
+      - ./node_modules:/usr/local/src/app/node_modules
     env_file:
       - ./.env
     ports:
