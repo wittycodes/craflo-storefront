@@ -64,6 +64,13 @@ const Header: React.FC<Props> = ({ className }) => {
         className: 'quick-view-modal',
         width: 410,
         height: 'auto',
+        animationFrom: { transform: 'scale(0.9) translate(0px, 10px)' }, // react-spring <Spring from={}> props value
+        animationTo: { transform: 'scale(1) translate(0px, 0px)' }, //  react-spring <Spring to={}> props value
+        transition: {
+          mass: 1,
+          tension: 200,
+          friction: 26
+        }, // react-spring config props
       },
     });
   };

@@ -47,9 +47,18 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .quick-view-overlay{
-    background-color: rgba(30,41,51,.45);
+    background-color: rgba(0,0,0,0.6);
     transition: opacity 1s;
-    opacity: 1
+    opacity: 1;
+    z-index: 99990
+  }
+
+  .quick-view-modal{
+    z-index: 99999 !important
+  }
+
+  .reuseModalParentWrapper{
+    z-index: 99999 !important
   }
 
   .add-address-modal,
