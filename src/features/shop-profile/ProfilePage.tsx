@@ -153,7 +153,7 @@ function ProfilePage({deviceType, ...props}) {
           <RestaurantMeta id="restaurantMeta">
             <RestaurantNameAddress>
               <RestaurantName>{props.merchantShop?.shop.name}</RestaurantName>
-              <RestaurantAddress>{props.merchantShop?.shop.emails[0]?.address}</RestaurantAddress>
+              <RestaurantAddress>{props.merchantShop?.shop.emails?.[0]?.address}</RestaurantAddress>
             </RestaurantNameAddress>
             <div className="owner">
               <div className="avatar">

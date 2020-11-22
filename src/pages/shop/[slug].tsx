@@ -58,6 +58,7 @@ import fetchMerchantShop from "staticUtils/shop/fetchMerchantShop";
 
 // import dynamic from 'next/dynamic'
 import * as ko from "knockout";
+import {App} from "../[lang]/explore-beta";
 // import "src/paperbits/polyfills";
 // import * as ReactDOM from "react-dom";
 // import { createElement } from "react";
@@ -106,6 +107,7 @@ import * as ko from "knockout";
 // });
 
 // const PaperbitsInReact = dynamic(() => import("src/paperbits/startup.design"), { ssr: false } )
+import {DynamicRangeSlider, ReactiveList} from '@appbaseio/reactivesearch'
 
 
 const Profile: NextPage = ({ deviceType, ...props}) => {
@@ -122,17 +124,28 @@ const Profile: NextPage = ({ deviceType, ...props}) => {
     catalogItemsPageInfo,
     isLoadingCatalogItems,
     routingStore: { query },
-    shop,
-    uiStore
+    merchantShop,
+    uiStore,
+    shop
   } = props;
+  console.log(props, "pulkitt")
+
 
   let pageTitle;
-  if (shop) {
-    pageTitle = shop.name;
-    if (shop.description) pageTitle = `${pageTitle} | ${shop.description}`;
-  } else {
-    pageTitle = "Shop";
-  }
+
+
+  const router = useRouter()
+  React.useEffect(() => {
+    // if (merchantShop?.shop) {
+    //   pageTitle = merchantShop?.shop.name;
+    //   if (merchantShop?.shop.description) pageTitle = `${pageTitle} | ${merchantShop?.shop.description}`;
+    // } else {
+    //   pageTitle = "Shop";
+    // }
+    if(merchantShop?.exists==false) {
+      router.push('/in/explore-beta')
+    }
+  }, [])
 
   const products = (catalogItems || []).map((item) => item.node.product);
   // DesignScripts
@@ -148,16 +161,33 @@ const Profile: NextPage = ({ deviceType, ...props}) => {
   //     })
   //   })
   // }
-  return (
-    <>
+  return (<>
+    {merchantShop?.exists==true? (
       <Modal>
-      <SEO title="Artists Shop - Craflo" description="Profile Details" />
+      <SEO title={merchantShop?.shop.name + " - Craflo"} description={merchantShop?.shop.description} />
       <ProfilePage deviceType {...props}/>
         {/*<PaperbitsInReact />*/}
-      {products?.length === 0 ? "Catalog is Loading..":
-        <div style={{padding: 30}}>
-          {/*<App products={products} deviceType={deviceType} />*/}
-        </div>}
+        {/*<div style={{padding: 30}}>*/}
+          <ReactiveList
+            react={{
+              "and": ["CrafloSearch", "PriceRangeSensor"]
+            }}
+            componentId="SearchResult"
+            stream={true}
+            infiniteScroll={true}
+            size={45}
+            // scrollTarget={"rrr-content"}
+            dataField={"reaction.catalog"}
+          >
+            {
+              ({ data, error, loading, ...rest }) => (
+                // <div>{"pulkit"}</div>
+                <App props={props} loading={loading} data={data} routingStore={props.routingStore} deviceType={deviceType}/>
+              )
+            }
+          </ReactiveList>
+        {/*</div>*/}
+
 
 
       {/*<ProfileProvider initData={account}>*/}
@@ -177,7 +207,8 @@ const Profile: NextPage = ({ deviceType, ...props}) => {
       {/*</ProfileProvider>*/}
       <Footer />
       {/*<CartPopUp deviceType={deviceType}/>*/}
-      </Modal>
+      </Modal>): null
+    }
     </>
   );
 };
@@ -186,8 +217,9 @@ const Profile: NextPage = ({ deviceType, ...props}) => {
 
 export const getStaticProps = async ({ params: { slug } }) => {
   let lang = "en"
-  const primaryShop = await fetchPrimaryShop(lang);
-  const merchantShop = await fetchMerchantShop(slug, lang)
+   const primaryShop = await fetchPrimaryShop(lang);
+   const merchantShop = await fetchMerchantShop(slug)
+  console.log(merchantShop, "ioioioio")
 
 
   // let merchant = "jakecrafties"
@@ -231,9 +263,9 @@ export async function getStaticPaths() {
 
   return {
     paths: [
-      // { params: { slug: "craflo-primary" } }
+      { params: { slug: "sgcreations" } }
     ],
-    fallback: false,
+    fallback: true,
   };
 }
 

@@ -19,8 +19,11 @@ query($slug: String!) {
 export default async function fetchMerchantShop(slug, language) {
   const queryRes = await graphQLRequest(shopBySlugQuery, { slug: slug});
   // console.log(queryRes, a"nkoamkml...PUlkit")
+  if(!queryRes.shopBySlug?._id){
+    return {exists: false}
+  }
   const data = await graphQLRequest(merchantShopQuery, { id: queryRes.shopBySlug._id, language: language  });
   // console.log(data, "nkoamkml...laskkk")
 
-  return (data && data.shop && { shop: data.shop });
+  return (data && data.shop && { shop: data.shop, exists: true });
 }

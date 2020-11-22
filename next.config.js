@@ -253,6 +253,13 @@ const nextConfig = {
     },
     async rewrites() {
       return [
+        // Shop
+
+        {
+          source: '/@:shop',
+          destination: '/shop/:shop'
+        },
+
         // Sitemap
         {
           source: "/sitemap:subPage?.xml",

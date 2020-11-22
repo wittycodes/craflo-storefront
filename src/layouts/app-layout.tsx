@@ -34,7 +34,7 @@ import { push as Menu } from 'react-burger-menu'
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 
-const drawerWidth = 240;
+const drawerWidth = 252;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -67,7 +67,8 @@ const useStyles = makeStyles((theme: Theme) =>
       zIndex: 600
     },
     drawerPaper: {
-      zIndex: 100
+      zIndex: 100,
+      border: 'none !important'
     },
     drawerHeader: {
       display: 'flex',
