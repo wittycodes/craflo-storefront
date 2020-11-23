@@ -6,7 +6,6 @@ const positionAnim = keyframes`
     position: fixed;
     opacity: 1;
   }
-
   to {
     opacity: 0;
     transition: all 0.3s ease;

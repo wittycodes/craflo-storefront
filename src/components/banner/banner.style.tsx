@@ -43,13 +43,14 @@ export const Content = styled.div(
 );
 export const Title = styled.h2(
   css({
-    fontSize: [17, 30, 45],
-    color: 'darkBold',
+    fontSize: [25, 36, 52],
+    color: '#676767',
   }),
   {
-    fontWeight: 700,
+    fontWeight: 500,
     marginBottom: 15,
     textAlign: 'center',
+    fontFamily: "'Kalam'"
   }
 );
 export const Description = styled.p(
