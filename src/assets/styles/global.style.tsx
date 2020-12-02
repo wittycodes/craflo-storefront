@@ -162,6 +162,26 @@ export const GlobalStyle = createGlobalStyle`
     display: none
   }
 
+  .price-filter-slider {
+  width: 10rem;
+  color: #fff;
+    & .rheostat-progress {
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+    height: 5px !important;
+    }
+    & .rheostat-background {
+    height: 5px !important;
+    }
+    & .rheostat-handle {
+      :hover {transform: scale(1.5);}
+        transition: transform .3s cubic-bezier(.215,.61,.355,1);
+    }
+  }
+
+  .price-filter-label {
+  font-size: 14px
+  }
+
   .search-icon {
     height: 100%;
     font-size: 16px;

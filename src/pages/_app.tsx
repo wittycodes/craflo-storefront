@@ -144,7 +144,7 @@ export function ExtendedApp({Component, pageProps, ...rest}) {
 
                       </ReactiveBase>
                       <GlobalStyle />
-                    </ThemeProvider>
+                   </ThemeProvider>
 
                   </AuthProvider>
                 </AppProvider>

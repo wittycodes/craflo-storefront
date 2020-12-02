@@ -141,6 +141,7 @@ export const LeftMenu: React.FC<Props> = ({ logo }) => {
   return (
     <LeftMenuBox>
       <div onClick={()=> {
+        uiStore.closeFilterDrawer()
         uiStore.toggleMenuDrawerOpen()
         //
         // console.log(uiStore.isMenuDrawerOpen, "BOOSDIKE")

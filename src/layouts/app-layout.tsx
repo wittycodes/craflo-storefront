@@ -15,6 +15,8 @@ const MobileHeader = dynamic(() => import('./header/mobile-header'), {
 });
 
 const SidebarMenu = dynamic(() => import('src/layouts/sidebar/sidebarMenu'));
+const SidebarFilters = dynamic(() => import('src/layouts/sidebar/sidebarFilters'));
+
 import { push as Menu } from 'react-burger-menu'
 // import set = Reflect.set;
 // type LayoutProps = {
@@ -157,13 +159,42 @@ const Layout = ({
           {/*  sidebarId={"rrr-sidebar"}*/}
           {/*  contentId={"rrr-content"}*/}
           {/*>*/}
+        <SwipeableDrawer
+          variant={deviceType.mobile? "temporary": "persistent"}
+          anchor={'left'}
+          open={uiStore.isFilterDrawerOpen}
+          onOpen={()=> {
+            uiStore.closeMenuDrawer()
+            uiStore.toggleMenuDrawerOpen()
+          }}
+          onClose={()=> {
+            uiStore.toggleFilterDrawerOpen()
+            uiStore.toggleMenuDrawerOpen()
+          }}
+          ModalProps={{
+            keepMounted: true
+          }}
+          classes={{
+            paperAnchorDockedLeft: classes.drawerPaper
+          }}
+        >
+          {/*<SidebarMenu type={'grocery'} deviceType={deviceType} />*/}
+          <SidebarFilters type={'sxs'} deviceType={deviceType} />
+        </SwipeableDrawer>
+
 
           <SwipeableDrawer
             variant={deviceType.mobile? "temporary": "persistent"}
             anchor={'left'}
             open={uiStore.isMenuDrawerOpen}
-            onOpen={uiStore.toggleMenuDrawerOpen}
-            onClose={uiStore.toggleMenuDrawerOpen}
+            onOpen={()=> {
+              uiStore.toggleMenuDrawerOpen()
+              uiStore.toggleFilterDrawerOpen()
+            }}
+            onClose={()=> {
+              uiStore.toggleMenuDrawerOpen()
+              uiStore.toggleFilterDrawerOpen()
+            }}
             ModalProps={{
               keepMounted: true, // Better open performance on mobile.
             }}
@@ -174,9 +205,14 @@ const Layout = ({
             <SidebarMenu type={'grocery'} deviceType={deviceType} />
           </SwipeableDrawer>
 
+
+
+
+
+
           <main
             className={clsx(classes.content, {
-              [classes.contentShift]: uiStore.isMenuDrawerOpen,
+              [classes.contentShift]: uiStore.isMenuDrawerOpen || uiStore.isFilterDrawerOpen ,
             })}
           >
             {children}

@@ -22,6 +22,7 @@ import {
   PopoverWrapper,
   SidebarWrapper,
   RequestMedicine,
+  FiltersWrapper
 } from './sidebar.style';
 import inject from "hocs/inject";
 

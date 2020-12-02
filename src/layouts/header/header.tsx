@@ -8,14 +8,18 @@ import { LeftMenu } from './menu/left-menu/left-menu';
 import HeaderWrapper from './header.style';
 import LogoImage from 'assets/images/logo.png';
 import UserImage from 'assets/images/user.jpg';
-import { isCategoryPage } from '../is-home-page';
+// import { isCategoryPage } from '../is-home-page';
 import Search from 'features/search/search';
 import useAuthStore from "hooks/globalStores/useAuthStore";
-import LanguageSwitcher from "./menu/language-switcher/language-switcher";
-import GeoSwitcher from "./menu/geo-switcher/geo-switcher";
+// import LanguageSwitcher from "./menu/language-switcher/language-switcher";
+// import GeoSwitcher from "./menu/geo-switcher/geo-switcher";
 import { useAppState, useAppDispatch } from 'contexts/app/app.provider';
 import useMiniProfile from "hooks/viewer/useMiniProfile";
 import {withApollo} from "lib/apollo/withApollo";
+// import UpdateContact from "../../components/contact-card/contact-card";
+import {Button} from "../../components/button/button";
+import { Filter } from 'assets/icons/Filter';
+import useStores from "hooks/useStores";
 
 type Props = {
   className?: string;
@@ -77,15 +81,29 @@ const Header: React.FC<Props> = ({ className }) => {
 
   const isSticky = useAppState('isSticky');
   const showSearch =  isSticky
+  const { uiStore } = useStores();
+
   console.log(miniProfile, "randi")
   return (
     <HeaderWrapper className={className} id="layout-header" style={{background: pathname == '/[lang]'? 'none' :  "#fff !important"}}>
       <LeftMenu logo={LogoImage} />
       {showSearch && (
         <>
-          <GeoSwitcher />
-          <Search minimal={true} className="headerSearch" />
-        </>
+          {/*<GeoSwitcher />*/}
+          <Button
+            size="big"
+            variant="outlined"
+            type="button"
+            className="add-button"
+            onClick={()=> {
+              uiStore.toggleFilterDrawerOpen()
+              uiStore.closeMenuDrawer()
+            }}
+            style={{background:"#eee", padding: " 0 1rem  0 1rem",  marginRight: "0.5rem", marginLeft:"4rem"}}
+          >
+            <Filter color={"#000"} width={28} height={28}/>
+          </Button>
+          <Search minimal={true} className="headerSearch" /></>
       )}
       <RightMenu
         isAuthenticated={isAuthenticated}

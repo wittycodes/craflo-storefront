@@ -484,18 +484,7 @@ const ProductListingPage: NextPage = ({ deviceType, ...props }) => {
               innerZ={99}
               bottomBoundary={300}
             >
-              <Row style={{ alignItems: 'flex-end', margin:'auto', height:72, backgroundColor: "#fff" }}>
-                <Col xs={4} sm={3} md={3} lg={3} style={{position:"relative", top: -80}}>
-                  <ColorFilter/>
-                </Col>
-                <Col xs={4} sm={3} md={3} lg={3} style={{position:"relative", top: -80}}>
-                  <DynamicRangeSlider
-                    componentId="PriceRangeSensor"
-                    dataField="product.pricing.USD.minPrice"
-                    showHistogram={true}
-                  />
-                </Col>
-              </Row>
+
 
               {/*<PriceSlider />*/}
               {/*<LangSwitcher/>*/}

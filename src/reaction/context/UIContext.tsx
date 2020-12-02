@@ -7,6 +7,8 @@ export const UIContext = createContext({} as any);
 export const UIProvider = ({ children }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMenuDrawerOpen, setIsMenuDrawerOpen] = useState(false);
+  const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
+
   const [language, setLanguage] = useState("en");
   const [locales, setLocales] = useState({});
   const [orderStatusQuery, setOrderStatusQuery] = useState([]);
@@ -63,6 +65,15 @@ export const UIProvider = ({ children }) => {
     setIsMenuDrawerOpen(!isMenuDrawerOpen);
   };
 
+
+  const closeFilterDrawer = () => {
+    setIsFilterDrawerOpen(false);
+  };
+
+  const toggleFilterDrawerOpen = () => {
+    setIsFilterDrawerOpen(!isFilterDrawerOpen);
+  };
+
   const setOrderStatusSelectValue = (orderStatus) => {
     setOrderStatusQuery(orderStatus);
   };
@@ -76,6 +87,7 @@ export const UIProvider = ({ children }) => {
     <UIContext.Provider value={{
       isCartOpen,
       isMenuDrawerOpen,
+      isFilterDrawerOpen,
       language,
       locales,
       orderStatusQuery,
@@ -94,6 +106,8 @@ export const UIProvider = ({ children }) => {
       toggleCartOpen,
       closeMenuDrawer,
       toggleMenuDrawerOpen,
+      closeFilterDrawer,
+      toggleFilterDrawerOpen,
       setOrderStatusSelectValue,
       setPageSize,
       setSortBy

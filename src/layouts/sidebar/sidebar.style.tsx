@@ -90,6 +90,12 @@ export const TreeWrapper = styled.div`
   padding-left: 50px;
   padding-right: 20px;
 `;
+export const FiltersWrapper = styled.div`
+  width: 16rem;
+  height: 80vh;
+  padding-left: 50px;
+
+`;
 
 export const PopoverHandler = styled.div`
   font-size: 14px;
