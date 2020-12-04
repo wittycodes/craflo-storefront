@@ -78,7 +78,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
   // useEffect(()=>{
   //   let c= false
   //   cart.items.forEach((a)=>{
-  //     if (a.productConfiguration.productId == product.productId) {
+  //     if (a.productConfiguration.productId == product?.productId) {
   //       c=true
   //       setPQuantity(a.quantity)
   //     }
@@ -94,9 +94,9 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
     const variantId = variant._id;
     let selectOptionId = optionId;
     if (!selectOptionId && variant.options && variant.options.length) {
-      selectOptionId = variant.options[0]._id;
+      selectOptionId = variant.options[0]?._id;
     }
-    selectedVariant = variantById(product.variants, variantId);
+    selectedVariant = variantById(product?.variants, variantId);
     selectedOption = variantById(selectedVariant.options, selectOptionId);
     //setPDPSelectedVariantId(variantId, selectOptionId);
   }
@@ -111,7 +111,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
     return productPrice;
   }
 
-  selectVariant(product.variants[0], null);
+  selectVariant(product?.variants[0], null);
 
   const productPrice = determineProductPrice();
   const compareAtDisplayPrice = (productPrice.compareAtPrice && productPrice.compareAtPrice.displayAmount) || null;
@@ -120,7 +120,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
     e.stopPropagation();
     // cartAnimation(e);
     //--console.log(price)
-    const selectedVariantOrOption = selectedOption || selectedVariant;
+    const selectedVariantOrOption  = selectedOption || selectedVariant;
 
     // Call addItemsToCart with an object matching the GraphQL `CartItemInput` schema
     let quantity = 1.0
@@ -131,7 +131,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
             currencyCode
           },
           productConfiguration: {
-            productId: product.productId, // Pass the productId, not to be confused with _id
+            productId: product?.productId, // Pass the productId, not to be confused with _id
             productVariantId: selectedVariantOrOption.variantId // Pass the variantId, not to be confused with
           },
           quantity
@@ -164,7 +164,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
     }, 500);
   }, []);
 
-  const media = JSON.parse(product.metafields[0].value)
+  const media = JSON.parse(product?.metafields[0]?.value)
 
 
   return (
@@ -191,25 +191,25 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
             <CarouselWithCustomDots
               items={media}
               deviceType={deviceType}
-              title={product.title}
+              title={product?.title}
             />
           </ProductPreview>
         )}
 
         <ProductInfo   dir={isRtl ? 'rtl' : 'ltr'}>
           <ProductTitlePriceWrapper>
-            <ProductTitle>{product.title}</ProductTitle>
+            <ProductTitle>{product?.title}</ProductTitle>
             <ProductPriceWrapper>
-              {product.discountInPercent ? (
+              {product?.discountInPercent ? (
                 <SalePrice>
                   {/*CURRENCY*/}
-                  {product.pricing[0].displayPrice}
+                  {product?.pricing[0]?.displayPrice}
                 </SalePrice>
               ) : null}
 
               <ProductPrice>
                 {/*CURRENCY*/}
-                {product.pricing[0].displayPrice}
+                {product?.pricing[0]?.displayPrice}
               </ProductPrice>
             </ProductPriceWrapper>
           </ProductTitlePriceWrapper>
@@ -221,10 +221,10 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
             }}
             id="product-info-786"></ZoomImageWrapper>
 
-          <ProductWeight>{product.unit}</ProductWeight>
+          <ProductWeight>{product?.unit}</ProductWeight>
           {console.log(product, cart, "oooooooooooo")}
           <ProductDescription>
-            <ReadMore character={200}>{product.description}</ReadMore>
+            <ReadMore character={200}>{product?.description}</ReadMore>
           </ProductDescription>
 
           <ProductCartWrapper>
@@ -260,7 +260,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
             <MetaSingle>
               {product?.categories?.map((item: any) => (
                 <Link
-                  href={`/${product.type.toLowerCase()}?category=${item.slug}`}
+                  href={`/${product?.type.toLowerCase()}?category=${item.slug}`}
                   key={`link-${item.id}`}
                 >
                   {
@@ -293,7 +293,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
             </BackButton>
 
             <CarouselWithCustomDots
-              items={product.gallery}
+              items={product?.gallery}
               deviceType={deviceType}
             />
           </ProductPreview>
