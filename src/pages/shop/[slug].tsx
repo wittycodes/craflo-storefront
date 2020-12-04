@@ -28,6 +28,7 @@ import dynamic from 'next/dynamic'
 // })
 import ProfilePage from 'src/features/shop-profile/ProfilePage';
 // import {App} from '../[lang]/explore-beta';
+import { GetStaticProps } from 'next'
 
 
 type Props = {
@@ -215,7 +216,7 @@ const Profile: NextPage = ({ deviceType, ...props}) => {
 
 
 
-export const getStaticProps = async ({ params: { slug } }) => {
+export const getStaticProps:GetStaticProps = async ({ params: { slug } }) => {
   let lang = "en"
    const primaryShop = await fetchPrimaryShop(lang);
    const merchantShop = await fetchMerchantShop(slug)
@@ -239,7 +240,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
         initialApolloState: null  //apolloClient.cache.extract(),
       },
       // eslint-disable-next-line camelcase
-      // revalidate: 1 // // revalidate immediately
+      revalidate: 3 // // revalidate immediately
     };
   }
   //--console.log(primaryShop, "pulkit0009")
@@ -255,7 +256,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
       initialApolloState: null  //apolloClient.cache.extract(),
     },
     // eslint-disable-next-line camelcase
-    // revalidate: 120 // // revalidate each two minutes
+    revalidate: 3 // // revalidate each two minutes
   };
 };
 
@@ -265,7 +266,7 @@ export async function getStaticPaths() {
     paths: [
       { params: { slug: "sgcreations" } }
     ],
-    fallback: true,
+    fallback: true
   };
 }
 

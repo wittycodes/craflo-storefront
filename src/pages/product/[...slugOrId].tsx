@@ -16,7 +16,7 @@ import fetchAllTags from "staticUtils/tags/fetchAllTags";
 import fetchTranslations from "staticUtils/translations/fetchTranslations";
 import {DynamicRangeSlider, ReactiveList} from '@appbaseio/reactivesearch'
 import { Waypoint } from 'react-waypoint';
-
+import { GetStaticProps } from 'next'
 /**
  *
  * @name buildJSONLd
@@ -245,7 +245,7 @@ const ProductPage: NextPage = ({ data, deviceType, ...props }) => {
     </>
   );
 };
-export async function getServerSideProps({ params: { lang, slugOrId} }) {
+export const getStaticProps: GetStaticProps = async ({ params: { lang, slugOrId} }) => {
   const productSlug = slugOrId && slugOrId[0];
   const primaryShop = await fetchPrimaryShop(lang);
 
@@ -259,6 +259,7 @@ export async function getServerSideProps({ params: { lang, slugOrId} }) {
       },
       // eslint-disable-next-line camelcase
       //// revalidate: 1 // // revalidate immediately
+      revalidate: 3
     };
   }
 
@@ -271,6 +272,7 @@ export async function getServerSideProps({ params: { lang, slugOrId} }) {
     },
     // eslint-disable-next-line camelcase
     //// revalidate: 120 // // revalidate each two minutes
+    revalidate: 3
   };
 
   /*
@@ -288,6 +290,13 @@ export async function getServerSideProps({ params: { lang, slugOrId} }) {
     },
   };
   */
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: true // See the "fallback" section below
+  };
 }
 export default  withApollo()(withCart(ProductPage));
 
