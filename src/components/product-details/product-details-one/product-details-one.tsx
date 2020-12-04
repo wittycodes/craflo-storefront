@@ -91,13 +91,13 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
   let selectedVariant, selectedOption;
 
   const selectVariant = (variant, optionId) => {// Select the variant, and if it has options, the first option
-    const variantId = variant._id;
+    const variantId = variant?._id;
     let selectOptionId = optionId;
-    if (!selectOptionId && variant.options && variant.options.length) {
-      selectOptionId = variant.options? variant.options[0]?._id: null;
+    if (!selectOptionId && variant?.options && variant?.options?.length) {
+      selectOptionId = variant?.options? variant.options[0]?._id: null;
     }
     selectedVariant = variantById(product?.variants, variantId);
-    selectedOption = variantById(selectedVariant.options, selectOptionId);
+    selectedOption = variantById(selectedVariant?.options, selectOptionId);
     //setPDPSelectedVariantId(variantId, selectOptionId);
   }
 
@@ -114,7 +114,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
   selectVariant(product?.variants? product.options[0]: null, null);
 
   const productPrice = determineProductPrice();
-  const compareAtDisplayPrice = (productPrice.compareAtPrice && productPrice.compareAtPrice.displayAmount) || null;
+  // const compareAtDisplayPrice = (productPrice.compareAtPrice && productPrice.compareAtPrice.displayAmount) || null;
 
   const handleAddClick = (e) => {
     e.stopPropagation();
@@ -127,12 +127,12 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
     addItemsToCart([
         {
           price: {
-            amount: productPrice.price,
+            amount: productPrice?.price,
             currencyCode
           },
           productConfiguration: {
             productId: product?.productId, // Pass the productId, not to be confused with _id
-            productVariantId: selectedVariantOrOption.variantId // Pass the variantId, not to be confused with
+            productVariantId: selectedVariantOrOption?.variantId // Pass the variantId, not to be confused with
           },
           quantity
         }
