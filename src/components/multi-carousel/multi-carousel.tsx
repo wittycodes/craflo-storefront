@@ -53,6 +53,9 @@ const CarouselWithCustomDots = ({
   title,
   ...rest
 }: any) => {
+  if(!items){
+    items = []
+  }
   const children = items.slice(0, 6).map((item: any, index: number) => (
     <>
       {/*{console.log(Math.ceil(item.full_height * (450 / item.full_width)))}*/}
