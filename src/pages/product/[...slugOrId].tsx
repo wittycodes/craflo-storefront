@@ -167,6 +167,10 @@ const CartPopUp = dynamic(() => import('src/features/carts/cart-popup'), {
 
 const ProductPage: NextPage = ({ data, deviceType, ...props }) => {
   // console.log(props)
+  if(!props.product)
+  {
+    props.product={}
+  }
   let content = (
     <ProductDetails product={props.product} deviceType={deviceType} />
   );

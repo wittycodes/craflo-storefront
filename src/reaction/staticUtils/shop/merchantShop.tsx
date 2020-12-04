@@ -25,7 +25,6 @@ query shop($id: ID!, $language: String! = "en") {
       verified
     }
 
-    productCount
   }
 }
 
