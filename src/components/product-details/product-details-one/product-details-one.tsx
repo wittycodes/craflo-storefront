@@ -94,7 +94,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
     const variantId = variant._id;
     let selectOptionId = optionId;
     if (!selectOptionId && variant.options && variant.options.length) {
-      selectOptionId = variant.options[0]?._id;
+      selectOptionId = variant.options? variant.options[0]?._id: null;
     }
     selectedVariant = variantById(product?.variants, variantId);
     selectedOption = variantById(selectedVariant.options, selectOptionId);
@@ -111,7 +111,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
     return productPrice;
   }
 
-  selectVariant(product?.variants[0], null);
+  selectVariant(product?.variants? product.options[0]: null, null);
 
   const productPrice = determineProductPrice();
   const compareAtDisplayPrice = (productPrice.compareAtPrice && productPrice.compareAtPrice.displayAmount) || null;
@@ -164,7 +164,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
     }, 500);
   }, []);
 
-  const media = JSON.parse(product?.metafields[0]?.value)
+  const media = JSON.parse(product?.metafields? product.metafields[0]?.value: null)
 
 
   return (
@@ -203,13 +203,13 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
               {product?.discountInPercent ? (
                 <SalePrice>
                   {/*CURRENCY*/}
-                  {product?.pricing[0]?.displayPrice}
+                  {product?.pricing?product.pricing[0]?.displayPrice: null}
                 </SalePrice>
               ) : null}
 
               <ProductPrice>
                 {/*CURRENCY*/}
-                {product?.pricing[0]?.displayPrice}
+                {product?.pricing?product.pricing[0]?.displayPrice:null}
               </ProductPrice>
             </ProductPriceWrapper>
           </ProductTitlePriceWrapper>
