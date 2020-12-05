@@ -8,11 +8,11 @@ import CartPopupButton, {
 import { CURRENCY } from 'utils/constant';
 import { CartSlidePopup } from './cart.style';
 import { FormattedMessage } from 'react-intl';
-import { useCart } from 'contexts/cart/use-cart';
+import { useCart as useCartUI } from 'contexts/cart/use-cart';
 import useRCart from "hooks/cart/useCart";
 
 const CartPopupStyle = createGlobalStyle`
-  .cartPopup{
+  .cartPopup {
     top: auto !important;
     left: auto !important;
     bottom: 50px !important;
@@ -34,14 +34,12 @@ const CartPopupStyle = createGlobalStyle`
 
 const CartPopUp = ({
   deviceType: { mobile, tablet, desktop },
-  cart
+  carts
 }) => {
-  let { isOpen, cartItemsCount, toggleCart, calculatePrice } = useCart();
-  // let cart = useRCart("cmVhY3Rpb24vc2hvcDpvRXNybmM5bXFCRHZ0NTJUVw==")
-  cartItemsCount = cart?.totalItemQuantity
-  calculatePrice = () => cart?.checkout ? cart?.checkout?.summary?.total?.amount : 0
-  // console.log("asdfsdf lakshyy", cart)
+  let { isOpen, toggleCart } = useCartUI();
 
+  // let cart = useRCart("cmVhY3Rpb24vc2hvcDpvRXNybmM5bXFCRHZ0NTJUVw==")
+  // carts.AggregatePrice = () => cart?.checkout ? cart?.checkout?.summary?.total?.amount : 0
 
   const handleModal = () => {
     openModal({
@@ -54,8 +52,8 @@ const CartPopUp = ({
         disableDragging: true,
         transition: {
           tension: 360,
-          friction: 40,
-        },
+          friction: 40
+        }
       },
       closeOnClickOutside: true,
       component: Cart,
@@ -73,15 +71,15 @@ const CartPopUp = ({
           <CartPopupStyle />
           <CartPopupButton
             className="product-cart"
-            itemCount={cartItemsCount}
+            itemCount={carts.AggregateItemsQuantity}
             itemPostfix={
-              cartItemsCount > 1 ? (
+              carts.AggregateItemsQuantity > 1 ? (
                 <FormattedMessage id="cartItems" defaultMessage="items" />
               ) : (
                 <FormattedMessage id="cartItem" defaultMessage="item" />
               )
             }
-            price={calculatePrice()}
+            price={carts.AggregatePrice}
             pricePrefix="$"
             onClick={handleModal}
           />
@@ -90,21 +88,21 @@ const CartPopUp = ({
         <>
           <CartSlidePopup className={cartSliderClass}>
             {isOpen && (
-              <Cart cartContents={cart} onCloseBtnClick={toggleCart} scrollbarHeight="100vh" />
+              <Cart carts={carts} onCloseBtnClick={toggleCart} scrollbarHeight="100vh" />
             )}
           </CartSlidePopup>
 
           <BoxedCartButton
             className="product-cart"
-            itemCount={cartItemsCount}
+            itemCount={carts.AggregateItemsQuantity}
             itemPostfix={
-              cartItemsCount > 1 ? (
+              carts.AggregateItemsQuantity > 1 ? (
                 <FormattedMessage id="cartItems" defaultMessage="items" />
               ) : (
                 <FormattedMessage id="cartItem" defaultMessage="item" />
               )
             }
-            price={calculatePrice()}
+            price={carts.AggregatePrice}
             pricePrefix={CURRENCY}
             onClick={toggleCart}
           />

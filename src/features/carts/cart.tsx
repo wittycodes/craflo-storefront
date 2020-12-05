@@ -68,16 +68,11 @@ const Cart: React.FC<CartPropsType> = ({
     applyCoupon,
   } = useCart()
 
-  let ReactionCart = useRCart("cmVhY3Rpb24vc2hvcDpvRXNybmM5bXFCRHZ0NTJUVw==")
-
-
-
-
+  // let ReactionCart = useRCart("cmVhY3Rpb24vc2hvcDpvRXNybmM5bXFCRHZ0NTJUVw==")
 
   items = cartContents.items
   cartItemsCount = cartContents.totalItemQuantity
   calculatePrice = () => cartContents.checkout ? cartContents.checkout.summary.total.amount : 0
-  // console.log(cartContents)
 
   const [couponText, setCoupon] = useState('');
   const [displayCoupon, showCoupon] = useState(false);
@@ -153,7 +148,7 @@ const Cart: React.FC<CartPropsType> = ({
                 key={`cartItem-${item.id}`}
                 onIncrement={() => addItem(item)}
                 onDecrement={() => removeItem(item)}
-                onRemove={() => ReactionCart.onRemoveCartItems(item._id)}
+                onRemove={() => cartContents.onRemoveCartItems(item._id)}
                 data={item}
               />
             ))

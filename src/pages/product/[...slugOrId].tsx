@@ -212,7 +212,7 @@ const ProductPage: NextPage = ({ data, deviceType, ...props }) => {
           <ProductSingleContainer>
             {content}
 
-            <CartPopUp deviceType={deviceType} />
+            <CartPopUp  deviceType={deviceType} />
           </ProductSingleContainer>
         </ProductSingleWrapper>
 

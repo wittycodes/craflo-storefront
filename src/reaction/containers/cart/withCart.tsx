@@ -16,7 +16,7 @@ export default function withCart(Component) {
 
 
     return (
-      <Component {...props} {...cart}/>
+      <Component {...props} carts={cart}/>
     );
   }
 

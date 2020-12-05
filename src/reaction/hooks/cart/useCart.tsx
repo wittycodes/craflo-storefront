@@ -30,15 +30,18 @@ import {
 export default function useCart(shopId: string) {
   const { cartStore } = useStores();
   const [viewer, isLoadingViewer] = useViewer();
-  //const shop = useMerchantShop();
+  // const shop = useMerchantShop();
   const shop = {
     _id: shopId
   }
   const apolloClient = useApolloClient();
   const accountId = viewer && viewer._id;
 
-  const shouldSkipAccountCartByAccountIdQuery = Boolean(!accountId || cartStore.hasAnonymousCartCredentials || isLoadingViewer || !shop || !shop._id);
-  const shouldSkipAnonymousCartByCartIdQuery = Boolean(accountId || isLoadingViewer || !cartStore.anonymousCartId || !cartStore.anonymousCartToken);
+  const shouldSkipAccountCartByAccountIdQuery = Boolean(!accountId || cartStore.hasAnonymousCartCredentials(shopId) || isLoadingViewer || !shop || !shop._id);
+  const shouldSkipAnonymousCartByCartIdQuery = Boolean(accountId || isLoadingViewer || !cartStore.anonymousCartId[shopId] || !cartStore.anonymousCartToken[shopId]);
+
+
+
 
   const { loading: isLoading, data: cartData, fetchMore, refetch: refetchCart } = useQuery(accountCartByAccountIdQuery, {
     skip: shouldSkipAccountCartByAccountIdQuery,
@@ -46,17 +49,18 @@ export default function useCart(shopId: string) {
       accountId,
       shopId: shop && shop._id
     },
-    pollInterval: shouldSkipAccountCartByAccountIdQuery ? 0 : 10000
+    pollInterval: shouldSkipAccountCartByAccountIdQuery ? 0 : 2000
   });
 
   const { data: cartDataAnonymous, refetch: refetchCartAnonymous } = useQuery(anonymousCartByCartIdQuery, {
     skip: shouldSkipAnonymousCartByCartIdQuery,
     variables: {
-      cartId: cartStore.anonymousCartId,
-      cartToken: cartStore.anonymousCartToken
+      cartId: cartStore.anonymousCartId[shopId],
+      cartToken: cartStore.anonymousCartToken[shopId]
     },
-    pollInterval: shouldSkipAnonymousCartByCartIdQuery ? 0 : 10000
+    pollInterval: shouldSkipAnonymousCartByCartIdQuery ? 0 : 2000
   });
+
 
 
   useEffect(() => {
@@ -67,6 +71,13 @@ export default function useCart(shopId: string) {
       refetchCartAnonymous();
     }
   }, [viewer, refetchCart]);
+
+
+
+
+
+
+
 
   const cart = useMemo(() => {
     if (!shouldSkipAccountCartByAccountIdQuery && cartData) {
@@ -79,32 +90,50 @@ export default function useCart(shopId: string) {
     return {};
   }, [cartData, cartDataAnonymous, shouldSkipAccountCartByAccountIdQuery, shouldSkipAnonymousCartByCartIdQuery]);
 
+
   const pageInfo = useMemo(() => {
     if (cart && cart.items) return cart.items.pageInfo;
     return {};
   }, [cart]);
 
+
+
   // With an authenticated cart, set the accountCartId for later use
   useEffect(() => {
     if (cart && cart.account && cart.account._id === (viewer && viewer._id)) {
-      cartStore.setAccountCartId(cart._id);
+      cartStore.setAccountCartId({
+        [shopId]: cart._id
+      });
     } else {
-      cartStore.setAccountCartId(null);
+      cartStore.setAccountCartId({
+        [shopId]: null
+      });
     }
   }, [cart, cartStore.setAccountCartId, viewer]);
+
+
+
+
+
+
+
 
   const cartIdAndCartToken = () => {
     const { accountCartId, anonymousCartId, anonymousCartToken } = cartStore;
     let cartToken = {};
-    if (!accountCartId) {
-      cartToken = { cartToken: anonymousCartToken };
+    if (!accountCartId[shopId]) {
+      cartToken = { cartToken: anonymousCartToken[shopId] };
     }
 
     return {
-      cartId: accountCartId || anonymousCartId,
+      cartId: accountCartId[shopId] || anonymousCartId[shopId],
       ...cartToken
     };
   };
+
+
+
+
 
   const [addOrCreateCartMutation, {
     loading: addOrCreateCartLoading
@@ -113,7 +142,7 @@ export default function useCart(shopId: string) {
       if (addOrCreateCartMutationData && addOrCreateCartMutationData.createCart && (!viewer || !viewer._id)) {
         const { cart: cartPayload, token } = addOrCreateCartMutationData.createCart;
         //--console.log(addOrCreateCartMutationData)
-        cartStore.setAnonymousCartCredentials(cartPayload._id, token);
+        cartStore.setAnonymousCartCredentials(cartPayload._id, token, shopId);
       }
       refetchCart();
     }
@@ -140,28 +169,30 @@ export default function useCart(shopId: string) {
   const handleRemoveCartItems = useCallback(async (itemIds) => removeCartItemsMutationFun({
     variables: {
       input: {
-        cartId: cartStore.anonymousCartId || cartStore.accountCartId,
+        cartId: cartStore.anonymousCartId[shopId] || cartStore.accountCartId[shopId],
         cartItemIds: (Array.isArray(itemIds) && itemIds) || [itemIds],
-        cartToken: cartStore.anonymousCartToken || null
+        cartToken: cartStore.anonymousCartToken[shopId] || null
       }
     }
-  }), [cartStore.anonymousCartId, cartStore.accountCartId, cartStore.anonymousCartToken]);
+  }), [cartStore.anonymousCartId[shopId], cartStore.accountCartId[shopId], cartStore.anonymousCartToken[shopId]]);
+
 
   const handleAddItemsToCart = async (data, isCreating) => {
     const input = {
       items: data.items
     };
 
-    if (!isCreating && (!viewer || !viewer._id) && cartStore.hasAnonymousCartCredentials) {
+    if (!isCreating && (!viewer || !viewer._id) && cartStore.hasAnonymousCartCredentials(shopId)) {
       // Given an anonymous user, with a cart, add token and cartId to input
       const { anonymousCartId, anonymousCartToken } = cartStore;
 
       // Add items to an existing anonymous cart
-      input.cartToken = anonymousCartToken;
-      input.cartId = anonymousCartId;
-    } else if (!isCreating && viewer && viewer._id && cartStore.hasAccountCart) {
+      input.cartToken = anonymousCartToken[shopId];
+      input.cartId = anonymousCartId[shopId];
+
+    } else if (!isCreating && viewer && viewer._id && cartStore.hasAccountCart(shopId)) {
       // With an account and an account cart, set the accountCartId on the input object
-      input.cartId = cartStore.accountCartId;
+      input.cartId = cartStore.accountCartId[shopId];
     } else if (isCreating) {
       // With no anonymous or account cart, add shop Id to input as it will be needed for the create cart mutation
       input.shopId = shop._id;
@@ -189,9 +220,14 @@ export default function useCart(shopId: string) {
     });
   };
 
+
+
+
+
+
   // If we are authenticated, reconcile carts
   useEffect(() => {
-    if (cartStore.hasAnonymousCartCredentials && viewer && viewer._id && cartStore.isReconcilingCarts === false) {
+    if (cartStore.hasAnonymousCartCredentials(shopId) && viewer && viewer._id && cartStore.isReconcilingCarts === false) {
       // Prevent multiple calls to reconcile cart mutations when one is currently in progress
       cartStore.setIsReconcilingCarts(true);
 
@@ -205,7 +241,7 @@ export default function useCart(shopId: string) {
 
             if (cartPayload) {
               // Clear anonymous account credentials
-              cartStore.clearAnonymousCartCredentials();
+              cartStore.clearAnonymousCartCredentials(shopId);
 
               // Update cache for account cart query
               cache.writeQuery({
@@ -217,19 +253,18 @@ export default function useCart(shopId: string) {
               refetchCart && refetchCart();
             }
           }
-
           cartStore.setIsReconcilingCarts(false);
         },
         variables: {
           input: {
-            anonymousCartId: cartStore.anonymousCartId,
-            cartToken: cartStore.anonymousCartToken,
+            anonymousCartId: cartStore.anonymousCartId[shopId],
+            cartToken: cartStore.anonymousCartToken[shopId],
             shopId: shop && shop._id
           }
         }
       });
     }
-  }, [viewer, cartStore.hasAnonymousCartCredentials, cartStore.isReconcilingCarts, apolloClient]);
+  }, [viewer, () => cartStore.hasAnonymousCartCredentials(shopId), cartStore.isReconcilingCarts, apolloClient]);
 
   let processedCartData = null;
   if (cart) {
@@ -319,9 +354,9 @@ export default function useCart(shopId: string) {
         mutation: updateCartItemsQuantityMutation,
         variables: {
           input: {
-            cartId: cartStore.anonymousCartId || cartStore.accountCartId,
+            cartId: cartStore.anonymousCartId[shopId] || cartStore.accountCartId[shopId],
             items: (Array.isArray(cartItems) && cartItems) || [cartItems],
-            cartToken: cartStore.anonymousCartToken || null
+            cartToken: cartStore.anonymousCartToken[shopId] || null
           }
         },
         update: (cache, { data: mutationData }) => {
