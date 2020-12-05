@@ -1,5 +1,5 @@
 import React from "react";
-import useRCart from "hooks/cart/useCart";
+import useCart from "hooks/cart/useCart";
 import hoistNonReactStatic from "hoist-non-react-statics";
 
 
@@ -12,11 +12,11 @@ import hoistNonReactStatic from "hoist-non-react-statics";
 export default function withCart(Component) {
   function WithCart(props) { // eslint-disable-line require-jsdoc
 
-    const cart = useRCart("cmVhY3Rpb24vc2hvcDpvRXNybmM5bXFCRHZ0NTJUVw==")
+    const cart = useCart("cmVhY3Rpb24vc2hvcDpvRXNybmM5bXFCRHZ0NTJUVw==")
 
 
     return (
-      <Component {...props} carts={cart}/>
+      <Component {...props} cartCollection={cart}/>
     );
   }
 

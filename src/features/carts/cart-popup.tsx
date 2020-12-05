@@ -34,12 +34,12 @@ const CartPopupStyle = createGlobalStyle`
 
 const CartPopUp = ({
   deviceType: { mobile, tablet, desktop },
-  carts
+  cartCollection
 }) => {
   let { isOpen, toggleCart } = useCartUI();
 
   // let cart = useRCart("cmVhY3Rpb24vc2hvcDpvRXNybmM5bXFCRHZ0NTJUVw==")
-  // carts.AggregatePrice = () => cart?.checkout ? cart?.checkout?.summary?.total?.amount : 0
+  // cartCollection.AggregatePrice = () => cart?.checkout ? cart?.checkout?.summary?.total?.amount : 0
 
   const handleModal = () => {
     openModal({
@@ -71,15 +71,15 @@ const CartPopUp = ({
           <CartPopupStyle />
           <CartPopupButton
             className="product-cart"
-            itemCount={carts.AggregateItemsQuantity}
+            itemCount={cartCollection.AggregateItemsQuantity}
             itemPostfix={
-              carts.AggregateItemsQuantity > 1 ? (
+              cartCollection.AggregateItemsQuantity > 1 ? (
                 <FormattedMessage id="cartItems" defaultMessage="items" />
               ) : (
                 <FormattedMessage id="cartItem" defaultMessage="item" />
               )
             }
-            price={carts.AggregatePrice}
+            price={cartCollection.AggregatePrice}
             pricePrefix="$"
             onClick={handleModal}
           />
@@ -88,21 +88,21 @@ const CartPopUp = ({
         <>
           <CartSlidePopup className={cartSliderClass}>
             {isOpen && (
-              <Cart carts={carts} onCloseBtnClick={toggleCart} scrollbarHeight="100vh" />
+              <Cart cartCollection={cartCollection} onCloseBtnClick={toggleCart} scrollbarHeight="100vh" />
             )}
           </CartSlidePopup>
 
           <BoxedCartButton
             className="product-cart"
-            itemCount={carts.AggregateItemsQuantity}
+            itemCount={cartCollection.AggregateItemsQuantity}
             itemPostfix={
-              carts.AggregateItemsQuantity > 1 ? (
+              cartCollection.AggregateItemsQuantity > 1 ? (
                 <FormattedMessage id="cartItems" defaultMessage="items" />
               ) : (
                 <FormattedMessage id="cartItem" defaultMessage="item" />
               )
             }
-            price={carts.AggregatePrice}
+            price={cartCollection.AggregatePrice}
             pricePrefix={CURRENCY}
             onClick={toggleCart}
           />

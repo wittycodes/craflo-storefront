@@ -30,14 +30,11 @@ import {
 export default function useCart(shopId: string) {
   const { cartStore } = useStores();
   const [viewer, isLoadingViewer] = useViewer();
-  // const shop = useMerchantShop();
-  const shop = {
-    _id: shopId
-  }
+
   const apolloClient = useApolloClient();
   const accountId = viewer && viewer._id;
 
-  const shouldSkipAccountCartByAccountIdQuery = Boolean(!accountId || cartStore.hasAnonymousCartCredentials(shopId) || isLoadingViewer || !shop || !shop._id);
+  const shouldSkipAccountCartByAccountIdQuery = Boolean(!accountId || cartStore.hasAnonymousCartCredentials(shopId) || isLoadingViewer || !shopId);
   const shouldSkipAnonymousCartByCartIdQuery = Boolean(accountId || isLoadingViewer || !cartStore.anonymousCartId[shopId] || !cartStore.anonymousCartToken[shopId]);
 
 
@@ -47,7 +44,7 @@ export default function useCart(shopId: string) {
     skip: shouldSkipAccountCartByAccountIdQuery,
     variables: {
       accountId,
-      shopId: shop && shop._id
+      shopId: shopId
     },
     pollInterval: shouldSkipAccountCartByAccountIdQuery ? 0 : 2000
   });
@@ -195,7 +192,7 @@ export default function useCart(shopId: string) {
       input.cartId = cartStore.accountCartId[shopId];
     } else if (isCreating) {
       // With no anonymous or account cart, add shop Id to input as it will be needed for the create cart mutation
-      input.shopId = shop._id;
+      input.shopId = shopId;
     }
 
     // Run the mutation function provided as a param.
@@ -259,7 +256,7 @@ export default function useCart(shopId: string) {
           input: {
             anonymousCartId: cartStore.anonymousCartId[shopId],
             cartToken: cartStore.anonymousCartToken[shopId],
-            shopId: shop && shop._id
+            shopId: shopId
           }
         }
       });
@@ -383,7 +380,7 @@ export default function useCart(shopId: string) {
           data: { cart: null },
           variables: {
             accountId: viewer && viewer._id,
-            shopId: shop && shop._id
+            shopId: shopId
           }
         });
       }

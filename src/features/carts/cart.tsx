@@ -36,7 +36,7 @@ type CartPropsType = {
   scrollbarHeight?: string;
   onCloseBtnClick?: (e: any) => void;
   useReactionCart: any;
-  cartContents: any;
+  cartCollection: any;
 };
 
 const APPLY_COUPON = gql`
@@ -54,25 +54,25 @@ const Cart: React.FC<CartPropsType> = ({
   className,
   onCloseBtnClick,
   scrollbarHeight,
-  useReactionCart,
-  cartContents
+  cartCollection
 }) => {
+
   let {
-    items,
+    // items,
     coupon,
     addItem,
     removeItem,
-    removeItemFromCart,
-    cartItemsCount,
-    calculatePrice,
+    // removeItemFromCart,
+    // cartItemsCount,
+    // calculatePrice,
     applyCoupon,
   } = useCart()
 
   // let ReactionCart = useRCart("cmVhY3Rpb24vc2hvcDpvRXNybmM5bXFCRHZ0NTJUVw==")
 
-  items = cartContents.items
-  cartItemsCount = cartContents.totalItemQuantity
-  calculatePrice = () => cartContents.checkout ? cartContents.checkout.summary.total.amount : 0
+  const items = cartCollection.items
+  const cartItemsCount = cartCollection.totalItemQuantity
+  const calculatePrice = () => cartCollection.checkout ? cartCollection.checkout.summary.total.amount : 0
 
   const [couponText, setCoupon] = useState('');
   const [displayCoupon, showCoupon] = useState(false);
@@ -148,7 +148,7 @@ const Cart: React.FC<CartPropsType> = ({
                 key={`cartItem-${item.id}`}
                 onIncrement={() => addItem(item)}
                 onDecrement={() => removeItem(item)}
-                onRemove={() => cartContents.onRemoveCartItems(item._id)}
+                onRemove={() => cartCollection.onRemoveCartItems(item._id)}
                 data={item}
               />
             ))
