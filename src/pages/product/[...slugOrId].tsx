@@ -167,12 +167,13 @@ const CartPopUp = dynamic(() => import('src/features/carts/cart-popup'), {
 
 const ProductPage: NextPage = ({ data, deviceType, ...props }) => {
   // console.log(props)
-  if(!props.product)
-  {
-    props.product={}
+  const device = {
+    mobile: false,
+    tablet: false,
+    desktop: true
   }
   let content = (
-    <ProductDetails product={props.product} deviceType={deviceType} />
+    <ProductDetails product={props.product} deviceType={device} />
   );
   /*
   if (props.product.type === 'BOOK') {
@@ -202,8 +203,8 @@ const ProductPage: NextPage = ({ data, deviceType, ...props }) => {
     <>
 
       <SEO
-        title={`${props.product.title} - Craflo`}
-        description={`${props.product.title} Details`}
+        title={`${props?.product?.slug} - Craflo`}
+        description={`${props?.product?.description} Details`}
       />
 
       <Modal>
@@ -252,31 +253,35 @@ const ProductPage: NextPage = ({ data, deviceType, ...props }) => {
 export const getStaticProps: GetStaticProps = async ({ params: { lang, slugOrId} }) => {
   const productSlug = slugOrId && slugOrId[0];
   const primaryShop = await fetchPrimaryShop(lang);
+  const catalogProduct = await fetchCatalogProduct(productSlug)
+  const tags = await fetchAllTags(lang)
+  // console.log(productSlug, primaryShop, catalogProduct, tags,  "llllllllllllllllllllllllllllllll\n\n\n\n\n")
 
-  if (!primaryShop) {
-    return {
-      props: {
-        shop: null,
-        translations: null,
-        products: null,
-        tags: null
-      },
-      // eslint-disable-next-line camelcase
-      //// revalidate: 1 // // revalidate immediately
-      revalidate: 3
-    };
-  }
+  // if (!primaryShop) {
+  //   return {
+  //     props: {
+  //       shop: null,
+  //       translations: null,
+  //       products: null,
+  //       tags: null
+  //     },
+  //
+  //     // eslint-disable-next-line camelcase
+  //     //// revalidate: 1 // // revalidate immediately
+  //     revalidate: 120
+  //   };
+  // }
 
   return {
     props: {
       ...primaryShop,
       //...await fetchTranslations(lang, ["common", "productDetail"]),
-      ...await fetchCatalogProduct(productSlug),
-      ...await fetchAllTags(lang)
+      ...catalogProduct,
+      ...tags
     },
     // eslint-disable-next-line camelcase
     //// revalidate: 120 // // revalidate each two minutes
-    revalidate: 3
+    revalidate: 120
   };
 
   /*

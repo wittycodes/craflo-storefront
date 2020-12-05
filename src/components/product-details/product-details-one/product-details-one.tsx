@@ -111,7 +111,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
     return productPrice;
   }
 
-  selectVariant(product?.variants? product.options[0]: null, null);
+  selectVariant(product?.variants? product.variants[0]: null, null);
 
   const productPrice = determineProductPrice();
   // const compareAtDisplayPrice = (productPrice.compareAtPrice && productPrice.compareAtPrice.displayAmount) || null;
