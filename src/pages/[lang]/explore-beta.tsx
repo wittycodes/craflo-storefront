@@ -115,7 +115,7 @@ const Card = ({index, width, data}) => {
   const inViewport = true
 
   const p = data.product;
-  console.log(p,data, "asdfaoisdjfoij09--0")
+  // console.log(p,data, "asdfaoisdjfoij09--0")
   // this.props.products[index % this.props.products.length];
   const media = JSON.parse(p.metafields?p.metafields[0]?.value:[])
 

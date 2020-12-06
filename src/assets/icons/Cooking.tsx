@@ -1,37 +1,115 @@
 import React from 'react';
-export const Cooking = ({
-  color = 'currentColor',
-  width = '18px',
-  height = '18px',
-}) => {
+export const Cooking = (props) => {
   return (
     <svg
-      xmlns='http://www.w3.org/2000/svg'
-      width={width}
-      height={height}
-      viewBox='0 0 18 18'
+      xmlns="http://www.w3.org/2000/svg"
+      width="28.9"
+      height="16.9"
+      viewBox="0 0 28.9 16.9"
+      {...props}
     >
-      <g fill={color}>
-        <path
-          data-name='Path 22'
-          d='M13.68 6.482H9.835a.63.63 0 100-1.259H8.268a.63.63 0 000 1.259H4.417a2.327 2.327 0 00-2.127 1.98h13.52a2.328 2.328 0 00-2.13-1.98z'
-        />
-        <path
-          data-name='Path 23'
-          d='M15.84 9.544v-.18H0v.9h2.256v5.578a2.16 2.16 0 002.16 2.16h9.264a2.16 2.16 0 002.16-2.16v-5.398H18v-.9z'
-        />
-        <path
-          data-name='Path 24'
-          d='M5.743 2.166a3.089 3.089 0 00.2.237l.175.175c.112.112.213.224.294.321a1.464 1.464 0 01.1.137.266.266 0 01.051.112.269.269 0 01-.068.178 1.08 1.08 0 01-.2.188.636.636 0 00.309.036.544.544 0 00.336-.167.655.655 0 00.165-.4 1.1 1.1 0 00-.043-.375 1.972 1.972 0 00-.279-.572 3.125 3.125 0 00-.173-.224 1.837 1.837 0 01-.135-.176 1.679 1.679 0 01-.336-.69 1.736 1.736 0 01.157-.945 1.162 1.162 0 00-.858.873 1.4 1.4 0 00.017.7 1.888 1.888 0 00.289.6z'
-        />
-        <path
-          data-name='Path 25'
-          d='M8.077 2.166c.063.083.13.162.2.237l.173.175c.112.112.213.224.3.321.039.05.073.1.1.137a.243.243 0 01.05.112.264.264 0 01-.067.178 1.041 1.041 0 01-.2.188.642.642 0 00.31.036.543.543 0 00.336-.167.653.653 0 00.165-.4 1.1 1.1 0 00-.041-.375 2 2 0 00-.28-.572c-.055-.082-.124-.165-.173-.224a1.837 1.837 0 01-.135-.176 1.679 1.679 0 01-.336-.694A1.736 1.736 0 018.63 0a1.161 1.161 0 00-.857.873 1.4 1.4 0 00.016.7 1.884 1.884 0 00.289.6z'
-        />
-        <path
-          data-name='Path 26'
-          d='M10.204 2.166a2.971 2.971 0 00.2.237l.175.175c.112.112.212.224.294.321a1.465 1.465 0 01.1.137.28.28 0 01.051.112.266.266 0 01-.068.178 1.041 1.041 0 01-.2.188.64.64 0 00.309.036.547.547 0 00.336-.167.654.654 0 00.163-.4 1.086 1.086 0 00-.041-.375 1.96 1.96 0 00-.279-.572 3.125 3.125 0 00-.173-.224 1.672 1.672 0 01-.135-.176 1.679 1.679 0 01-.33-.694 1.738 1.738 0 01.151-.941A1.16 1.16 0 009.9.874a1.4 1.4 0 00.017.7 1.857 1.857 0 00.29.6z'
-        />
+      <g id="Cooking" transform="translate(-61.55 -195.55)">
+        <g
+          id="Group_12320"
+          data-name="Group 12320"
+          transform="translate(62 196)"
+        >
+          <g
+            id="Group_12319"
+            data-name="Group 12319"
+            transform="translate(11.006 10.518)"
+          >
+            <line
+              id="Line_10"
+              data-name="Line 10"
+              x2="0.963"
+              fill="none"
+              stroke="currentColor"
+              strokeLinejoin="round"
+              strokeWidth="0.9"
+            />
+            <line
+              id="Line_11"
+              data-name="Line 11"
+              x2="0.963"
+              transform="translate(2.345)"
+              fill="none"
+              stroke="currentColor"
+              strokeLinejoin="round"
+              strokeWidth="0.9"
+            />
+            <line
+              id="Line_12"
+              data-name="Line 12"
+              x2="0.963"
+              transform="translate(4.691)"
+              fill="none"
+              stroke="currentColor"
+              strokeLinejoin="round"
+              strokeWidth="0.9"
+            />
+          </g>
+          <path
+            id="Path_17428"
+            data-name="Path 17428"
+            d="M578.074,414.485l3.192-.59v-1.15h-3.192Z"
+            transform="translate(-553.266 -406.978)"
+            fill="none"
+            stroke="currentColor"
+            strokeLinejoin="round"
+            strokeWidth="0.9"
+          />
+          <path
+            id="Path_17429"
+            data-name="Path 17429"
+            d="M506.668,414.485l-3.192-.59v-1.15h3.192Z"
+            transform="translate(-503.476 -406.978)"
+            fill="none"
+            stroke="currentColor"
+            strokeLinejoin="round"
+            strokeWidth="0.9"
+          />
+          <path
+            id="Path_17430"
+            data-name="Path 17430"
+            d="M523.823,401.744a17.212,17.212,0,0,0-10.749,3.829h21.615A17.751,17.751,0,0,0,523.823,401.744Z"
+            transform="translate(-509.882 -399.805)"
+            fill="none"
+            stroke="currentColor"
+            strokeLinejoin="round"
+            strokeWidth="0.9"
+          />
+          <line
+            id="Line_13"
+            data-name="Line 13"
+            y1="1.939"
+            transform="translate(13.941)"
+            fill="none"
+            stroke="currentColor"
+            strokeMiterlimit="10"
+            strokeWidth="0.9"
+          />
+          <line
+            id="Line_14"
+            data-name="Line 14"
+            x2="3.606"
+            transform="translate(12.197)"
+            fill="none"
+            stroke="currentColor"
+            strokeMiterlimit="10"
+            strokeWidth="0.9"
+          />
+          <path
+            id="Path_17431"
+            data-name="Path 17431"
+            d="M534.69,412.643s-.333,10.268-5.321,10.268H518.395c-4.988,0-5.321-10.268-5.321-10.268Z"
+            transform="translate(-509.882 -406.911)"
+            fill="none"
+            stroke="currentColor"
+            strokeLinejoin="round"
+            strokeWidth="0.9"
+          />
+        </g>
       </g>
     </svg>
   );

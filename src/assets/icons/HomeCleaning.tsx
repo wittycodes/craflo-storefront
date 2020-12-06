@@ -1,66 +1,166 @@
 import React from 'react';
-export const HomeCleaning = ({
-  color = 'currentColor',
-  width = '18px',
-  height = '18px',
-}) => {
+export const HomeCleaning = (props) => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      width={width}
-      height={height}
-      viewBox='0 0 18 18'
+      width='20.59'
+      height='25.05'
+      viewBox='0 0 20.59 25.05'
+      {...props}
     >
-      <g transform='translate(-1.125 -1.125)' fill={color}>
-        <path data-name='Path 7' d='M1.125 18.54H1.7v.58h-.58z' />
-        <path data-name='Path 8' d='M18.54 18.54h.58v.58h-.58z' />
+      <g
+        id='home_cleaner'
+        data-name='home cleaner'
+        transform='translate(-2142.193 -787.635)'
+      >
+        <path
+          id='Path_17440'
+          data-name='Path 17440'
+          d='M2188.815,831.346a2.538,2.538,0,0,1,2.6-1.81v-1.584a27.676,27.676,0,0,0-3.734-.111,3.962,3.962,0,0,0-3.169,2.034c-.33.684,2.49-.339,2.716,1.471'
+          transform='translate(-39.669 -37.554)'
+          fill='none'
+          stroke='currentColor'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          strokeWidth='0.9'
+        />
+        <path
+          id='Path_17441'
+          data-name='Path 17441'
+          d='M2289.466,862.334a10.742,10.742,0,0,0,1.89,3.765c.082.119-.025.28-.137.207a6.8,6.8,0,0,1-2.94-3.5'
+          transform='translate(-138.167 -70.32)'
+          fill='none'
+          stroke='currentColor'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          strokeWidth='0.9'
+        />
+        <path
+          id='Path_17442'
+          data-name='Path 17442'
+          d='M2226.052,898.788a2.93,2.93,0,0,0,1.4.214,3.341,3.341,0,0,0,1.319-.214v-1.436a.17.17,0,0,0-.169-.17h-2.377a.17.17,0,0,0-.169.17Z'
+          transform='translate(-79.113 -103.39)'
+          fill='none'
+          stroke='currentColor'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          strokeWidth='0.9'
+        />
+        <path
+          id='Path_17443'
+          data-name='Path 17443'
+          d='M2156.93,1189.207'
+          transform='translate(-13.516 -380.522)'
+          fill='none'
+          stroke='currentColor'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          strokeWidth='0.9'
+        />
+        <path
+          id='Path_17444'
+          data-name='Path 17444'
+          d='M2320.353,830.622h1.328v1.584h-1.328'
+          transform='translate(-168.605 -40.225)'
+          fill='none'
+          stroke='currentColor'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          strokeWidth='0.9'
+        />
+        <path
+          id='Path_17445'
+          data-name='Path 17445'
+          d='M2153.421,936.6a15.113,15.113,0,0,1-1.134,4.707.744.744,0,0,1-.68.515h-7.4a.751.751,0,0,1-.688-.544,12.078,12.078,0,0,1,2.065-12.242,3.527,3.527,0,0,0,.679-3.055,1.052,1.052,0,0,1,.675-1.195'
+          transform='translate(0 -129.588)'
+          fill='none'
+          stroke='currentColor'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          strokeWidth='0.9'
+        />
+        <path
+          id='Path_17446'
+          data-name='Path 17446'
+          d='M2278.913,926.025c1.471.905-.25,1.974.006,2.2.847.757-.006,1.8-.006,1.8a1.4,1.4,0,0,1,.369,1.741,8.765,8.765,0,0,1,2.391,2.01'
+          transform='translate(-129.259 -130.762)'
+          fill='none'
+          stroke='currentColor'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          strokeWidth='0.9'
+        />
+        <line
+          id='Line_15'
+          data-name='Line 15'
+          y1='1.511'
+          x2='3.16'
+          transform='translate(2154.628 788.235)'
+          fill='none'
+          stroke='currentColor'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          strokeWidth='0.9'
+        />
+        <line
+          id='Line_16'
+          data-name='Line 16'
+          x2='3.16'
+          y2='1.511'
+          transform='translate(2154.628 792.632)'
+          fill='none'
+          stroke='currentColor'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          strokeWidth='0.9'
+        />
+        <line
+          id='Line_17'
+          data-name='Line 17'
+          x2='4.259'
+          transform='translate(2154.628 791.189)'
+          fill='none'
+          stroke='currentColor'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          strokeWidth='0.9'
+        />
         <circle
-          data-name='Ellipse 1'
-          cx='.489'
-          cy='.489'
-          r='.489'
-          transform='translate(14.28 9.345)'
+          id='Ellipse_9'
+          data-name='Ellipse 9'
+          cx='2.047'
+          cy='2.047'
+          r='2.047'
+          transform='translate(2158.239 799.709)'
+          strokeWidth='0.9'
+          stroke='currentColor'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          fill='none'
         />
         <path
-          data-name='Path 9'
-          d='M9.834 10.968V9.543H8.409a1.744 1.744 0 001.425 1.425z'
+          id='Path_17447'
+          data-name='Path 17447'
+          d='M2383.738,957.387a1.489,1.489,0,0,0,2.978,0,1.489,1.489,0,0,0-2.978,0Z'
+          transform='translate(-228.757 -159.112)'
+          fill='none'
+          stroke='currentColor'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          strokeWidth='0.9'
         />
         <circle
-          data-name='Ellipse 2'
-          cx='.489'
-          cy='.489'
-          r='.489'
-          transform='translate(4.99 12.247)'
-        />
-        <path
-          data-name='Path 10'
-          d='M9.834 7.537a1.744 1.744 0 00-1.425 1.425h1.425z'
-        />
-        <path data-name='Path 11' d='M2.867 15.64h3.486v.58H2.867z' />
-        <path data-name='Path 12' d='M13.898 15.64h3.491v.58h-3.491z' />
-        <path
-          data-name='Path 13'
-          d='M16.802 16.801H14.48v1.742h-.58v-1.742h-.58v-1.742h3.486v-6.66l-6.68-2.637-6.678 2.637v6.66h3.486v1.742h-.583v1.742h-.578v-1.742H3.448v1.742H2.286v.58h15.677v-.58h-1.161zm-3.486-7.257a1.163 1.163 0 001.164-1.165h.58a1.163 1.163 0 001.162 1.162v.58a1.163 1.163 0 00-1.159 1.162h-.58a1.163 1.163 0 00-1.162-1.162zm-3.191-2.613a2.322 2.322 0 11-2.328 2.322 2.322 2.322 0 012.328-2.322zm-4.352 7.258h-.584a1.163 1.163 0 00-1.162-1.162v-.58a1.163 1.163 0 001.162-1.162h.584a1.163 1.163 0 001.158 1.162v.58a1.163 1.163 0 00-1.158 1.162zm6.39 4.354v-3.77a2.032 2.032 0 10-4.064 0v3.77h-.584v-3.77a2.613 2.613 0 115.225 0v3.77zm-3.49-2.322v-.58h.59v.58z'
-        />
-        <path
-          data-name='Path 14'
-          d='M11.839 9.543h-1.425v1.425a1.744 1.744 0 001.425-1.425z'
-        />
-        <path
-          data-name='Path 15'
-          d='M18.049 6.598l-7.925-3.13-7.925 3.13a.772.772 0 00-.494.722.76.76 0 00.337.637.787.787 0 00.742.082l7.337-2.9 7.337 2.9a.787.787 0 00.742-.082.76.76 0 00.337-.637.772.772 0 00-.494-.719z'
-        />
-        <path
-          data-name='Path 16'
-          d='M10.414 7.537v1.425h1.425a1.744 1.744 0 00-1.425-1.425z'
-        />
-        <path
-          data-name='Path 17'
-          d='M17.962 2.286h-.58a1.163 1.163 0 01-1.162 1.162v.58a1.163 1.163 0 011.162 1.162h.58a1.163 1.163 0 011.162-1.162v-.58a1.163 1.163 0 01-1.162-1.162z'
-        />
-        <path
-          data-name='Path 18'
-          d='M4.028 4.027h.58a1.163 1.163 0 011.161-1.161v-.58a1.163 1.163 0 01-1.16-1.161h-.58a1.163 1.163 0 01-1.162 1.161v.58a1.163 1.163 0 011.161 1.161z'
+          id='Ellipse_10'
+          data-name='Ellipse 10'
+          cx='2.764'
+          cy='2.764'
+          r='2.764'
+          transform='translate(2152.212 802.109)'
+          strokeWidth='0.9'
+          stroke='currentColor'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          fill='none'
         />
       </g>
     </svg>

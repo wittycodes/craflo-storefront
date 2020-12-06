@@ -72,20 +72,17 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
   let productQuantity = 0
 
   const { addItemsToCart, onRemoveCartItems, cart } = useCart(product?.shop?._id);
-  const [PQuantity, setPQuantity] = React.useState(0)
 
+  const checkQuantity = ()=>{
+    let q = 0
+    cart.items.forEach((a)=>{
+      if (a.productConfiguration.productId == product?.productId) {
+           q+=1
+      }
+    })
+    return q
+  }
 
-  // useEffect(()=>{
-  //   let c= false
-  //   cart.items.forEach((a)=>{
-  //     if (a.productConfiguration.productId == product?.productId) {
-  //       c=true
-  //       setPQuantity(a.quantity)
-  //     }
-  //   })
-  //   if(!c){
-  //     setPQuantity(a.quantity)    }
-  // }, [cart])
 
   const currencyCode = "USD";
   let selectedVariant, selectedOption;
@@ -123,7 +120,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
     const selectedVariantOrOption  = selectedOption || selectedVariant;
 
     // Call addItemsToCart with an object matching the GraphQL `CartItemInput` schema
-    let quantity = 1.0
+    let quantity = 1
     addItemsToCart([
         {
           price: {
@@ -147,7 +144,24 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
 
   const handleRemoveClick = (e) => {
     e.stopPropagation();
-    //onRemoveCartItems(data);
+    // cartAnimation(e);
+    //--console.log(price)
+    const selectedVariantOrOption  = selectedOption || selectedVariant;
+
+    // Call addItemsToCart with an object matching the GraphQL `CartItemInput` schema
+    let quantity = 1
+    let ItemIds = []
+    cart?.items.forEach((item)=>{
+      if (item.productConfiguration.productId == product?.productId) {
+        ItemIds.push(item._id)
+      }
+    })
+    onRemoveCartItems([...ItemIds]);
+
+
+    if (!isInCart(89)) {
+      // cartAnimation(e);
+    }
   };
   const isInCart = (_id: number)=>{
     return false
@@ -222,14 +236,14 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
             id="product-info-786"></ZoomImageWrapper>
 
           <ProductWeight>{product?.unit}</ProductWeight>
-          {console.log(product, cart, "oooooooooooo")}
+          {/*{console.log(product, cart, "oooooooooooo")}*/}
           <ProductDescription>
             <ReadMore character={200}>{product?.description}</ReadMore>
           </ProductDescription>
 
           <ProductCartWrapper>
             <ProductCartBtn>
-              {PQuantity ==0 ? (
+              {checkQuantity() ==0 ? (
                 <Button
                   className="cart-button"
                   variant="secondary"
@@ -245,13 +259,30 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
                   </ButtonText>
                 </Button>
               ) : (
-                <Counter
-                  value={PQuantity}
-                  onDecrement={handleRemoveClick}
-                  onIncrement={handleAddClick}
-                />
+                <>
+                <Button
+                  className="cart-button"
+                  variant="secondary"
+                  borderRadius={100}
+                  onClick={handleRemoveClick}
+                  style={{background: '#009E7F', color: '#fff'}}
+                >
+                  <CartIcon mr={2} />
+                  <ButtonText>
+                    <FormattedMessage
+                      id="addCartButtonAdd"
+                      defaultMessage="Added"
+                    />
+                  </ButtonText>
+                </Button>
+                {/*<Counter*/}
+                {/*  value={PQuantity}*/}
+                {/*  onDecrement={handleRemoveClick}*/}
+                {/*  onIncrement={handleAddClick}*/}
+                {/*/>*/}
+                </>
               )}
-              <GeoSwitcher />
+              {/*<GeoSwitcher />*/}
             </ProductCartBtn>
 
           </ProductCartWrapper>

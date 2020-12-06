@@ -1,6 +1,7 @@
 import React from "react";
-import useCart from "hooks/cart/useCart";
+import useCarts from "hooks/cart/useCarts";
 import hoistNonReactStatic from "hoist-non-react-statics";
+import {CartItem} from "../../../components/cart-item/cart-item/cart-item";
 
 
 /**
@@ -12,11 +13,9 @@ import hoistNonReactStatic from "hoist-non-react-statics";
 export default function withCart(Component) {
   function WithCart(props) { // eslint-disable-line require-jsdoc
 
-    const cart = useCart("cmVhY3Rpb24vc2hvcDpvRXNybmM5bXFCRHZ0NTJUVw==")
-
-
+    const cartCollection = useCarts()
     return (
-      <Component {...props} cartCollection={cart}/>
+      <Component {...props} cartCollection={cartCollection}/>
     );
   }
 

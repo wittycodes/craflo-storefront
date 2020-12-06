@@ -13,6 +13,7 @@ import {
   Title,
   PriceBox,
   NoProductMsg,
+  NoProductImg,
   ItemWrapper,
   CouponBoxWrapper,
   CouponCode,
@@ -29,6 +30,8 @@ import { Scrollbars } from 'react-custom-scrollbars';
 import { useCart } from 'contexts/cart/use-cart';
 import { CartItem } from 'components/cart-item/cart-item/cart-item';
 import useRCart from "hooks/cart/useCart";
+import { NoCartBag } from 'assets/icons/NoCartBag';
+
 
 type CartPropsType = {
   style?: any;
@@ -63,16 +66,22 @@ const Cart: React.FC<CartPropsType> = ({
     addItem,
     removeItem,
     // removeItemFromCart,
-    // cartItemsCount,
-    // calculatePrice,
+    // cartCollection.totalItemQuantity,
+    // cartCollection.totalPrice,
     applyCoupon,
   } = useCart()
 
   // let ReactionCart = useRCart("cmVhY3Rpb24vc2hvcDpvRXNybmM5bXFCRHZ0NTJUVw==")
 
-  const items = cartCollection.items
-  const cartItemsCount = cartCollection.totalItemQuantity
-  const calculatePrice = () => cartCollection.checkout ? cartCollection.checkout.summary.total.amount : 0
+  // const items = cartCollection.items
+  // const cartCollection.totalItemQuantity = cartCollection.totalItemQuantity
+  // const cartCollection.totalPrice = cartCollection.totalPrice
+
+
+  //   Object.keys(cartCollection.shop).map((key, index) => {
+  //   cartCollection.shop[key].checkout ? cartCollection.shop[key].checkout.summary.total.amount : 0
+  // }
+
 
   const [couponText, setCoupon] = useState('');
   const [displayCoupon, showCoupon] = useState(false);
@@ -95,6 +104,21 @@ const Cart: React.FC<CartPropsType> = ({
       setError('Invalid Coupon');
     }*/
   };
+  let items = []
+
+  for(const key in cartCollection.shop){
+    (cartCollection.shop[key]?.cart?.items || []).forEach((item)=>{
+      console.log(item, "pulkittttttt")
+      items.push(<CartItem
+        key={`cartItem-${item.id}`}
+        onIncrement={() => addItem(item)}
+        onDecrement={() => removeItem(item)}
+        onRemove={() => cartCollection.shop[key].onRemoveCartItems(item._id)}
+        data={item}
+      />)
+    })
+  }
+
 
   const handleChange = (value: string) => {
     setCoupon(value);
@@ -110,9 +134,9 @@ const Cart: React.FC<CartPropsType> = ({
         <PopupItemCount>
           <ShoppingBagLarge width='19px' height='24px' />
           <span>
-            {cartItemsCount}
+            {cartCollection.totalItemQuantity}
             &nbsp;
-            {cartItemsCount > 1 ? (
+            {cartCollection.totalItemQuantity > 1 ? (
               <FormattedMessage id='cartItems' defaultMessage='items' />
             ) : (
               <FormattedMessage id='cartItem' defaultMessage='item' />
@@ -141,24 +165,22 @@ const Cart: React.FC<CartPropsType> = ({
           />
         )}
       >
+        {}
         <ItemWrapper className='items-wrapper'>
-          {!!cartItemsCount ? (
-            items.map((item) => (
-              <CartItem
-                key={`cartItem-${item.id}`}
-                onIncrement={() => addItem(item)}
-                onDecrement={() => removeItem(item)}
-                onRemove={() => cartCollection.onRemoveCartItems(item._id)}
-                data={item}
-              />
-            ))
+          {!!cartCollection.totalItemQuantity ? (
+              items
           ) : (
-            <NoProductMsg>
-              <FormattedMessage
-                id='noProductFound'
-                defaultMessage='No products found'
-              />
-            </NoProductMsg>
+            <>
+              <NoProductImg>
+                <NoCartBag />
+              </NoProductImg>
+              <NoProductMsg>
+                <FormattedMessage
+                  id='noProductFound'
+                  defaultMessage='No products found'
+                />
+              </NoProductMsg>
+            </>
           )}
         </ItemWrapper>
       </Scrollbars>
@@ -180,7 +202,7 @@ const Cart: React.FC<CartPropsType> = ({
                     onUpdate={handleChange}
                     value={couponText}
                     onClick={handleApplyCoupon}
-                    disabled={!couponText.length || !items.length}
+                    disabled={!couponText.length || !cartCollection.totalItemQuantity}
                     buttonTitle='Apply'
                     intlCouponApplyButton='voucherApply'
                     intlCouponBoxPlaceholder='couponPlaceholder'
@@ -203,7 +225,7 @@ const Cart: React.FC<CartPropsType> = ({
           )}
         </PromoCode>
 
-        {cartItemsCount !== 0 ? (
+        {cartCollection.totalItemQuantity !== 0 ? (
           <Link href='/checkout'>
             <CheckoutButton onClick={onCloseBtnClick}>
               <>
@@ -215,7 +237,7 @@ const Cart: React.FC<CartPropsType> = ({
                 </Title>
                 <PriceBox>
                   {CURRENCY}
-                  {calculatePrice()}
+                  {cartCollection.totalPrice}
                 </PriceBox>
               </>
             </CheckoutButton>
@@ -231,7 +253,7 @@ const Cart: React.FC<CartPropsType> = ({
               </Title>
               <PriceBox>
                 {CURRENCY}
-                {calculatePrice()}
+                {cartCollection.totalPrice}
               </PriceBox>
             </>
           </CheckoutButton>

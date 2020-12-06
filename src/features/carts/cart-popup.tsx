@@ -71,16 +71,16 @@ const CartPopUp = ({
           <CartPopupStyle />
           <CartPopupButton
             className="product-cart"
-            itemCount={cartCollection.AggregateItemsQuantity}
+            itemCount={cartCollection.totalItemQuantity}
             itemPostfix={
-              cartCollection.AggregateItemsQuantity > 1 ? (
+              cartCollection.totalItemQuantity > 1 ? (
                 <FormattedMessage id="cartItems" defaultMessage="items" />
               ) : (
                 <FormattedMessage id="cartItem" defaultMessage="item" />
               )
             }
-            price={cartCollection.AggregatePrice}
-            pricePrefix="$"
+            price={cartCollection.totalPrice}
+            pricePrefix="₹"
             onClick={handleModal}
           />
         </>
@@ -94,15 +94,15 @@ const CartPopUp = ({
 
           <BoxedCartButton
             className="product-cart"
-            itemCount={cartCollection.AggregateItemsQuantity}
+            itemCount={cartCollection.totalItemQuantity}
             itemPostfix={
-              cartCollection.AggregateItemsQuantity > 1 ? (
+              cartCollection.totalItemQuantity > 1 ? (
                 <FormattedMessage id="cartItems" defaultMessage="items" />
               ) : (
                 <FormattedMessage id="cartItem" defaultMessage="item" />
               )
             }
-            price={cartCollection.AggregatePrice}
+            price={cartCollection.totalPrice}
             pricePrefix={CURRENCY}
             onClick={toggleCart}
           />
