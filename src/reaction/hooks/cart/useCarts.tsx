@@ -46,12 +46,12 @@ export default function useCarts() {
 
   if (typeof window !== 'undefined') {
 
-    for (let i = 0; i < localStorage.length; i++) {
-      if (localStorage.key(i).substring(0, ANONYMOUS_CART_ID_KEY_NAME.length) == ANONYMOUS_CART_ID_KEY_NAME) {
-        const shopId = localStorage.key(i).split("_").pop()
-        const cart = useCart(shopId)
-        cartCollection.shop[shopId] = cart
-      }
+    const anonymous_cart_ids = JSON.parse(localStorage.getItem(ANONYMOUS_CART_ID_KEY_NAME) || "{}")
+    // const tokens = JSON.parse(localStorage.getItem(ANONYMOUS_CART_TOKEN_KEY_NAME))
+
+    for(const shopId in anonymous_cart_ids){
+      const cart = useCart(shopId)
+      cartCollection.shop[shopId] = cart
     }
 
     Object.keys(cartCollection.shop).map((key, index) => {

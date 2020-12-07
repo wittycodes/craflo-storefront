@@ -16,6 +16,7 @@ export const CartProvider = ({ children }) => {
 
   const setAnonymousCartCredentials = (newAnonymousCartId, newAnonymousCartToken,shopId) => {
 
+    console.log(newAnonymousCartId, newAnonymousCartToken, shopId)
     setAnonymousCartId({
       [shopId]: newAnonymousCartId || null
     });
@@ -23,23 +24,22 @@ export const CartProvider = ({ children }) => {
       [shopId]: newAnonymousCartToken || null
     });
 
-
     if (typeof newAnonymousCartId === "string" && newAnonymousCartId.length) {
       // Save to local storage
-      localStorage.setItem(ANONYMOUS_CART_ID_KEY_NAME + shopId, newAnonymousCartId);
-      localStorage.setItem(ANONYMOUS_CART_TOKEN_KEY_NAME + shopId, newAnonymousCartToken);
+      localStorage.setItem(ANONYMOUS_CART_ID_KEY_NAME, JSON.stringify({...JSON.parse(localStorage.getItem(ANONYMOUS_CART_ID_KEY_NAME) || "{}"), [shopId]: newAnonymousCartId}));
+      localStorage.setItem(ANONYMOUS_CART_TOKEN_KEY_NAME, JSON.stringify({...JSON.parse(localStorage.getItem(ANONYMOUS_CART_TOKEN_KEY_NAME) || "{}"), [shopId]: newAnonymousCartToken}));
 
       // Save cookies
-      Cookies.set(ANONYMOUS_CART_ID_KEY_NAME + shopId, newAnonymousCartId);
-      Cookies.set(ANONYMOUS_CART_TOKEN_KEY_NAME + shopId, newAnonymousCartToken);
+      Cookies.set(ANONYMOUS_CART_ID_KEY_NAME, JSON.stringify({...JSON.parse(Cookies.get(ANONYMOUS_CART_ID_KEY_NAME) || "{}"), [shopId]: newAnonymousCartId}));
+      Cookies.set(ANONYMOUS_CART_TOKEN_KEY_NAME, JSON.stringify({...JSON.parse(Cookies.get(ANONYMOUS_CART_TOKEN_KEY_NAME) || "{}"), [shopId]: newAnonymousCartToken}));
     } else {
       // Remove from local storage
-      localStorage.removeItem(ANONYMOUS_CART_ID_KEY_NAME + shopId);
-      localStorage.removeItem(ANONYMOUS_CART_TOKEN_KEY_NAME + shopId);
+      localStorage.setItem(ANONYMOUS_CART_ID_KEY_NAME, JSON.stringify({...JSON.parse(localStorage.getItem(ANONYMOUS_CART_ID_KEY_NAME) || "{}"), shopId}));
+      localStorage.setItem(ANONYMOUS_CART_TOKEN_KEY_NAME, JSON.stringify({...JSON.parse(localStorage.getItem(ANONYMOUS_CART_TOKEN_KEY_NAME) || "{}"), shopId}));
 
       // Remove cookies
-      Cookies.remove(ANONYMOUS_CART_ID_KEY_NAME + shopId);
-      Cookies.remove(ANONYMOUS_CART_TOKEN_KEY_NAME + shopId);
+      Cookies.set(ANONYMOUS_CART_ID_KEY_NAME, JSON.stringify({...JSON.parse(Cookies.get(ANONYMOUS_CART_ID_KEY_NAME)  || "{}"), shopId}));
+      Cookies.set(ANONYMOUS_CART_TOKEN_KEY_NAME, JSON.stringify({...JSON.parse(Cookies.get(ANONYMOUS_CART_TOKEN_KEY_NAME) || "{}"), shopId}));
     }
   };
 
@@ -50,20 +50,12 @@ export const CartProvider = ({ children }) => {
   const setAnonymousCartCredentialsFromLocalStorage = () => {
     // const anonymousCartId = localStorage.getItem(ANONYMOUS_CART_ID_KEY_NAME + shopId); // eslint-disable-line no-shadow
     // const anonymousCartToken = localStorage.getItem(ANONYMOUS_CART_TOKEN_KEY_NAME + shopId); // eslint-disable-line no-shadow
+    const ids = JSON.parse(localStorage.getItem(ANONYMOUS_CART_ID_KEY_NAME) || "{}")
+    const tokens = JSON.parse(localStorage.getItem(ANONYMOUS_CART_TOKEN_KEY_NAME) || "{}")
 
-    let a = {} // Array to hold the keys
-    for (let i = 0; i < localStorage.length; i++){
-
-      if (localStorage.key(i).substring(0,ANONYMOUS_CART_ID_KEY_NAME.length) == ANONYMOUS_CART_ID_KEY_NAME) {
-        a[localStorage.key(i).split("_").pop()] = {...(a[localStorage.key(i).split("_").pop()] || null), id: localStorage.key(i)}
-      }
-      if (localStorage.key(i).substring(0,ANONYMOUS_CART_TOKEN_KEY_NAME.length) == ANONYMOUS_CART_TOKEN_KEY_NAME) {
-        a[localStorage.key(i).split("_").pop()] = {...(a[localStorage.key(i).split("_").pop()] || null), token: localStorage.key(i)}
-      }
-
-    }
-    for (const property in a) {
-      setAnonymousCartCredentials(a[property]["id"], a[property]["token"], a);
+    for(const shop in ids) {
+      console.log(shop, ids, "uuuuu")
+        setAnonymousCartCredentials(ids[shop], tokens[shop], shop);
     }
 
   };
