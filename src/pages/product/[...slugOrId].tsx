@@ -253,8 +253,8 @@ const ProductPage: NextPage = ({ data, deviceType, ...props }) => {
 export const getStaticProps: GetStaticProps = async ({ params: { lang, slugOrId} }) => {
   const productSlug = slugOrId && slugOrId[0];
   // const primaryShop = await fetchPrimaryShop(lang);
-  const catalogProduct = await fetchCatalogProduct(productSlug)
-  const tags = await fetchAllTags(lang)
+  // const catalogProduct = await fetchCatalogProduct(productSlug)
+  // const tags = await fetchAllTags(lang)
   // console.log(productSlug, primaryShop, catalogProduct, tags,  "llllllllllllllllllllllllllllllll\n\n\n\n\n")
 
   // if (!primaryShop) {
@@ -276,8 +276,8 @@ export const getStaticProps: GetStaticProps = async ({ params: { lang, slugOrId}
     props: {
       // ...primaryShop,
       //...await fetchTranslations(lang, ["common", "productDetail"]),
-      ...catalogProduct,
-      ...tags
+      // ...catalogProduct,
+      // ...tags
     },
     // eslint-disable-next-line camelcase
     //// revalidate: 120 // // revalidate each two minutes
