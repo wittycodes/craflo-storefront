@@ -228,7 +228,7 @@ export const getStaticProps:GetStaticProps = async ({ params: { slug } }) => {
 
   //const translations = await fetchTranslations(lang, ["common"]);
 
-  if (!primaryShop) {
+  // if (!primaryShop) {
     return {
       props: {
         merchantShop: merchantShop,
@@ -242,22 +242,22 @@ export const getStaticProps:GetStaticProps = async ({ params: { slug } }) => {
       // eslint-disable-next-line camelcase
       revalidate: 3 // // revalidate immediately
     };
-  }
+  // }
   //--console.log(primaryShop, "pulkit0009")
 
-  return {
-    props: {
-      // ...primaryShop,
-      merchantShop: merchantShop,
-      //...translations,
-      type: 'grocery',
-      lang,
-      slug,
-      initialApolloState: null  //apolloClient.cache.extract(),
-    },
-    // eslint-disable-next-line camelcase
-    revalidate: 3 // // revalidate each two minutes
-  };
+  // return {
+  //   props: {
+  //     // ...primaryShop,
+  //     merchantShop: merchantShop,
+  //     //...translations,
+  //     type: 'grocery',
+  //     lang,
+  //     slug,
+  //     initialApolloState: null  //apolloClient.cache.extract(),
+  //   },
+  //   // eslint-disable-next-line camelcase
+  //   revalidate: 3 // // revalidate each two minutes
+  // };
 };
 
 export async function getStaticPaths() {
