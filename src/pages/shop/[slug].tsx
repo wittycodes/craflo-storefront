@@ -218,8 +218,8 @@ const Profile: NextPage = ({ deviceType, ...props}) => {
 
 export const getStaticProps:GetStaticProps = async ({ params: { slug } }) => {
   let lang = "en"
-   const primaryShop = await fetchPrimaryShop(lang);
-   const merchantShop = await fetchMerchantShop(slug)
+   // const primaryShop = await fetchPrimaryShop(lang);
+  const merchantShop = await fetchMerchantShop(slug)
   console.log(merchantShop, "ioioioio")
 
 
@@ -247,7 +247,7 @@ export const getStaticProps:GetStaticProps = async ({ params: { slug } }) => {
 
   return {
     props: {
-      ...primaryShop,
+      // ...primaryShop,
       merchantShop: merchantShop,
       //...translations,
       type: 'grocery',

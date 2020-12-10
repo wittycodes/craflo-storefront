@@ -216,7 +216,7 @@ const ProductPage: NextPage = ({ data, deviceType, ...props }) => {
           </ProductSingleContainer>
         </ProductSingleWrapper>
 
-        <RelatedItems>
+        {/*<RelatedItems>*/}
 
           <h2>Related Items</h2>
           {/*product.type.toLowerCase()*/}
@@ -244,7 +244,7 @@ const ProductPage: NextPage = ({ data, deviceType, ...props }) => {
               )
             }
           </ReactiveList>
-        </RelatedItems>
+        {/*</RelatedItems>*/}
         <Footer />
       </Modal>
     </>
