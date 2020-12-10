@@ -252,7 +252,7 @@ const ProductPage: NextPage = ({ data, deviceType, ...props }) => {
 };
 export const getStaticProps: GetStaticProps = async ({ params: { lang, slugOrId} }) => {
   const productSlug = slugOrId && slugOrId[0];
-  const primaryShop = await fetchPrimaryShop(lang);
+  // const primaryShop = await fetchPrimaryShop(lang);
   const catalogProduct = await fetchCatalogProduct(productSlug)
   const tags = await fetchAllTags(lang)
   // console.log(productSlug, primaryShop, catalogProduct, tags,  "llllllllllllllllllllllllllllllll\n\n\n\n\n")
@@ -274,7 +274,7 @@ export const getStaticProps: GetStaticProps = async ({ params: { lang, slugOrId}
 
   return {
     props: {
-      ...primaryShop,
+      // ...primaryShop,
       //...await fetchTranslations(lang, ["common", "productDetail"]),
       ...catalogProduct,
       ...tags
