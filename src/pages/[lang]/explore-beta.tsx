@@ -513,7 +513,7 @@ const ProductListingPage: NextPage = ({ deviceType, ...props }) => {
             <div style={{height: "90px"}} />
             <ReactiveList
               react={{
-                "and": ["CrafloSearch", "PriceRangeSensor"]
+                "and": ["Search", "Price Range"]
               }}
               componentId="SearchResult"
               stream={true}

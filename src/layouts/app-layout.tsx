@@ -8,6 +8,8 @@ import { LayoutWrapper } from './layout.style';
 import { isCategoryPage } from './is-home-page';
 import useStores from "hooks/useStores";
 import Grid from '@material-ui/core/Grid';
+import {SelectedFilters} from '@appbaseio/reactivesearch';
+
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 // import Sidebar from 'react-sidebar';
 const MobileHeader = dynamic(() => import('./header/mobile-header'), {
@@ -16,7 +18,6 @@ const MobileHeader = dynamic(() => import('./header/mobile-header'), {
 
 const SidebarMenu = dynamic(() => import('src/layouts/sidebar/sidebarMenu'));
 const SidebarFilters = dynamic(() => import('src/layouts/sidebar/sidebarFilters'));
-
 import { push as Menu } from 'react-burger-menu'
 // import set = Reflect.set;
 // type LayoutProps = {
@@ -136,9 +137,25 @@ const Layout = ({
             className={`${isSticky && isHomePage ? 'sticky' : 'unSticky'} `}
           />
         </Sticky>
+        <Sticky enabled={isSticky} innerZ={99}  top={79}>
+          <div style={{
+            background: "#fff",
+            paddingRight: 286,
+            paddingLeft: 354,
+            paddingTop: 8,
+            paddingBottom: 8,
+            borderTop: "#ddd 1px dashed",
+            borderBottom: "#ddd 1px solid"
+          }}>
+          <SelectedFilters innerClass={{
+            button: 'sfilter-button'
+          }} />
+          </div>
+        </Sticky>
+
         {/*<div id="rrr-outer-container">*/}
 
-        {/*<Grid container>*/}
+        {/*<Grid container> */}
         {/*  <Grid  item xs={2} style={isMenu ? {} : { display: 'none' }}>*/}
         {/*    <div style={{background: "#fff", height: "100%"}}>*/}
         {/*      <SidebarMenu type={'grocery'} deviceType={{desktop: true, mobile: 'false', tablet: 'false'}}  />*/}

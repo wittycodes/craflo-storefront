@@ -82,3 +82,34 @@
 .follows hr{
   margin-top: 10px;
 }
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.sfilter-button {
+  background-color: #f7f7f7 !important;
+  border-radius: 1.5rem !important;
+  padding: 0.5rem !important;
+  border-left: 0px !important;
+  padding-right: 1rem !important;
+  padding-left: 1rem !important;
+  font-size: 12px !important;
+
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.1s;
+
+}
+
+.sfilter-button > span {
+  border: 0px !important;
+}
+

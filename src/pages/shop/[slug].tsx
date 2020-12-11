@@ -171,7 +171,7 @@ const Profile: NextPage = ({ deviceType, ...props}) => {
         {/*<div style={{padding: 30}}>*/}
           <ReactiveList
             react={{
-              "and": ["CrafloSearch", "PriceRangeSensor"]
+              "and": ["Search", "Price Range"]
             }}
             componentId="SearchResult"
             stream={true}

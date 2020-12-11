@@ -229,7 +229,7 @@ const ProductPage: NextPage = ({ data, deviceType, ...props }) => {
           />
           <ReactiveList
             react={{
-              "and": ["CrafloSearch", "PriceRangeSensor"]
+              "and": ["Search", "Price Range"]
             }}
             componentId="SearchResult"
             stream={true}

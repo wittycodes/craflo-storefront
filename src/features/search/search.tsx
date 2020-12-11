@@ -52,7 +52,7 @@ const Search: React.FC<Props> = ({ onSubmit, ...props }) => {
           marginRight: '8%'
         }}
         name="search"
-        componentId="CrafloSearch"
+        componentId="Search"
         dataField={["product.description"]}
         title="Search"
         fieldWeights={[1, 3]}
@@ -103,7 +103,7 @@ const Search: React.FC<Props> = ({ onSubmit, ...props }) => {
 
       {/*<ReactiveList*/}
       {/*  react={{*/}
-      {/*    "and": ["CrafloSearch"]*/}
+      {/*    "and": ["Search"]*/}
       {/*  }}*/}
       {/*  componentId="SearchResult"*/}
       {/*>*/}
