@@ -222,13 +222,6 @@ export const getStaticProps:GetStaticProps = async ({ params: { slug } }) => {
   const merchantShop = await fetchMerchantShop(slug)
   console.log(merchantShop, "ioioioio")
 
-
-  // let merchant = "jakecrafties"
-
-
-  //const translations = await fetchTranslations(lang, ["common"]);
-
-  // if (!primaryShop) {
     return {
       props: {
         merchantShop: merchantShop,
@@ -240,7 +233,7 @@ export const getStaticProps:GetStaticProps = async ({ params: { slug } }) => {
         initialApolloState: null  //apolloClient.cache.extract(),
       },
       // eslint-disable-next-line camelcase
-      revalidate: 3 // // revalidate immediately
+      revalidate: 1 // // revalidate immediately
     };
   // }
   //--console.log(primaryShop, "pulkit0009")

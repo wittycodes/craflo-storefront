@@ -216,10 +216,11 @@ const ProductPage: NextPage = ({ data, deviceType, ...props }) => {
           </ProductSingleContainer>
         </ProductSingleWrapper>
 
-        {/*<RelatedItems>*/}
+        <RelatedItems>
 
           <h2>Related Items</h2>
           {/*product.type.toLowerCase()*/}
+        </RelatedItems>
           <Waypoint
             onEnter={setSticky}
             // onLeave={}
