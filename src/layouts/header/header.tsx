@@ -119,6 +119,7 @@ const Header: React.FC<Props> = ({ className }) => {
     </HeaderWrapper>
       {showSearch && <Headroom
         pinStart={70}
+
       >
         <div style={{
           background: "#fff",
@@ -132,9 +133,12 @@ const Header: React.FC<Props> = ({ className }) => {
           top: 70,
           position: "relative"
         }}>
-          <SelectedFilters innerClass={{
-            button: 'sfilter-button'
-          }}/>
+          <SelectedFilters
+            showClearAll={false}
+            clearAllLabel={"Clear"}
+            innerClass={{
+              button: 'sfilter-button'
+            }}/>
         </div>
       </Headroom>}
   </>

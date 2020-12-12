@@ -53,6 +53,7 @@ const Search: React.FC<Props> = ({ onSubmit, ...props }) => {
         }}
         name="search"
         componentId="Search"
+        filterLabel={""}
         dataField={["product.description"]}
         title="Search"
         fieldWeights={[1, 3]}

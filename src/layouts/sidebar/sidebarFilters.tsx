@@ -370,6 +370,7 @@ const SidebarCategory: React.FC<SidebarCategoryProps> = ({
                 <b> Price Range </b>
                 <DynamicRangeSlider
                   componentId="Price Range"
+                  filterLabel="Price ₹"
                   dataField="product.pricing.USD.minPrice"
                   showHistogram={true}
                   rangeLabels={(min, max) => ({
@@ -387,6 +388,7 @@ const SidebarCategory: React.FC<SidebarCategoryProps> = ({
                 <b> Ratings </b>
                 <RatingsFilter
                   componentId="Ratings"
+                  filterLabel={"Stars"}
                   dataField="ratings"
                   data={[
                     { start: 4, end: 5, label: '4 & up' },
