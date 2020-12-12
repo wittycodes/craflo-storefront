@@ -127,7 +127,9 @@ const Layout = ({
   return (
       <LayoutWrapper >
 
-        <Sticky enabled={isSticky} innerZ={9999}>
+        {/*<Sticky enabled={isSticky} innerZ={9999}>*/}
+          <Headroom style={{zIndex: 9999}}>
+
           <MobileHeader
             className={`${isSticky ? 'sticky' : 'unSticky'} ${
               isHomePage ? 'home' : 'home'
@@ -136,17 +138,19 @@ const Layout = ({
           <Header
             className={`${isSticky && isHomePage ? 'sticky' : 'unSticky'} `}
           />
-        </Sticky>
+        </Headroom>
+
+      {/*</Sticky>*/}
         {/*<Sticky enabled={isSticky} innerZ={99}  top={79}>*/}
           <Headroom >
             <div  style={{
               background: "#fff",
-              paddingRight: 286,
-              paddingLeft: 354,
+              paddingRight: 284,
+              paddingLeft: 284,
               paddingTop: 8,
               paddingBottom: 8,
-              borderTop: "#ddd 1px dashed",
-              borderBottom: "#ddd 1px solid",
+              // borderTop: "#ddd 1px dashed",
+              // borderBottom: "#ddd 1px solid",
               zIndex: 999,
               top: "80px",
               position: "relative"
