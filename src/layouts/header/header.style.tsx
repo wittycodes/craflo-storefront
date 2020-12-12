@@ -106,7 +106,7 @@ const HeaderWrapper = styled.header`
 
     .headerSearch {
       display: flex;
-      background-color: #F0F0F0;
+      background-color: rgb(247, 247, 247);
       box-shadow: none;
       border-radius: 6px;
 

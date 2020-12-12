@@ -222,7 +222,7 @@ export const GlobalStyle = createGlobalStyle`
     flex-grow: 1;
     font-size: 16px;
     height: 48px;
-    background-color: #F0F0F0 !important;
+    background-color: rgb(247, 247, 247) !important;
     border: 0px !important;
     display: flex;
     border-radius: 6px;

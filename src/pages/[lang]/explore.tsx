@@ -155,9 +155,9 @@ const Card = ({ index, width, data}) => {
         image={media[0].url_570xN}
         imgH={imgH / 16 + "rem"}
         imgW={imgW / 16 + "rem"}
-        currency="USD"
-        price={p.pricing[0].maxPrice + ""}
-        salePrice={(p.pricing[0].maxPrice) * 0.8 + ""}
+        currency="₹"
+        price={p.pricing.USD.maxPrice + ""}
+        salePrice={(p.pricing.USD.maxPrice) * 0.8 + ""}
         discountInPercent={2}
         product_data={p}
         onClick={() => {

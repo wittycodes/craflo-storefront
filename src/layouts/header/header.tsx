@@ -103,7 +103,7 @@ const Header: React.FC<Props> = ({ className }) => {
               uiStore.toggleFilterDrawerOpen()
               uiStore.closeMenuDrawer()
             }}
-            style={{background:"#eee", padding: " 0 1rem  0 1rem",  marginRight: "0.5rem", marginLeft:"4rem"}}
+            style={{background:"rgb(247, 247, 247)", padding: " 0 1rem  0 1rem",  marginRight: "0.5rem", marginLeft:"4rem"}}
           >
             <Filter color={"#000"} width={28} height={28}/>
           </Button>

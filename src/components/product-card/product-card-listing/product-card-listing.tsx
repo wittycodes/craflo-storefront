@@ -20,52 +20,52 @@ import inject from "hocs/inject";
 import withCart from "containers/cart/withCart";
 import ProgressiveImage from "components/ProgressiveImage";
 
-type ProductCardProps = {
-  title: string;
-  image: any;
-  weight: string;
-  currency: string;
-  description: string;
-  price: number;
-  salePrice?: number;
-  discountInPercent?: number;
-  data: any;
-  imgH: string;
-  imgW: string;
-  onClick?: (e: any) => void;
-  onChange?: (e: any) => void;
-  increment?: (e: any) => void;
-  decrement?: (e: any) => void;
-  cartProducts?: any;
-  addToCart?: any;
-  updateCart?: any;
-  value?: any;
-  deviceType?: any;
-  product_data?: any;
-  uiStore?: any;
-};
+// type ProductCardProps = {
+//   title: string;
+//   image: any;
+//   weight: string;
+//   currency: string;
+//   description: string;
+//   price: number;
+//   salePrice?: number;
+//   discountInPercent?: number;
+//   data: any;
+//   imgH: string;
+//   imgW: string;
+//   onClick?: (e: any) => void;
+//   onChange?: (e: any) => void;
+//   increment?: (e: any) => void;
+//   decrement?: (e: any) => void;
+//   cartProducts?: any;
+//   addToCart?: any;
+//   updateCart?: any;
+//   value?: any;
+//   deviceType?: any;
+//   product_data?: any;
+//   uiStore?: any;
+// };
 
-const ProductCard: React.FC<ProductCardProps> = ({
-                                                    style,
-                                                   title,
-                                                   image,
-                                                   weight,
-                                                   price,
-                                                   salePrice,
-                                                   discountInPercent,
-                                                   cartProducts,
-                                                   addToCart,
-                                                   updateCart,
-                                                   value,
-                                                   currency,
-                                                   onChange,
-                                                   increment,
-                                                   decrement,
-                                                   product_data,
-                                                   deviceType,
-                                                   onClick, uiStore: { openCartWithTimeout, pdpSelectedOptionId, pdpSelectedVariantId, setPDPSelectedVariantId },
-                                                   ...props
-                                                 }) => {
+const ProductCard = ({
+                        style,
+                       title,
+                       image,
+                       weight,
+                       price,
+                       salePrice,
+                       discountInPercent,
+                       cartProducts,
+                       addToCart,
+                       updateCart,
+                       value,
+                       currency,
+                       onChange,
+                       increment,
+                       decrement,
+                       product_data,
+                       deviceType,
+                       onClick, uiStore: { openCartWithTimeout, pdpSelectedOptionId, pdpSelectedVariantId, setPDPSelectedVariantId },
+                       ...props
+                     }) => {
 
   // const product = product_data;
   // const { addItemsToCart, onRemoveCartItems, cart } = useCart(product?.shop?._id);
@@ -150,13 +150,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <div className="productPriceWrapper">
             {discountInPercent ? (
               <span className="discountedPrice">
-                {salePrice} {currency}
+                 {currency} {salePrice}
               </span>
             ) : (
               ''
             )}
             <span className="product-price">
-              {price} {currency}
+               {currency} {price}
             </span>
           </div>
 

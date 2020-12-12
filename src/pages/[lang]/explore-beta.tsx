@@ -144,7 +144,7 @@ const Card = ({index, width, data}) => {
       style={{
         backgroundColor: p.color,
         borderRadius: '0.5rem',
-        height: (imgH + 130) / 16 + 'rem',
+        height: (imgH + 80) / 16 + 'rem',
         marginBottom: '0.5rem',
         width: '100%',
         fontSize: 20,
@@ -161,15 +161,16 @@ const Card = ({index, width, data}) => {
         image={media[0]?.url_570xN}
         imgH={imgH}
         imgW={imgW}
-        currency="USD"
-        price={p?.pricing? p.pricing[0]?.maxPrice: "quote" + ""}
-        salePrice={(p?.pricing? p.pricing[0]?.maxPrice*0.8:"quote") + ""}
+        currency="₹"
+        price={p?.pricing? p.pricing?.USD?.maxPrice: "quote" + ""}
+        salePrice={parseInt(p?.pricing? p.pricing?.USD?.maxPrice*0.8:"quote") + ""}
         discountInPercent={2}
         product_data={{}}
-        onClick={() => {
-          const as = `../product/${p.slug}`;
-          window.open(as, '_blank');
-        }
+        onClick={
+          () => {
+            const as = `../product/${p.slug}`;
+            window.open(as, '_blank');
+          }
         }
       />
     </div>
@@ -525,8 +526,11 @@ const ProductListingPage: NextPage = ({ deviceType, ...props }) => {
               {
                 ({ data, error, loading, ...rest }) => (
                   // <div>{"pulkit"}</div>
+                  <>
+                  {/*{console.log(data)}*/}
                   <App props={props}  loading={loading} data={data} routingStore={props.routingStore} deviceType={deviceType}/>
-                )
+                </>
+                  )
               }
             </ReactiveList>
         <Footer />

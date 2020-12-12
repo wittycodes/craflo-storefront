@@ -84,7 +84,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
   }
 
 
-  const currencyCode = "USD";
+  const currencyCode = "₹";
   let selectedVariant, selectedOption;
 
   const selectVariant = (variant, optionId) => {// Select the variant, and if it has options, the first option
@@ -216,14 +216,14 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
             <ProductPriceWrapper>
               {product?.discountInPercent ? (
                 <SalePrice>
-                  {/*CURRENCY*/}
-                  {product?.pricing?product.pricing[0]?.displayPrice: null}
+                  {CURRENCY}
+                  {product?.pricing?product.pricing[0]?.maxPrice: null}
                 </SalePrice>
               ) : null}
 
               <ProductPrice>
-                {/*CURRENCY*/}
-                {product?.pricing?product.pricing[0]?.displayPrice:null}
+                {CURRENCY}
+                {product?.pricing?product.pricing[0]?.maxPrice:null}
               </ProductPrice>
             </ProductPriceWrapper>
           </ProductTitlePriceWrapper>

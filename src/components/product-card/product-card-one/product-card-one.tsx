@@ -168,8 +168,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             )}
 
             <span className="product-price">
-              {currency}
-              {productPrice.price}
+              {currency} {productPrice.price}
             </span>
           </div>
 

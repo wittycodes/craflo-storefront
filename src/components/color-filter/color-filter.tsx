@@ -16,8 +16,7 @@ const ColorFilter = ()=>{
           },
           card: {
             boxShadow: 'none',
-            border: 'none',
-
+            border: 'none'
           }
         }
       }}
