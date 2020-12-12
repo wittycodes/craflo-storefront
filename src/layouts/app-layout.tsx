@@ -147,12 +147,12 @@ const Layout = ({
               background: "#fff",
               paddingRight: 284,
               paddingLeft: 284,
-              paddingTop: 8,
-              paddingBottom: 8,
+              // paddingTop: 8,
+              paddingBottom: 4,
               // borderTop: "#ddd 1px dashed",
               // borderBottom: "#ddd 1px solid",
               zIndex: 999,
-              top: "80px",
+              top: 70,
               position: "relative"
             }} id={"navbar000"}>
             <SelectedFilters innerClass={{

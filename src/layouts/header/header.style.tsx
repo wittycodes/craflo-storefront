@@ -40,7 +40,7 @@ export const SearchWrapper = styled.div`
 
 const HeaderWrapper = styled.header`
   /* padding: 30px 60px; */
-  padding: 15px 60px;
+  padding: 10px 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -58,7 +58,7 @@ const HeaderWrapper = styled.header`
   }
 
   @media (min-width: 1600px) {
-    padding: 15px 40px;
+    padding: 10px 40px;
   }
 
   @media (max-width: 990px) {
@@ -95,13 +95,13 @@ const HeaderWrapper = styled.header`
     background-color: #ffffff !important;
     position: fixed;
     box-shadow: none;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     z-index: 99999;
 
     @media (max-width: 1400px) {
-      padding-top: 15px;
-      padding-bottom: 15px;
+      padding-top: 10px;
+      padding-bottom: 10px;
     }
 
     .headerSearch {
