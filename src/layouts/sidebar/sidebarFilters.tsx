@@ -275,74 +275,74 @@ const SidebarCategory: React.FC<SidebarCategoryProps> = ({
                   ...props.style,
                   marginLeft: isRtl ? props.style.marginRight : 0,
                   marginRight: isRtl ? 0 : props.style.marginRight,
-                  marginTop: '80px'
+                  // marginTop: '80px'
                 }}
               />
             )}
           >
 
-            <DrawerContentWrapper >
-              {mobile ?
-                <DrawerProfile>
+            {/*<DrawerContentWrapper >*/}
+            {/*  {mobile ?*/}
+            {/*    <DrawerProfile>*/}
 
-                  {isAuthenticated ? (
-                    <LoginView>
+            {/*      {isAuthenticated ? (*/}
+            {/*        <LoginView>*/}
 
-                      <Grid container spacing={1}>
-                        <UserAvatar>
-                          <Image src={UserImage} alt="user_avatar"/>
-                        </UserAvatar>
-                        <UserDetails>
-                          <h3>{name}</h3>
+            {/*          <Grid container spacing={1}>*/}
+            {/*            <UserAvatar>*/}
+            {/*              <Image src={UserImage} alt="user_avatar"/>*/}
+            {/*            </UserAvatar>*/}
+            {/*            <UserDetails>*/}
+            {/*              <h3>{name}</h3>*/}
 
-                          <span>{primaryEmailAddress}</span>
-                        </UserDetails>
+            {/*              <span>{primaryEmailAddress}</span>*/}
+            {/*            </UserDetails>*/}
 
-                        <Grid item xs={12} style={{paddingTop: 24}}/>
+            {/*            <Grid item xs={12} style={{paddingTop: 24}}/>*/}
 
-                        <Grid item xs={6}>
-                          <StyledProfileButton variant={'orders'}>Your Orders</StyledProfileButton>
-                        </Grid>
-                        <Grid item xs={6}>
-                          <StyledProfileButton variant={'address'}>Saved Address</StyledProfileButton>
-                        </Grid>
-                        <Grid item xs={6}>
-                          <StyledProfileButton variant={'payments'}>Payments</StyledProfileButton>
-                        </Grid>
-                        <Grid item xs={6}>
-                          <StyledProfileButton variant={'offers'}>Offers</StyledProfileButton>
-                        </Grid>
-                        <Grid item xs={12}>
-                          <DrawerMenuItem>
-                            <div onClick={handleLogout} style={{marginTop: 24}} className="drawer_menu_item">
-                            <span className="logoutBtn">
-                              <FormattedMessage
-                                id="navlinkLogouts"
-                                defaultMessage={"Not " + name + "? Logout"}
-                              />
-                            </span>
-                            </div>
-                          </DrawerMenuItem>
-                        </Grid>
+            {/*            <Grid item xs={6}>*/}
+            {/*              <StyledProfileButton variant={'orders'}>Your Orders</StyledProfileButton>*/}
+            {/*            </Grid>*/}
+            {/*            <Grid item xs={6}>*/}
+            {/*              <StyledProfileButton variant={'address'}>Saved Address</StyledProfileButton>*/}
+            {/*            </Grid>*/}
+            {/*            <Grid item xs={6}>*/}
+            {/*              <StyledProfileButton variant={'payments'}>Payments</StyledProfileButton>*/}
+            {/*            </Grid>*/}
+            {/*            <Grid item xs={6}>*/}
+            {/*              <StyledProfileButton variant={'offers'}>Offers</StyledProfileButton>*/}
+            {/*            </Grid>*/}
+            {/*            <Grid item xs={12}>*/}
+            {/*              <DrawerMenuItem>*/}
+            {/*                <div onClick={handleLogout} style={{marginTop: 24}} className="drawer_menu_item">*/}
+            {/*                <span className="logoutBtn">*/}
+            {/*                  <FormattedMessage*/}
+            {/*                    id="navlinkLogouts"*/}
+            {/*                    defaultMessage={"Not " + name + "? Logout"}*/}
+            {/*                  />*/}
+            {/*                </span>*/}
+            {/*                </div>*/}
+            {/*              </DrawerMenuItem>*/}
+            {/*            </Grid>*/}
 
-                      </Grid>
+            {/*          </Grid>*/}
 
-                    </LoginView>
-                  ) : (
-                    <LogoutView>
-                      <Button variant="primary" onClick={signInOutForm}>
-                        <FormattedMessage
-                          id="mobileSignInButtonText"
-                          defaultMessage="join"
-                        />
-                      </Button>
-                    </LogoutView>
-                  )}
+            {/*        </LoginView>*/}
+            {/*      ) : (*/}
+            {/*        <LogoutView>*/}
+            {/*          <Button variant="primary" onClick={signInOutForm}>*/}
+            {/*            <FormattedMessage*/}
+            {/*              id="mobileSignInButtonText"*/}
+            {/*              defaultMessage="join"*/}
+            {/*            />*/}
+            {/*          </Button>*/}
+            {/*        </LogoutView>*/}
+            {/*      )}*/}
 
-                </DrawerProfile> : null
-              }
+            {/*    </DrawerProfile> : null*/}
+            {/*  }*/}
 
-            </DrawerContentWrapper>
+            {/*</DrawerContentWrapper>*/}
 
 
               {/*{isAuthenticated && (*/}
@@ -361,9 +361,16 @@ const SidebarCategory: React.FC<SidebarCategoryProps> = ({
               <FiltersWrapper>
 
             <div style={{marginTop: 24}}/>
-            <Col style={{width: '16rem', alignItems: 'flex-end', margin:'auto', height:72, backgroundColor: "#fff" }}>
+            <Col style={{
+              width: '16rem',
+              alignItems: 'flex-end',
+              margin:'auto',
+              height:72,
+              backgroundColor: "#fff",
+              fontSize: "14px"
+            }}>
               <Row xs={4} sm={3} md={3} lg={3} style={{marginTop: '2rem'}}>
-                <b> Choose Colors </b>
+                 Choose Colors
                 <ColorFilter/>
               </Row>
               <Row xs={4} sm={3} md={3} lg={3} style={{width: '10rem', marginTop: '2rem'}}>

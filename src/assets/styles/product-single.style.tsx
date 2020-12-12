@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { themeGet } from '@styled-system/theme-get';
 
 const ProductSingleWrapper = styled.div`
-  padding-top: 78px ;
+  padding-top: 70px ;
   position: relative;
   background-color: #f7f7f7;
 
   @media (min-width: 1600px) {
-    padding-top: 78px ;
+    padding-top: 70px ;
   }
 
   @media (max-width: 990px) {
