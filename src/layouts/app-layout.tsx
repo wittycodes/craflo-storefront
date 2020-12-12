@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import Sticky from 'react-stickynode';
 import { useAppState } from 'contexts/app/app.provider';
 import Header from './header/header';
-import { LayoutWrapper } from './layout.style';
+import { LayoutWrapper, Transition } from './layout.style';
 import { isCategoryPage } from './is-home-page';
 import useStores from "hooks/useStores";
 import Grid from '@material-ui/core/Grid';
@@ -36,7 +36,7 @@ import { push as Menu } from 'react-burger-menu'
 
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
-
+import Headroom from 'react-headroom'
 const drawerWidth = 252;
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -137,21 +137,26 @@ const Layout = ({
             className={`${isSticky && isHomePage ? 'sticky' : 'unSticky'} `}
           />
         </Sticky>
-        <Sticky enabled={isSticky} innerZ={99}  top={79}>
-          <div style={{
-            background: "#fff",
-            paddingRight: 286,
-            paddingLeft: 354,
-            paddingTop: 8,
-            paddingBottom: 8,
-            borderTop: "#ddd 1px dashed",
-            borderBottom: "#ddd 1px solid"
-          }}>
-          <SelectedFilters innerClass={{
-            button: 'sfilter-button'
-          }} />
-          </div>
-        </Sticky>
+        {/*<Sticky enabled={isSticky} innerZ={99}  top={79}>*/}
+          <Headroom >
+            <div  style={{
+              background: "#fff",
+              paddingRight: 286,
+              paddingLeft: 354,
+              paddingTop: 8,
+              paddingBottom: 8,
+              borderTop: "#ddd 1px dashed",
+              borderBottom: "#ddd 1px solid",
+              zIndex: 999,
+              top: "80px",
+              position: "relative"
+            }} id={"navbar000"}>
+            <SelectedFilters innerClass={{
+              button: 'sfilter-button'
+            }} />
+            </div>
+          </Headroom>
+        {/*</Sticky>*/}
 
         {/*<div id="rrr-outer-container">*/}
 
