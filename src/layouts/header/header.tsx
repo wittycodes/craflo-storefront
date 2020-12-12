@@ -129,6 +129,7 @@ const Header: React.FC<Props> = ({ className }) => {
           // borderTop: "#ddd 1px dashed",
           // borderBottom: "#ddd 1px solid",
           zIndex: 999,
+          top: 70,
           position: "relative"
         }}>
           <SelectedFilters innerClass={{
