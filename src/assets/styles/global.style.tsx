@@ -166,8 +166,8 @@ export const GlobalStyle = createGlobalStyle`
   width: 10rem;
   color: #fff;
     & .rheostat-progress {
-    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-    height: 5px !important;
+    background-image: linear-gradient(120deg, #009e7f 0%, #8fd3f4 100%);
+    height: 6px !important;
     }
     & .rheostat-background {
     height: 5px !important;
@@ -175,6 +175,11 @@ export const GlobalStyle = createGlobalStyle`
     & .rheostat-handle {
       :hover {transform: scale(1.5);}
         transition: transform .3s cubic-bezier(.215,.61,.355,1);
+        width: 1rem !important;
+        height: 1rem !important;
+        background: #009e7f !important;
+        top: -5px !important;
+        border: none !important;
     }
   }
 

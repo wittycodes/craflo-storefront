@@ -213,7 +213,7 @@ const SidebarCategory: React.FC<SidebarCategoryProps> = ({
     });
   };
 
-  console.log(useAuthStore(), "hgdawwwww")
+  // console.log(useAuthStore(), "hgdawwwww")
 
 
   return (
@@ -275,7 +275,8 @@ const SidebarCategory: React.FC<SidebarCategoryProps> = ({
                   ...props.style,
                   marginLeft: isRtl ? props.style.marginRight : 0,
                   marginRight: isRtl ? 0 : props.style.marginRight,
-                  // marginTop: '80px'
+                  // marginTop: '80px',
+
                 }}
               />
             )}
@@ -374,16 +375,17 @@ const SidebarCategory: React.FC<SidebarCategoryProps> = ({
                 <ColorFilter/>
               </Row>
               <Row xs={4} sm={3} md={3} lg={3} style={{width: '10rem', marginTop: '2rem'}}>
-                <b> Price Range </b>
+                Price Range
                 <DynamicRangeSlider
                   componentId="Price Range"
                   filterLabel="Price ₹"
                   dataField="product.pricing.USD.minPrice"
                   showHistogram={true}
                   rangeLabels={(min, max) => ({
-                    start: `Rs. ${min}`,
-                    end: `Rs. ${max}`,
+                    start: `₹ ${min}`,
+                    end: `₹ ${max}`,
                   })}
+                  // interval={Math.ceil(Math.log((props.range.end - props.range.start) / 100)) || 1}
                   innerClass={{
                     slider: 'price-filter-slider',
                     label: 'price-filter-label'
@@ -392,7 +394,8 @@ const SidebarCategory: React.FC<SidebarCategoryProps> = ({
               </Row>
 
               <Row xs={4} sm={3} md={3} lg={3} style={{width: '10rem', marginTop: '2rem'}}>
-                <b> Ratings </b>
+
+                <span style={{marginBottom: 8}} >Ratings</span>
                 <RatingsFilter
                   componentId="Ratings"
                   filterLabel={"Stars"}

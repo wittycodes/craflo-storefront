@@ -11,7 +11,6 @@ const ColorFilter = ()=>{
       colors={['#FF6900', '#FCB900', '#7BDCB5']}
       styles={{
         'default': {
-
           input: {
             display: 'none'
           },
@@ -22,24 +21,24 @@ const ColorFilter = ()=>{
           }
         }
       }}
-      readOnly
+      // readOnly
     />
-  <TwitterPicker
-    triangle={"hide"}
-    colors={['#00D084', '#8ED1FC']}
-    styles={{
-      'default': {
-        input: {
-          display: 'none'
-        },
-        card: {
-          boxShadow: 'none',
-          border: 'none'
-        }
-      }
-    }}
-    readOnly
-  />
+  {/*<TwitterPicker*/}
+  {/*  triangle={"hide"}*/}
+  {/*  colors={['#00D084', '#8ED1FC']}*/}
+  {/*  styles={{*/}
+  {/*    'default': {*/}
+  {/*      input: {*/}
+  {/*        display: 'none'*/}
+  {/*      },*/}
+  {/*      card: {*/}
+  {/*        boxShadow: 'none',*/}
+  {/*        border: 'none'*/}
+  {/*      }*/}
+  {/*    }*/}
+  {/*  }}*/}
+  {/*  readOnly*/}
+  {/*/>*/}
   </>
   )
 }
