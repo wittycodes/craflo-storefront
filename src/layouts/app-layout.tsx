@@ -4,11 +4,10 @@ import { useRouter } from 'next/router';
 import Sticky from 'react-stickynode';
 import { useAppState } from 'contexts/app/app.provider';
 import Header from './header/header';
-import { LayoutWrapper, Transition } from './layout.style';
+import { LayoutWrapper } from './layout.style';
 import { isCategoryPage } from './is-home-page';
 import useStores from "hooks/useStores";
 import Grid from '@material-ui/core/Grid';
-import {SelectedFilters} from '@appbaseio/reactivesearch';
 
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 // import Sidebar from 'react-sidebar';
@@ -36,7 +35,6 @@ import { push as Menu } from 'react-burger-menu'
 
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
-import Headroom from 'react-headroom'
 const drawerWidth = 252;
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -127,8 +125,8 @@ const Layout = ({
   return (
       <LayoutWrapper >
 
-        {/*<Sticky enabled={isSticky} innerZ={9999}>*/}
-          <Headroom style={{zIndex: 9999}}>
+        <Sticky enabled={isSticky} innerZ={9999}>
+        {/*  <Headroom style={{zIndex: 9999}}>*/}
 
           <MobileHeader
             className={`${isSticky ? 'sticky' : 'unSticky'} ${
@@ -138,28 +136,10 @@ const Layout = ({
           <Header
             className={`${isSticky && isHomePage ? 'sticky' : 'unSticky'} `}
           />
-        </Headroom>
+        {/*</Headroom>*/}
 
-      {/*</Sticky>*/}
+      </Sticky>
         {/*<Sticky enabled={isSticky} innerZ={99}  top={79}>*/}
-          <Headroom >
-            <div  style={{
-              background: "#fff",
-              paddingRight: 284,
-              paddingLeft: 284,
-              // paddingTop: 8,
-              paddingBottom: 4,
-              // borderTop: "#ddd 1px dashed",
-              // borderBottom: "#ddd 1px solid",
-              zIndex: 999,
-              top: 70,
-              position: "relative"
-            }} id={"navbar000"}>
-            <SelectedFilters innerClass={{
-              button: 'sfilter-button'
-            }} />
-            </div>
-          </Headroom>
         {/*</Sticky>*/}
 
         {/*<div id="rrr-outer-container">*/}

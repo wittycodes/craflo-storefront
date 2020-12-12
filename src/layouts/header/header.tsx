@@ -20,6 +20,9 @@ import {withApollo} from "lib/apollo/withApollo";
 import {Button} from "../../components/button/button";
 import { Filter } from 'assets/icons/Filter';
 import useStores from "hooks/useStores";
+import {LayoutWrapper} from "../layout.style";
+import {SelectedFilters} from '@appbaseio/reactivesearch';
+import Headroom from 'react-headroom'
 
 type Props = {
   className?: string;
@@ -85,6 +88,7 @@ const Header: React.FC<Props> = ({ className }) => {
 
   console.log(miniProfile, "randi")
   return (
+    <>
     <HeaderWrapper className={className} id="layout-header" style={{background: pathname == '/[lang]'? 'none' :  "#fff !important"}}>
       <LeftMenu logo={LogoImage} />
       {showSearch && (
@@ -111,7 +115,29 @@ const Header: React.FC<Props> = ({ className }) => {
         onLogout={handleLogout}
         avatar={ miniProfile?.picture || UserImage}
       />
+
     </HeaderWrapper>
+      {showSearch && <Headroom
+        pinStart={70}
+      >
+        <div style={{
+          background: "#fff",
+          paddingRight: 284,
+          paddingLeft: 284,
+          // paddingTop: 8,
+          paddingBottom: 4,
+          // borderTop: "#ddd 1px dashed",
+          // borderBottom: "#ddd 1px solid",
+          zIndex: 999,
+          position: "relative"
+        }}>
+          <SelectedFilters innerClass={{
+            button: 'sfilter-button'
+          }}/>
+        </div>
+      </Headroom>}
+  </>
+
   );
 };
 
