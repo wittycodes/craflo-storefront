@@ -217,7 +217,7 @@ const Layout = ({
 
 
           <main
-            className={clsx(classes.content, {
+            className={ !deviceType.mobile && clsx(classes.content, {
               [classes.contentShift]: uiStore.isMenuDrawerOpen || uiStore.isFilterDrawerOpen ,
             })}
           >
