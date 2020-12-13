@@ -65,7 +65,7 @@ export const DiscountPercent = styled.span`
 `;
 
 export const ProductInfo = styled.div`
-  padding: 20px 25px 30px;
+  padding: 12px 15px 10px;
   @media (max-width: 767px) {
     padding: 15px 20px;
     min-height: 123px;
@@ -78,7 +78,7 @@ export const ProductInfo = styled.div`
     white-space: nowrap;
 
     margin-bottom: 10px;
-    color: rgb(153, 153, 153);
+    color: rgb(130, 130, 130);
     font-size: 14px;
     font-weight: normal;
     @media (max-width: 767px) {
@@ -96,7 +96,8 @@ export const ProductInfo = styled.div`
     }
   }
   .product-meta {
-    margin-top: -14px;
+    margin-top: -1rem;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -122,13 +123,13 @@ export const ProductInfo = styled.div`
         font-family: 'Lato', sans-serif;
         font-size: 12px;
         font-weight: ${themeGet('fontWeights.3', '400')};
-        color: rgb(30 30 30);
+        color: ${themeGet('colors.yellow', '#FBB979')};
         font-style: italic;
         padding: 0 5px;
         position: relative;
         overflow: hidden;
         top: 16px;
-        left: 2rem;
+        left: 2.5rem;
         &:before {
           content: '';
           width: 100%;

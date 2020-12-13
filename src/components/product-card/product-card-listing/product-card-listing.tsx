@@ -144,8 +144,6 @@ const ProductCard = ({
           ''
         )}
       <ProductInfo>
-        <h3 className="product-title">{title}</h3>
-        <span className="product-weight">{weight}</span>
         <div className="product-meta">
           <div className="productPriceWrapper">
             {discountInPercent ? (
@@ -180,6 +178,8 @@ const ProductCard = ({
           {/*  />*/}
           {/*)}*/}
         </div>
+        <h3 className="product-title">{title}</h3>
+        <span className="product-weight">{weight}</span>
       </ProductInfo>
     </ProductCardWrapper>
   );

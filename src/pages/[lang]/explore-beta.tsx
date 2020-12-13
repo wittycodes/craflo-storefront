@@ -162,8 +162,8 @@ const Card = ({index, width, data}) => {
         imgH={imgH}
         imgW={imgW}
         currency="₹"
-        price={p?.pricing? p.pricing?.USD?.maxPrice*(0.8)*100: "quote" + ""}
-        salePrice={parseInt(p?.pricing? p.pricing?.USD?.maxPrice*100:"quote") + ""}
+        price={p?.pricing? Math.ceil(p.pricing?.USD?.maxPrice*(0.8)*100): "Quote"}
+        salePrice={p?.pricing? Math.ceil(p.pricing?.USD?.maxPrice*100): "Quote"}
         discountInPercent={2}
         product_data={{}}
         onClick={
