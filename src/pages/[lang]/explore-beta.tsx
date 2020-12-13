@@ -162,8 +162,8 @@ const Card = ({index, width, data}) => {
         imgH={imgH}
         imgW={imgW}
         currency="₹"
-        price={p?.pricing? p.pricing?.USD?.maxPrice: "quote" + ""}
-        salePrice={parseInt(p?.pricing? p.pricing?.USD?.maxPrice*0.8:"quote") + ""}
+        price={p?.pricing? p.pricing?.USD?.maxPrice*(0.8)*100: "quote" + ""}
+        salePrice={parseInt(p?.pricing? p.pricing?.USD?.maxPrice*100:"quote") + ""}
         discountInPercent={2}
         product_data={{}}
         onClick={
