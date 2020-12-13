@@ -112,7 +112,7 @@ export const ProductInfo = styled.div`
         font-family: 'Lato', sans-serif;
         color: rgb(13, 17, 54);
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 200;
         line-height: 1;
         @media (max-width: 767px) {
           font-size: 14px;
@@ -122,13 +122,13 @@ export const ProductInfo = styled.div`
         font-family: 'Lato', sans-serif;
         font-size: 12px;
         font-weight: ${themeGet('fontWeights.3', '400')};
-        color: ${themeGet('colors.yellow', '#FBB979')};
+        color: rgb(30 30 30);
         font-style: italic;
         padding: 0 5px;
         position: relative;
         overflow: hidden;
         top: 16px;
-        left: 3rem;
+        left: 2rem;
         &:before {
           content: '';
           width: 100%;

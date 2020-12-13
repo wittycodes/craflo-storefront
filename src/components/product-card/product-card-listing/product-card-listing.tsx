@@ -150,13 +150,13 @@ const ProductCard = ({
           <div className="productPriceWrapper">
             {discountInPercent ? (
               <span className="discountedPrice">
-                 {currency} {salePrice}
+                 {currency}{salePrice}
               </span>
             ) : (
               ''
             )}
             <span className="product-price">
-               {currency} {price}
+               {currency}{price}
             </span>
           </div>
 
