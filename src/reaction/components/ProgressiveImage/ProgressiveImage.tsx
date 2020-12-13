@@ -30,12 +30,10 @@ const ImageWrapper = styled.div`
   border-radius: 0.75rem 0.75rem  0.75rem 0.75rem;
   width: 100%;
   padding: 0px;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.05s;
-
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0.05s;
   &:hover {
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     transform: scale(1.05);
-
   }
 `;
 

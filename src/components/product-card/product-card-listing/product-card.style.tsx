@@ -9,8 +9,8 @@ export const ProductCardWrapper = styled.div`
   font-family: 'Lato', sans-serif;
   border-radius: 0.75rem;
   cursor: pointer;
-
-  transition: transform .3s cubic-bezier(.34,2,.6,1),box-shadow .2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0.05s;
 `;
 //box-shadow: 0 2px 4px -3px rgba(0,0,0,.30);
 export const ProductImageWrapper = styled.div`
