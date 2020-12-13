@@ -212,7 +212,7 @@ export const App = ({ deviceType, data, loading, routingStore, props}) => {
   const windowSize = useWindowSize()
   React.useEffect(()=>{
     setDim({
-      width: windowSize.width, height: windowSize.height, columnGutter: 15
+      width: windowSize.width, height: windowSize.height, columnGutter: 24
     })
   }, [windowSize])
 
@@ -239,7 +239,7 @@ export const App = ({ deviceType, data, loading, routingStore, props}) => {
 
 
   const positioner = usePositioner({
-      width: (dim.width- 2*dim.columnGutter) *0.80,
+      width: (dim.width- 2*dim.columnGutter) *0.85,
       // columnWidth: calcCardWidth(dim.width, dim.columnGutter, 2),
       columnGutter: dim.columnGutter,
       columnCount: deviceType.mobile? 2:5
@@ -325,7 +325,7 @@ export const App = ({ deviceType, data, loading, routingStore, props}) => {
   // })
 
   return (
-    <main style={{paddingLeft: (dim.width- 2*dim.columnGutter) *0.10}}>
+    <main style={{paddingLeft: (dim.width- 2*dim.columnGutter) *0.075}}>
       <MasonryScroller
         positioner={positioner}
         resizeObserver={resizeObserver}

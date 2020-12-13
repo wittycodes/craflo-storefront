@@ -27,9 +27,16 @@ const ImageWrapper = styled.div`
   overflow: hidden;
   padding-top: 100%;
   position: relative;
-  border-radius: 1rem 1rem 0 0;
+  border-radius: 0.75rem 0.75rem  0.75rem 0.75rem;
   width: 100%;
   padding: 0px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.05s;
+
+  &:hover {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    transform: scale(1.05);
+
+  }
 `;
 
 const Img = styled(NextImage)`
@@ -277,7 +284,7 @@ class ProgressiveImage extends Component {
         {ready ? this.renderImage() : null}
         {presrc && this.renderLoadingImage()}
       </ImageWrapper>
-    );
+    )
   }
 }
 
