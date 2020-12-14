@@ -66,4 +66,45 @@ export const SidebarLoader = (props) => (
     <rect x="69" y="323" rx="0" ry="0" width="260" height="24" />
   </ContentLoader>
 );
+export const ProductImgLoader = (props) => (
+  <ContentLoader
+    height={1000}
+    width={1080}
+    speed={2}
+    backgroundColor="#f3f3f3"
+    foregroundColor="#ecebeb"
+    {...props}
+  >
+    <rect x="130" y="60" rx="0" ry="0" width="450" height="450" />
+    <rect x="130" y="550" rx="0" ry="0" width="450" height="60" />
+    {/*<rect x="630" y="60" rx="0" ry="0" width="450" height="70" />*/}
+    {/*<rect x="630" y="150" rx="0" ry="0" width="450" height="250" />*/}
+    {/*<rect x="630" y="440" rx="0" ry="0" width="450" height="170" />*/}
+
+    {/*<rect x="15" y="954" rx="0" ry="0" width="450" height="60" />*/}
+    {/*<rect x="15" y="300" rx="0" ry="0" width="67" height="20" />*/}
+    {/*<rect x="170" y="300" rx="0" ry="0" width="60" height="20" />*/}
+  </ContentLoader>
+);
+export const ProductContentLoader = (props) => (
+  <ContentLoader
+    height={100}
+    width={180}
+    speed={2}
+    backgroundColor="#f3f3f3"
+    foregroundColor="#ecebeb"
+    // right={"2rem !important"}
+    {...props}
+  >
+    {/*<rect x="130" y="60" rx="0" ry="0" width="450" height="450" />*/}
+    {/*<rect x="130" y="550" rx="0" ry="0" width="450" height="60" />*/}
+    {/*<rect x="30" y="60" rx="0" ry="0" width="450" height="70" />*/}
+    {/*<rect x="30" y="150" rx="0" ry="0" width="450" height="250" />*/}
+    {/*<rect x="30" y="440" rx="0" ry="0" width="450" height="170" />*/}
+
+    {/*<rect x="15" y="954" rx="0" ry="0" width="450" height="60" />*/}
+    {/*<rect x="15" y="300" rx="0" ry="0" width="67" height="20" />*/}
+    {/*<rect x="170" y="300" rx="0" ry="0" width="60" height="20" />*/}
+  </ContentLoader>
+);
 export default PostLoader;

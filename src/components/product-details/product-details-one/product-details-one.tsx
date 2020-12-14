@@ -42,6 +42,8 @@ import GeoSwitcher from "../../../layouts/header/menu/geo-switcher/geo-switcher"
 import priceByCurrencyCode from "lib/utils/priceByCurrencyCode";
 import variantById from "lib/utils/variantById";
 import useCart from 'hooks/cart/useCart';
+import {LoaderItem, LoaderWrapper} from "../../product-grid/product-list/product-list.style";
+import {ProductImgLoader, ProductContentLoader} from "../../placeholder/placeholder";
 
 type ProductDetailsProps = {
   product: any;
@@ -57,7 +59,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
   deviceType,
 }) => {
   const { isRtl } = useLocale();
-  const data = product;
+  // const data = product;
 
   // const handleAddClick = (e) => {
   //   e.stopPropagation();
@@ -184,7 +186,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
   return (
     <>
       <ProductDetailsWrapper className="product-card" dir="ltr">
-        {!isRtl && (
+        {!isRtl && product ? (
           <ProductPreview>
             <BackButton>
               <Button
@@ -208,58 +210,66 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
               title={product?.title}
             />
           </ProductPreview>
+        ): (
+          <LoaderWrapper>
+            <LoaderItem>
+              <ProductImgLoader uniqueKey="1" />
+            </LoaderItem>
+          </LoaderWrapper>
         )}
 
         <ProductInfo   dir={isRtl ? 'rtl' : 'ltr'}>
-          <ProductTitlePriceWrapper>
-            <ProductTitle>{product?.title}</ProductTitle>
-            <ProductPriceWrapper>
-              {product?.discountInPercent ? (
-                <SalePrice>
+          {product ?
+            <>
+            <ProductTitlePriceWrapper>
+              <ProductTitle>{product?.title}</ProductTitle>
+              <ProductPriceWrapper>
+                {product?.discountInPercent ? (
+                  <SalePrice>
+                    {CURRENCY}
+                    {product?.pricing ? product.pricing[0]?.maxPrice : null}
+                  </SalePrice>
+                ) : null}
+
+                <ProductPrice>
                   {CURRENCY}
-                  {product?.pricing?product.pricing[0]?.maxPrice: null}
-                </SalePrice>
-              ) : null}
+                  {product?.pricing ? product.pricing[0]?.maxPrice : null}
+                </ProductPrice>
+              </ProductPriceWrapper>
+            </ProductTitlePriceWrapper>
+              <ZoomImageWrapper
+                style={{
+                  position: 'absolute',
+                  marginLeft: 'auto',
+                  marginRight: 'auto'
+                }}
+                id="product-info-786"></ZoomImageWrapper>
 
-              <ProductPrice>
-                {CURRENCY}
-                {product?.pricing?product.pricing[0]?.maxPrice:null}
-              </ProductPrice>
-            </ProductPriceWrapper>
-          </ProductTitlePriceWrapper>
-          <ZoomImageWrapper
-            style={{
-              position: 'absolute',
-              marginLeft: 'auto',
-              marginRight: 'auto'
-            }}
-            id="product-info-786"></ZoomImageWrapper>
 
-          <ProductWeight>{product?.unit}</ProductWeight>
-          {/*{console.log(product, cart, "oooooooooooo")}*/}
-          <ProductDescription>
+            <ProductWeight>{product?.unit}</ProductWeight>
+            <ProductDescription>
             <ReadMore character={200}>{product?.description}</ReadMore>
-          </ProductDescription>
+            </ProductDescription>
 
-          <ProductCartWrapper>
+            <ProductCartWrapper>
             <ProductCartBtn>
-              {checkQuantity() ==0 ? (
-                <Button
-                  className="cart-button"
-                  variant="secondary"
-                  borderRadius={100}
-                  onClick={handleAddClick}
-                >
-                  <CartIcon mr={2} />
-                  <ButtonText>
-                    <FormattedMessage
-                      id="addCartButton"
-                      defaultMessage="Cart"
-                    />
-                  </ButtonText>
-                </Button>
-              ) : (
-                <>
+            {checkQuantity() == 0 ? (
+              <Button
+                className="cart-button"
+                variant="secondary"
+                borderRadius={100}
+                onClick={handleAddClick}
+              >
+                <CartIcon mr={2}/>
+                <ButtonText>
+                  <FormattedMessage
+                    id="addCartButton"
+                    defaultMessage="Cart"
+                  />
+                </ButtonText>
+              </Button>
+            ) : (
+              <>
                 <Button
                   className="cart-button"
                   variant="secondary"
@@ -267,7 +277,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
                   onClick={handleRemoveClick}
                   style={{background: '#009E7F', color: '#fff'}}
                 >
-                  <CartIcon mr={2} />
+                  <CartIcon mr={2}/>
                   <ButtonText>
                     <FormattedMessage
                       id="addCartButtonAdd"
@@ -280,29 +290,35 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
                 {/*  onDecrement={handleRemoveClick}*/}
                 {/*  onIncrement={handleAddClick}*/}
                 {/*/>*/}
-                </>
-              )}
-              {/*<GeoSwitcher />*/}
+              </>
+            )}
+            {/*<GeoSwitcher />*/}
             </ProductCartBtn>
 
-          </ProductCartWrapper>
+            </ProductCartWrapper>
 
-          <ProductMeta>
+            <ProductMeta>
             <MetaSingle>
-              {product?.categories?.map((item: any) => (
-                <Link
-                  href={`/${product?.type.toLowerCase()}?category=${item.slug}`}
-                  key={`link-${item.id}`}
-                >
-                  {
-                    <a>
-                      <MetaItem>{item.title}</MetaItem>
-                    </a>
-                  }
-                </Link>
-              ))}
+            {product?.categories?.map((item: any) => (
+              <Link
+                href={`/${product?.type.toLowerCase()}?category=${item.slug}`}
+                key={`link-${item.id}`}
+              >
+                {
+                  <a>
+                    <MetaItem>{item.title}</MetaItem>
+                  </a>
+                }
+              </Link>
+            ))}
             </MetaSingle>
-          </ProductMeta>
+            </ProductMeta> </>: (
+              <LoaderWrapper>
+              <LoaderItem>
+              <ProductContentLoader uniqueKey="1" />
+              </LoaderItem>
+              </LoaderWrapper>
+            )}
         </ProductInfo>
 
         {isRtl && (
@@ -327,6 +343,13 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
               items={product?.gallery}
               deviceType={deviceType}
             />
+            {/*<ZoomImageWrapper*/}
+            {/*  style={{*/}
+            {/*    position: 'absolute',*/}
+            {/*    marginLeft: 'auto',*/}
+            {/*    marginRight: 'auto'*/}
+            {/*  }}*/}
+            {/*  id="product-info-786"></ZoomImageWrapper>*/}
           </ProductPreview>
         )}
       </ProductDetailsWrapper>
