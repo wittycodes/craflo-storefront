@@ -127,7 +127,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
         {
           price: {
             amount: productPrice?.price,
-            currencyCode
+            currencyCode: "USD"
           },
           productConfiguration: {
             productId: product?.productId, // Pass the productId, not to be confused with _id
