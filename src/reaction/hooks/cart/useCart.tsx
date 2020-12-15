@@ -37,7 +37,7 @@ export default function useCart(shopId) {
 
     console.log(viewer, accountId, "LALLL")
     const shouldSkipAccountCartByAccountIdQuery = Boolean(!accountId || cartStore.hasAnonymousCartCredentials(shopId) || isLoadingViewer || !shopId);
-    const shouldSkipAnonymousCartByCartIdQuery = Boolean(accountId || isLoadingViewer || !cartStore.anonymousCartId[shopId] || !cartStore.anonymousCartToken[shopId]);
+    const shouldSkipAnonymousCartByCartIdQuery = Boolean(accountId || isLoadingViewer || !cartStore.hasAnonymousCartCredentials(shopId));
 
 
     const {loading: isLoading, data: cartData, fetchMore, refetch: refetchCart} = useQuery(accountCartByAccountIdQuery, {
