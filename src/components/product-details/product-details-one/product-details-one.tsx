@@ -77,7 +77,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
 
   const checkQuantity = ()=>{
     let q = 0
-    cart.items.forEach((a)=>{
+    cart?.items.forEach((a)=>{
       if (a.productConfiguration.productId == product?.productId) {
            q+=1
       }
