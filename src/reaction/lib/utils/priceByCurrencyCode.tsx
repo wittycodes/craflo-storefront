@@ -7,6 +7,7 @@
  */
 export default function priceByCurrencyCode(currencyCode, pricing) {
   const _pricing = pricing.find((price) => price.currency.code === currencyCode);
+  console.log(pricing, _pricing, "priiiiceeee")
 
   return _pricing || null;
 }

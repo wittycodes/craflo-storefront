@@ -103,9 +103,9 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
   const determineProductPrice = ()=>{
     let productPrice;
     if (selectedOption && selectedVariant) {
-      productPrice = priceByCurrencyCode(currencyCode, selectedOption.pricing);
+      productPrice = priceByCurrencyCode("USD", selectedOption.pricing);
     } else if (!selectedOption && selectedVariant) {
-      productPrice = priceByCurrencyCode(currencyCode, selectedVariant.pricing);
+      productPrice = priceByCurrencyCode("USD", selectedVariant.pricing);
     }
     return productPrice;
   }
@@ -113,6 +113,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
   selectVariant(product?.variants? product.variants[0]: null, null);
 
   const productPrice = determineProductPrice();
+  console.log(productPrice, "lllooo")
   // const compareAtDisplayPrice = (productPrice.compareAtPrice && productPrice.compareAtPrice.displayAmount) || null;
 
   const handleAddClick = (e) => {
@@ -126,7 +127,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
     addItemsToCart([
         {
           price: {
-            amount: productPrice?.price,
+            amount: parseFloat(productPrice?.price + "" || "0"),
             currencyCode: "USD"
           },
           productConfiguration: {
