@@ -216,35 +216,35 @@ const ProductPage: NextPage = ({ data, deviceType, ...props }) => {
           </ProductSingleContainer>
         </ProductSingleWrapper>
 
-        <RelatedItems>
+        {/*<RelatedItems>*/}
 
-          <h2>Related Items</h2>
-          {/*product.type.toLowerCase()*/}
-        </RelatedItems>
-          <Waypoint
-            onEnter={setSticky}
-            // onLeave={}
-            onPositionChange={onWaypointPositionChange}
-            debug={true}
-          />
-          <ReactiveList
-            react={{
-              "and": ["Search", "Price Range"]
-            }}
-            componentId="SearchResult"
-            stream={true}
-            infiniteScroll={true}
-            size={45}
-            // scrollTarget={"rrr-content"}
-            dataField={"reaction.catalog"}
-          >
-            {
-              ({ data, error, loading, ...rest }) => (
-                // <div>{"pulkit"}</div>
-                <App props={props} loading={loading} data={data} routingStore={props.routingStore} deviceType={deviceType}/>
-              )
-            }
-          </ReactiveList>
+        {/*  <h2>Related Items</h2>*/}
+        {/*  /!*product.type.toLowerCase()*!/*/}
+        {/*</RelatedItems>*/}
+        {/*  <Waypoint*/}
+        {/*    onEnter={setSticky}*/}
+        {/*    // onLeave={}*/}
+        {/*    onPositionChange={onWaypointPositionChange}*/}
+        {/*    debug={true}*/}
+        {/*  />*/}
+        {/*  <ReactiveList*/}
+        {/*    react={{*/}
+        {/*      "and": ["Search", "Price Range"]*/}
+        {/*    }}*/}
+        {/*    componentId="SearchResult"*/}
+        {/*    stream={true}*/}
+        {/*    infiniteScroll={true}*/}
+        {/*    size={45}*/}
+        {/*    // scrollTarget={"rrr-content"}*/}
+        {/*    dataField={"reaction.catalog"}*/}
+        {/*  >*/}
+        {/*    {*/}
+        {/*      ({ data, error, loading, ...rest }) => (*/}
+        {/*        // <div>{"pulkit"}</div>*/}
+        {/*        <App props={props} loading={loading} data={data} routingStore={props.routingStore} deviceType={deviceType}/>*/}
+        {/*      )*/}
+        {/*    }*/}
+        {/*  </ReactiveList>*/}
         {/*</RelatedItems>*/}
         <Footer />
       </Modal>
