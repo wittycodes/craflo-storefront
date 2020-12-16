@@ -23,6 +23,8 @@ import { useRefScroll } from 'src/utils/use-ref-scroll';
 import { initializeApollo } from 'src/utils/apollo';
 import { GET_PRODUCTS } from 'src/graphql/query/products.query';
 import { GET_CATEGORIES } from 'src/graphql/query/category.query';
+import Link from 'next/link'
+
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
 import fetchTranslations from "staticUtils/translations/fetchTranslations";
 import {withApollo} from "lib/apollo/withApollo";
@@ -43,6 +45,7 @@ const Products = dynamic(() =>
   import('src/components/product-grid/product-list/product-list')
 );
 import { ReactiveBase, CategorySearch, SingleRange, ReactiveList } from '@appbaseio/reactivesearch';
+import {App} from "./explore-beta";
 const CartPopUp = dynamic(() => import('src/features/carts/cart-popup'), {
   ssr: false,
 });
@@ -70,6 +73,19 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
   // useEffect(() => {
   // }, [uiStore.isMenuDrawerOpen]);
 
+  const elasticProps = {
+    react: {
+      "and": ["Search", "Price Range"]
+    },
+    componentId: "SearchResult",
+    stream: true,
+    infiniteScroll: true,
+    size: 10,
+    showResultStats: false,
+    dataField: "reaction.catalog",
+    includeFields: "product"
+  }
+
   return (
     <>
       <SEO title={page?.page_title} description={page?.page_description} />
@@ -91,30 +107,89 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
                   <Col xs={12}>
 
                       <h3 style={{float: 'left'}}>Recently Viewed</h3>
-                      <h5 style={{float: 'right'}}>See More..</h5>
-
-                    <Carousel1/>
+                      <h5 style={{float: 'right'}}>
+                        <a target="_blank" href="/in/explore-beta">
+                          See More..
+                        </a>
+                      </h5>
+                    <ReactiveList
+                      {...elasticProps}
+                    >
+                      {
+                        ({ data, error, loading, ...rest }) => (
+                          // <div>{"pulkit"}</div>
+                          <>
+                            {/*{console.log(data)}*/}
+                            <Carousel1  loading={loading} data={data} deviceType={deviceType}/>
+                          </>
+                        )
+                      }
+                    </ReactiveList>
                   </Col>
                   <Col xs={12}>
 
                     <h3 style={{float: 'left'}}>Trending Today</h3>
-                    <h5 style={{float: 'right'}}>See More..</h5>
+                    <h5 style={{float: 'right'}}>
+                      <a target="_blank" href="/in/explore-beta">
+                          See More..
+                        </a>
+                    </h5>
 
-                    <Carousel1/>
+                    <ReactiveList
+                      {...elasticProps}
+                    >
+                      {
+                        ({ data, error, loading, ...rest }) => (
+                          // <div>{"pulkit"}</div>
+                          <>
+                            {/*{console.log(data)}*/}
+                            <Carousel1  loading={loading} data={data} deviceType={deviceType}/>
+                          </>
+                        )
+                      }
+                    </ReactiveList>
                   </Col>
                   <Col xs={12}>
 
                     <h3 style={{float: 'left'}}>Top picks personalised for you</h3>
-                    <h5 style={{float: 'right'}}>See More..</h5>
+                    <h5 style={{float: 'right'}}>
+                      <a target="_blank" href="/in/explore-beta">
+                          See More..
+                        </a>
+                    </h5>
 
-                    <Carousel1/>
+                    <ReactiveList
+                      {...elasticProps}
+                    >
+                      {
+                        ({ data, error, loading, ...rest }) => (
+                          // <div>{"pulkit"}</div>
+                          <>
+                            {/*{console.log(data)}*/}
+                            <Carousel1  loading={loading} data={data} deviceType={deviceType}/>
+                          </>
+                        )
+                      }
+                    </ReactiveList>
                   </Col>
                   <Col xs={12}>
 
                     <h3 style={{float: 'left'}}>Trending Today</h3>
-                    <h5 style={{float: 'right'}}>See More..</h5>
+                    <h5 style={{float: 'right'}}>
+                      <a target="_blank" href="/in/explore-beta">
+                          See More..
+                        </a>
+                    </h5>
 
-                    <Carousel1/>
+                    <ReactiveList
+                      {...elasticProps}
+                    >
+                      {
+                        ({ data, error, loading, ...rest }) => (
+                            <Carousel1  loading={loading} data={data} deviceType={deviceType}/>
+                        )
+                      }
+                    </ReactiveList>
                   </Col>
                 </Row>
               </div>

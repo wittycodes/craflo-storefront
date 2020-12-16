@@ -35,7 +35,7 @@ import { push as Menu } from 'react-burger-menu'
 
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
-const drawerWidth = 252;
+const drawerWidth = 240; 
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

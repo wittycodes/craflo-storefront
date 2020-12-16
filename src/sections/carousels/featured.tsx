@@ -28,13 +28,16 @@ const CategoryCard  = styled.div`
 // #e5f8fb#ffeced#ebeefc#f1effa
 
 
-const Wrapper = ()=>{
-  const bg = getRandomColor()
-  return <CategoryCard style={{background: bg}}/>
+const Wrapper = ({p})=>{
+  const bgc = getRandomColor()
+  const media = JSON.parse(p.metafields?p.metafields[0]?.value:[])
+
+  const bg = media[0]?.url_570xN
+  return <CategoryCard style={{backgroundImage: `url('${bg}')`, backgroundColor: bgc, backgroundSize: 'contain', backgroundPosition: 'center center', backgroundRepeat:'no-repeat'}}/>
 }
 
-export default class Carousel extends Component {
-  render() {
+const Carousel = ({data}) => {
+  console.log(data, "llllll")
     const settings = {
       dots: false,
       infinite: true,
@@ -42,6 +45,7 @@ export default class Carousel extends Component {
       slidesToShow: 5.5,
       slidesToScroll: 1.5
     };
+
     return (<>
 
       <div style={{
@@ -49,57 +53,17 @@ export default class Carousel extends Component {
         color:"#fff"
       }}>
         <Slider {...settings} >
-          <div>
-            <Wrapper>1</Wrapper>
-          </div>
-          <div>
-            <Wrapper>2</Wrapper>
-          </div>
-          <div>
-            <Wrapper>3</Wrapper>
-          </div>
-          <div>
-            <Wrapper>4</Wrapper>
-          </div>
-          <div>
-            <Wrapper>5</Wrapper>
-          </div>
-          <div>
-            <Wrapper>6</Wrapper>
-          </div>
-          <div>
-            <Wrapper>7</Wrapper>
-          </div>
-          <div>
-            <Wrapper>8</Wrapper>
-          </div>
-          <div>
-            <Wrapper>9</Wrapper>
-          </div>
-          <div>
-            <Wrapper>10</Wrapper>
-          </div>
-          <div>
-            <Wrapper>11</Wrapper>
-          </div>
-          <div>
-            <Wrapper>12</Wrapper>
-          </div>
-          <div>
-            <Wrapper>13</Wrapper>
-          </div>
-          <div>
-            <Wrapper>14</Wrapper>
-          </div>
-          <div>
-            <Wrapper>15</Wrapper>
-          </div>
-          <div>
-            <Wrapper>16</Wrapper>
-          </div>
+          {
+            (data || []).map((item)=>{
+            return (<div>
+              <Wrapper p={item.product}>1</Wrapper>
+            </div>)
+          })
+
+          }
         </Slider>
       </div>
       </>
     );
-  }
 }
+export default Carousel
