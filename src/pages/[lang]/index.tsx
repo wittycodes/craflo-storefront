@@ -24,6 +24,7 @@ import { initializeApollo } from 'src/utils/apollo';
 import { GET_PRODUCTS } from 'src/graphql/query/products.query';
 import { GET_CATEGORIES } from 'src/graphql/query/category.query';
 import Link from 'next/link'
+import {Loader} from 'react-loaders';
 
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
 import fetchTranslations from "staticUtils/translations/fetchTranslations";
@@ -83,7 +84,12 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
     size: 10,
     showResultStats: false,
     dataField: "reaction.catalog",
-    includeFields: "product"
+    includeFields: "product",
+    loader: (
+      <>
+        <Loader type="ball-pulse" active />
+      </>
+    )
   }
 
   return (

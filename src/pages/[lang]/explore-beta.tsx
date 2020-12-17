@@ -84,6 +84,7 @@ import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
 // import Popover from "../../components/popover/popover";
 // import {LangSwitcher} from "../../layouts/header/header.style";
 import { Row, Col } from 'react-styled-flexboxgrid';
+import {Loader} from 'react-loaders';
 
 
 let slug_language;
@@ -522,6 +523,11 @@ const ProductListingPage: NextPage = ({ deviceType, ...props }) => {
               size={45}
               // scrollTarget={"rrr-content"}
               dataField={"reaction.catalog"}
+              loader={
+                (<>
+                  <Loader type="ball-pulse" active/>
+                </>)
+              }
             >
               {
                 ({ data, error, loading, ...rest }) => (

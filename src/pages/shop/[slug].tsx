@@ -129,7 +129,7 @@ const Profile: NextPage = ({ deviceType, ...props}) => {
     uiStore,
     shop
   } = props;
-  console.log(props, "pulkitt")
+  // console.log(props, "pulkitt")
 
 
   let pageTitle;
