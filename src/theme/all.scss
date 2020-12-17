@@ -1,3 +1,17 @@
+@import 'loaders.css/src/animations/ball-pulse.scss';
+
+.loader-hidden {
+  display: none;
+}
+.loader-active {
+  display: block;
+  color: #009e7f;
+}
+.ball-pulse > div {
+  background-image: linear-gradient(rgb(100, 146, 165) 20%, #009e7f 100%);
+  width: 0.65rem;
+  height: 0.65rem;
+}
 .img-rounded {
   border-radius: 12px;
   transition: opacity 0.5s ease 0s;

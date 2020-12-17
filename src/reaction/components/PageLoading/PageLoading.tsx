@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import {Loader} from 'react-loaders';
+// also available as `default`
+
+
 
 const styles = () => ({
   svg: {
@@ -131,8 +135,9 @@ class PageLoading extends Component {
 
     return (
       <div className={classes.wrapper}>
-        {!!delayIsDone && this.renderSpinner()}
-        {!!delayIsDone && this.renderMessage()}
+        <Loader type="ball-pulse" active />
+        {/*{!!delayIsDone && this.renderSpinner()}*/}
+        {/*{!!delayIsDone && this.renderMessage()}*/}
       </div>
     );
   }
