@@ -126,7 +126,7 @@ const Header: React.FC<Props> = ({ className }) => {
           paddingRight: 284,
           paddingLeft: 284,
           // paddingTop: 8,
-          paddingBottom: 4,
+          paddingBottom: 0,
           // borderTop: "#ddd 1px dashed",
           // borderBottom: "#ddd 1px solid",
           zIndex: 999,

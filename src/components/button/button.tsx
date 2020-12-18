@@ -188,6 +188,20 @@ export const StyledProfileButton = styled.button(
           color: 'white',
         },
       },
+      icon: {
+        backgroundColor: '#f7f7f7',
+        borderRadius: '100%',
+        width: '48px',
+        height:'48px',
+        // marginLeft: '4px',
+        marginRight: '10px',
+        color: '#767676',
+        '&:hover': {
+          // backgroundImage: 'linear-gradient(62deg, #cd8d69 0%, #eac85f 100%)',
+          backgroundColor: '#dedede',
+          color: '#767676',
+        },
+      },
       select: {
         width: 26,
         height: 26,
