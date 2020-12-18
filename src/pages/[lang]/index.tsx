@@ -79,8 +79,8 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
       "and": ["Search", "Price Range"]
     },
     componentId: "SearchResult",
-    stream: true,
-    infiniteScroll: true,
+    stream: false,
+    infiniteScroll: false,
     size: 10,
     showResultStats: false,
     dataField: "reaction.catalog",
@@ -89,7 +89,10 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
       <>
         <Loader type="ball-pulse" active />
       </>
-    )
+    ),
+    slidesToScroll: 0.5,
+    centerMode: true,
+    showLoader: false
   }
 
   return (
@@ -103,7 +106,7 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
               imageUrl={page?.banner_image_url}
             />
             {/*<MobileCarouselDropdown>*/}
-            {/*  <StoreNav items={storeType} />*/}
+            {/*  <StoreNa v items={storeType} />*/}
             {/*</MobileCarouselDropdown>*/}
             <OfferSection>
               <div style={{ margin: '0 -10px' }}>

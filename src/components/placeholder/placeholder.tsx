@@ -86,6 +86,31 @@ export const ProductImgLoader = (props) => (
     {/*<rect x="170" y="300" rx="0" ry="0" width="60" height="20" />*/}
   </ContentLoader>
 );
+
+
+export const CarouselImgLoader = (props) => (
+  <ContentLoader
+    height={200}
+    width={220}
+    speed={2}
+    backgroundColor="#f3f3f3"
+    foregroundColor="#ecebeb"
+    padding={'10px'}
+    {...props}
+  >
+    <rect x="0" y="0" rx="0" ry="0" width="200" height="200" />
+    {/*<rect x="130" y="550" rx="0" ry="0" width="450" height="60" />*/}
+    {/*<rect x="630" y="60" rx="0" ry="0" width="450" height="70" />*/}
+    {/*<rect x="630" y="150" rx="0" ry="0" width="450" height="250" />*/}
+    {/*<rect x="630" y="440" rx="0" ry="0" width="450" height="170" />*/}
+
+    {/*<rect x="15" y="954" rx="0" ry="0" width="450" height="60" />*/}
+    {/*<rect x="15" y="300" rx="0" ry="0" width="67" height="20" />*/}
+    {/*<rect x="170" y="300" rx="0" ry="0" width="60" height="20" />*/}
+  </ContentLoader>
+);
+
+
 export const ProductContentLoader = (props) => (
   <ContentLoader
     height={100}
