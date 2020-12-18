@@ -49,8 +49,9 @@ const Carousel = ({data, loading}) => {
       infinite: false,
       // speed: 500,
       slidesToShow: 5.5,
-      slidesToScroll: 1.5,
       variableWidth: true,
+      slidesToScroll: 0.5,
+      centerMode: false,
       rows:1
     };
 

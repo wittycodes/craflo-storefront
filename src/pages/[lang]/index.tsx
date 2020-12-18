@@ -90,8 +90,6 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
         <Loader type="ball-pulse" active />
       </>
     ),
-    slidesToScroll: 0.5,
-    centerMode: true,
     showLoader: false
   }
 
