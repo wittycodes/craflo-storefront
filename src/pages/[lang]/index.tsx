@@ -90,7 +90,8 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
         <Loader type="ball-pulse" active />
       </>
     ),
-    showLoader: false
+    showLoader: false,
+    scrollOnChange: false
   }
 
   return (

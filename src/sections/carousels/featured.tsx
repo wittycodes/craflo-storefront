@@ -50,7 +50,7 @@ const Carousel = ({data, loading}) => {
       // speed: 500,
       // slidesToShow: 5.5,
       variableWidth: true,
-      slidesToScroll: 0.5,
+      slidesToScroll: 1,
       centerMode: false,
       rows:1
     };

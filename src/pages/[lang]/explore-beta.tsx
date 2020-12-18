@@ -518,9 +518,10 @@ const ProductListingPage: NextPage = ({ deviceType, ...props }) => {
                 "and": ["Search", "Price Range"]
               }}
               componentId="SearchResult"
-              stream={true}
+              stream={false}
               infiniteScroll={true}
               size={45}
+              scrollOnChange={false}
               // scrollTarget={"rrr-content"}
               dataField={"reaction.catalog"}
               loader={
