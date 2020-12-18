@@ -111,101 +111,103 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
             <OfferSection>
               <div style={{ margin: '0 -10px' }}>
                 <Carousel deviceType={deviceType} data={OFFERS} />
-                <div style={{ margin: '40px' }}>
-                <Row>
-                  <Col xs={12}>
-
-                      <h3 style={{float: 'left'}}>Recently Viewed</h3>
-                      <h5 style={{float: 'right'}}>
-                        <a target="_blank" href="/in/explore-beta">
-                          See More..
-                        </a>
-                      </h5>
-                    <ReactiveList
-                      {...elasticProps}
-                    >
-                      {
-                        ({ data, error, loading, ...rest }) => (
-                          // <div>{"pulkit"}</div>
-                          <>
-                            {/*{console.log(data)}*/}
-                            <Carousel1  loading={loading} data={data} deviceType={deviceType}/>
-                          </>
-                        )
-                      }
-                    </ReactiveList>
-                  </Col>
-                  <Col xs={12}>
-
-                    <h3 style={{float: 'left'}}>Trending Today</h3>
-                    <h5 style={{float: 'right'}}>
-                      <a target="_blank" href="/in/explore-beta">
-                          See More..
-                        </a>
-                    </h5>
-
-                    <ReactiveList
-                      {...elasticProps}
-                    >
-                      {
-                        ({ data, error, loading, ...rest }) => (
-                          // <div>{"pulkit"}</div>
-                          <>
-                            {/*{console.log(data)}*/}
-                            <Carousel1  loading={loading} data={data} deviceType={deviceType}/>
-                          </>
-                        )
-                      }
-                    </ReactiveList>
-                  </Col>
-                  <Col xs={12}>
-
-                    <h3 style={{float: 'left'}}>Top picks personalised for you</h3>
-                    <h5 style={{float: 'right'}}>
-                      <a target="_blank" href="/in/explore-beta">
-                          See More..
-                        </a>
-                    </h5>
-
-                    <ReactiveList
-                      {...elasticProps}
-                    >
-                      {
-                        ({ data, error, loading, ...rest }) => (
-                          // <div>{"pulkit"}</div>
-                          <>
-                            {/*{console.log(data)}*/}
-                            <Carousel1  loading={loading} data={data} deviceType={deviceType}/>
-                          </>
-                        )
-                      }
-                    </ReactiveList>
-                  </Col>
-                  <Col xs={12}>
-
-                    <h3 style={{float: 'left'}}>Trending Today</h3>
-                    <h5 style={{float: 'right'}}>
-                      <a target="_blank" href="/in/explore-beta">
-                          See More..
-                        </a>
-                    </h5>
-
-                    <ReactiveList
-                      {...elasticProps}
-                    >
-                      {
-                        ({ data, error, loading, ...rest }) => (
-                            <Carousel1  loading={loading} data={data} deviceType={deviceType}/>
-                        )
-                      }
-                    </ReactiveList>
-                  </Col>
-                </Row>
               </div>
-            </div>
             </OfferSection>
-        <div style={{backgroundColor: '#fff'}}>
 
+
+
+        <div style={{backgroundColor: '#fff'}}>
+          <div style={{ marginLeft: 60, marginRight: 60, paddingTop: 20 }}>
+            <Row>
+              <Col xs={12}>
+
+                <h3 style={{float: 'left'}}>Recently Viewed</h3>
+                <h5 style={{float: 'right'}}>
+                  <a target="_blank" href="/in/explore-beta">
+                    See More..
+                  </a>
+                </h5>
+                <ReactiveList
+                  {...elasticProps}
+                >
+                  {
+                    ({ data, error, loading, ...rest }) => (
+                      // <div>{"pulkit"}</div>
+                      <>
+                        {/*{console.log(data)}*/}
+                        <Carousel1  loading={loading} data={data} deviceType={deviceType}/>
+                      </>
+                    )
+                  }
+                </ReactiveList>
+              </Col>
+              <Col xs={12}>
+
+                <h3 style={{float: 'left'}}>Trending Today</h3>
+                <h5 style={{float: 'right'}}>
+                  <a target="_blank" href="/in/explore-beta">
+                    See More..
+                  </a>
+                </h5>
+
+                <ReactiveList
+                  {...elasticProps}
+                >
+                  {
+                    ({ data, error, loading, ...rest }) => (
+                      // <div>{"pulkit"}</div>
+                      <>
+                        {/*{console.log(data)}*/}
+                        <Carousel1  loading={loading} data={data} deviceType={deviceType}/>
+                      </>
+                    )
+                  }
+                </ReactiveList>
+              </Col>
+              <Col xs={12}>
+
+                <h3 style={{float: 'left'}}>Top picks personalised for you</h3>
+                <h5 style={{float: 'right'}}>
+                  <a target="_blank" href="/in/explore-beta">
+                    See More..
+                  </a>
+                </h5>
+
+                <ReactiveList
+                  {...elasticProps}
+                >
+                  {
+                    ({ data, error, loading, ...rest }) => (
+                      // <div>{"pulkit"}</div>
+                      <>
+                        {/*{console.log(data)}*/}
+                        <Carousel1  loading={loading} data={data} deviceType={deviceType}/>
+                      </>
+                    )
+                  }
+                </ReactiveList>
+              </Col>
+              <Col xs={12}>
+
+                <h3 style={{float: 'left'}}>Trending Today</h3>
+                <h5 style={{float: 'right'}}>
+                  <a target="_blank" href="/in/explore-beta">
+                    See More..
+                  </a>
+                </h5>
+
+                <ReactiveList
+                  {...elasticProps}
+                >
+                  {
+                    ({ data, error, loading, ...rest }) => (
+                      <Carousel1  loading={loading} data={data} deviceType={deviceType}/>
+                    )
+                  }
+                </ReactiveList>
+              </Col>
+            </Row>
+          </div>
         </div>
             <MainContentArea>
 
