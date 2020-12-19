@@ -6,11 +6,11 @@ const Box = styled.div(
   css({
     fontSize: 13,
     fontWeight: 400,
-      color: '#65676b',
+    color: '#8c8c8c',
     px: 20,
 
     a: {
-      color: '#65676b',
+      color: '#8c8c8c',
       '&:hover':{
         textDecoration: 'underline'
       }
@@ -20,7 +20,7 @@ const Box = styled.div(
     borderTop: '1px solid #dedede',
     margin: 'auto',
 
-    paddingTop: '18px',
+    paddingTop: '16px',
     paddingBottom: '36px',
     marginTop: 50,
     width: '80%',
