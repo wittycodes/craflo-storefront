@@ -235,11 +235,12 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
                       {/*</Row>*/}
 
 
-                    <Footer />
                   </div>
                 </ContentSection>
             </MainContentArea>
         <CartPopUp deviceType={deviceType} />
+        <Footer />
+
       </Modal>
     </>
   );

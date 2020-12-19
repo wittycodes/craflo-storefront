@@ -540,8 +540,9 @@ const ProductListingPage: NextPage = ({ deviceType, ...props }) => {
                   )
               }
             </ReactiveList>
-        <Footer />
       <CartPopUp deviceType={deviceType}/>
+      <Footer />
+
     </Modal>
     </>
   )

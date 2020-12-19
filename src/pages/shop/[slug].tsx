@@ -206,10 +206,11 @@ const Profile: NextPage = ({ deviceType, ...props}) => {
       {/*    </PageWrapper>*/}
       {/*  </Modal>*/}
       {/*</ProfileProvider>*/}
-      <Footer />
       {/*<CartPopUp deviceType={deviceType}/>*/}
       </Modal>): null
     }
+    <Footer />
+
     </>
   );
 };

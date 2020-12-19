@@ -391,8 +391,9 @@ const ProductListingPage: NextPage = ({ deviceType, ...props }) => {
             <div style={{margin: "0 30px 0 30px" }}>
                 <App products={products} deviceType={deviceType}  />
             </div>
-        <Footer />
       <CartPopUp deviceType={deviceType}/>
+      <Footer />
+
     </Modal>
     </>
   )
