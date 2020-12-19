@@ -383,7 +383,7 @@ const CartSlidePopup = styled.div`
 `;
 
 const ErrorMsg = styled.span`
-  font-family: 'Montserrat', sans-serif;
+  font-family: ${themeGet('fonts.body', 'Montserrat')};
   font-size: ${themeGet('fontSizes.2', '14')}px;
   font-weight: 400;
   color: ${themeGet('colors.secondaryHover', '#FF282F')};
