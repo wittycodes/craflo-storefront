@@ -27,7 +27,7 @@ const AUTHORIZED_MENU_ITEMS = [
   {
     link: YOUR_ORDER,
     label: 'Past Orders',
-    intlId: 'sidebarYourOrder',
+    intlId: 'sidebarYoursOrder',
   },
   // {
   //   link: ORDER_RECEIVED,
