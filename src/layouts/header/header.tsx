@@ -17,12 +17,13 @@ import { useAppState, useAppDispatch } from 'contexts/app/app.provider';
 import useMiniProfile from "hooks/viewer/useMiniProfile";
 import {withApollo} from "lib/apollo/withApollo";
 // import UpdateContact from "../../components/contact-card/contact-card";
-import {Button} from "../../components/button/button";
+import {Button, StyledProfileButton} from "../../components/button/button";
 import { Filter } from 'assets/icons/Filter';
 import useStores from "hooks/useStores";
 import {LayoutWrapper} from "../layout.style";
 import {SelectedFilters} from '@appbaseio/reactivesearch';
 import Headroom from 'react-headroom'
+import {Chat} from "../../assets/icons/Chat";
 
 type Props = {
   className?: string;
@@ -94,19 +95,27 @@ const Header: React.FC<Props> = ({ className }) => {
       {showSearch && (
         <>
           {/*<GeoSwitcher />*/}
-          <Button
-            size="big"
-            variant="outlined"
-            type="button"
-            className="add-button"
+          <StyledProfileButton
             onClick={()=> {
               uiStore.toggleFilterDrawerOpen()
               uiStore.closeMenuDrawer()
             }}
-            style={{background:"rgb(247, 247, 247)", padding: " 0 1rem  0 1rem",  marginRight: "0.5rem", marginLeft:"4rem"}}
+            variant={'iconFilter'}
+            style={{ marginLeft:"4rem"}}
           >
             <Filter color={"#000"} width={28} height={28}/>
-          </Button>
+          </StyledProfileButton>
+
+
+          {/*<Button*/}
+          {/*  size="big"*/}
+          {/*  variant="outlined"*/}
+          {/*  type="button"*/}
+          {/*  className="add-button"*/}
+          {/*  */}
+          {/*  style={{background:"rgb(247, 247, 247)", padding: " 0 1rem  0 1rem",  marginRight: "0.5rem", marginLeft:"4rem"}}*/}
+          {/*>*/}
+          {/*</Button>*/}
           <Search minimal={true} className="headerSearch" /></>
       )}
       <RightMenu
