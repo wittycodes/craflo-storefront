@@ -9,7 +9,7 @@ import {
   ORDER_RECEIVED,
   YOUR_ORDER,
   TERMS,
-  PRIVACY,
+  PRIVACY, HELP_PAGE, SELL_ON_CRAFLO,
 } from 'constants/navigation';
 
 const AUTHORIZED_MENU_ITEMS = [
@@ -20,34 +20,40 @@ const AUTHORIZED_MENU_ITEMS = [
   },
   {
     link: PROCEED_TO_CHECKOUT_PAGE,
-    label: 'Checkout',
-    intlId: 'navlinkCheckout',
+    label: 'Saved Items',
+    intlId: 'navlinkCheckouta',
   },
-  {
-    link: ALTERNATIVE_CHECKOUT_PAGE,
-    label: 'Checkout Alternative',
-    intlId: 'alternativeCheckout',
-  },
+
   {
     link: YOUR_ORDER,
-    label: 'Order',
+    label: 'Past Orders',
     intlId: 'sidebarYourOrder',
   },
+  // {
+  //   link: ORDER_RECEIVED,
+  //   label: 'Order invoice',
+  //   intlId: 'navlinkOrderReceived',
+  // },
+  // {
+  //   link: TERMS,
+  //   label: 'Terms and Services',
+  //   intlId: 'navlinkTermsAndServices',
+  // },
+  // {
+  //   link: PRIVACY,
+  //   label: 'Privacy Policy',
+  //   intlId: 'navlinkPrivacyPolicy',
+  // },
   {
-    link: ORDER_RECEIVED,
-    label: 'Order invoice',
-    intlId: 'navlinkOrderReceived',
+    link: SELL_ON_CRAFLO,
+    label: 'Sell on Craflo',
+    intlId: 'alternativeCheckoust',
   },
   {
-    link: TERMS,
-    label: 'Terms and Services',
-    intlId: 'navlinkTermsAndServices',
-  },
-  {
-    link: PRIVACY,
-    label: 'Privacy Policy',
-    intlId: 'navlinkPrivacyPolicy',
-  },
+    link: HELP_PAGE,
+    label: 'Get Help',
+    intlId: 'alternativeChseckoust',
+  }
 ];
 
 type Props = {
