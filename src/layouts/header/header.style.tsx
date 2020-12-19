@@ -175,6 +175,45 @@ const HeaderWrapper = styled.header`
   }
 `;
 
+
+export const FooterWrapper = styled.header`
+  padding: 0px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 999;
+  position: relative;
+  width: 100%;
+  box-shadow: none;
+  transition: all 0.3s ease;
+  background: #f7f7f7;
+
+
+  @media (min-width: 1600px) {
+    padding: 0px 40px;
+  }
+
+  // @media (max-width: 990px) {
+  //   display: none;
+  // }
+
+
+
+  &.unSticky {
+    animation: ${positionAnim} 0.3s ease;
+     background-color: #fff;
+  }
+
+  &.sticky {
+    background-color: #ffffff !important;
+    box-shadow: none;
+    z-index: 99999;
+
+  }
+
+
+`;
+
 export const HeaderLeftSide = styled.div`
   display: flex;
   align-items: center;
