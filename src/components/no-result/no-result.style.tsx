@@ -51,7 +51,7 @@ export const Button = styled.button`
   background-color: #009e7f;
   height: 50px;
   border-radius: 6px;
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: 16px;
   font-weight: 700;
   text-decoration: none;

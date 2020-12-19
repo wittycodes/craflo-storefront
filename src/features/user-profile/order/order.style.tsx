@@ -99,7 +99,7 @@ const OrderDetailsWrapper = styled.div`
 `;
 
 const Title = styled.h3`
-  font-family: 'Poppins', sans-serif;
+  font-family: ${themeGet('fonts.title')};
   font-size: ${themeGet('fontSizes.4', '21')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
   color: ${themeGet('colors.darkBold', '#0D1136')};
@@ -133,7 +133,7 @@ const ItemDetails = styled.span`
 `;
 
 const ItemName = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
   color: ${themeGet('colors.darkBold', '#0D1136')};
@@ -143,28 +143,28 @@ const ItemName = styled.span`
   display: inline-block;
 `;
 const ItemSize = styled('span')`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
   color: ${themeGet('colors.darkRegular', '#77798c')};
   margin-bottom: 5px;
 `;
 const ItemPrice = styled('span')`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
   color: ${themeGet('colors.primary', '#009E7F')};
 `;
 
 const TotalPrice = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
   color: ${themeGet('colors.darkBold', '#0D1136')};
 `;
 
 const NoOrderFound = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
   color: ${themeGet('colors.darkRegular', '#77798c')};

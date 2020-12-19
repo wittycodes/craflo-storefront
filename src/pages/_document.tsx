@@ -18,7 +18,7 @@ class HTMLDocument extends Document {
   render() {
     const links = [
       { rel: "canonical", href: process.env.CANONICAL_URL },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Montserrat&display=swap" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Rubik&display=swap" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Kalam&display=swap" },
       { rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.css" },
       ...favicons

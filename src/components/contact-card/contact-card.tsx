@@ -114,7 +114,7 @@ const StyledInput = styled.input`
   width: 100%;
   height: 54px;
   border-radius: 6px;
-  font-family: ${themeGet('colors.fontFamily', 'Lato, sans-serif')};
+  font-family: ${themeGet('fonts.body')};
   border: 1px solid ${themeGet('colors.borderColor', '#e6e6e6')};
   color: ${themeGet('colors.darkBold', '#0D1136')};
   font-size: 16px;

@@ -8,7 +8,7 @@ export const Header = styled.header`
   margin-top: -15px;
 
   .addCard {
-    font-family: 'Lato', sans-serif;
+    font-family: ${themeGet('fonts.body')};
     font-size: ${themeGet('fontSizes.1', '13')}px;
     font-weight: ${themeGet('fontWeights.6', '700')};
     color: ${themeGet('colors.primary', '#009e7f')};
@@ -47,7 +47,7 @@ export const IconWrapper = styled.span`
 `;
 
 export const SavedCard = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
   color: ${themeGet('colors.primary', '#009e7f')};
@@ -110,7 +110,7 @@ export const AddCard = styled.div`
     }
   }
   .safe-label {
-    font-family: 'Lato', sans-serif;
+    font-family: ${themeGet('fonts.body')};
     font-size: ${themeGet('fontSizes.1', '13')}px;
     font-weight: ${themeGet('fontWeights.6', '700')};
     color: ${themeGet('colorsdarkRegular', '#77798C')};

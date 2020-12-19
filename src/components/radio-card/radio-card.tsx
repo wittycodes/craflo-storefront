@@ -16,7 +16,7 @@ const CardWrapper = styled.label`
   margin-bottom: 15px;
   margin-right: 15px;
   position: relative;
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
   color: ${themeGet('colors.darkBold', '#0D1136')};
@@ -63,7 +63,7 @@ const CardWrapper = styled.label`
   }
 `;
 const CardTitle = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
   color: ${themeGet('colors.darkBold', '#0D1136')};
@@ -72,7 +72,7 @@ const CardTitle = styled.span`
   text-transform: capitalize;
 `;
 const CardContent = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
   color: ${themeGet('colors.darkMedium', '#424561')};

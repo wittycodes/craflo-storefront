@@ -11,6 +11,16 @@ export const InjectRTL = styled.div`
 `;
 
 export const GlobalStyle = createGlobalStyle`
+  @font-face {
+      font-family: 'Graphik';
+      src: local('Graphik Regular'), local('Graphik-Regular'),
+          url('fonts/Graphik-Regular.woff2') format('woff2'),
+          url('fonts/Graphik-Regular.woff') format('woff'),
+          url('fonts/Graphik-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
   html {
     box-sizing: border-box;
   }

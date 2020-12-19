@@ -15,7 +15,7 @@ const RadioGroupWrapper = styled.div`
     text-align: center;
     padding: 15px 20px;
     position: relative;
-    font-family: 'Lato', sans-serif;
+    font-family: ${themeGet('fonts.body')};
     font-size: ${themeGet('fontSizes.1', '13')}px;
     font-weight: ${themeGet('fontWeights.3', '400')};
     color: ${themeGet('colors.darkBold', '#0D1136')};
@@ -66,7 +66,7 @@ const RadioGroupWrapper = styled.div`
 `;
 
 export const RadioTitle = styled.h3`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
   color: ${themeGet('colors.darkBold', '#0D1136')};

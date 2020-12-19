@@ -7,7 +7,7 @@ export const CardWrapper = styled.div`
   height: 100%;
   width: 100%;
   position: relative;
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   display: flex;
   flex-direction: column;
 `;
@@ -52,7 +52,7 @@ export const InfoWrapper = styled.div`
 `;
 
 export const Title = styled.h3`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
   /* color: ${themeGet('colors.darkBold', '#0D1136')}; */
@@ -70,7 +70,7 @@ export const Title = styled.h3`
 `;
 
 export const Unit = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
   color: ${themeGet('colors.darkRegular', '#77798c')};
@@ -81,7 +81,7 @@ export const Unit = styled.span`
 `;
 
 export const Price = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
   color: ${themeGet('colors.darkBold', '#0D1136')};

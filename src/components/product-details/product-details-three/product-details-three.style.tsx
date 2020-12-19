@@ -74,7 +74,7 @@ export const RestaurantNameAddress = styled.div`
 `;
 
 export const RestaurantName = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.4', '21')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
   color: ${themeGet('colors.darkBlue', '#161F6A')};
@@ -86,7 +86,7 @@ export const RestaurantName = styled.span`
 `;
 
 export const RestaurantAddress = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
   color: ${themeGet('colors.darkRegular', '#77798C')};
@@ -121,7 +121,7 @@ export const InfoBlock = styled.div`
 `;
 
 export const Label = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
   color: ${themeGet('colors.darkRegular', '#77798C')};
@@ -132,7 +132,7 @@ export const Label = styled.span`
 `;
 
 export const Infos = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
   color: ${themeGet('colors.darkBlue', '#161F6A')};
@@ -144,7 +144,7 @@ export const DeliveryOpt = styled.span`
   border: 1px solid ${themeGet('colors.primary', '#009E7F')};
   border-radius: 3px;
   padding: 10px;
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
   color: ${themeGet('colors.primary', '#009E7F')};
@@ -179,7 +179,7 @@ export const CategoriesInner = styled.div`
     padding: 25px 0;
   }
   a.category {
-    font-family: 'Lato', sans-serif;
+    font-family: ${themeGet('fonts.body')};
     font-size: ${themeGet('fontSizes.2', '15')}px;
     font-weight: ${themeGet('fontWeights.3', '400')};
     color: ${themeGet('colors.darkRegular', '#77798C')};
@@ -257,7 +257,7 @@ export const ItemCategoryWrapper = styled.div`
 `;
 
 export const ItemCategoryName = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.3', '159')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
   color: ${themeGet('colors.darkBlue', '#161F6A')};
@@ -311,7 +311,7 @@ export const ItemNameDetails = styled.div`
 `;
 
 export const ItemName = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
   color: ${themeGet('colors.darkBlue', '#161F6A')};
@@ -319,7 +319,7 @@ export const ItemName = styled.span`
 `;
 
 export const ItemDetails = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
   color: ${themeGet('colors.darkRegular', '#77798C')};
@@ -339,7 +339,7 @@ export const ItemNamePricing = styled.div`
 `;
 
 export const HelpText = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
   color: ${themeGet('colors.darkRegular', '#77798C')};
@@ -349,7 +349,7 @@ export const HelpText = styled.span`
 `;
 
 export const ItemPrice = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
   color: ${themeGet('colors.darkBlue', '#161F6A')};

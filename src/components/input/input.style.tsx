@@ -9,7 +9,7 @@ const InputWrapper = styled.div`
     justify-content: space-between;
 
     > label {
-      font-family: 'Lato', sans-serif;
+      font-family: ${themeGet('fonts.body')};
       font-size: ${themeGet('fontSizes.2', '15')}px;
       font-weight: ${themeGet('fontWeights.6', '700')};
       color: ${themeGet('colors.darkBold', '#0D1136')};
@@ -36,7 +36,7 @@ const InputWrapper = styled.div`
       width: 100%;
       height: 48px;
       border-radius: 6px;
-      font-family: 'Lato', sans-serif;
+      font-family: ${themeGet('fonts.body')};
       font-size: ${themeGet('fontSizes.2', '15')}px;
       font-weight: ${themeGet('fontWeights.3', '400')};
       border: 1px solid ${themeGet('colors.borderColor', '#f1f1f1')};

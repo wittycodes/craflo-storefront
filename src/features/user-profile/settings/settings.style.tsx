@@ -18,7 +18,7 @@ const HeadingSection = styled.div`
 `;
 
 const Title = styled.h3`
-  font-family: 'Poppins', sans-serif;
+  font-family: ${themeGet('fonts.title')};
   font-size: ${themeGet('fontSizes.4', '21')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
   color: ${themeGet('colors.darkBold', '#0D1136')};

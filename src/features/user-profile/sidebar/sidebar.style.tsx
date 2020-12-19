@@ -30,7 +30,7 @@ const SidebarBottom = styled.div`
 const SidebarMenu = styled(NavLink)<any>`
   display: flex;
   a {
-    font-family: 'Lato', sans-serif;
+    font-family: ${themeGet('fonts.body')};
     font-size: ${themeGet('fontSizes.2', '15')}px;
     font-weight: ${themeGet('fontWeights.6', '700')};
     color: ${themeGet('colors.darkBold', '#0D1136')};
@@ -58,7 +58,7 @@ const LogoutButton = styled.button`
   background-color: transparent;
   text-align: left;
   cursor: pointer;
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
   color: ${themeGet('colors.darkBold', '#0D1136')};

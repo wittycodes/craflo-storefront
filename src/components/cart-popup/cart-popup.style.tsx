@@ -39,7 +39,7 @@ const ButtonImgBox = styled('span')`
 `;
 
 const ItemCount = styled('span')`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: 12px;
   font-weight: 700;
   color: #ffffff;
@@ -56,7 +56,7 @@ const PriceBox = styled('span')`
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: 12px;
   font-weight: 700;
   color: ${themeGet('colors.primary', '#009E7F')};
@@ -97,7 +97,7 @@ const CartPopupBoxButton = styled('button')`
 `;
 
 const TotalItems = styled('span')`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: 13px;
   font-weight: 700;
   color: #ffffff;
@@ -123,7 +123,7 @@ const PriceBoxAlt = styled('span')`
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: 13px;
   font-weight: 700;
   color: ${themeGet('colors.primary', '#009E7F')};

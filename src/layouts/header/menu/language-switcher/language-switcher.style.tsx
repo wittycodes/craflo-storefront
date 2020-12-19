@@ -33,7 +33,7 @@ export const SelectedItem = styled.button`
   span {
     display: flex;
     align-items: center;
-    font-family: 'Lato', sans-serif;
+    font-family: ${themeGet('fonts.body')};
     font-size: ${themeGet('fontSizes.2', '15')}px;
     font-weight: ${themeGet('fontWeights.6', '700')};
     color: ${themeGet('colors.primary', '#009E7F')};

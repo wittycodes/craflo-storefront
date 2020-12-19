@@ -5,7 +5,7 @@ export const GiftCardWrapper = styled.div`
   height: 100%;
   width: 100%;
   position: relative;
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   display: flex;
   flex-direction: column;
 `;
@@ -55,7 +55,7 @@ export const CardContent = styled.div`
 `;
 
 export const GiftCode = styled.input`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
   color: ${themeGet('colors.darkBold', '#0D1136')};
@@ -80,7 +80,7 @@ export const CopyButton = styled.button`
   border: 0;
   outline: 0;
   box-shadow: none;
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
   color: ${themeGet('colors.primary', '#009E7F')};
@@ -96,7 +96,7 @@ export const CopyButton = styled.button`
 `;
 
 export const CopySuccess = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
   color: ${themeGet('colors.primary', '#009E7F')};

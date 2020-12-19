@@ -44,7 +44,7 @@ export const OrderListHeader = styled.div`
 `;
 
 export const TrackID = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
   color: ${themeGet('colors.darkBold', '#0D1136')};
@@ -55,7 +55,7 @@ export const TrackID = styled.span`
 `;
 
 export const Status = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
   color: ${themeGet('colors.blue', '#2e70fa')};
@@ -72,7 +72,7 @@ export const OrderMeta = styled.div`
 `;
 
 export const Meta = styled.div`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
   color: ${themeGet('colors.darkBold', '#0D1136')};

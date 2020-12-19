@@ -24,14 +24,14 @@ export const LogoWrapper = styled.div`
 export const Heading = styled.h3`
   color: ${themeGet('colors.primary', '#009E7F')};
   margin-bottom: 10px;
-  font-family: 'Poppins', sans-serif;
+  font-family: ${themeGet('fonts.title')};
   font-size: ${themeGet('fontSizes.4', '21')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
 `;
 
 export const SubHeading = styled.span`
   margin-bottom: 30px;
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
   color: ${themeGet('colors.darkRegular', '#77798c')};
@@ -47,7 +47,7 @@ export const OfferSection = styled.div`
   align-items: center;
 `;
 export const Offer = styled.p`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
   color: ${themeGet('colors.darkRegular', '#77798c')};
@@ -60,7 +60,7 @@ export const Input = styled.input`
   border-radius: 6px;
   background-color: ${themeGet('colors.lightColor', '#F7F7F7')};
   border: 1px solid ${themeGet('colors.lightColor', '#F7F7F7')};
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
   color: ${themeGet('colors.darkBold', '#0D1136')};

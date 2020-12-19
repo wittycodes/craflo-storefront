@@ -233,7 +233,7 @@ export const HeaderRightSide = styled.div`
 
   .menu-item {
     a {
-      font-family: 'Lato', sans-serif;
+      font-family: ${themeGet('fonts.body')};
       font-size: ${themeGet('fontSizes.2', '15')}px;
       font-weight: ${themeGet('fontWeights.6', '700')};
       color: ${themeGet('colors.darkBold', '#0D1136')};
@@ -286,7 +286,7 @@ export const MainMenu = styled.div`
   .popover-wrapper {
     .popover-content {
       .menu-item {
-        font-family: 'Lato', sans-serif;
+        font-family: ${themeGet('fonts.body')};
         a {
           font-size: 15px;
           font-weight: 700;
@@ -383,7 +383,7 @@ export const SelectedType = styled.button`
   span {
     display: flex;
     align-items: center;
-    font-family: 'Lato', sans-serif;
+    font-family: ${themeGet('fonts.body')};
     font-size: ${themeGet('fontSizes.2', '15')}px;
     font-weight: ${themeGet('fontWeights.6', '700')};
     color: ${themeGet('colors.primary', '#009E7F')};

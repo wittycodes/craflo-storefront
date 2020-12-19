@@ -61,7 +61,7 @@ export const SaleTag = styled.span`
 `;
 
 export const DiscountPercent = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
   color: #ffffff;
@@ -109,7 +109,7 @@ export const ProductTitlePriceWrapper = styled.div`
 `;
 
 export const ProductTitle = styled.h1`
-  font-family: 'Poppins', sans-serif;
+  font-family: ${themeGet('fonts.title')};
   font-size: ${themeGet('fontSizes.4', '21')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
   color: ${themeGet('colors.darkBold', '#0D1136')};
@@ -134,14 +134,14 @@ export const ProductPriceWrapper = styled.div`
 `;
 
 export const ProductPrice = styled.div`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: 16px;
   font-weight: ${themeGet('fontWeights.6', '700')};
   color: ${themeGet('colors.primary', '#009E7F')};
 `;
 
 export const SalePrice = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
   color: ${themeGet('colors.yellow', '#FBB979')};
@@ -164,14 +164,14 @@ export const SalePrice = styled.span`
 `;
 
 export const ProductWeight = styled.div`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
   color: ${themeGet('colors.darkRegular', '#77798c')};
 `;
 
 export const ProductDescription = styled.p`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
   color: ${themeGet('colors.darkMedium', '#424561')};
@@ -187,7 +187,7 @@ export const ProductCartBtn = styled.div`
   }
 
   .cart-button {
-    font-family: 'Lato', sans-serif;
+    font-family: ${themeGet('fonts.body')};
     font-size: ${themeGet('fontSizes.2', '15')}px;
     font-weight: ${themeGet('fontWeights.6', '700')};
     color: ${themeGet('colors.primary', '#009E7F')};
@@ -238,7 +238,7 @@ export const MetaSingle = styled.div`
 `;
 
 export const MetaItem = styled.span`
-  font-family: 'Lato', sans-serif;
+  font-family: ${themeGet('fonts.body')};
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
   color: ${themeGet('colors.darkBold', '#0D1136')};

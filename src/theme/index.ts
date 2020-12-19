@@ -5,14 +5,17 @@ export const theme = {
   space: [0, 4, 8, 10, 15, 20, 25, 30, 40, 56],
   fontSizes: [10, 13, 15, 19, 21, 30, 45],
   fontWeights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
-  fontFamily: ['"Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif', "'Montserrat', sans-serif"],
+  fontFamily: ['"Graphik",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif',
+    '"Graphik",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif'
+  ],
   lineHeights: {
     solid: 1,
     title: 1.25,
     copy: 1.5,
   },
   fonts:{
-    body: '"Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif'
+    body: '"Graphik",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif',
+    title: '"Graphik",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif'
   },
   letterSpacings: {
     normal: 'normal',
