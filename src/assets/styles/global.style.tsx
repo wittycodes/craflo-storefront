@@ -21,6 +21,14 @@ export const GlobalStyle = createGlobalStyle`
       font-style: normal;
     }
 
+  @font-face {
+      font-family: 'Guardian-EgypTT';
+      src: local('Guardian-EgypTT Light'), local('Guardian-EgypTT-Light'),
+          url('fonts/Guardian-EgypTT-Light.woff2') format('woff2')
+      font-weight: 400;
+      font-style: normal;
+    }
+
   html {
     box-sizing: border-box;
   }
@@ -38,6 +46,16 @@ export const GlobalStyle = createGlobalStyle`
   h1,h2,h3,h4,h5,h6  {
     font-family: ${themeGet('fontFamily.1', 'sans-serif')};
     margin: 0;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 300;
   }
 
   p,a,span,button,li,div  {
