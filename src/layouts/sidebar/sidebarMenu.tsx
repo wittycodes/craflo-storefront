@@ -1469,7 +1469,7 @@ const SidebarCategory: React.FC<SidebarCategoryProps> = ({
             autoHide
             autoHeight
             autoHeightMax={"calc(100vh - 82px - 20px)"}
-            style={{top: '82px'}}
+            style={{top: '80px'}}
             renderView={(props) => (
               <div
                 {...props}
@@ -1477,7 +1477,6 @@ const SidebarCategory: React.FC<SidebarCategoryProps> = ({
                   ...props.style,
                   marginLeft: isRtl ? props.style.marginRight : 0,
                   marginRight: isRtl ? 0 : props.style.marginRight,
-                  marginTop: '80px'
                 }}
               />
             )}
