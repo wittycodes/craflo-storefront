@@ -50,7 +50,7 @@ export const Title = styled.h2(
     fontWeight: 500,
     marginBottom: 15,
     textAlign: 'center',
-    fontFamily: "'Kalam'"
+    fontFamily: "'Guardian-EgypTT'"
   }
 );
 export const Description = styled.p(
