@@ -43,11 +43,11 @@ export const Content = styled.div(
 );
 export const Title = styled.h2(
   css({
-    fontSize: [25, 36, 52],
+    fontSize: [16, 32],
     color: '#676767',
   }),
   {
-    fontWeight: 500,
+    fontWeight: 300,
     marginBottom: 15,
     textAlign: 'center',
     fontFamily: "'Guardian-EgypTT'"
@@ -55,7 +55,7 @@ export const Title = styled.h2(
 );
 export const Description = styled.p(
   css({
-    fontSize: [14, 15, 19],
+    fontSize: [13, 16],
     color: 'darkRegular',
     marginBottom: [null, 60],
     display: ['none', 'block'],

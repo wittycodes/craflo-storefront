@@ -99,7 +99,7 @@ const CartPopupBoxButton = styled('button')`
 const TotalItems = styled('span')`
   font-family: ${themeGet('fonts.body')};
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 400;
   color: #ffffff;
   padding-left: 5px;
   padding-right: 10px;

@@ -52,7 +52,9 @@ export const GlobalStyle = createGlobalStyle`
 
   html {
     box-sizing: border-box;
+
   }
+
   *, *:before, *:after {
     box-sizing: inherit;
   }
@@ -264,12 +266,15 @@ export const GlobalStyle = createGlobalStyle`
     height: 50px !important;
     box-shadow: 0 21px 36px rgba(0,0,0,0.05);
     padding-left: 1rem !important;
+
   }
 
 
   .elastic-search-input-minimal{
     flex-grow: 1;
     font-size: 16px;
+    font-family: ${themeGet('fontFamily.0', 'sans-serif')};
+
     height: 48px;
     background-color: rgb(247, 247, 247) !important;
     border: 0px !important;
@@ -291,5 +296,16 @@ export const GlobalStyle = createGlobalStyle`
     width: 100% !important;
     border: 0px !important;
     background: none !important;
+    font-family: ${themeGet('fontFamily.0', 'sans-serif')};
+
+  }
+
+  input, textarea, select, button {
+      font-family: ${themeGet('fontFamily.0', 'sans-serif')} !important;
+
+  }
+
+  button {
+    font-weight:400 !important;
   }
  `;
