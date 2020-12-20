@@ -25,9 +25,30 @@ export const GlobalStyle = createGlobalStyle`
       font-family: 'Guardian-EgypTT';
       src: local('Guardian-EgypTT Light'), local('Guardian-EgypTT-Light'),
           url('fonts/Guardian-EgypTT-Light.woff2') format('woff2')
-      font-weight: 400;
+      font-weight: 100;
       font-style: normal;
     }
+
+  @font-face {
+      font-family: 'Guardian-EgypTT';
+      src: url('fonts/Guardian-EgypTT-Light.woff') format('woff')
+      font-weight: 300;
+      font-style: normal;
+    }
+
+  @font-face {
+    font-family:"Guardian-EgypTT";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/fonts/Guardian-EgypTT-Regular.woff") format("woff");
+  }
+
+  @font-face {
+    font-family:"Guardian-EgypTT";
+    font-style: normal;
+    font-weight: 500;
+    src: url("/fonts/Guardian-EgypTT-Medium.woff") format("woff");
+  }
 
   html {
     box-sizing: border-box;
