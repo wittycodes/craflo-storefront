@@ -112,9 +112,9 @@ export const ProductInfo = styled.div`
       .product-price {
         font-family: ${themeGet('fonts.body')};
         color: rgb(13, 17, 54);
-        font-size: 14px;
-        font-weight: 200;
         line-height: 1;
+        font-size: ${themeGet('fontSizes.2', '15')}px;
+        font-weight: ${themeGet('fontWeights.7', '700')};
         @media (max-width: 767px) {
           font-size: 14px;
         }

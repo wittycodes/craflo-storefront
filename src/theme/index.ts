@@ -4,7 +4,7 @@ export const theme = {
   breakpoints: ['48em', '64em', '70em', '90em'],
   space: [0, 4, 8, 10, 15, 20, 25, 30, 40, 56],
   fontSizes: [10, 13, 15, 19, 24, 32, 45],
-  fontWeights: [100, 200, 300, 400, 400, 400, 400, 400, 400],
+  fontWeights: [100, 200, 300, 400, 400, 400, 500, 500, 500, 500],
   fontFamily: ['"Graphik",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif',
     '"Graphik",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif'
   ],
