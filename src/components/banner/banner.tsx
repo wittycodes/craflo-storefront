@@ -7,6 +7,7 @@ import {
   Title,
   Description,
   SearchWrapper,
+  AlertNotice
 } from './banner.style';
 
 import { Waypoint } from 'react-waypoint';
@@ -17,12 +18,14 @@ interface Props {
   imageUrl: string;
   intlTitleId: string;
   intlDescriptionId: string;
+  isAvailable: boolean;
 }
 
 export const Banner: React.FC<Props> = ({
                                           imageUrl,
                                           intlTitleId,
                                           intlDescriptionId,
+                                          isAvailable
                                         }) => {
   const dispatch = useAppDispatch();
   const setSticky = useCallback(() => dispatch({ type: 'SET_STICKY' }), [
@@ -41,6 +44,12 @@ export const Banner: React.FC<Props> = ({
     <Box>
       <Image backgroundImage={`url(${imageUrl})`} />
       <Content>
+        { isAvailable && <AlertNotice>
+          <FormattedMessage
+            id={'sss'}
+            defaultMessage="Sorry, Our Services are currently not available in your region"
+          />
+        </AlertNotice>}
         <Title>
           <FormattedMessage
             id={intlTitleId}

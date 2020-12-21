@@ -22,9 +22,11 @@ export const Image = styled.div<any>(
   {
     width: '100%',
     height: '100%',
+    backgroundSize: '20rem',
     backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
+    // backgroundRepeat: 'no-repeat',
     position: 'absolute',
+    opacity: 0.06,
     top: 0,
     left: 0,
   },
@@ -64,6 +66,24 @@ export const Description = styled.p(
     fontWeight: 400,
     lineHeight: 1.5,
     textAlign: 'center',
+  }
+);
+
+export const AlertNotice = styled.p(
+  css({
+    fontSize: [13, 16],
+    color: 'darkRegular',
+    marginBottom: [null, 60],
+    display: ['none', 'block'],
+  }),
+  {
+    background: '#f5e1ead1',
+    padding: '0.8rem',
+    margin: '2rem',
+    borderRadius: '3rem',
+    fontWeight: 400,
+    lineHeight: 1.5,
+    textAlign: 'center'
   }
 );
 

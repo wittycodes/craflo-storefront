@@ -67,6 +67,7 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
   //     scroll();
   //   }
   // }, [query.text, query.category]);
+  const isAvailable = false
   query.type = 'grocery'
   const PAGE_TYPE: any = query.type;
   const page = PAGES_DATA[PAGE_TYPE];
@@ -102,142 +103,144 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
         <Banner
               intlTitleId={page?.banner_title_id}
               intlDescriptionId={page?.banner_description_id}
-              imageUrl={page?.banner_image_url}
+              // imageUrl={page?.banner_image_url}
+              isAvailable={isAvailable}
+              imageUrl={"https://image.freepik.com/free-vector/art-craft-supplies-doodle-diy-tools-set_6997-1887.jpg"}
             />
             {/*<MobileCarouselDropdown>*/}
             {/*  <StoreNa v items={storeType} />*/}
             {/*</MobileCarouselDropdown>*/}
-            <OfferSection>
-              <div style={{ margin: '0 -10px' }}>
-                <Carousel deviceType={deviceType} data={OFFERS} />
-              </div>
-            </OfferSection>
-
-
-
-        <div style={{backgroundColor: '#fff'}}>
-          <div style={{ marginLeft: 60, marginRight: 60, paddingTop: 20 }}>
-            <Row>
-              <Col xs={12}>
-
-                <h3 style={{float: 'left'}}>Recently Viewed</h3>
-                <h5 style={{float: 'right'}}>
-                  <a target="_blank" href="/in/explore-beta">
-                    See More..
-                  </a>
-                </h5>
-                <ReactiveList
-                  {...elasticProps}
-                >
-                  {
-                    ({ data, error, loading, ...rest }) => (
-                      // <div>{"pulkit"}</div>
-                      <>
-                        {/*{console.log(data)}*/}
-                        <Carousel1  loading={loading} data={data} deviceType={deviceType}/>
-                      </>
-                    )
-                  }
-                </ReactiveList>
-              </Col>
-              <Col xs={12}>
-
-                <h3 style={{float: 'left'}}>Trending Today</h3>
-                <h5 style={{float: 'right'}}>
-                  <a target="_blank" href="/in/explore-beta">
-                    See More..
-                  </a>
-                </h5>
-
-                <ReactiveList
-                  {...elasticProps}
-                >
-                  {
-                    ({ data, error, loading, ...rest }) => (
-                      // <div>{"pulkit"}</div>
-                      <>
-                        {/*{console.log(data)}*/}
-                        <Carousel1  loading={loading} data={data} deviceType={deviceType}/>
-                      </>
-                    )
-                  }
-                </ReactiveList>
-              </Col>
-              <Col xs={12}>
-
-                <h3 style={{float: 'left'}}>Top picks personalised for you</h3>
-                <h5 style={{float: 'right'}}>
-                  <a target="_blank" href="/in/explore-beta">
-                    See More..
-                  </a>
-                </h5>
-
-                <ReactiveList
-                  {...elasticProps}
-                >
-                  {
-                    ({ data, error, loading, ...rest }) => (
-                      // <div>{"pulkit"}</div>
-                      <>
-                        {/*{console.log(data)}*/}
-                        <Carousel1  loading={loading} data={data} deviceType={deviceType}/>
-                      </>
-                    )
-                  }
-                </ReactiveList>
-              </Col>
-              <Col xs={12}>
-
-                <h3 style={{float: 'left'}}>Trending Today</h3>
-                <h5 style={{float: 'right'}}>
-                  <a target="_blank" href="/in/explore-beta">
-                    See More..
-                  </a>
-                </h5>
-
-                <ReactiveList
-                  {...elasticProps}
-                >
-                  {
-                    ({ data, error, loading, ...rest }) => (
-                      <Carousel1  loading={loading} data={data} deviceType={deviceType}/>
-                    )
-                  }
-                </ReactiveList>
-              </Col>
-            </Row>
+        {isAvailable && <><OfferSection>
+          <div style={{margin: '0 -10px'}}>
+            <Carousel deviceType={deviceType} data={OFFERS}/>
           </div>
-        </div>
-            <MainContentArea>
-
-                <ContentSection>
-                  <div >
-
-
-                    {/*<OfferSection>*/}
-                    {/*  <div style={{ margin: '0 -10px' }}>*/}
-                    {/*    <Carousel deviceType={deviceType} data={OFFERS} />*/}
-                    {/*  </div>*/}
-                    {/*</OfferSection>*/}
+        </OfferSection>
 
 
 
+          <div style={{backgroundColor: '#fff'}}>
+          <div style={{marginLeft: 60, marginRight: 60, paddingTop: 20}}>
+          <Row>
+          <Col xs={12}>
 
-                    {/*<Row>*/}
-                      {/*  <Col xs={12} sm={5} md={5} lg={5}>*/}
-                      {/*    <Carousel1/>*/}
-                      {/*  </Col>*/}
-                      {/*</Row>*/}
-                      {/*<Row>*/}
-                      {/*  <Col xs={12} sm={5} md={5} lg={5}>*/}
-                      {/*    <Carousel1/>*/}
-                      {/*  </Col>*/}
-                      {/*</Row>*/}
+          <h3 style={{float: 'left'}}>Recently Viewed</h3>
+          <h5 style={{float: 'right'}}>
+          <a target="_blank" href="/in/explore-beta">
+          See More..
+          </a>
+          </h5>
+          <ReactiveList
+          {...elasticProps}
+          >
+          {
+            ({data, error, loading, ...rest}) => (
+              // <div>{"pulkit"}</div>
+              <>
+                {/*{console.log(data)}*/}
+                <Carousel1 loading={loading} data={data} deviceType={deviceType}/>
+              </>
+            )
+          }
+          </ReactiveList>
+          </Col>
+          <Col xs={12}>
+
+          <h3 style={{float: 'left'}}>Trending Today</h3>
+          <h5 style={{float: 'right'}}>
+          <a target="_blank" href="/in/explore-beta">
+          See More..
+          </a>
+          </h5>
+
+          <ReactiveList
+          {...elasticProps}
+          >
+          {
+            ({data, error, loading, ...rest}) => (
+              // <div>{"pulkit"}</div>
+              <>
+                {/*{console.log(data)}*/}
+                <Carousel1 loading={loading} data={data} deviceType={deviceType}/>
+              </>
+            )
+          }
+          </ReactiveList>
+          </Col>
+          <Col xs={12}>
+
+          <h3 style={{float: 'left'}}>Top picks personalised for you</h3>
+          <h5 style={{float: 'right'}}>
+          <a target="_blank" href="/in/explore-beta">
+          See More..
+          </a>
+          </h5>
+
+          <ReactiveList
+          {...elasticProps}
+          >
+          {
+            ({data, error, loading, ...rest}) => (
+              // <div>{"pulkit"}</div>
+              <>
+                {/*{console.log(data)}*/}
+                <Carousel1 loading={loading} data={data} deviceType={deviceType}/>
+              </>
+            )
+          }
+          </ReactiveList>
+          </Col>
+          <Col xs={12}>
+
+          <h3 style={{float: 'left'}}>Trending Today</h3>
+          <h5 style={{float: 'right'}}>
+          <a target="_blank" href="/in/explore-beta">
+          See More..
+          </a>
+          </h5>
+
+          <ReactiveList
+          {...elasticProps}
+          >
+          {
+            ({data, error, loading, ...rest}) => (
+              <Carousel1 loading={loading} data={data} deviceType={deviceType}/>
+            )
+          }
+          </ReactiveList>
+          </Col>
+          </Row>
+          </div>
+          </div>
+          <MainContentArea>
+
+          <ContentSection>
+          <div >
 
 
-                  </div>
-                </ContentSection>
-            </MainContentArea>
+          {/*<OfferSection>*/}
+          {/*  <div style={{ margin: '0 -10px' }}>*/}
+          {/*    <Carousel deviceType={deviceType} data={OFFERS} />*/}
+          {/*  </div>*/}
+          {/*</OfferSection>*/}
+
+
+
+
+          {/*<Row>*/}
+          {/*  <Col xs={12} sm={5} md={5} lg={5}>*/}
+          {/*    <Carousel1/>*/}
+          {/*  </Col>*/}
+          {/*</Row>*/}
+          {/*<Row>*/}
+          {/*  <Col xs={12} sm={5} md={5} lg={5}>*/}
+          {/*    <Carousel1/>*/}
+          {/*  </Col>*/}
+          {/*</Row>*/}
+
+
+          </div>
+          </ContentSection>
+          </MainContentArea></>}
         <CartPopUp deviceType={deviceType} />
         <Footer />
 
