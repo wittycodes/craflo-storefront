@@ -44,7 +44,7 @@ export const Banner: React.FC<Props> = ({
     <Box>
       <Image backgroundImage={`url(${imageUrl})`} />
       <Content>
-        { isAvailable && <AlertNotice>
+        { !isAvailable && <AlertNotice>
           <FormattedMessage
             id={'sss'}
             defaultMessage="Sorry, Our Services are currently not available in your region"
