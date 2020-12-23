@@ -42,6 +42,7 @@ export const Banner: React.FC<Props> = ({
 
   return (
     <Box>
+
       <Image backgroundImage={`url(${imageUrl})`} />
       <Content>
         { !isAvailable && <AlertNotice>

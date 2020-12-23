@@ -41,7 +41,6 @@ export const SearchWrapper = styled.div`
 const HeaderWrapper = styled.header`
   /* padding: 30px 60px; */
   padding: 10px 60px;
-  marginBottom: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
