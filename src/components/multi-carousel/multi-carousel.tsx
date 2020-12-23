@@ -29,42 +29,41 @@ const responsive = {
       max: 3000,
       min: 1024,
     },
-    items: 1,
+    media: 1,
   },
   mobile: {
     breakpoint: {
       max: 464,
       min: 0,
     },
-    items: 1,
+    media: 1,
   },
   tablet: {
     breakpoint: {
       max: 1024,
       min: 200,
     },
-    items: 1,
+    media: 1,
   },
 };
 
 const CarouselWithCustomDots = ({
-  items = [],
+  media,
   deviceType: { mobile, tablet, desktop },
   title,
   ...rest
 }: any) => {
-  if(!items){
-    items = []
-  }
-  const children = items.slice(0, 6).map((item: any, index: number) => (
+  const getAbsMedia = (url)=> url
+  console.log(media, "pullu")
+  const children = (media || []).map((item: any, index: number) => (
     <>
       {/*{console.log(Math.ceil(item.full_height * (450 / item.full_width)))}*/}
       {desktop? <ReactImageMagnify key={index} {...{
         smallImage: {
           alt: title,
           isFluidWidth: false,
-          src: item.url_570xN,
-          width: Math.ceil(item.full_width * (450 / item.full_height)),
+          src: getAbsMedia(item.URLs.medium),
+          width: Math.ceil(item.width * (450 / item.height)),
           height: 450,
           ClassName: 'product-image',
           style: {
@@ -82,9 +81,9 @@ const CarouselWithCustomDots = ({
           margin: 'auto',
         },
         largeImage: {
-          src: item.url_fullxfull,
-          width: item.full_width,
-          height: item.full_height,
+          src: getAbsMedia(item.URLs.large),
+          width: item.width,
+          height: item.height,
         },
         lensStyle: {
           backgroundColor: 'rgba(78,78,78,.3)',
@@ -105,7 +104,7 @@ const CarouselWithCustomDots = ({
         <TransformWrapper>
           <TransformComponent>
           <img
-            src={item.url_fullxfull}
+            src={getAbsMedia(item.URLs.large)}
             key={index}
             alt={title}
             style={{
@@ -121,9 +120,9 @@ const CarouselWithCustomDots = ({
       }
       </>
   ));
-  const images = items.map((item: any, index: number) => (
+  const images = (media.URLs || []).map((item: any, index: number) => (
     <img
-      src={item.url_170x135}
+      src={ getAbsMedia(item.URLs.small)}
       key={index}
       alt={title}
       style={{ width: '100%', height: '100%', position: 'relative' }}

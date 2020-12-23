@@ -55,7 +55,7 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
   const { query } = useRouter();
 
   // const {uiStore} = useStores();
-  // uiStore.closeMenuDrawer()
+  // uiStore.closeMenuD rawer()
   // const { elRef: targetRef, scroll } = useRefScroll({
   //   container: scrollContainer,
   //   percentOfElement: 0,
@@ -126,7 +126,7 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
           <h3 style={{float: 'left'}}>Recently Viewed</h3>
           <h5 style={{float: 'right'}}>
           <a target="_blank" href="/in/explore-beta">
-          See More..
+          See All
           </a>
           </h5>
           <ReactiveList

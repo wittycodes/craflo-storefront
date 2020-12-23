@@ -181,8 +181,6 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
     }, 500);
   }, []);
 
-  const media = JSON.parse(product?.metafields? product.metafields[0]?.value: null)
-
 
   return (
     <>
@@ -206,7 +204,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
             </BackButton>
 
             <CarouselWithCustomDots
-              items={media}
+              media={product.media}
               deviceType={deviceType}
               title={product?.title}
             />

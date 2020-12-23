@@ -118,7 +118,7 @@ const Card = ({index, width, data}) => {
   const p = data.product;
   // console.log(p,data, "asdfaoisdjfoij09--0")
   // this.props.products[index % this.props.products.length];
-  const media = JSON.parse(p.metafields?p.metafields[0]?.value:[])
+  // const media = JSON.parse(p.metafields?p.metafields[0]?.value:[])
 
   // let elem = (document.compatMode === "CSS1Compat") ?
   //   document.documentElement :
@@ -127,8 +127,9 @@ const Card = ({index, width, data}) => {
   // let height = elem.clientHeight;
   // let width = elem.clientWidth;
   // let windowSize =
+  console.log(p.media, p.primaryImage)
   const imgW = width
-  const imgH = Math.ceil((imgW / media[0]?.full_width ) * media[0]?.full_height)
+  const imgH = Math.ceil((imgW / p.primaryImage.width ) * p.primaryImage.height)
   //Math.ceil(200 + ((1 + (index % 10)) / 10) * 400)
   //--console.log(p.pricing[0].maxPrice, "klkllk")
 
@@ -143,7 +144,7 @@ const Card = ({index, width, data}) => {
   >
     <div
       style={{
-        backgroundColor: p.color,
+        // backgroundColor: '#' + p.primaryImage.hexCode,
         borderRadius: '0.5rem',
         height: (imgH + 80) / 16 + 'rem',
         marginBottom: '0.5rem',
@@ -159,12 +160,12 @@ const Card = ({index, width, data}) => {
       <GeneralCard
         title={p?.title}
         description={p?.description}
-        image={media[0]?.url_570xN}
+        image={'https://api.craflo.com' + p.primaryImage?.URLs?.medium}
         imgH={imgH}
         imgW={imgW}
         currency="₹"
-        price={p?.pricing? Math.ceil(p.pricing?.USD?.maxPrice*(0.8)*100): "Quote"}
-        salePrice={p?.pricing? Math.ceil(p.pricing?.USD?.maxPrice*100): "Quote"}
+        price={p?.pricing? Math.ceil(p.pricing?.USD?.maxPrice*(0.8)): "Quote"}
+        salePrice={p?.pricing? Math.ceil(p.pricing?.USD?.maxPrice): "Quote"}
         discountInPercent={2}
         product_data={{}}
         onClick={

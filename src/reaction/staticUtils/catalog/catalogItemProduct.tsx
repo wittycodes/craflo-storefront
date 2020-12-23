@@ -53,6 +53,9 @@ query catalogItemProductQuery($slugOrId: String!) {
           priority
           productId
           variantId
+          hexCode
+          width
+          height
           URLs {
             thumbnail
             small

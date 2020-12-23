@@ -50,6 +50,7 @@ const nextConfig = {
   },
   images: {
     domains: [
+      'api.craflo.com',
       'media.gettyimages.com',
       'img0.etsystatic.com',
       'img1.etsystatic.com',
@@ -254,7 +255,6 @@ const nextConfig = {
     async rewrites() {
       return [
         // Shop
-
         {
           source: '/@:shop',
           destination: '/shop/:shop'
