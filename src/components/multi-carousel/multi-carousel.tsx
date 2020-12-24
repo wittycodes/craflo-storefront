@@ -59,7 +59,7 @@ const CarouselWithCustomDots = ({
     <div key={index}>
       {/*<img src={getAbsMedia(item.URLs.large)}/>*/}
       {/*{console.log(Math.ceil(item.full_height * (450 / item.full_width)))}*/}
-      {desktop && false? <ReactImageMagnify key={index} {...{
+      {desktop ? <ReactImageMagnify key={index} {...{
         smallImage: {
           alt: title,
           isFluidWidth: false,
