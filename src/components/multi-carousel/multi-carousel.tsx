@@ -55,14 +55,15 @@ const CarouselWithCustomDots = ({
 }: any) => {
   const getAbsMedia = (url)=> url
   console.log(media, "pullu")
-  const children = (media || []).map((item: any, index: number) => (
-    <>
+  const children = (media || []).slice(0,6).map((item: any, index: number) => (
+    <div key={index}>
+      {/*<img src={getAbsMedia(item.URLs.large)}/>*/}
       {/*{console.log(Math.ceil(item.full_height * (450 / item.full_width)))}*/}
-      {desktop? <ReactImageMagnify key={index} {...{
+      {desktop && false? <ReactImageMagnify key={index} {...{
         smallImage: {
           alt: title,
           isFluidWidth: false,
-          src: getAbsMedia(item.URLs.medium),
+          src: getAbsMedia(item.URLs.large),
           width: Math.ceil(item.width * (450 / item.height)),
           height: 450,
           ClassName: 'product-image',
@@ -118,9 +119,9 @@ const CarouselWithCustomDots = ({
         </TransformComponent>
       </TransformWrapper>
       }
-      </>
+      </div>
   ));
-  const images = (media.URLs || []).map((item: any, index: number) => (
+  const images = (media || []).map((item: any, index: number) => (
     <img
       src={ getAbsMedia(item.URLs.small)}
       key={index}
@@ -138,7 +139,7 @@ const CarouselWithCustomDots = ({
       <SingleItem
         data-index={index}
         key={index}
-        onClick={() => onClick()}
+        onClick={onClick}
         className={`custom-dot ${active && 'custom-dot--active'}`}
       >
         {React.Children.toArray(images)[index]}
@@ -162,7 +163,7 @@ const CarouselWithCustomDots = ({
       responsive={responsive}
       deviceType={deviceType}
       autoPlay={false}
-      arrows={false}
+      arrows={true}
       customDot={<CustomDot />}
       {...rest}
     >

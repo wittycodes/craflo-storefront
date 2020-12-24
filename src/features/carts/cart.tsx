@@ -110,7 +110,7 @@ const Cart: React.FC<CartPropsType> = ({
     (cartCollection.shop[key]?.cart?.items || []).forEach((item)=>{
       console.log(item, "pulkittttttt")
       items.push(<CartItem
-        key={`cartItem-${item.id}`}
+        key={`cartItem-${item._id}`}
         onIncrement={() => addItem(item)}
         onDecrement={() => removeItem(item)}
         onRemove={() => cartCollection.shop[key].onRemoveCartItems(item._id)}
