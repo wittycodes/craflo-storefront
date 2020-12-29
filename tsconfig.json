@@ -22,12 +22,13 @@
     "preserveConstEnums": true,
     "noStrictGenericChecks": true,
     "sourceMap": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "baseUrl": "src",
     "paths": {
       "*": [
         "*",
         "reaction/*",
+        "../paperbits/*",
         "../*"
       ]
     }
