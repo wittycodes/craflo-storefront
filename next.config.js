@@ -8,7 +8,8 @@ const withMDX = require('@next/mdx')({pageExtensions: ['js','jsx','ts','tsx','md
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
+const { merge } = require("webpack-merge");
+const paperbits = require('./paperbits/webpack.develop')
 // const withPrefresh = require('@prefresh/next')
 // const withBundleAnalyzer = require("@next/bundle-analyzer");
 
@@ -73,6 +74,8 @@ const nextConfig = {
     ]
   },
   webpack(webpackConfig) {
+
+
 
     // Move Preact into the framework chunk instead of duplicating in routes:
     // const splitChunks = webpackConfig.optimization && webpackConfig.optimization.splitChunks
@@ -226,7 +229,8 @@ const nextConfig = {
     webpackConfig.resolve.alias.staticUtils = path.join(__dirname, "staticUtils");
     webpackConfig.resolve.alias.apiUtils = path.join(__dirname, "apiUtils");
 
-    return webpackConfig;
+
+    return  merge(webpackConfig, paperbits);
   },
   async redirects() {
       return [
