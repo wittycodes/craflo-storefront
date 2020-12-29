@@ -35,6 +35,6 @@
   },
   "exclude": ["node_modules", "src"],
   "include": [
-    "next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js", "node_modules/@paperbits/**/*.ts"
+    "next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"
   ]
 }
