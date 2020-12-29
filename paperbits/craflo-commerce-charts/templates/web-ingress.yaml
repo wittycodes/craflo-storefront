@@ -1,0 +1,40 @@
+{{- if .Values.web.enabled -}}
+{{- if .Values.web.ingress.enabled -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ template "reactioncommerce.fullname" . }}-web
+  labels:
+    app: {{ template "reactioncommerce.name" . }}
+    component: web
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+  annotations:
+    {{ range $key, $value := .Values.web.ingress.annotations }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
+spec:
+{{- if .Values.web.ingress.tls.enabled }}
+  tls:
+    - hosts:
+        - 'pgcrafts.craflo.com'
+        - 'sgcreations.craflo.com'
+        - '*.craflo.com'
+
+      secretName: {{ .Values.web.ingress.tls.secretName }}
+{{- end }}
+  rules:
+    - http:
+        paths:
+          - path: {{ .Values.web.ingress.path }}
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ template "reactioncommerce.fullname" . }}-web
+                port:
+                  number: 8080
+      host: "*.craflo.com"
+{{/*  {{ .Values.web.host }}*/}}
+{{- end }}
+{{- end }}

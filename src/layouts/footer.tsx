@@ -46,7 +46,7 @@ const Footer = () => {
       {/*<a target='_blank' href={'https://help.craflo.com'}>More</a>{'  · '}*/}
       <Link href={'/about'}>Craflo.com</Link>
 
-      &copy; 2020
+      &copy; 2014-2020
       &nbsp;
       {/*<a href='#' target='_blank'>*/}
 
