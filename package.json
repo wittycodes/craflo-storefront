@@ -5,7 +5,8 @@
     "isomorphic-unfetch": "^3.0.0",
     "isomorphic-ws": "~4.0.1",
     "envalid": "~4.2.0",
-    "next": "~10.0.0"
+    "next": "~10.0.0",
+    "react": "~16.13.0"
   },
   "devDependencies": {
     "lerna": "^3.22.1"
@@ -17,7 +18,7 @@
     "commitmsg": "commitlint -e",
     "postinstall": "lerna bootstrap",
     "release": "lerna publish --conventional-commits --message \"chore(npm): publish\"",
-    "build:vercel": "node createHydraClientIfNecessary.js && cd packages/craflo-frontend && next build",
+    "build:vercel": "lerna bootstrap && node createHydraClientIfNecessary.js && cd packages/craflo-frontend && next build",
     "start": "yarn run create-hydra-client && cd packages/craflo-frontend && yarn run start",
     "start:dev": "yarn run create-hydra-client && cd packages/craflo-frontend && yarn run start:dev",
     "test": "jest --projects packages/* --coverage",
