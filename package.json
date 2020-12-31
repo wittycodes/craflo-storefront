@@ -6,7 +6,8 @@
     "isomorphic-ws": "~4.0.1",
     "envalid": "~4.2.0",
     "next": "~10.0.0",
-    "react": "~16.13.0"
+    "react": "~16.13.0",
+    "react-dom": "~16.13.0"
   },
   "devDependencies": {
     "lerna": "^3.22.1"
