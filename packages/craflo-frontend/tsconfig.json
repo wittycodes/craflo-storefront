@@ -34,7 +34,6 @@
     "noLib": false,
     "allowUnreachableCode": true,
     "listFiles": false,
-    "incremental": true,
     "paths": {
       "*": [
         "*",
