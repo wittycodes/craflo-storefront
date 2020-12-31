@@ -1,0 +1,16 @@
+exports.ids = [12];
+exports.modules = {
+
+/***/ "./src/components/error-message/error-message.tsx":
+/*!********************************************************!*\
+  !*** ./src/components/error-message/error-message.tsx ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return ErrorMessage; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ \"styled-components\");\n/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);\nvar _jsxFileName = \"/usr/local/src/app/packages/craflo-frontend/src/components/error-message/error-message.tsx\";\n\nvar __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;\n\nfunction ErrorMessage({\n  message\n}) {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StyledAside, {\n    __self: this,\n    __source: {\n      fileName: _jsxFileName,\n      lineNumber: 3,\n      columnNumber: 10\n    }\n  }, message);\n}\nconst StyledAside = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.aside.withConfig({\n  displayName: \"error-message__StyledAside\",\n  componentId: \"sc-1awqq9o-0\"\n})({\n  padding: '1.5rem',\n  fontSize: 14,\n  color: '#fff',\n  backgroundColor: 'red'\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvY29tcG9uZW50cy9lcnJvci1tZXNzYWdlL2Vycm9yLW1lc3NhZ2UudHN4P2FhZTMiXSwibmFtZXMiOlsiRXJyb3JNZXNzYWdlIiwibWVzc2FnZSIsIlN0eWxlZEFzaWRlIiwic3R5bGVkIiwiYXNpZGUiLCJwYWRkaW5nIiwiZm9udFNpemUiLCJjb2xvciIsImJhY2tncm91bmRDb2xvciJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7O0FBQUE7QUFDZSxTQUFTQSxZQUFULENBQXNCO0FBQUVDO0FBQUYsQ0FBdEIsRUFBbUM7QUFDaEQsc0JBQU8sMkRBQUMsV0FBRDtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLEtBQWNBLE9BQWQsQ0FBUDtBQUNEO0FBRUQsTUFBTUMsV0FBVyxHQUFHQyx3REFBTSxDQUFDQyxLQUFWO0FBQUE7QUFBQTtBQUFBLEdBQWdCO0FBQy9CQyxTQUFPLEVBQUUsUUFEc0I7QUFFL0JDLFVBQVEsRUFBRSxFQUZxQjtBQUcvQkMsT0FBSyxFQUFFLE1BSHdCO0FBSS9CQyxpQkFBZSxFQUFFO0FBSmMsQ0FBaEIsQ0FBakIiLCJmaWxlIjoiLi9zcmMvY29tcG9uZW50cy9lcnJvci1tZXNzYWdlL2Vycm9yLW1lc3NhZ2UudHN4LmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHN0eWxlZCBmcm9tICdzdHlsZWQtY29tcG9uZW50cyc7XG5leHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBFcnJvck1lc3NhZ2UoeyBtZXNzYWdlIH0pIHtcbiAgcmV0dXJuIDxTdHlsZWRBc2lkZT57bWVzc2FnZX08L1N0eWxlZEFzaWRlPjtcbn1cblxuY29uc3QgU3R5bGVkQXNpZGUgPSBzdHlsZWQuYXNpZGUoe1xuICBwYWRkaW5nOiAnMS41cmVtJyxcbiAgZm9udFNpemU6IDE0LFxuICBjb2xvcjogJyNmZmYnLFxuICBiYWNrZ3JvdW5kQ29sb3I6ICdyZWQnLFxufSk7XG4iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./src/components/error-message/error-message.tsx\n");
+
+/***/ })
+
+};;

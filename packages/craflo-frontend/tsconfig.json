@@ -49,7 +49,6 @@
     "src"
   ],
   "include": [
-    "node_modules/@paperbits/**/*",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",

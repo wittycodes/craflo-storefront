@@ -135,8 +135,8 @@ const nextConfig = {
         test: /\.(raw|liquid)$/,
         loader: "raw-loader",
         include: [
-          path.resolve(__dirname, "paperbits"),
-          path.resolve(__dirname, '@paperbits/')
+          path.resolve(__dirname, "src/paperbits"),
+          // path.resolve(__dirname, '@paperbits/')
         ]
       })
     //
@@ -182,8 +182,8 @@ const nextConfig = {
           }
         },
         include: [
-          path.resolve(__dirname, "paperbits"),
-          path.resolve(__dirname, '@paperbits/')
+          path.resolve(__dirname, "src/paperbits"),
+          // path.resolve(__dirname, '@paperbits/')
         ]
       })
     // webpackConfig.module.rules.push(

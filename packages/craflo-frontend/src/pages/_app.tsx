@@ -1,7 +1,33 @@
-//@ts-nocheck
 // import NextApp from "next/app";
+
+// import "../paperbits/polyfills";
+// // import * as ReactDOM from "react-dom";
+// // import { createElement } from "react";
+// // import { Designer } from "./components/designer";
+// import { InversifyInjector } from "@paperbits/common/injection";
+// import { CoreDesignModule } from "@paperbits/core/core.design.module";
+// import { FormsDesignModule } from "@paperbits/forms/forms.design.module";
+// import { EmailsDesignModule } from "@paperbits/emails/emails.design.module";
+// import { StylesDesignModule } from "@paperbits/styles/styles.design.module";
+// import { ProseMirrorModule } from "@paperbits/prosemirror/prosemirror.module";
+// import { OfflineModule } from "@paperbits/common/persistence/offline.module";
+// // import { DemoDesignModule } from "./modules/demo.design.module";
+//
+// /* Initializing dependency injection  */
+// const injector = new InversifyInjector();
+// injector.bindModule(new CoreDesignModule());
+// injector.bindModule(new FormsDesignModule());
+// injector.bindModule(new EmailsDesignModule());
+// injector.bindModule(new StylesDesignModule());
+// injector.bindModule(new ProseMirrorModule());
+// // injector.bindModule(new DemoDesignModule());
+// injector.bindModule(new OfflineModule({ autosave: false }));
+// injector.resolve("autostart");
+
+
+
+
 import React from "react";
-import "../paperbits/startup.design"
 import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ContextProviders } from "context/ContextProviders";
@@ -21,14 +47,7 @@ import {AppProvider} from "src/contexts/app/app.provider";
 import {AuthProvider} from "src/contexts/auth/auth.provider";
 import AppLayout from "src/layouts/app-layout";
 import { ThemeProvider } from 'styled-components';
-// import 'rheostat/initialize';
-
 import {ReactiveBase} from '@appbaseio/reactivesearch'
-
-
-
-// import "paperbits-demo/src/themes/designer/styles/styles.scss"
-import dynamic from 'next/dynamic';
 
 
 // External CSS import here
@@ -37,7 +56,6 @@ import 'rc-table/assets/index.css';
 import 'rc-collapse/assets/index.css';
 import 'react-multi-carousel/lib/styles.css';
 import 'components/multi-carousel/multi-carousel.style.css';
-// import '../components/rheostat/rheostat.styles.css'
 import '@redq/reuse-modal/lib/index.css';
 import 'react-tagsinput/react-tagsinput.css';
 import { GlobalStyle } from 'assets/styles/global.style';
@@ -45,9 +63,6 @@ import { Normalize } from 'styled-normalize'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";  ``
 
-// paper kit react
-// import "assets/css/bootstrap.min.css";
-// import "assets/scss/paper-kit.scss";
 import "src/theme/all.scss";
 
 
@@ -59,7 +74,7 @@ import localDe from 'data/translation/de.json';
 import localCn from 'data/translation/zh.json';
 import localIl from 'data/translation/he.json';
 import {useApollo} from "src/utils/apollo";
-import {Designer as PaperbitsDesigner} from "../paperbits/components/designer";
+// import {Designer as PaperbitsDesigner} from "../paperbits/components/designer";
 
 // Language translation Config
 const messages = {
@@ -71,8 +86,6 @@ const messages = {
   zh: localCn,
   he: localIl,
 };
-// const DesignScripts = dynamic(() => import("src/paperbits/startup.runtime"), { ssr: false } )
-
 
 
 function withDevice(Component) {
@@ -123,7 +136,7 @@ export function ExtendedApp({Component, pageProps, ...rest}) {
       </Head>
     <Normalize />
     <CssBaseline/>
-    <PaperbitsDesigner/>
+    {/*<PaperbitsDesigner/>*/}
     <ContextProviders pageProps={pageProps}>
       <ComponentsProvider value={components}>
         <ApolloProvider client={apolloClient}>
@@ -131,7 +144,6 @@ export function ExtendedApp({Component, pageProps, ...rest}) {
               <CartProvider>
                 <AppProvider>
                   <AuthProvider>
-
                     <ThemeProvider theme={theme}>
                       <ReactiveBase
                       app="reaction.catalog"
