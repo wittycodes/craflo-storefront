@@ -12,10 +12,9 @@ RUN apk --no-cache add bash curl less tini vim make
 SHELL ["/bin/bash", "-o", "pipefail", "-o", "errexit", "-u", "-c"]
 #
 WORKDIR /usr/local/src/app
-ENV PATH=$PATH:/usr/local/src/app/node_modules/.bin
 ##
 ### Allow yarn/npm to create ./node_modules
-RUN chown node:node .
+#RUN chown node:node .
 #
 ### Copy specific things so that we can keep the image as small as possible
 ### without relying on each repo to include a .dockerignore file.

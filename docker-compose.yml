@@ -18,11 +18,11 @@ services:
     command: "./bin/start"
     volumes:
       - .:/usr/local/src/app
-      - web-yarn:/home/node/.cache/yarn
+#      - web-yarn:/home/node/.cache/yarn
       # Do not link in node_modules from the host
       # This allows IDEs to run lint etc with native add-ons for host OS
       # Without interfering with native add-ons in container
-      - ./node_modules:/usr/local/src/app/node_modules
+#      - ./node_modules:/usr/local/src/app/node_modules
     env_file:
       - ./.env
     ports:
@@ -43,7 +43,7 @@ services:
       - "traefik.http.services.fe-dev.loadbalancer.server.port=4000"
       - "traefik.docker.network=web"
 
-volumes:
-  web-yarn:
-  empty_node_modules:
-  api_empty_node_modules:
+#volumes:
+#  web-yarn:
+#  empty_node_modules:
+#  api_empty_node_modules:
