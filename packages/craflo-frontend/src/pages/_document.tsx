@@ -49,7 +49,7 @@ class HTMLDocument extends Document {
           {/*  <script src="https://raw.githubusercontent.com/wittycodes/craflo-storefront/master/paperbit-dist/dist/designer/scripts/theme.js"></script>*/}
           {links.map((link, index) => <link key={index} {...link} />)}
         </Head>
-        <body style={{background: '#F7F7F7', overflow: 'scroll !important'}}>
+        <body style={{background: '#F7F7F7'}}>
 
         {/*<PaperbitsInReact/>*/}
         {/*<div id={"paperbits"} />*/}

@@ -44,7 +44,7 @@ const Img = styled(NextImage)`
   opacity: 1;
   position: absolute;
   transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  top: 50% !important;
+  top: 100% !important;
   transform: translate(-50%, -50%);
 
   ${({ isLoading, isLoaded, isHidden }) => {
