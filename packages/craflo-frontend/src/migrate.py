@@ -9,7 +9,7 @@ def renamer(files, pattern, replacement):
               pathname,
               os.path.join(os.path.dirname(pathname), new_filename))
 
-
+   #fd
 import os
 for root, dirs, files in os.walk(".", topdown=False):
    for name in files:
