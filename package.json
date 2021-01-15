@@ -2,29 +2,45 @@
   "name": "@craflo/storefront",
   "private": true,
   "dependencies": {
+      "ts-node-dev": "~1.1.1",
+    "envalid": "~4.2.0",
     "isomorphic-unfetch": "^3.0.0",
     "isomorphic-ws": "~4.0.1",
-    "envalid": "~4.2.0",
-    "next": "~10.0.0",
-    "react": "~16.13.0",
-    "react-dom": "~16.13.0"
+    "ts-node": "~9.1.1",
+    "typescript": "^4.1.3"
   },
   "devDependencies": {
     "lerna": "^3.22.1"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "bootstrap": "yarn install",
     "cleanup": "lerna clean --yes",
     "commit": "git-cz",
     "commitmsg": "commitlint -e",
-    "postinstall": "lerna bootstrap --hoist",
-    "release": "lerna publish --conventional-commits --message \"chore(npm): publish\"",
-    "build:vercel": "lerna bootstrap --hoist && node createHydraClientIfNecessary.js && cd packages/craflo-frontend && next build",
-    "start": "yarn run create-hydra-client && cd packages/craflo-frontend && yarn run start",
-    "start:dev": "yarn run create-hydra-client && cd packages/craflo-frontend && yarn run start:dev",
+    "bootstrap": "lerna bootstrap --force-local && lerna link --force-local --loglevel verbose",
+    "dev" : "lerna run dev --parallel",
+    "release": "lerna publish --conventional-commits --message 'chore(npm): publish'",
+    "build:vercel": "node createHydraClientIfNecessary.js && cd packages/craflo-frontend && next build",
+    "start": "yarn run create-hydra-client && cd packages/craflo-frontend && yarn start",
+    "start:dev": "yarn run create-hydra-client && cd packages/craflo-frontend && yarn start:dev",
     "test": "jest --projects packages/* --coverage",
     "test:watch": "yarn test -- --watch --coverage false",
     "watch": "lerna run --parallel watch",
     "create-hydra-client": "node createHydraClientIfNecessary.js"
-  }
+  },
+  "version": "1.0.0",
+  "main": "config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wittycodes/craflo-storefront.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wittycodes/craflo-storefront/issues"
+  },
+  "homepage": "https://github.com/wittycodes/craflo-storefront#readme",
+  "description": ""
 }

@@ -1,33 +1,24 @@
-// import NextApp from "next/app";
+if (typeof window !== 'undefined') {
+  window.setImmediate = window.setTimeout;
+}
+// import "@paperbits/core/ko/bindingHandlers/bindingHandlers.component";
 
-// import "../paperbits/polyfills";
-// // import * as ReactDOM from "react-dom";
-// // import { createElement } from "react";
-// // import { Designer } from "./components/designer";
-// import { InversifyInjector } from "@paperbits/common/injection";
-// import { CoreDesignModule } from "@paperbits/core/core.design.module";
-// import { FormsDesignModule } from "@paperbits/forms/forms.design.module";
-// import { EmailsDesignModule } from "@paperbits/emails/emails.design.module";
-// import { StylesDesignModule } from "@paperbits/styles/styles.design.module";
-// import { ProseMirrorModule } from "@paperbits/prosemirror/prosemirror.module";
-// import { OfflineModule } from "@paperbits/common/persistence/offline.module";
-// // import { DemoDesignModule } from "./modules/demo.design.module";
-//
-// /* Initializing dependency injection  */
-// const injector = new InversifyInjector();
-// injector.bindModule(new CoreDesignModule());
-// injector.bindModule(new FormsDesignModule());
-// injector.bindModule(new EmailsDesignModule());
-// injector.bindModule(new StylesDesignModule());
-// injector.bindModule(new ProseMirrorModule());
-// // injector.bindModule(new DemoDesignModule());
-// injector.bindModule(new OfflineModule({ autosave: false }));
-// injector.resolve("autostart");
+import dynamic from 'next/dynamic'
 
+const Designer = dynamic(
+  () => import('@craflo/paperbits/components/designer'),
+  { ssr: false }
+)
+
+// const Runtime = dynamic(
+//   () => import('@craflo/paperbits/startup.runtime'),
+//   { ssr: false }
+// )
 
 
 
 import React from "react";
+import ReactDOM from 'react-dom';
 import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ContextProviders } from "context/ContextProviders";
@@ -50,6 +41,13 @@ import { ThemeProvider } from 'styled-components';
 import {ReactiveBase} from '@appbaseio/reactivesearch'
 
 
+
+// import "../paperbits/polyfills";
+// import "../paperbits/themes/website/scripts";
+import { InversifyInjector } from "@paperbits/common/injection";
+import { DemoRuntimeModule } from "../paperbits/modules/demo.runtime.module";
+
+
 // External CSS import here
 import 'rc-drawer/assets/index.css';
 import 'rc-table/assets/index.css';
@@ -57,7 +55,7 @@ import 'rc-collapse/assets/index.css';
 import 'react-multi-carousel/lib/styles.css';
 import 'components/multi-carousel/multi-carousel.style.css';
 import '@redq/reuse-modal/lib/index.css';
-import 'react-tagsinput/react-tagsinput.css';
+// import 'react-tagsinput/react-tagsinput.css';
 import { GlobalStyle } from 'assets/styles/global.style';
 import { Normalize } from 'styled-normalize'
 import "slick-carousel/slick/slick.css";
@@ -74,7 +72,6 @@ import localDe from 'data/translation/de.json';
 import localCn from 'data/translation/zh.json';
 import localIl from 'data/translation/he.json';
 import {useApollo} from "src/utils/apollo";
-// import {Designer as PaperbitsDesigner} from "../paperbits/components/designer";
 
 // Language translation Config
 const messages = {
@@ -103,18 +100,16 @@ function withDevice(Component) {
   return withDevice;
 }
 
-
 export function ExtendedApp({Component, pageProps, ...rest}) {
 
   const apolloClient= useApollo(pageProps.initialApolloState);
-
   React.useEffect(()=>{
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles && jssStyles.parentNode) {
       jssStyles.parentNode.removeChild(jssStyles);
     }
   }, [])
-
+  console.log(pageProps, rest, "pulllu")
   const meta = [
     // Use minimum-scale=1 to enable GPU rasterization
     {
@@ -128,47 +123,69 @@ export function ExtendedApp({Component, pageProps, ...rest}) {
     // }
   ];
 
+  // if(rest.router.asPath != "/in"){
+  //   document.addEventListener("DOMContentLoaded", () => {
+  //     /* Initializing dependency injection  */
+  //     const injector = new InversifyInjector();
+  //     injector.bindModule(new DemoRuntimeModule());
+  //     injector.resolve("autostart");
+  //   });
+  // }
 
-  return (
-    <>
-      <Head>
-        {meta.map((tag, index) => <meta key={index} {...tag} />)}
-      </Head>
-    <Normalize />
-    <CssBaseline/>
-    {/*<PaperbitsDesigner/>*/}
-    <ContextProviders pageProps={pageProps}>
-      <ComponentsProvider value={components}>
-        <ApolloProvider client={apolloClient}>
-            <LanguageProvider messages={messages}>
-              <CartProvider>
-                <AppProvider>
-                  <AuthProvider>
-                    <ThemeProvider theme={theme}>
+  // Dessau Bold
+
+
+  if(rest.router.query.edit) {
+    import("../paperbits/themes/designer/styles/styles.scss")
+    return <Designer/>
+  }
+  else if(!rest.router.query.edit) {
+    import("../paperbits/themes/website/styles/styles.scss")
+    return (
+        <>
+          {
+            <>
+              <Head>
+                {meta.map((tag, index) => <meta key={index} {...tag} />)}
+              </Head>
+              {/*<Runtime/>*/}
+              <Normalize/>
+              <CssBaseline/>
+              <ContextProviders pageProps={pageProps}>
+                <ComponentsProvider value={components}>
+                  <ApolloProvider client={apolloClient}>
+                    <AuthProvider>
                       <ReactiveBase
-                      app="reaction.catalog"
-                      url="https://elastic.craflo.com/"
-                      credentials="elastic:RvZi60f38Y6jVKZGS6908yo9">
+                          app="reaction.catalog"
+                          url="https://elastic.craflo.com/"
+                          credentials="elastic:RvZi60f38Y6jVKZGS6908yo9">
 
-                        <MuiThemeProvider theme={muiTheme}>
-                          <AppLayout client={apolloClient} {...pageProps} {...rest} >
-                              <Component {...rest} {...pageProps} />
-                          </AppLayout>
-                        </MuiThemeProvider>
 
+                        <LanguageProvider messages={messages}>
+                          <CartProvider>
+                            <AppProvider>
+                              <ThemeProvider theme={theme}>
+                                <MuiThemeProvider theme={muiTheme}>
+                                  <GlobalStyle/>
+                                  <AppLayout client={apolloClient} {...pageProps} {...rest} >
+                                    <Component {...rest} {...pageProps} />
+                                  </AppLayout>
+                                </MuiThemeProvider>
+                              </ThemeProvider>
+                            </AppProvider>
+                          </CartProvider>
+                        </LanguageProvider>
                       </ReactiveBase>
-                      <GlobalStyle />
-                   </ThemeProvider>
-
-                  </AuthProvider>
-                </AppProvider>
-              </CartProvider>
-            </LanguageProvider>
-        </ApolloProvider>
-      </ComponentsProvider>
-    </ContextProviders>
-    </>
-  )
+                    </AuthProvider>
+                  </ApolloProvider>
+                </ComponentsProvider>
+              </ContextProviders>
+            </>
+          }
+        </>
+    )
+  }
+  else return <></>
 }
 
 

@@ -1,0 +1,1 @@
+{"version":3,"file":"backgroundModel.js","sourceRoot":"","sources":["backgroundModel.ts"],"names":[],"mappings":";;;AAAA,MAAa,eAAe;IAyBxB;QACI,IAAI,CAAC,UAAU,GAAG,MAAM,CAAC;QACzB,IAAI,CAAC,IAAI,GAAG,SAAS,CAAC;QACtB,IAAI,CAAC,QAAQ,GAAG,eAAe,CAAC;QAChC,IAAI,CAAC,MAAM,GAAG,WAAW,CAAC;IAC9B,CAAC;CACJ;AA/BD,0CA+BC"}

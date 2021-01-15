@@ -1,0 +1,1 @@
+{"version":3,"file":"collapsiblePanelEditor.module.js","sourceRoot":"","sources":["collapsiblePanelEditor.module.ts"],"names":[],"mappings":";;;AACA,qEAAkE;AAClE,0EAAuE;AAEvE,MAAa,4BAA4B;IAC9B,QAAQ,CAAC,QAAmB;QAC/B,QAAQ,CAAC,IAAI,CAAC,wBAAwB,EAAE,+CAAsB,CAAC,CAAC;QAChE,QAAQ,CAAC,gBAAgB,CAAC,gBAAgB,EAAE,mDAAwB,EAAE,yBAAyB,CAAC,CAAC;IACrG,CAAC;CACJ;AALD,oEAKC"}

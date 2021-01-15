@@ -1,0 +1,1 @@
+{"version":3,"file":"carouselItemViewModel.js","sourceRoot":"","sources":["carouselItemViewModel.ts"],"names":[],"mappings":";;;AAAA,+BAA+B;AAK/B,MAAa,qBAAqB;IAI9B;QACI,IAAI,CAAC,OAAO,GAAG,EAAE,CAAC,eAAe,EAAE,CAAC;QACpC,IAAI,CAAC,MAAM,GAAG,EAAE,CAAC,UAAU,EAAc,CAAC;IAC9C,CAAC;CACJ;AARD,sDAQC"}

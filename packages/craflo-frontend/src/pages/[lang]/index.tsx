@@ -100,7 +100,7 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
       <SEO title={page?.page_title} description={page?.page_description} />
 
       <Modal >
-        <Banner
+      <Banner
               intlTitleId={page?.banner_title_id}
               intlDescriptionId={page?.banner_description_id}
               // imageUrl={page?.banner_image_url}
@@ -110,6 +110,7 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
             {/*<MobileCarouselDropdown>*/}
             {/*  <StoreNa v items={storeType} />*/}
             {/*</MobileCarouselDropdown>*/}
+        <div id={"ppaperbits"}></div>
         {isAvailable && <><OfferSection>
           <div style={{margin: '0 -10px'}}>
             <Carousel deviceType={deviceType} data={OFFERS}/>
@@ -118,7 +119,9 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
 
 
 
+
           <div style={{backgroundColor: '#fff'}}>
+
           <div style={{marginLeft: 60, marginRight: 60, paddingTop: 20}}>
           <Row>
           <Col xs={12}>
@@ -147,9 +150,9 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
 
           <h3 style={{float: 'left'}}>Trending Today</h3>
           <h5 style={{float: 'right'}}>
-          <a target="_blank" href="/in/explore-beta">
-          See More..
-          </a>
+            <a target="_blank" href="/in/explore-beta">
+            See More..
+            </a>
           </h5>
 
           <ReactiveList
@@ -159,7 +162,6 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
             ({data, error, loading, ...rest}) => (
               // <div>{"pulkit"}</div>
               <>
-                {/*{console.log(data)}*/}
                 <Carousel1 loading={loading} data={data} deviceType={deviceType}/>
               </>
             )

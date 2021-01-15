@@ -1,0 +1,1 @@
+{"version":3,"file":"numberInput.design.module.js","sourceRoot":"","sources":["numberInput.design.module.ts"],"names":[],"mappings":";;;AACA,8DAA2D;AAC3D,+DAA4D;AAE5D,MAAa,uBAAuB;IACzB,QAAQ,CAAC,QAAmB;QAC/B,QAAQ,CAAC,IAAI,CAAC,mBAAmB,EAAE,qCAAiB,CAAC,CAAC;QACtD,QAAQ,CAAC,gBAAgB,CAAC,gBAAgB,EAAE,yCAAmB,EAAE,oBAAoB,CAAC,CAAC;IAC3F,CAAC;CACJ;AALD,0DAKC"}

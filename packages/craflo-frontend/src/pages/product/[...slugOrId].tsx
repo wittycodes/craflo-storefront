@@ -8,6 +8,7 @@ import ProductDetail from "components/ProductDetail";
 import PageLoading from "components/PageLoading";
 import Layout from "components/Layout";
 import { withApollo } from "lib/apollo/withApollo";
+import { Client } from '@elastic/elasticsearch'
 
 import { locales } from "translations/config";
 import fetchPrimaryShop from "staticUtils/shop/fetchPrimaryShop";
@@ -251,7 +252,7 @@ const ProductPage: NextPage = ({ data, deviceType, ...props }) => {
     </>
   );
 };
-export const getStaticProps: GetStaticProps = async ({ params: { lang, slugOrId} }) => {
+export const getStaticProps: GetStaticProps = async ({ params: { slugOrId} }) => {
   const productSlug = slugOrId && slugOrId[0];
   // const primaryShop = await fetchPrimaryShop(lang);
   const catalogProduct = await fetchCatalogProduct(productSlug)
@@ -302,9 +303,35 @@ export const getStaticProps: GetStaticProps = async ({ params: { lang, slugOrId}
   */
 }
 
+
 export async function getStaticPaths() {
+  const client = new Client({
+    node: 'https://elastic.craflo.com/',
+    auth: {
+      username: 'elastic',
+      password: 'RvZi60f38Y6jVKZGS6908yo9'
+    }
+  })
+  const { body} = await client.search({
+    index: 'reaction.catalog',
+    scroll: '1m',
+    _source: ['product.slug'],
+    size: 1000
+  })
+  const slugs = body.hits.hits
+  console.log(slugs)
+
+  const paths = slugs.map((slug)=> slug._source?.product?.slug)
+  console.log(paths)
+
   return {
-    paths: [],
+    paths: [
+      {
+        params: {
+          slugOrId: paths
+        }
+      }
+    ],
     fallback: true // See the "fallback" section below
   };
 }
@@ -319,7 +346,7 @@ export default  withApollo()(withCart(ProductPage));
  * @returns {Object} the props
  */
 /**
-export async function getStaticProps({ params: { slugOrId, lang } }) {
+ export async function getStaticProps({ params: { slugOrId, lang } }) {
   const productSlug = slugOrId && slugOrId[0];
   const primaryShop = await fetchPrimaryShop(lang);
 
@@ -356,12 +383,12 @@ export async function getStaticProps({ params: { slugOrId, lang } }) {
  * @returns {Object} the paths
  */
 /**
-export async function getStaticPaths() {
+ export async function getStaticPaths() {
   return {
     paths: locales.map((locale) => ({ params: { lang: locale, slugOrId: ["-"] } })),
     fallback: true
   };
 }
 
-export default withApollo()(withCart(ProductDetailPage));
-**/
+ export default withApollo()(withCart(ProductDetailPage));
+ **/

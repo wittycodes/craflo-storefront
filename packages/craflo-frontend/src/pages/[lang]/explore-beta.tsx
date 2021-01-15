@@ -425,10 +425,10 @@ const ProductListingPage: NextPage = ({ deviceType, ...props }) => {
 
 
   const productGroups = [
-      "sort",
-      "price",
-      "color",
-      "occasion"
+    "sort",
+    "price",
+    "color",
+    "occasion"
   ]
   props.routingStore.setTagId(null);
   const {shop} = props
@@ -436,8 +436,8 @@ const ProductListingPage: NextPage = ({ deviceType, ...props }) => {
 
   let pageTitle;
   if (shop) {
-      pageTitle = shop.name;
-      if (shop.description) pageTitle = `${pageTitle} | ${shop.description}`;
+    pageTitle = shop.name;
+    if (shop.description) pageTitle = `${pageTitle} | ${shop.description}`;
   } else {
     pageTitle = "Storefront";
   }
@@ -471,80 +471,81 @@ const ProductListingPage: NextPage = ({ deviceType, ...props }) => {
   // // let width = useWindowSize().width
   return (
     <>
-    <SEO title="Browse Listings - Craflo" description="find your own craft" />
-    <Modal>
+      <SEO title="Browse Listings - Craflo" description="find your own craft" />
+      <Modal>
 
-      {/*<MobileCarouselDropdown>*/}
-      {/*  <StoreNav items={storeType} />*/}
-      {/*</MobileCarouselDropdo1`wn>*/}
+        {/*<MobileCarouselDropdown>*/}
+        {/*  <StoreNav items={storeType} />*/}
+        {/*</MobileCarouselDropdo1`wn>*/}
 
-            <ProductPreview>
-              <Image unsized={true} src={"https://media.gettyimages.com/photos/making-paper-flowersart-and-craft-concept-picture-id1149218784"} />
-            </ProductPreview>
-
-
-            <Sticky
-              top={deviceType.mobile || deviceType.tablet ? 68 : 78}
-              innerZ={99}
-              bottomBoundary={300}
-            >
+        <ProductPreview>
+          <Image layout={'fill'} src={"https://media.gettyimages.com/photos/making-paper-flowersart-and-craft-concept-picture-id1149218784"} />
+        </ProductPreview>
 
 
-              {/*<PriceSlider />*/}
-              {/*<LangSwitcher/>*/}
-              {/*<CategoriesWrapper>*/}
-              {/*  <CategoriesInner>*/}
-              {/*    {Object.keys(productGroups).map((item, index) => (*/}
-              {/*      <Link*/}
-              {/*        activeClass="active"*/}
-              {/*        className="category"*/}
-              {/*        to={Object.keys(productGroups)[index]}*/}
-              {/*        offset={headerOffset}*/}
-              {/*        spy={true}*/}
-              {/*        smooth={true}*/}
-              {/*        duration={500}*/}
-              {/*        key={item}*/}
-              {/*      >*/}
-              {/*        {item}*/}
-              {/*      </Link>*/}
-              {/*    ))}*/}
-              {/*  </CategoriesInner>*/}
-              {/*</CategoriesWrapper>*/}
-            </Sticky>
+        <Sticky
+          top={deviceType.mobile || deviceType.tablet ? 68 : 78}
+          innerZ={99}
+          bottomBoundary={300}
+        >
 
 
-            <div style={{height: "90px"}} />
-            <ReactiveList
-              react={{
-                "and": ["Search", "Price Range"]
-              }}
-              componentId="SearchResult"
-              stream={false}
-              infiniteScroll={true}
-              size={45}
-              scrollOnChange={false}
-              // scrollTarget={"rrr-content"}
-              dataField={"reaction.catalog"}
-              loader={
-                (<>
-                  <Loader type="ball-pulse" active/>
-                </>)
-              }
-            >
-              {
-                ({ data, error, loading, ...rest }) => (
-                  // <div>{"pulkit"}</div>
-                  <>
-                  {/*{console.log(data)}*/}
-                  <App props={props}  loading={loading} data={data} routingStore={props.routingStore} deviceType={deviceType}/>
-                </>
-                  )
-              }
-            </ReactiveList>
-      <CartPopUp deviceType={deviceType}/>
-      <Footer />
+          {/*<PriceSlider />*/}
+          {/*<LangSwitcher/>*/}
+          {/*<CategoriesWrapper>*/}
+          {/*  <CategoriesInner>*/}
+          {/*    {Object.keys(productGroups).map((item, index) => (*/}
+          {/*      <Link*/}
+          {/*        activeClass="active"*/}
+          {/*        className="category"*/}
+          {/*        to={Object.keys(productGroups)[index]}*/}
+          {/*        offset={headerOffset}*/}
+          {/*        spy={true}*/}
+          {/*        smooth={true}*/}
+          {/*        duration={500}*/}
+          {/*        key={item}*/}
+          {/*      >*/}
+          {/*        {item}*/}
+          {/*      </Link>*/}
+          {/*    ))}*/}
+          {/*  </CategoriesInner>*/}
+          {/*</CategoriesWrapper>*/}
+        </Sticky>
 
-    </Modal>
+
+        <div style={{height: "90px"}} />
+        <ReactiveList
+          react={{
+            "and": ["Search", "Price Range"]
+          }}
+          componentId="SearchResult"
+          stream={false}
+          infiniteScroll={true}
+          size={45}
+          scrollOnChange={false}
+          // scrollTarget={"rrr-content"}
+          includeFields={["product.title", "product.slug", "product.primaryImage", "product.pricing"]}
+          dataField={"reaction.catalog"}
+          loader={
+            (<>
+              <Loader type="ball-pulse" active/>
+            </>)
+          }
+        >
+          {
+            ({ data, error, loading, ...rest }) => (
+              // <div>{"pulkit"}</div>
+              <>
+                {/*{console.log(data)}*/}
+                <App props={props}  loading={loading} data={data} routingStore={props.routingStore} deviceType={deviceType}/>
+              </>
+            )
+          }
+        </ReactiveList>
+        <CartPopUp deviceType={deviceType}/>
+        <Footer />
+
+      </Modal>
     </>
   )
 };
@@ -598,5 +599,4 @@ export async function getStaticPaths() {
 }
 
 export default withApollo()(inject("routingStore", "uiStore", "authStore")(ProductListingPage));
-
 

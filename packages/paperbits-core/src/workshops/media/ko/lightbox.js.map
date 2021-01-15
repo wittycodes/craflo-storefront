@@ -1,0 +1,1 @@
+{"version":3,"file":"lightbox.js","sourceRoot":"","sources":["lightbox.ts"],"names":[],"mappings":";;;AACA,+CAA+C;AAE/C,MAAa,QAAQ;IACV,IAAI,CAAC,GAAW,EAAE,QAAgB;QACrC,MAAM,QAAQ,GAAG,aAAa,CAAC,MAAM,CAAC;6CACD,GAAG;0CACN,QAAQ;SACzC,CAAC,CAAC;QACH,QAAQ,CAAC,IAAI,EAAE,CAAC;IACpB,CAAC;CACJ;AARD,4BAQC"}

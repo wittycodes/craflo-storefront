@@ -1,0 +1,1 @@
+{"version":3,"file":"timeInputModel.js","sourceRoot":"","sources":["timeInputModel.ts"],"names":[],"mappings":";;;AAKA,MAAa,cAAc;IA+BvB;QACI,IAAI,CAAC,KAAK,GAAG,YAAY,CAAC;QAC1B,IAAI,CAAC,IAAI,GAAG,MAAM,CAAC;QACnB,IAAI,CAAC,KAAK,GAAG,EAAE,CAAC;QAChB,IAAI,CAAC,MAAM,GAAG,EAAE,UAAU,EAAE,gCAAgC,EAAE,CAAC;IACnE,CAAC;CACJ;AArCD,wCAqCC"}

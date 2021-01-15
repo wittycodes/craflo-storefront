@@ -1,0 +1,1 @@
+{"version":3,"file":"multilineInputModel.js","sourceRoot":"","sources":["multilineInputModel.ts"],"names":[],"mappings":";;;AAKA,MAAa,mBAAmB;IAoC5B;QACI,IAAI,CAAC,KAAK,GAAG,kBAAkB,CAAC;QAChC,IAAI,CAAC,IAAI,GAAG,WAAW,CAAC;QACxB,IAAI,CAAC,MAAM,GAAG,EAAE,UAAU,EAAE,gCAAgC,EAAE,CAAC;IACnE,CAAC;CACJ;AAzCD,kDAyCC"}

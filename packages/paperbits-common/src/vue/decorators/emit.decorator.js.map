@@ -1,0 +1,1 @@
+{"version":3,"file":"emit.decorator.js","sourceRoot":"","sources":["emit.decorator.ts"],"names":[],"mappings":";;;AAAA,SAAgB,IAAI,CAAC,SAAiB;IAClC,OAAO,UAAU,MAAW,EAAE,WAAmB;QAC7C,MAAM,CAAC,WAAW,CAAC,GAAG,UAAU,GAAG,IAAI;YACnC,IAAI,CAAC,KAAK,CAAC,SAAS,EAAE,GAAG,IAAI,CAAC,CAAC;QACnC,CAAC,CAAC;IACN,CAAC,CAAC;AACN,CAAC;AAND,oBAMC"}

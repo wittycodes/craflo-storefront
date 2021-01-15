@@ -1,0 +1,1 @@
+{"version":3,"file":"placeholderViewModelBinder.js","sourceRoot":"","sources":["placeholderViewModelBinder.ts"],"names":[],"mappings":";;;;;;;;;;;;AACA,uEAAyE;AACzE,iEAA8D;AAE9D,MAAa,0BAA0B;IACtB,gBAAgB,CAAC,KAAuB;;YACjD,OAAO,IAAI,2CAAoB,CAAC,KAAK,CAAC,OAAO,CAAC,CAAC;QACnD,CAAC;KAAA;IACM,cAAc,CAAC,KAAuB;QACzC,OAAO,KAAK,YAAY,8BAAgB,CAAC;IAC7C,CAAC;CACJ;AAPD,gEAOC"}

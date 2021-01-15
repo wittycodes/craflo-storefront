@@ -1,0 +1,1 @@
+{"version":3,"file":"carousel.runtime.module.js","sourceRoot":"","sources":["carousel.runtime.module.ts"],"names":[],"mappings":";;;AACA,oEAAoE;AAEpE,MAAa,sBAAsB;IACxB,QAAQ,CAAC,QAAmB;QAC/B,MAAM,qBAAqB,GAAG,kBAAkB,CAAC;QACjD,cAAc,CAAC,MAAM,CAAC,qBAAqB,EAAE,sCAAmB,CAAC,CAAC;IACtE,CAAC;CACJ;AALD,wDAKC"}

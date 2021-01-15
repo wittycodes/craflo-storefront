@@ -1,0 +1,1 @@
+{"version":3,"file":"select.design.module.js","sourceRoot":"","sources":["select.design.module.ts"],"names":[],"mappings":";;;AACA,8DAAsD;AACtD,qDAAkD;AAElD,MAAa,uBAAuB;IACzB,QAAQ,CAAC,QAAmB;QAC/B,QAAQ,CAAC,IAAI,CAAC,cAAc,EAAE,gCAAY,CAAC,CAAC;QAC5C,QAAQ,CAAC,gBAAgB,CAAC,gBAAgB,EAAE,+BAAc,EAAE,eAAe,CAAC,CAAC;IACjF,CAAC;CACJ;AALD,0DAKC"}

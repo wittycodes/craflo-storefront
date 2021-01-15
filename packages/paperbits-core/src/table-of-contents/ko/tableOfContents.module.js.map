@@ -1,0 +1,1 @@
+{"version":3,"file":"tableOfContents.module.js","sourceRoot":"","sources":["tableOfContents.module.ts"],"names":[],"mappings":";;;AACA,8EAA2E;AAC3E,qFAAkF;AAGlF,MAAa,qBAAqB;IACvB,QAAQ,CAAC,QAAmB;QAC/B,QAAQ,CAAC,gBAAgB,CAAC,cAAc,EAAE,uDAA0B,EAAE,4BAA4B,CAAC,CAAC;QACpG,QAAQ,CAAC,gBAAgB,CAAC,kBAAkB,EAAE,+DAA8B,EAAE,gCAAgC,CAAC,CAAC;IACpH,CAAC;CACJ;AALD,sDAKC"}

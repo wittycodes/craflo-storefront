@@ -1,0 +1,34 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.OnErrorCaptured = exports.OnRender = exports.OnDeactivated = exports.OnActivated = exports.OnUpdated = exports.OnBeforeUpdate = exports.OnDestroyed = exports.OnBeforeDestroy = exports.OnMounted = exports.OnBeforeMount = exports.OnCreated = exports.OnBeforeCreate = void 0;
+require("reflect-metadata");
+const component_decorator_1 = require("./component.decorator");
+const lifecylceHook_1 = require("./lifecylceHook");
+const OnBeforeCreate = () => lifecylceHook_1.LifecycleHook("beforeCreate");
+exports.OnBeforeCreate = OnBeforeCreate;
+const OnCreated = () => lifecylceHook_1.LifecycleHook("created");
+exports.OnCreated = OnCreated;
+const OnBeforeMount = () => lifecylceHook_1.LifecycleHook("beforeMount");
+exports.OnBeforeMount = OnBeforeMount;
+const OnMounted = () => lifecylceHook_1.LifecycleHook("mounted");
+exports.OnMounted = OnMounted;
+const OnBeforeDestroy = () => lifecylceHook_1.LifecycleHook("beforeDestroy");
+exports.OnBeforeDestroy = OnBeforeDestroy;
+const OnDestroyed = () => lifecylceHook_1.LifecycleHook("destroyed");
+exports.OnDestroyed = OnDestroyed;
+const OnBeforeUpdate = () => lifecylceHook_1.LifecycleHook("beforeUpdate");
+exports.OnBeforeUpdate = OnBeforeUpdate;
+const OnUpdated = () => lifecylceHook_1.LifecycleHook("updated");
+exports.OnUpdated = OnUpdated;
+const OnActivated = () => lifecylceHook_1.LifecycleHook("activated");
+exports.OnActivated = OnActivated;
+const OnDeactivated = () => lifecylceHook_1.LifecycleHook("deactivated");
+exports.OnDeactivated = OnDeactivated;
+const OnRender = () => lifecylceHook_1.LifecycleHook("render");
+exports.OnRender = OnRender;
+const OnErrorCaptured = () => lifecylceHook_1.LifecycleHook("errorCaptured");
+exports.OnErrorCaptured = OnErrorCaptured;
+component_decorator_1.Component.prototype.getInstance = (constructor) => {
+    return new constructor();
+};
+//# sourceMappingURL=decorators.js.map

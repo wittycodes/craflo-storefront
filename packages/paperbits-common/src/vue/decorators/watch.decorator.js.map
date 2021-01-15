@@ -1,0 +1,1 @@
+{"version":3,"file":"watch.decorator.js","sourceRoot":"","sources":["watch.decorator.ts"],"names":[],"mappings":";;;AAAA,4BAA0B;AAE1B,SAAgB,KAAK,CAAC,YAAoB;IACtC,OAAO,UAAU,MAAW,EAAE,WAAmB;QAC7C,OAAO,CAAC,cAAc,CAAC,OAAO,EAAE,YAAY,EAAE,MAAM,CAAC,WAAW,CAAC,CAAC,CAAC;IACvE,CAAC,CAAC;AACN,CAAC;AAJD,sBAIC"}

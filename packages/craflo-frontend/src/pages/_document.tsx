@@ -6,7 +6,7 @@ import { ServerStyleSheet as StyledComponentSheets } from "styled-components";
 import favicons from "custom/favicons";
 import theme from "custom/reactionTheme";
 import analyticsProviders from "custom/analytics";
-import dynamic from 'next/dynamic'
+
 
 
 /**
@@ -49,13 +49,18 @@ class HTMLDocument extends Document {
           {/*  <script src="https://raw.githubusercontent.com/wittycodes/craflo-storefront/master/paperbit-dist/dist/designer/scripts/theme.js"></script>*/}
           {links.map((link, index) => <link key={index} {...link} />)}
         </Head>
-        <body style={{background: '#F7F7F7'}}>
+        <body style={{background: '#F7F7F7', overflow: 'scroll !important'}}>
+
         {/*<PaperbitsInReact/>*/}
-          <Main />
+        {/*<div id={"paperbits"} />*/}
+
+        <Main />
           <NextScript />
           {scripts.map((script, index) => (script.innerHTML ? /* eslint-disable-next-line */
             <script async key={index} type={script.type} dangerouslySetInnerHTML={{ __html: script.innerHTML }} /> : <script async key={index} {...script} />))}
           {/*<script async type="text/javascript" src="https://maps.google.com/maps/api/js?v=3.31&key=AIzaSyBCZ7Lk_9ZC-EfEkgNB5XdPUebFxRqGh3o" />*/}
+        <div id={"portal"} />
+
         </body>
       </Html>
     );
