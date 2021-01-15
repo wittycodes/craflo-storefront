@@ -6,7 +6,7 @@ if (typeof window !== 'undefined') {
 import dynamic from 'next/dynamic'
 
 const Designer = dynamic(
-  () => import('@craflo/paperbits/components/designer'),
+  () => import('../paperbits/components/designer'),
   { ssr: false }
 )
 
