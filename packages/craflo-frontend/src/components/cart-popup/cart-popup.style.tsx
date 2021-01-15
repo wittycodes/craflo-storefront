@@ -78,7 +78,7 @@ const CartPopupBoxButton = styled('button')`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: ${themeGet('colors.primary', '#009E7F')};
+  background-color: #fff;
   padding: 0;
   border-radius: 6px 0 0 6px;
   box-shadow: 0 21px 36px rgba(0, 0, 0, 0.16);
@@ -100,7 +100,7 @@ const TotalItems = styled('span')`
   font-family: ${themeGet('fonts.body')};
   font-size: 13px;
   font-weight: 400;
-  color: #ffffff;
+  color: ${themeGet('colors.primary', '#009E7F')};
   padding-left: 5px;
   padding-right: 10px;
   display: flex;
@@ -126,7 +126,7 @@ const PriceBoxAlt = styled('span')`
   font-family: ${themeGet('fonts.body')};
   font-size: 13px;
   font-weight: 700;
-  color: ${themeGet('colors.primary', '#009E7F')};
+  color: #fff;
   margin: 0 10px 10px;
 `;
 

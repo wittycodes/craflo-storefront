@@ -40,12 +40,9 @@ const ImageWrapper = styled.div`
 const Img = styled(NextImage)`
   width: ${({ fit }) => (fit === "contain" && "100%") || "auto"};
   height: ${({ fit, fixWidth }) => (fit === "cover" && "100%") || "auto"};
-  left: 50% !important;
   opacity: 1;
   position: absolute;
   transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  top: 100% !important;
-  transform: translate(-50%, -50%);
 
   ${({ isLoading, isLoaded, isHidden }) => {
   let styles = "";
