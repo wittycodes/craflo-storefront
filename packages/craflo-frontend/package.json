@@ -12,7 +12,7 @@
   "sideEffects": false,
   "scripts": {
     "dev": "yarn run start:dev",
-    "build": "yarn run build-clean && NODE_ENV=production IS_BUILDING_NEXTJS=1 NODE_OPTIONS=\"--max_old_space_size=9096\" next build ",
+    "build": "yarn run create-hydra-client && yarn run build-clean && NODE_ENV=production IS_BUILDING_NEXTJS=1 NODE_OPTIONS=\"--max_old_space_size=9096\" next build ",
     "build-clean": "rimraf .next",
     "lint": "eslint .",
     "start:build": "yarn run build && next start -p 8080 -H 0.0.0.0 ",
@@ -22,7 +22,9 @@
     "test:unit": "NODE_ENV=jesttest jest",
     "test:unit:watch": "NODE_ENV=jesttest jest --watchAll",
     "test:link": "blc http://web.reaction.localhost:4000 -ro -filter=3 -e",
-    "test:file": "NODE_ENV=jesttest jest --watch --no-coverage"
+    "test:file": "NODE_ENV=jesttest jest --watch --no-coverage",
+    "create-hydra-client": "node ../../createHydraClientIfNecessary.js"
+
   },
   "eslintConfig": {
     "extends": "@reactioncommerce",
