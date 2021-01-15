@@ -196,7 +196,8 @@
     "@paperbits/gtm": "0.1.367",
     "@paperbits/intercom": "0.1.367",
     "@paperbits/prosemirror": "0.1.367",
-    "@paperbits/styles": "0.1.367"
+    "@paperbits/styles": "0.1.367",
+    "@elastic/elasticsearch": "~7.10.0"
   },
   "devDependencies": {
     "@appbaseio/reactivesearch": "~3.12.5",
