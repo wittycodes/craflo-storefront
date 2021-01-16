@@ -122,7 +122,7 @@ const PriceBoxAlt = styled('span')`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
+  background-color: ${themeGet('colors.primary', '#009E7F')};
   font-family: ${themeGet('fonts.body')};
   font-size: 13px;
   font-weight: 700;
