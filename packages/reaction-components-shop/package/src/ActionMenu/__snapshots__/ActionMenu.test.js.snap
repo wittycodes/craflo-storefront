@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic snapshot - only default props 1`] = `
+<DocumentFragment>
+  <button
+    aria-controls="action-menu"
+    aria-haspopup="true"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-button-1 MuiButton-outlinedPrimary"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Actions
+      <div
+        class="MuiBox-root MuiBox-root-38"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+          />
+        </svg>
+      </div>
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+</DocumentFragment>
+`;
+
+exports[`option onClick 1`] = `
+<DocumentFragment>
+  <button
+    aria-controls="action-menu"
+    aria-haspopup="true"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-button-297 MuiButton-outlinedPrimary"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Actions
+      <div
+        class="MuiBox-root MuiBox-root-334"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+          />
+        </svg>
+      </div>
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+</DocumentFragment>
+`;
+
+exports[`option onClick with confirmation 1`] = `
+<DocumentFragment>
+  <button
+    aria-controls="action-menu"
+    aria-haspopup="true"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-button-445 MuiButton-outlinedPrimary"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Actions
+      <div
+        class="MuiBox-root MuiBox-root-482"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+          />
+        </svg>
+      </div>
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+</DocumentFragment>
+`;
+
+exports[`select an option 1`] = `
+<DocumentFragment>
+  <button
+    aria-controls="action-menu"
+    aria-haspopup="true"
+    class="MuiButtonBase-root MuiButton-root MuiButton-outlined makeStyles-button-149 MuiButton-outlinedPrimary"
+    tabindex="0"
+    type="button"
+  >
+    <span
+      class="MuiButton-label"
+    >
+      Actions
+      <div
+        class="MuiBox-root MuiBox-root-186"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+          />
+        </svg>
+      </div>
+    </span>
+    <span
+      class="MuiTouchRipple-root"
+    />
+  </button>
+</DocumentFragment>
+`;

@@ -1,0 +1,54 @@
+# This docker-compose file is used to run the project in Docker for development.
+# The local files are mounted into the created container.
+#
+# Usage:
+#  ln -s docker-compose.dev.yml docker-compose.override.yml
+#  docker-compose up [-d]
+#
+# To go back to running the published image:
+#  rm docker-compose.override.yml
+
+version: '3.4'
+
+networks:
+  web:
+    external:
+      name: web
+
+services:
+  fe-shop-admin:
+    # The main `docker-compose.yml` has an `image` prop. Unfortunately, when we
+    # add `build` prop here, it changes the meaning of that `image` prop to
+    # "tag the built image with this image name". This has the effect of breaking
+    # the app after you've run with the override and then go back to running without
+    # it, because now `reactioncommerce/fe-shop-admin:trunk` would actually be your dev image.
+    # To work around this issue, we specify a different tag name here, which does not
+    # match any of our published tags.
+    image: reactioncommerce/fe-shop-admin:local-dev
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    #command: bash -c "export PATH=$PATH:/home/node/.meteor && npm install --no-audit && node ./.reaction/waitForMongo.js && node --experimental-modules ./.reaction/scripts/run.mjs"
+    volumes:
+      - ./:/usr/local/src/app/:consistent
+      - reaction_meteor_local:/usr/local/src/app/.meteor/local
+      - ./node_modules:/usr/local/src/app/node_modules # do not link node_modules in, and persist it between dc up runs
+    networks:
+      default:
+      web:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.fe-shop-admin.entrypoints=http"
+      - "traefik.http.routers.fe-shop-admin.rule=Host(`make.craflo.com`)"
+      - "traefik.http.middlewares.fe-shop-admin-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.fe-shop-admin.middlewares=fe-shop-admin-https-redirect"
+      - "traefik.http.routers.fe-shop-admin-secure.entrypoints=https"
+      - "traefik.http.routers.fe-shop-admin-secure.rule=Host(`make.craflo.com`)"
+      - "traefik.http.routers.fe-shop-admin-secure.tls=true"
+      - "traefik.http.routers.fe-shop-admin-secure.service=fe-shop-admin"
+      - "traefik.http.services.fe-shop-admin.loadbalancer.server.port=4080"
+      - "traefik.docker.network=web"
+
+volumes:
+  reaction_node_modules:
+  reaction_meteor_local:

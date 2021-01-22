@@ -1,0 +1,8 @@
+import React from "react";
+import { render } from "../tests/index.js";
+import COMPONENT from "./COMPONENT";
+
+test("basic snapshot - only default props", () => {
+  const { asFragment } = render(<COMPONENT></COMPONENT>);
+  expect(asFragment()).toMatchSnapshot();
+});
