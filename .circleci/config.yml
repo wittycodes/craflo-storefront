@@ -1,117 +1,56 @@
-# This CircleCI configuration uses workflows to fan-out to multiple jobs.  The
-# workflow is Dockerized. The first job builds the Docker image which is used
-# in all future steps.
-#
-#  Assumes that the Docker image is published to Docker Hub.
-version: 2.1
-
-orbs:
-  webhook: eddiewebb/webhook@volatile
-
-# The following stanza defines a map named defaults with a variable that may be
-# inserted using the YAML merge (<<: *) key later in the file to save some
-# typing. See http://yaml.org/type/merge.html for details.
-defaults: &defaults
-  environment:
-    - CI_SCRIPTS: "npx --quiet --package @reactioncommerce/ci-scripts@1.9.1"
-    - DOCKER_REPOSITORY: "reactioncommerce/example-storefront"
-    - DOCKER_NAME: "example-storefront"
-    - GITOPS_PR_WEBHOOK: "https://w603b5hwp1.execute-api.us-east-1.amazonaws.com/dev/pullrequests"
-    - GLOBAL_CACHE_VERSION: “v3”
-  docker:
-    - image: circleci/node:12-stretch
-
+version: 2
 jobs:
-  install-dependencies:
-    <<: *defaults
+  build:
+    docker:
+      - image: node:11.10.1
+      - image: circleci/postgres:11-alpine-ram
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: example12
+      - image: redis:latest
+
+    working_directory: ~/repo
+
     steps:
-      - checkout
+      - checkout:
+          post:
+            - git fetch --all
+
       - restore_cache:
           keys:
-            - reaction-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
-            - reaction-v3-node-modules-{{ .Branch }}
-      - run:
-          name: Install NPM dependencies
-          command: yarn install --production=false --frozen-lockfile --non-interactive
-      - save_cache:
-          key: reaction-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
-          paths:
-            - node_modules
-      - save_cache:
-          key: reaction-v3-node-modules-{{ .Branch }}
-          paths:
-            - node_modules
+            # when lock file changes, use increasingly general patterns to restore cache
+            - yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-packages-v1-{{ .Branch }}-
+            - yarn-packages-v1-
 
-  dockerfile-lint:
-    <<: *defaults
-    steps:
-      - checkout
+      - run: yarn install --freeze-lockfile
+
+      - save_cache:
+          paths:
+            - ~/.cache/yarn
+          key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+
+      # run tests!
+      - run: yarn ci:test
+
+      - run: git config --global user.email $GITHUB_EMAIL
+      - run: git config --global user.name $GITHUB_USER
+
+      - run: yarn new-version
+
       - setup_remote_docker:
           docker_layer_caching: true
-      - run:
-          name: Lint Dockerfiles
-          command: ${CI_SCRIPTS} lint-dockerfiles
 
-  eslint:
-    <<: *defaults
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - reaction-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
-            - reaction-v3-node-modules-{{ .Branch }}
       - run:
-          name: Lint JavaScript
-          command: yarn run lint
-
-  test-unit:
-    <<: *defaults
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - reaction-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
-            - reaction-v3-node-modules-{{ .Branch }}
-      - run:
-          name: Run Unit Tests
-          command: yarn run test:ci
-
-  docker-build-push:
-    <<: *defaults
-    steps:
-      - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
-      - run:
-          name: Build and push production Docker image
-          command: ${CI_SCRIPTS} docker-build-tag-push . ${DOCKER_REPOSITORY}
-      - webhook/notify:
-          endpoint: "${GITOPS_PR_WEBHOOK}"
-
-  create-gitops-pull-request:
-    <<: *defaults
-    steps:
-      - run:
-          name: Clone reaction-gitops repo and create PR
+          name: Install Docker client
           command: |
-            ${CI_SCRIPTS} automate-gitops-pull-request
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - install-dependencies
-      - dockerfile-lint:
-          requires:
-            - install-dependencies
-      - eslint:
-          requires:
-            - install-dependencies
-      - test-unit:
-          requires:
-            - install-dependencies
-      - docker-build-push:
-          context: reaction-publish-docker
-          requires:
-            - dockerfile-lint
-            - eslint
-            - test-unit
+            set -x
+            VER="18.06.3-ce"
+            curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
+            tar -xz -C /tmp -f /tmp/docker-$VER.tgz
+            mv /tmp/docker/* /usr/bin
+      - run: git tag
+      - run: echo 'export TAG=`git describe --abbrev=0 --tags $(git rev-list --tags --max-count=2) | sed -n 2p`' >> $BASH_ENV
+      - run: echo $TAG
+      - run: yarn ci:deploy
