@@ -1,6 +1,6 @@
 {
     "name": "@craflo/paperbits",
-    "version": "0.1.370",
+    "version": "0.1.0",
     "description": "An example of using Paperbits to build web apps with rich content editing capability.",
     "author": "Paperbits",
     "license": "MIT",

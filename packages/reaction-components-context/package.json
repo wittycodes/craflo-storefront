@@ -1,6 +1,6 @@
 {
   "name": "@reactioncommerce/components-context",
-  "version": "0.0.0-development",
+  "version": "0.1.0",
   "description": "A system for injecting React components into other React components from a central components context",
   "main": "./dist/main.js",
   "scripts": {

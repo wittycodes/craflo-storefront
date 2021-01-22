@@ -1,7 +1,7 @@
 {
   "name": "@craflo/admin",
   "description": "Reaction is a modern reactive, real-time event driven ecommerce platform.",
-  "version": "3.0.0-beta.10",
+  "version": "0.1.0",
   "main": "main.js",
   "directories": {
     "test": "tests"
