@@ -32,8 +32,8 @@ jobs:
       # run tests!
 
 
-      - run: git config --global user.email $GITHUB_EMAIL
-      - run: git config --global user.name $GITHUB_USER
+      - run: git config --global user.email wittycodes@gmail.com
+      - run: git config --global user.name pgarg
 
       - run: yarn new-version
 
