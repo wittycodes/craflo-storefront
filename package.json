@@ -23,6 +23,7 @@
     "bootstrap": "lerna bootstrap --force-local  --loglevel verbose",
     "dev" : "lerna run dev --parallel",
     "release": "lerna publish --conventional-commits --message 'chore(npm): publish'",
+    "ci:deploy":"npm run release",
     "build:vercel": "node createHydraClientIfNecessary.js && cd packages/craflo-frontend && next build",
     "start": "yarn run create-hydra-client && cd packages/craflo-frontend && yarn start",
     "start:dev": "yarn run create-hydra-client && cd packages/craflo-frontend && yarn start:dev",
