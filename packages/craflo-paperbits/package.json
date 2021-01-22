@@ -8,13 +8,8 @@
         "paperbits",
         "demo"
     ],
-    "publishConfig": {
-      "directory": "src"
-    },
     "scripts": {
-        "dev:l": "tsc --watch",
-        "dev": "webpack-dev-server --port 8090 --config webpack.develop.js",
-        "start": "webpack-dev-server --open --config webpack.develop.js",
+        "dev": "webpack-dev-server --open --port 8081 --config webpack.develop.js",
         "build": "webpack --config webpack.build.js",
         "build-designer": "webpack --config webpack.designer.js",
         "build-publisher": "webpack --config webpack.publisher.js",

@@ -20,14 +20,9 @@
         "sourceMap": false,
         "allowSyntheticDefaultImports": true,
         "incremental": true,
-        "jsx": "react",
-        "outDir":"src"
+        "jsx": "react"
     },
-    "include" :[
-      "src/**/*.ts",
-      "src/**/*.tsx"
-    ],
     "exclude": [
-      "./node_modules"
+        "./node_modules"
     ]
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@craflo/frontend",
+  "name": "@craflo/storefront",
   "version": "3.1.0",
   "description": "The Example Frontend serves as a reference for implementing a web based storefront using the Reaction Commerce GraphQL API.",
   "keywords": [],

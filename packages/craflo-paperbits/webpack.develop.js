@@ -2,7 +2,7 @@ const webpack = require("webpack");
 const { merge } = require("webpack-merge");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const designerConfig = require("./webpack.designer.js");
-
+const path = require('path')
 
 const developmentConfig = {
     mode: "development",
@@ -10,6 +10,13 @@ const developmentConfig = {
     devServer: {
         hot: true,
         historyApiFallback: true
+    },
+    resolve:{
+        symlinks: false,
+        modules: [
+            '../paperbits-common', 'packages/paperbits-common'
+
+        ]
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),

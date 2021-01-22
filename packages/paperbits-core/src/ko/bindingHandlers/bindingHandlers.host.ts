@@ -1,4 +1,6 @@
 ﻿import * as ko from "knockout";
+import React from 'react'
+import ReactDom from 'react-dom'
 import { GlobalEventHandler } from "@paperbits/common/events";
 import { ViewManager, ViewManagerMode } from "@paperbits/common/ui";
 import { Router, Route } from "@paperbits/common/routing";
@@ -78,7 +80,7 @@ export class HostBindingHandler {
 
     private createIFrame(): HTMLIFrameElement {
         const hostElement: HTMLIFrameElement = document.createElement("iframe");
-        hostElement.src = "/page.html?designtime=true";
+        hostElement.src = "/in?designtime=true";
         hostElement.classList.add("host");
         hostElement.title = "Website";
 
@@ -111,10 +113,12 @@ export class HostBindingHandler {
         };
 
         const onLoad = async (): Promise<void> => {
+          //the host element is iframe
+          // content document is document generated insidde that iframe
             const contentDocument = hostElement.contentDocument;
 
             this.globalEventHandler.appendDocument(contentDocument);
-            this.setRootElement(contentDocument.body);
+            this.setRootElement(hostElement);
 
             /* TODO: Move these events to grid designer code */
             contentDocument.addEventListener("mousedown", onPointerDown, true);
@@ -148,7 +152,7 @@ export class HostBindingHandler {
 
             const settings =  await this.siteService.getSettings<any>();
             const siteSettings: SiteSettingsContract = settings?.site;
-            
+
             if (!siteSettings?.faviconSourceKey) {
                 return;
             }
@@ -173,12 +177,41 @@ export class HostBindingHandler {
         return hostElement;
     }
 
-    private async setRootElement(bodyElement: HTMLElement): Promise<void> {
-        const styleElement = document.createElement("style");
-        bodyElement.ownerDocument.head.appendChild(styleElement);
+    private async setRootElement(hostElement: HTMLIFrameElement): Promise<void> {
 
-        ko.applyBindingsToNode(bodyElement, { css: { design: this.designTime } }, null);
+      const styleElement = document.createElement("style");
+        // const holdingElement = document.createElement("div");
+      const contentDocument = hostElement.contentDocument;
+
+        contentDocument.body.ownerDocument.head.appendChild(styleElement);
+        ko.applyBindingsToNode(contentDocument.body, { css: { design: this.designTime } }, null);
         ko.applyBindingsToNode(styleElement, { styleSheet: {} }, null);
-        ko.applyBindingsToNode(bodyElement, { component: this.hostComponent }, null);
+      // ko.applyBindingsToNode(bodyElement.querySelector('#paperbits'), { component: this.hostComponent }, null);
+      // ko.applyBindingsToNode(contentDocument.body, { component: this.hostComponent }, null);
+
+      // bodyElement.addEventListener("DOMContentLoaded", () => {
+      //   //     /* Initializing dependency injection  */
+      //   //     const injector = new InversifyInjector();
+      //   //     injector.bindModule(new DemoRuntimeModule());
+      //   //     injector.resolve("autostart");
+      //      ko.applyBindingsToNode(bodyElement.querySelector('#ppaperbits'), { component: this.hostComponent }, null);
+      //
+      // });
+      // React.createElement()
+      // hostElement.contentWindow.document.addEventListener("DOMContentLoaded", function(event) {
+      //   console.log("DOM fully loaded and parsed");
+      //   ko.applyBindingsToNode(contentDocument.body.querySelector('#ppaperbits'), { component: this.hostComponent }, null);
+      //
+      // });
+      //   console.log("DOM fully loaded and parsed kmkmk");
+      //   ko.applyBindingsToNode(bodyElement.querySelector('#ppaperbits'), { component: this.hostComponent }, null);
+      //
+      // });
+        document.addEventListener("DOMContentLoaded", function(event) {
+          window.setTimeout(() => {
+            ko.applyBindingsToNode(contentDocument.body.querySelector('#ppaperbits'), {component: this.hostComponent}, null);
+        }, 0)
+      })
+        // console.log(Object.keys(this.hostComponent), 'miakha')
     }
 }
