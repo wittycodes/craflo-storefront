@@ -22,7 +22,7 @@
     "commitmsg": "commitlint -e",
     "bootstrap": "lerna bootstrap --force-local  --loglevel verbose",
     "dev" : "lerna run dev --parallel",
-    "release": "lerna publish --conventional-commits --message 'chore(npm): publish'",
+    "release": "lerna publish",
     "ci:deploy":"npm run release",
     "build:vercel": "node createHydraClientIfNecessary.js && cd packages/craflo-frontend && next build",
     "start": "yarn run create-hydra-client && cd packages/craflo-frontend && yarn start",
