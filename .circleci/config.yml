@@ -3,12 +3,10 @@ jobs:
   build:
     docker:
       - image: node:12
-      - image: circleci/postgres:11-alpine-ram
         environment:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: example12
-      - image: redis:latest
 
     working_directory: ~/repo
 
