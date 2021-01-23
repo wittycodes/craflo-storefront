@@ -4,27 +4,6 @@ on:
     branches:
       - master
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-
-      - name: cache-yarn-cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-
-      - run: npm i
-
-      - run: yarn bootstrap
-        if: steps.cache-yarn-cache.outputs.cache-hit != 'true'
-
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
   release:
     name: Release
     runs-on: ubuntu-latest
@@ -40,7 +19,7 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-      - run: npm i
+      - run: npm i lerna
 
       - run: yarn bootstrap
         if: steps.cache-yarn-cache.outputs.cache-hit != 'true'
@@ -54,34 +33,6 @@ jobs:
         uses: changesets/action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  publish-npm:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-
-      - name: cache-yarn-cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-
-      - run: npm i
-
-      - run: yarn bootstrap
-        if: steps.cache-yarn-cache.outputs.cache-hit != 'true'
-
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org/
-
-      - run: yarn publish-ci
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
   publish-gpr:
     needs: build
@@ -97,7 +48,7 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-      - run: npm i
+      - run: npm i lerna
 
       - run: yarn bootstrap
         if: steps.cache-yarn-cache.outputs.cache-hit != 'true'
