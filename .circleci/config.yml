@@ -1,13 +1,20 @@
 version: 2
+
+workflows:
+  frontend-workflow:
+    jobs:
+      - release-packages:
+          context:
+            - reaction-publish-semantic-release
+
 jobs:
-  build:
+  release-packages:
     docker:
       - image: node:12
         environment:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: example12
-          NODE_AUTH_TOKEN: f9672b81-f1d1-49ab-a6ea-b4aa8ee1aa87
 
     working_directory: ~/repo
 
