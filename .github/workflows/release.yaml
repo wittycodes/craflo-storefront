@@ -8,13 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: restore lerna
+
+      - name: cache-yarn-cache
         uses: actions/cache@v2
         with:
           path: |
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn
+          if: steps.cache-yarn-cache.outputs.cache-hit != 'true'
+
       - uses: actions/setup-node@v1
         with:
           node-version: 12
@@ -24,13 +28,17 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v1
-      - name: restore lerna
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+        
+      - name: cache-yarn-cache
+          uses: actions/cache@v2
+          with:
+            path: |
+              node_modules
+              */*/node_modules
+            key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn
+          if: steps.cache-yarn-cache.outputs.cache-hit != 'true'
+
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
@@ -44,13 +52,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: restore lerna
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: cache-yarn-cache
+          uses: actions/cache@v2
+          with:
+            path: |
+              node_modules
+              */*/node_modules
+            key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn
+          if: steps.cache-yarn-cache.outputs.cache-hit != 'true'
+
       - uses: actions/setup-node@v1
         with:
           node-version: 12
@@ -63,13 +75,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: restore lerna
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: cache-yarn-cache
+          uses: actions/cache@v2
+          with:
+            path: |
+              node_modules
+              */*/node_modules
+            key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn
+          if: steps.cache-yarn-cache.outputs.cache-hit != 'true'
+
       - uses: actions/setup-node@v1
         with:
           node-version: 12
