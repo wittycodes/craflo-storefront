@@ -11,15 +11,15 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v1
 
-      - name: cache-yarn-cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+#      - name: cache-yarn-cache
+#        uses: actions/cache@v2
+#        with:
+#          path: |
+#            node_modules
+#            */*/node_modules
+#          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-      - run: npm i lerna
+      - run: yarn global add lerna
 
       - run: yarn bootstrap
         if: steps.cache-yarn-cache.outputs.cache-hit != 'true'
@@ -39,15 +39,15 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - name: cache-yarn-cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+#      - name: cache-yarn-cache
+#        uses: actions/cache@v2
+#        with:
+#          path: |
+#            node_modules
+#            */*/node_modules
+#          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-      - run: npm i lerna
+      - run: yarn global add lerna
 
       - run: yarn bootstrap
         if: steps.cache-yarn-cache.outputs.cache-hit != 'true'
