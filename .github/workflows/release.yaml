@@ -30,12 +30,12 @@ jobs:
         uses: actions/checkout@v1
 
       - name: cache-yarn-cache
-          uses: actions/cache@v2
-          with:
-            path: |
-              node_modules
-              */*/node_modules
-            key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - run: yarn
         if: steps.cache-yarn-cache.outputs.cache-hit != 'true'
 
@@ -54,12 +54,12 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: cache-yarn-cache
-          uses: actions/cache@v2
-          with:
-            path: |
-              node_modules
-              */*/node_modules
-            key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - run: yarn
         if: steps.cache-yarn-cache.outputs.cache-hit != 'true'
 
@@ -77,12 +77,12 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: cache-yarn-cache
-          uses: actions/cache@v2
-          with:
-            path: |
-              node_modules
-              */*/node_modules
-            key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - run: yarn
         if: steps.cache-yarn-cache.outputs.cache-hit != 'true'
 
