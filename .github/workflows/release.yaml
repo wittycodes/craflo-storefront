@@ -17,7 +17,7 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - run: yarn
-          if: steps.cache-yarn-cache.outputs.cache-hit != 'true'
+        if: steps.cache-yarn-cache.outputs.cache-hit != 'true'
 
       - uses: actions/setup-node@v1
         with:
@@ -28,7 +28,7 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v1
-        
+
       - name: cache-yarn-cache
           uses: actions/cache@v2
           with:
@@ -37,7 +37,7 @@ jobs:
               */*/node_modules
             key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - run: yarn
-          if: steps.cache-yarn-cache.outputs.cache-hit != 'true'
+        if: steps.cache-yarn-cache.outputs.cache-hit != 'true'
 
       - name: Setup Node.js
         uses: actions/setup-node@v1
@@ -61,7 +61,7 @@ jobs:
               */*/node_modules
             key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - run: yarn
-          if: steps.cache-yarn-cache.outputs.cache-hit != 'true'
+        if: steps.cache-yarn-cache.outputs.cache-hit != 'true'
 
       - uses: actions/setup-node@v1
         with:
@@ -84,7 +84,7 @@ jobs:
               */*/node_modules
             key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - run: yarn
-          if: steps.cache-yarn-cache.outputs.cache-hit != 'true'
+        if: steps.cache-yarn-cache.outputs.cache-hit != 'true'
 
       - uses: actions/setup-node@v1
         with:
