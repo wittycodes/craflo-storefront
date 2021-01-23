@@ -16,18 +16,13 @@ jobs:
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: example12
 
-    dependencies:
-      pre:
-        - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
 
     working_directory: ~/repo
 
     steps:
       - run: echo $NPM_TOKEN && echo $GITHUB_TOKEN
-
-      - checkout:
-          post:
-            - git fetch --all
+      - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+      - checkout
 
       - restore_cache:
           keys:
