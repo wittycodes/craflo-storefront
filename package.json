@@ -31,10 +31,10 @@
     "test:watch": "yarn test -- --watch --coverage false",
     "watch": "lerna run --parallel watch",
     "create-hydra-client": "node createHydraClientIfNecessary.js",
-    "new-version": "lerna publish --yes"
+    "new-version": "lerna version minor "
 
   },
-  
+
   "version": "1.0.0",
   "main": "config.js",
   "repository": {
