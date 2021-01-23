@@ -2,7 +2,7 @@
   "name": "@craflo/frontend",
   "private": true,
   "dependencies": {
-    "@changesets/cli": "^2.13.1",
+    "@changesets/cli": "^2.13.1"
   },
   "devDependencies": {
     "lerna": "^3.22.1"
