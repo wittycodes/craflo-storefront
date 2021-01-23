@@ -108,6 +108,16 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: "@craflo"
 
-      - run: yarn publish-ci
+      - run: git stash && yarn publish-ci
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://npm.pkg.github.com/
+          scope: "@paperbits"
+
+      - run: git stash && yarn publish-ci
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
