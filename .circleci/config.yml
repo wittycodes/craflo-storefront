@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - run: echo $NPM_TOKEN && echo $GITHUB_TOKEN
-      - run: git config --global github.token $GITHUB_TOKEN
+
       - checkout:
           post:
             - git fetch --all
@@ -43,7 +43,7 @@ jobs:
 
       # run tests!
 
-
+      - run: git config --global github.token $GITHUB_TOKEN
       - run: git config --global user.email wittycodes@gmail.com
       - run: git config --global user.name pgarg
       - run: npm install
