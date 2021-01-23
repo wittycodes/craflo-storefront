@@ -22,8 +22,6 @@ jobs:
             - yarn-packages-v1-{{ .Branch }}-
             - yarn-packages-v1-
 
-      - run: yarn install --freeze-lockfile
-
       - save_cache:
           paths:
             - ~/.cache/yarn
