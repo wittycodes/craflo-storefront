@@ -4,9 +4,12 @@
     "description": "Firebase client library for Paperbits components.",
     "license": "MIT",
     "author": "Paperbits",
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
+    },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/paperbits/paperbits-firebase.git"
+        "url": "git+https://github.com/craflo/craflo-frontend.git"
     },
     "keywords": [
         "paperbits",
