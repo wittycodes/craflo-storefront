@@ -29,6 +29,7 @@ package-lock.json
 src/.next/*
 build
 /reports
+yarn.lock
 
 docker-compose.override.yml
 dear-2
