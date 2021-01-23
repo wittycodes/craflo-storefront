@@ -19,6 +19,7 @@
   "scripts": {
     "cleanup": "lerna clean --yes",
     "commit": "git-cz",
+    "publish-ci": "lerna publish from-package -y --no-verify-access",
     "commitmsg": "commitlint -e",
     "bootstrap": "lerna bootstrap --force-local  --loglevel verbose",
     "dev": "lerna run dev --parallel",
