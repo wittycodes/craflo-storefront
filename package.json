@@ -31,7 +31,7 @@
     "test:watch": "yarn test -- --watch --coverage false",
     "watch": "lerna run --parallel watch",
     "create-hydra-client": "node createHydraClientIfNecessary.js",
-    "new-version": "lerna version --conventional-commits --yes"
+    "new-version": "lerna version"
 
   },
   "version": "1.0.0",
