@@ -7,7 +7,14 @@
     "keywords": [
         "paperbits",
         "demo"
-    ],
+    ], 
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/craflo/craflo-frontend.git"
+    },
     "scripts": {
         "dev": "webpack-dev-server --open --port 8081 --config webpack.develop.js",
         "build": "webpack --config webpack.build.js",

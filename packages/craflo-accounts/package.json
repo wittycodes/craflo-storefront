@@ -4,9 +4,12 @@
   "version": "0.1.0",
   "homepage": "https://github.com/reactioncommerce/reaction-identity",
   "url": "https://github.com/reactioncommerce/reaction-identity",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/reactioncommerce/reaction-identity.git"
+    "url": "git+https://github.com/craflo/craflo-frontend.git"
   },
   "author": {
     "name": "Reaction Commerce",

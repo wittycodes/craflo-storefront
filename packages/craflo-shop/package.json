@@ -9,9 +9,12 @@
   "homepage": "https://github.com/reactioncommerce/reaction-admin",
   "url": "https://github.com/reactioncommerce/reaction-admin",
   "email": "reaction@reactioncommerce.com",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/reactioncommerce/reaction-admin.git"
+    "url": "git+https://github.com/craflo/craflo-frontend.git"
   },
   "author": "Reaction Commerce <hello@reactioncommerce.com>",
   "license": "GPL-3.0",
