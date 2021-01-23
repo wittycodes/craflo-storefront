@@ -34,6 +34,7 @@
     "new-version": "lerna publish --yes"
 
   },
+  
   "version": "1.0.0",
   "main": "config.js",
   "repository": {

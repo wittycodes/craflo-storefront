@@ -7,6 +7,7 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: example12
+          NODE_AUTH_TOKEN: f9672b81-f1d1-49ab-a6ea-b4aa8ee1aa87
 
     working_directory: ~/repo
 
