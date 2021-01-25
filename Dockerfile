@@ -1,39 +1,30 @@
-#FROM node:12-alpine
+FROM reactioncommerce/meteor:1.10.2-v1
 
-FROM reactioncommerce/node-dev:12.14.1-v1
-RUN  apk --update add autoconf automake build-base libtool nasm zlib-dev
+# hadolint ignore=DL3002
+USER root
+ARG packages
+# Ensure that all files will be linked in owned by node user.
+# Every directory that will be listed in `volumes` section of
+# docker-compose.yml needs to be pre-created and chown'd here.
+# See https://github.com/docker/compose/issues/3270#issuecomment-363478501
 
-ARG NEXTJS_DOTENV
+RUN mkdir -p /usr/local/src/app/node_modules \
+  && mkdir -p /usr/local/src/app/.meteor/local \
+  && chown node /usr/local/src/app \
+  && chown node /usr/local/src/app/node_modules \
+  && chown node /usr/local/src/app/.meteor/local
 
-ENV NEXTJS_DOTENV=$NEXTJS_DOTENV
-
-## hadolint ignore=DL3018
-RUN apk --no-cache add bash curl less tini vim make
-SHELL ["/bin/bash", "-o", "pipefail", "-o", "errexit", "-u", "-c"]
-#
 WORKDIR /usr/local/src/app
-##
-### Allow yarn/npm to create ./node_modules
-#RUN chown node:node .
-#
-### Copy specific things so that we can keep the image as small as possible
-### without relying on each repo to include a .dockerignore file.
-COPY --chown=node:node ./ ./
-##
-#USER node
-#
-## Install ALL dependencies. We need devDependencies for the build command.
-#RUN yarn install --production=false --ignore-scripts --non-interactive --no-cache
-#
-#ENV BUILD_ENV=production NODE_ENV=production
-#
-## hadolint ig    nore=SC2046
-#RUN yarn build
-#
-## Install only prod dependencies now that we've built, to make the image smaller
-##RUN rm -rf node_modules/*
-##RUN yarn install --production=true --ignore-scripts --non-interactive
-#
-## If any Node flags are needed, they can be set in the NODE_OPTIONS env variable.
-CMD ["./bin/start"]
-#LABEL com.reactioncommerce.name="example-storefront"
+
+COPY ./package.json .
+RUN npm install --no-audit
+
+COPY --chown=node:node . .
+USER node
+
+RUN yarn bootstrap
+
+
+ENV PATH $PATH:/usr/local/src/app/node_modules/.bin:/home/node/.meteor
+
+CMD [ "sh", "-c","yarn", "start:dev", "--scope", "$LERNA_PACKAGE"]
