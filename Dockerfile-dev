@@ -7,7 +7,6 @@ USER root
 # Every directory that will be listed in `volumes` section of
 # docker-compose.yml needs to be pre-created and chown'd here.
 # See https://github.com/docker/compose/issues/3270#issuecomment-363478501
-
 RUN mkdir -p /usr/local/src/app/node_modules \
   && mkdir -p /usr/local/src/app/.meteor/local \
   && chown node /usr/local/src/app \
@@ -16,11 +15,8 @@ RUN mkdir -p /usr/local/src/app/node_modules \
 
 WORKDIR /usr/local/src/app
 
-COPY ./package.json .
-RUN npm install --no-audit
-
-COPY --chown=node:node . .
 USER node
+RUN yarn add global lerna
 
 ENV PATH $PATH:/usr/local/src/app/node_modules/.bin:/home/node/.meteor
 

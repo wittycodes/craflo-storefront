@@ -1,0 +1,37 @@
+{
+    "name": "@paperbits/forms",
+    "version": "0.1.0",
+    "description": "Paperbits components for form builder.",
+    "author": "Paperbits",
+    "license": "Commercial",
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/craflo/craflo-frontend.git"
+    },
+    "keywords": [
+        "paperbits",
+        "form builder"
+    ],
+    "bugs": {
+        "url": "https://github.com/paperbits/paperbits-forms/issues"
+    },
+    "browserslist": [
+        "defaults",
+        "not ie < 11"
+    ],
+    "dependencies": {
+        "@paperbits/common": "^0.1.0",
+        "@paperbits/core": "^0.1.0",
+        "@paperbits/styles": "^0.1.0",
+        "knockout": "^3.5.1",
+        "knockout.validation": "^2.0.4"
+    },
+    "devDependencies": {
+        "@types/knockout.mapping": "^2.0.35",
+        "@types/knockout.validation": "0.0.37",
+        "@types/node": "12.12.6"
+    }
+}

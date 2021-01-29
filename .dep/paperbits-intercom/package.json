@@ -1,0 +1,21 @@
+{
+    "name": "@paperbits/intercom",
+    "version": "0.1.0",
+    "description": "Intercom library for Paperbits components.",
+    "license": "MIT",
+    "author": "Paperbits",
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/craflo/craflo-frontend.git"
+    },
+    "keywords": [
+        "paperbits",
+        "intercom"
+    ],
+    "dependencies": {
+        "@paperbits/common": "^0.1.0"
+    }
+}

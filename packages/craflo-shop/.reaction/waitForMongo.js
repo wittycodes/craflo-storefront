@@ -35,12 +35,12 @@ function defaultOut(message) {
  * @returns {Promise} a promise indicating success/failure of the check
  */
 async function checkWaitRetry({
-  out = defaultOut,
-  max = WAIT_FOR_SECONDS,
-  check = null,
-  waitMs = 1000,
-  timeoutMessage = "Timed out waiting for a prerequisite"
-} = {}) {
+                                out = defaultOut,
+                                max = WAIT_FOR_SECONDS,
+                                check = null,
+                                waitMs = 1000,
+                                timeoutMessage = "Timed out waiting for a prerequisite"
+                              } = {}) {
   const messages = new Set();
   /**
    * Show a progress/info message, but not over and over again

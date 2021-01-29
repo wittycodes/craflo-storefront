@@ -1,37 +1,65 @@
-# This docker-compose file is used to run the project's published image
+
+# This docker-compose file is used to run the project in Docker for development.
+# The local files are mounted into the created container.
 #
-# Usage: docker-compose up [-d]
+# Usage:
+#  ln -s docker-compose.dev.yml docker-compose.override.yml
+#  docker-compose up [-d]
 #
-# See comment in docker-compose.dev.yml if you want to run for development.
+# To go back to running the published image:
+#  rm docker-compose.override.yml
 
 version: '3.4'
 
 networks:
-  reaction:
-    external:
-      name: reaction.localhost
   web:
     external:
       name: web
 
 services:
-  fe-shop-admin:
-    image: reactioncommerce/admin:3.0.0-beta.9
+  web:
+    # The main `docker-compose.yml` has an `image` prop. Unfortunately, when we
+    # add `build` prop here, it changes the meaning of that `image` prop to
+    # "tag the built image with this image name". This has the effect of breaking
+    # the app after you've run with the override and then go back to running without
+    # it, because now `reactioncommerce/admin:trunk` would actually be your dev image.
+    # To work around this issue, we specify a different tag name here, which does not
+    # match any of our published tags.
+    image: craflo/shop:local-dev
+    build:
+      context: ../..
+      dockerfile: Dockerfile-dev
+    command: bash -c "cat /etc/hosts && printenv && yarn dev:shop"
+    volumes:
+      - ../..:/usr/local/src/app:consistent
+#      - reaction_meteor_local:/usr/local/src/app/packages/craflo-shop/.meteor/local
+#      - hoist_node_modules:/usr/local/src/app/node_modules # do not link node_modules in, and persist it between dc up runs
+#      - lerna_node_modules:/usr/local/src/app/packages/craflo-shop/node_modules # do not link node_modules in, and persist it between dc up runs
     env_file:
       - ./.env
-    networks:
-      default:
-      reaction:
-      web:
+#    networks:
+#      default:
+#      web:
+    ports:
+      - 4080:4080
+
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.fe-shop-admin.entrypoints=http"
-      - "traefik.http.routers.fe-shop-admin.rule=Host(`make.craflo.com`)"
-      - "traefik.http.middlewares.fe-shop-admin-https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.routers.fe-shop-admin.middlewares=fe-shop-admin-https-redirect"
-      - "traefik.http.routers.fe-shop-admin-secure.entrypoints=https"
-      - "traefik.http.routers.fe-shop-admin-secure.rule=Host(`make.craflo.com`)"
-      - "traefik.http.routers.fe-shop-admin-secure.tls=true"
-      - "traefik.http.routers.fe-shop-admin-secure.service=fe-shop-admin"
-      - "traefik.http.services.fe-shop-admin.loadbalancer.server.port=4080"
+      - "traefik.http.routers.craflo-shop.entrypoints=http"
+      - "traefik.http.routers.craflo-shop.rule=Host(`make.craflo.com`)"
+      - "traefik.http.middlewares.craflo-shop-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.craflo-shop.middlewares=craflo-shop-https-redirect"
+      - "traefik.http.routers.craflo-shop-secure.entrypoints=https"
+      - "traefik.http.routers.craflo-shop-secure.rule=Host(`make.craflo.com`)"
+      - "traefik.http.routers.craflo-shop-secure.tls=true"
+      - "traefik.http.routers.craflo-shop-secure.service=craflo-shop"
+      - "traefik.http.services.craflo-shop.loadbalancer.server.port=4080"
       - "traefik.docker.network=web"
+    extra_hosts:
+      - "mongo:${MONGO_CLUSTERIP}"
+      - "hydra:${HYDRA_CLUSTERIP}"
+
+#volumes:
+#  hoist_node_modules:
+#  lerna_node_modules:
+#  reaction_meteor_local:
