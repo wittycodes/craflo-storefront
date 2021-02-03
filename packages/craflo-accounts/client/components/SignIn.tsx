@@ -134,11 +134,16 @@ export default function SignInModal() {
               resolve();
               return;
             }
+            console.log("here is jnnt")
             Meteor.call("oauth/login", { challenge }, (oauthLoginError, redirectUrl) => {
               if (oauthLoginError) {
                 reject(oauthLoginError);
+                console.log("here is mnnt")
+
               } else {
                 resolve(redirectUrl);
+                console.log("here is jnnt agains")
+
               }
             });
           }

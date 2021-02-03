@@ -103,21 +103,21 @@ export function withIsAdmin(component) {
 export function withCSSTransition(component) {
   return lifecycle({
     componentDidMount() {
-      import("react-transition-group")
-        .then((module) => {
-          if (this.willUnmount === true) {
-            return null;
-          }
-
-          this.setState({
-            CSSTransition: module.CSSTransition
-          });
-
-          return null;
-        })
-        .catch((error) => {
-          Logger.error(error.message, "Unable to load react-transition-group");
-        });
+      // import("react-transition-group")
+      //   .then((module) => {
+      //     if (this.willUnmount === true) {
+      //       return null;
+      //     }
+      //
+      //     this.setState({
+      //       CSSTransition: module.CSSTransition
+      //     });
+      //
+      //     return null;
+      //   })
+      //   .catch((error) => {
+      //     Logger.error(error.message, "Unable to load react-transition-group");
+      //   });
     },
     componentWillUnmount() {
       // Prevent dynamic import from setting state if component is about to unmount

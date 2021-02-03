@@ -65,8 +65,8 @@ const Routes = () => {
 
   const [shopId] = useCurrentShopId();
   const routeParams = useParams();
-  if (isAppLoading || isViewerLoading)
-    return <InLineLoader />
+  // if (isAppLoading || isViewerLoading)
+  //   return <InLineLoader />
   return (
 
       <Suspense fallback={<InLineLoader />}>

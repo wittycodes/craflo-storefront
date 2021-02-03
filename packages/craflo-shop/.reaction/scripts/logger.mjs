@@ -1,28 +1,28 @@
-import chalk from 'chalk';
+// import chalk from 'chalk';
 
 /* eslint-disable no-console */
 
 const loggers = {
   info(msg) {
-    console.log(chalk.blue(`${msg}`));
+    console.log((`${msg}`));
   },
   success(msg) {
-    console.log(chalk.green(`${msg}`));
+    console.log((`${msg}`));
   },
   warn(msg) {
-    console.log(chalk.yellow(`${msg}`));
+    console.log((`${msg}`));
   },
   error(msg) {
-    console.log(chalk.bold.red(`${msg}`));
+    console.log((`${msg}`));
   },
   debug(msg) {
     if (process.env.REACTION_CLI_DEBUG === 'true') {
-      console.log(chalk.yellow('[DEBUG]:'), msg);
+      console.log('[DEBUG]:', msg);
     }
   },
   args(args) {
     if (process.env.REACTION_CLI_DEBUG === 'true') {
-      console.log(chalk.yellow('\n[Reaction CLI Debug]\n\n'), args, '\n');
+      console.log('\n[Reaction CLI Debug]\n\n', args, '\n');
     }
   },
   default(msg) {
@@ -31,4 +31,4 @@ const loggers = {
 };
 
 // extend chalk with custom log methods
-export default Object.assign(chalk, loggers);
+export default loggers

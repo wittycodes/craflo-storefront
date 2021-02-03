@@ -1,8 +1,8 @@
-import { ApolloClient } from "apollo-client";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { ApolloLink } from "apollo-link";
 import { HttpLink } from "apollo-link-http";
 import { WebSocketLink } from "apollo-link-ws";
-import { InMemoryCache } from "apollo-cache-inmemory";
+// import { InMemoryCache } from "apollo-cache-inmemory";
 import { getOperationAST } from "graphql";
 import { Accounts } from "meteor/accounts-base";
 import { Meteor } from "meteor/meteor";

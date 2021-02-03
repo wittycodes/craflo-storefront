@@ -32,8 +32,11 @@ services:
     command: bash -c "cat /etc/hosts && printenv && yarn dev:shop"
     volumes:
       - ../..:/usr/local/src/app:consistent
+#      - ../../packages/craflo-shop/node_modules:/usr/local/src/app/packages/craflo-shop/imports/node_modules:consistent
+#      - ../../node_modules
+      - ../../packages/craflo-shop/node_modules:/usr/local/src/app/packages/craflo-shop/node_modules
+
 #      - reaction_meteor_local:/usr/local/src/app/packages/craflo-shop/.meteor/local
-#      - hoist_node_modules:/usr/local/src/app/node_modules # do not link node_modules in, and persist it between dc up runs
 #      - lerna_node_modules:/usr/local/src/app/packages/craflo-shop/node_modules # do not link node_modules in, and persist it between dc up runs
     env_file:
       - ./.env

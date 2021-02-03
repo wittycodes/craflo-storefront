@@ -13,8 +13,7 @@
       "packages/reaction-*/*"
     ],
     "nohoist": [
-      "**/shop",
-      "**/shop/**"
+      "craflo-shop/*/**"
     ]
   },
   "scripts": {
@@ -32,7 +31,7 @@
     "build:shop": "lerna exec --scope @craflo/shop --parallel  -- docker-compose build",
 
 
-    "compose:shop": "yarn dev:rc && yarn dev:pb && lerna exec --scope @craflo/shop --parallel  -- HYDRA_CLUSTERIP=10.43.69.59 MONGO_CLUSTERIP=10.43.187.72 docker-compose up",
+    "compose:shop": "yarn dev:rc && yarn dev:pb && lerna exec --scope @craflo/shop --parallel  -- HYDRA_CLUSTERIP=10.43.69.59 MONGO_CLUSTERIP=10.43.187.72 docker-compose up --force-recreate",
     "compose:accounts": "yarn dev:rc && yarn dev:pb && lerna exec --scope @craflo/shop --parallel  -- HYDRA_CLUSTERIP=10.43.69.59 MONGO_CLUSTERIP=10.43.187.72 docker-compose up --force-recreate",
     "compose:web": "yarn dev:rc && yarn dev:pb && lerna exec --scope @craflo/shop --parallel  -- HYDRA_CLUSTERIP=10.43.69.59 MONGO_CLUSTERIP=10.43.187.72 docker-compose up --force-recreate",
 
