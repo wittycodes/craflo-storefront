@@ -29,12 +29,13 @@ services:
     build:
       context: ../..
       dockerfile: Dockerfile-dev
-    command: bash -c "cat /etc/hosts && printenv && yarn dev:shop"
+    command: bash -c "cat /etc/hosts && printenv && yarn start:dev"
     volumes:
-      - ../..:/usr/local/src/app:consistent
-#      - ../../packages/craflo-shop/node_modules:/usr/local/src/app/packages/craflo-shop/imports/node_modules:consistent
+      - ../../packages/reaction-components-shop/package/:/usr/local/src/app/packages/craflo-shop/node_modules/@reactioncommerce/catalyst:consistent
+      - ../../packages/craflo-shop:/usr/local/src/app:consistent
+
 #      - ../../node_modules
-      - ../../packages/craflo-shop/node_modules:/usr/local/src/app/packages/craflo-shop/node_modules
+#      - ../../packages/craflo-shop/node_modules:/usr/local/src/app/packages/craflo-shop/node_modules
 
 #      - reaction_meteor_local:/usr/local/src/app/packages/craflo-shop/.meteor/local
 #      - lerna_node_modules:/usr/local/src/app/packages/craflo-shop/node_modules # do not link node_modules in, and persist it between dc up runs

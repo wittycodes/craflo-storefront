@@ -1,6 +1,5 @@
 FROM geoffreybooth/meteor-base:2.0
 
-
 # hadolint ignore=DL3002
 USER root
 
@@ -15,8 +14,9 @@ RUN mkdir -p /usr/local/src/app/node_modules \
   && chown node /usr/local/src/app/.meteor/local
 
 WORKDIR /usr/local/src/app
-RUN yarn add global lerna
+
 USER node
+RUN yarn add global lerna
 
 ENV PATH $PATH:/usr/local/src/app/node_modules/.bin:/home/node/.meteor
 
