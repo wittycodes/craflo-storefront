@@ -13,7 +13,10 @@
       "packages/reaction-*/*"
     ],
     "nohoist": [
-      "craflo-shop/*/**"
+        "**/craflo-storefront",
+        "**/craflo-storefront/**",
+      "**/@craflo/storefront",
+      "**/@craflo/storefront/**"
     ]
   },
   "scripts": {
@@ -21,7 +24,7 @@
     "commit": "git-cz",
     "publish-ci": "lerna publish from-package -y --no-verify-access",
     "commitmsg": "commitlint -e",
-    "bootstrap": "lerna bootstrap --force-local  --loglevel verbose",
+    "bootstrap": "lerna bootstrap --force-local  --nohoist=babel-* --loglevel verbose",
     "dev": "lerna run dev --parallel",
     "release": "lerna publish --conventional-commits --yes",
     "ci:deploy": "npm run release",
