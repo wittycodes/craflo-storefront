@@ -5,11 +5,7 @@
     "@changesets/cli": "^2.13.1"
   },
   "devDependencies": {
-    "lerna": "^3.22.1",
-    "@nrwl/workspace": "latest",
-    "@nrwl/cli": "latest",
-    "@nrwl/tao": "latest",
-    "typescript": "4.1.3"
+    "lerna": "^3.22.1"
   },
   "workspaces": {
     "packages": [
@@ -17,8 +13,8 @@
       "packages/reaction-*/*"
     ],
     "nohoist": [
-      "**/craflo-storefront",
-      "**/craflo-storefront/**",
+        "**/craflo-storefront",
+        "**/craflo-storefront/**",
       "**/@craflo/storefront",
       "**/@craflo/storefront/**",
       "**/@craflo/shop",
@@ -38,15 +34,21 @@
     "ci:deploy": "npm run release",
     "build:vercel": "node createHydraClientIfNecessary.js && cd packages/craflo-frontend && next build",
     "start": "yarn run create-hydra-client && cd packages/craflo-shop && yarn start",
+
     "build:shop": "lerna exec --scope @craflo/shop --parallel  -- docker-compose build",
+
+
     "compose:shop": "lerna exec --scope @craflo/shop --parallel  -- HYDRA_CLUSTERIP=10.43.69.59 MONGO_CLUSTERIP=10.43.187.72 docker-compose up --force-recreate",
     "compose:accounts": "lerna exec --scope @craflo/shop --parallel  -- HYDRA_CLUSTERIP=10.43.69.59 MONGO_CLUSTERIP=10.43.187.72 docker-compose up --force-recreate",
     "compose:web": "lerna exec --scope @craflo/shop --parallel  -- HYDRA_CLUSTERIP=10.43.69.59 MONGO_CLUSTERIP=10.43.187.72 docker-compose up --force-recreate",
+
+
     "dev:store": "yarn dev:libs && lerna exec --scope @craflo/shop --parallel -- meteor npm link @reactioncommerce/catalyst @reactioncommerce/components && yarn start:dev",
     "dev:accounts": "yarn dev:libs && lerna run start:dev --scope @craflo/shop --parallel",
     "dev:shop": "lerna run start:dev --scope @craflo/shop --parallel",
     "dev:pb": "lerna run start:dev --scope=@paperbits/* --parallel",
-    "dev:rc": "lerna exec --scope=@reactioncommerce/* --parallel -- meteor npm link",
+    "dev:rc": "lerna exec --scope=@reactioncommerce/* --parallel -- meteor npm link" ,
+
     "test": "jest --projects packages/* --coverage",
     "test:watch": "yarn test -- --watch --coverage false",
     "watch": "lerna run --parallel watch",
