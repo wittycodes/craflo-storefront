@@ -101,10 +101,10 @@ Meteor.startup(() => {
           <ApolloProvider client={apolloClient}>
             <BrowserRouter>
               <AuthenticationProvider {...oidcProps}>
-                <TranslationProvider>
-                  <ComponentsProvider value={appComponents}>
-                    <ThemeProvider theme={theme}>
-                      <MuiThemeProvider theme={defaultTheme}>
+                {/*<TranslationProvider>*/}
+                {/*  <ComponentsProvider value={appComponents}>*/}
+                {/*    /!*<ThemeProvider theme={theme}>*!/*/}
+                {/*      <MuiThemeProvider theme={defaultTheme}>*/}
                         <SnackbarProvider anchorOrigin={snackbarPosition} maxSnack={3}>
                           <DndProvider backend={HTML5Backend}>
                             <Route>
@@ -116,10 +116,10 @@ Meteor.startup(() => {
                             </Route>
                           </DndProvider>
                         </SnackbarProvider>
-                      </MuiThemeProvider>
-                    </ThemeProvider>
-                  </ComponentsProvider>
-                </TranslationProvider>
+                      {/*</MuiThemeProvider>*/}
+                    {/*</ThemeProvider>*/}
+                  {/*</ComponentsProvider>*/}
+                {/*</TranslationProvider>*/}
               </AuthenticationProvider>
             </BrowserRouter>
           </ApolloProvider>
