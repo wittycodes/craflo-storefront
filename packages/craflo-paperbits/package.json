@@ -7,7 +7,7 @@
     "keywords": [
         "paperbits",
         "demo"
-    ], 
+    ],
     "publishConfig": {
         "registry": "https://npm.pkg.github.com/"
     },

@@ -11,7 +11,6 @@
     "url": "https://reactioncommerce.com"
   },
   "license": "Apache-2.0",
-  "private": false,
   "scripts": {
     "build": "echo 'No build step necessary'",
     "lint": "yarn run lint:eslint",
@@ -196,8 +195,5 @@
   },
   "release": {
     "pkgRoot": "package/dist"
-  },
-  "resolutions": {
-    "**/lodash": "4.17.14"
   }
 }
